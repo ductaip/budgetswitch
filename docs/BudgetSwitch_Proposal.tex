@@ -1,0 +1,397 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0}
+}
+
+\titleformat{\section}{\normalsize\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{1em}{}
+
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+
+\title{\vspace{-1.5cm}\textbf{BudgetSwitch: Learned Adaptive Compute Allocation\\ for Tool-Using SLM Agents via Outcome-Verifiable GRPO}\\[0.3em]
+\large Research Proposal for Faculty Supervision Consideration}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-2.5cm}
+
+% ======================================================
+\section*{Title Page Information}
+% ======================================================
+
+\noindent
+\begin{tabular}{@{}p{0.30\textwidth}p{0.65\textwidth}@{}}
+\textbf{Project Title} & BudgetSwitch: Learned Adaptive Compute Allocation \\
+& for Tool-Using SLM Agents via Outcome-Verifiable GRPO \\[0.4em]
+\textbf{Research Team} & Two third-year undergraduate students \\
+& Major: Artificial Intelligence Engineering \\[0.4em]
+\textbf{Institution} & [University Name] \\[0.4em]
+\textbf{Date} & April 2026 \\[0.4em]
+\textbf{Target Venues} & RIVF 2026 or SOICT 2026 \\
+& (Springer CCIS, 12 pages, Scopus-indexed) \\[0.4em]
+\textbf{Project Duration} & 24 weeks (May -- October 2026) \\[0.4em]
+\textbf{Submitted to} & [Advisor Name] \\
+& For research supervision consideration \\
+& (Corresponding Author on the resulting submission) \\
+\end{tabular}
+
+\vspace{1em}
+
+\noindent\textbf{One-Sentence Summary.} We propose to train a small language model tool-using agent to learn its own per-step compute allocation policy through outcome-verifiable reinforcement learning, achieving a Pareto-optimal trade-off between task success and inference cost while requiring no human annotation, no teacher-model supervision, and only modest computational resources.
+
+\vspace{1.5em}
+
+% ======================================================
+\section*{Abstract}
+% ======================================================
+
+Frontier reasoning agents such as DeepSeek-V4 and recent Claude-class systems expose user-selectable thinking modes that trade compute for quality at the query level. Small language models (SLMs) in the 3--7B parameter range, which are increasingly proposed as the substrate of cost-efficient agentic systems, lack this capability: they apply a uniform reasoning policy across every step of a multi-step tool-using trajectory. Recent empirical work documents two coupled failure modes that result: overthinking on simple steps, where roughly sixty percent of generated reasoning content is redundant, and underthinking on difficult recovery steps, where 3B-class SLMs recover from only one in five multi-turn tool errors compared with more than half for frontier models. We propose \textbf{BudgetSwitch}, a Qwen2.5-3B tool-using agent trained to route each step of its trajectory to one of four discrete compute modes (\textit{fast}, \textit{think}, \textit{think+search}, \textit{defer-to-LLM}) via Group Relative Policy Optimization with rewards drawn exclusively from deterministic step success and cost signals. The reward function uses no oracle mode labels, no LLM-teacher annotations, and no preference data; the mode allocation policy is discovered through GRPO group exploration alone. We will evaluate BudgetSwitch on a newly constructed Vietnamese tool-use benchmark of approximately 2{,}000 trajectories, with English, Thai, and Indonesian as cross-lingual transfer settings. Vietnamese serves as a stress test benchmark rather than the central object of study, motivated by the documented non-English performance cliff in tool-using agents. The target venue is RIVF 2026 or SOICT 2026 (Springer CCIS, twelve pages). The complete project is executable within twenty-four weeks on Kaggle T4 GPUs with an estimated one hundred United States dollars in commercial API expenses.
+
+\vspace{1em}
+
+% ======================================================
+\section{Introduction and Motivation}
+% ======================================================
+
+\subsection{The Compute Allocation Gap in Small Language Model Agents}
+
+The past eighteen months have witnessed a clear architectural divergence between frontier and small language models in how they manage inference compute. Frontier reasoning systems including DeepSeek-V4 and recent Claude-class models expose user-controllable thinking modes that range from immediate response to extended deliberation, allowing applications to trade compute for quality at the query level. NVIDIA's recent position paper~\cite{nvidia_slm_position} argues persuasively that small language models in the three-to-seven-billion parameter range, rather than frontier models, will form the substrate of practical agentic deployments. Yet these very SLMs lack the adaptive compute mechanism that frontier models offer: they apply a uniform reasoning policy across every step of a multi-step tool-using trajectory.
+
+This uniformity produces two coupled failure modes that have been documented in independent recent work. The first is overthinking on simple steps. The Answer Convergence study~\cite{answer_convergence} establishes that approximately sixty percent of the chain-of-thought content generated by reasoning models is redundant: the final answer stabilizes substantially earlier than the model terminates. For tool-using agents, this manifests as expensive deliberation on parameter-binding steps where the user query already contains the necessary information explicitly. The second failure mode is underthinking on hard recovery steps. The Fission-GRPO investigation~\cite{fission_grpo} reports that 3B-class small language models recover from only approximately twenty percent of multi-turn tool errors in Berkeley Function-Calling Leaderboard v4 settings, whereas frontier models such as Claude Sonnet 4 exceed fifty percent. Hard steps that would benefit from extended reasoning or tool retrieval receive the same cursory treatment as trivial steps.
+
+\subsection{Why This Matters for Efficient Agentic Deployment}
+
+The economic and practical consequences of misallocated compute are substantial. A tool-using agent that always applies extended reasoning incurs token costs three to five times those of direct generation; one that always defers to a larger model incurs API costs twenty to fifty times those of local inference. Existing prompt-only approaches such as Budget-Aware Tool-Use Steering~\cite{bats} attempt to address this through inference-time prompting, but they cannot adapt to the structure of individual steps within a trajectory. Cascade and deferral methods such as ReDAct~\cite{redact} treat compute allocation as a binary query-level decision, missing the per-step structure that we believe is essential for tool-using workflows.
+
+\subsection{Research Question}
+
+Given the gap between frontier user-controlled modes and SLM uniformity, and given the documented overthink-underthink failure modes, a natural research question emerges: \textit{Can a small language model tool-using agent learn to allocate compute across modes at the per-step granularity, using reinforcement learning with verifiable rewards that require no oracle supervision and no teacher-model annotations?} We hypothesize that this is feasible at the three-billion-parameter scale, that the resulting routing policy will Pareto-dominate fixed-mode baselines on the cost-quality frontier, and that the learned policy will transfer across languages because mode allocation depends primarily on language-agnostic complexity features rather than language-specific surface form.
+
+% ======================================================
+\section{Related Work and Positioning}
+% ======================================================
+
+\subsection{Budget-Aware Test-Time Compute}
+
+The closest line of prior work concerns budget-aware test-time compute for reasoning tasks. The BCAE framework~\cite{bcae} introduces curriculum-aware budget scheduling for mathematical reasoning, training models to produce solutions within varying token budgets. The AnytimeReasoner BRPO method~\cite{anytime_reasoner} formulates budget-conditioned policy optimization for math reasoning with summary generation at budget exhaustion. The Thinker system~\cite{thinker} introduces fast and slow modes for question answering trained via reinforcement learning. Budget-Aware Tool-Use Steering~\cite{bats} provides a prompt-only budget tracker without training.
+
+These four works collectively establish that budget-aware compute allocation is a productive research direction and that reinforcement learning with verifiable rewards can produce policies that adapt compute to task difficulty. However, every existing approach in this line addresses single-turn reasoning tasks: mathematical problem solving, question answering, or summarization. None addresses multi-step tool-using agents, where the action space is structured by tool calls, observations, and trajectories rather than by token budgets on a single output. The gap is concrete: tool-using agents have a natural discrete action space over execution modes (call directly, deliberate first, retrieve and deliberate, defer entirely) that has no analog in reasoning-only settings.
+
+\subsection{Agentic Reinforcement Learning with Verifiable Rewards}
+
+A parallel and complementary line of work has demonstrated that tool-using agents can be trained via reinforcement learning with rule-based verifiable rewards. The ATLAS system~\cite{atlas} trains agents to perform adaptive tool loading from a large catalog, using GRPO with success-based rewards. Fission-GRPO~\cite{fission_grpo} trains specifically for error recovery in multi-turn tool use. Agent0~\cite{agent0} extends self-evolving agentic training without external supervision.
+
+These works establish that GRPO on Qwen2.5-3B-class models is feasible on consumer hardware and that rule-based verifiers can replace expensive teacher annotations for tool-use tasks. They do not, however, address the compute allocation problem we study: ATLAS adapts the tool catalog presented to the model, not the deliberation depth applied to each step; Fission-GRPO trains recovery behavior but uses a fixed reasoning policy. The two axes are orthogonal, and combining them is the natural next step that our work undertakes.
+
+\subsection{Deferral and Cascade Mechanisms}
+
+A third relevant line concerns cascading lightweight and heavyweight models. ReDAct~\cite{redact} introduces perplexity-based deferral from an SLM to a frontier model when the SLM exhibits high uncertainty. RouteLLM~\cite{routellm} learns a binary classifier to route queries between models of differing capability.
+
+These methods operate at the query level: the entire query is processed by one model or the other. We argue that this granularity is insufficient for tool-using trajectories, where individual steps within a single query may demand very different levels of reasoning. A parameter-extraction step and a tool-composition step in the same trajectory require fundamentally different compute; the right architecture should permit per-step routing rather than locking the entire trajectory to a single compute regime.
+
+\subsection{Multilingual Function Calling}
+
+The MASSIVE-Agents benchmark~\cite{massive_agents} documents a stark performance cliff in tool-using agents on non-English inputs, with accuracy dropping from approximately fifty-seven percent on English to twenty-three percent on Vietnamese for typical mid-sized open models. The recent Arabic Tool Benchmark~\cite{arabic_tool} corroborates this pattern for Arabic, and the Vietnamese-S1K study~\cite{vi_s1k} demonstrates the feasibility of test-time scaling for Vietnamese reasoning on small models trained with Kaggle T4 resources. These results establish Vietnamese as a defensible stress test for tool-using agents and confirm that the resource profile of our project is consistent with successful prior research.
+
+\subsection{Statement of White Space}
+
+To our knowledge, no existing system simultaneously combines the following five elements: (i) per-step rather than query-level granularity for compute decisions; (ii) a four-mode discrete action space spanning direct generation, internal deliberation, deliberation with retrieval, and frontier-model deferral; (iii) outcome-verifiable GRPO training in which the reward function references no oracle mode labels and no teacher-model annotations; (iv) tool-using SLM agents in the three-billion-parameter range as the base substrate; and (v) multilingual stress testing using a low-resource language as the primary evaluation setting. Our work occupies this intersection.
+
+% ======================================================
+\section{Research Objectives and Contributions}
+% ======================================================
+
+We organize the proposed work around three contributions, of which the second carries the central methodological weight.
+
+\subsection{C1: A Four-Mode Compute Action Space for Tool-Using Agents}
+
+The first contribution is the design of a discrete action space tailored to tool-using agents rather than to reasoning-only tasks. We define four modes, ordered by computational cost: \textit{fast}, which generates a tool call directly without internal deliberation; \textit{think}, which prepends a chain-of-thought before the tool call; \textit{think+search}, which combines deliberation with dynamic retrieval over the tool catalog in the spirit of ATLAS; and \textit{defer-to-LLM}, which routes the current step to a frontier model.
+
+This action space differs in important ways from prior work. Frontier reasoning modes (such as the three modes exposed by DeepSeek-V4) are user-controlled and operate at the query level; our modes are agent-selected and operate at the step level. Fast-slow modes from prior question-answering work~\cite{thinker} omit the retrieval-augmented and deferral options that we believe are essential for tool-using settings. Our action space is the smallest one that, in our judgment, captures the four qualitatively distinct compute regimes a tool-using agent should be able to choose among.
+
+\subsection{C2: Outcome-Verifiable GRPO Without Oracle Supervision (Key Methodological Contribution)}
+
+The second and most methodologically significant contribution concerns how the mode-routing policy is learned. The challenge is intrinsic: no labeled dataset of per-step optimal modes exists, and constructing one would require either expensive human annotation or systematic oracle simulation that introduces its own biases. Existing approaches to this kind of structured-action problem typically resort to supervised distillation from a more capable teacher, which limits the student model to imitating teacher behavior and undermines claims of genuine learning.
+
+We propose a clean reinforcement learning formulation that avoids both pitfalls. The trajectory reward is defined as
+\[
+R(\tau) = \sum_{t=1}^{T} \bigl[ r_{\text{outcome}}(s_t, a_t) - \beta \cdot \text{cost}(\text{mode}_t) \bigr] + \gamma \cdot r_{\text{final}}(\tau),
+\]
+where $r_{\text{outcome}}(s_t, a_t)$ is a deterministic indicator of whether step $t$ produced a verifiably correct tool call (a rule-based check against schema validity, tool identity, and parameter semantics), $\text{cost}(\text{mode}_t)$ is the relative compute cost of the mode chosen at step $t$, $\beta$ is a cost-quality trade-off coefficient, and $r_{\text{final}}(\tau)$ is a deterministic check of overall task completion at the end of the trajectory.
+
+The defining property of this reward function is what it omits. There is no \texttt{oracle\_mode} term, no \texttt{expected\_mode} comparison, no LLM-judge call, and no per-step mode label of any kind. The reward conveys only two pieces of information: \textit{did this step succeed?} and \textit{what did it cost?} The reward does not tell the model which mode it should have chosen; the model must discover the answer through Group Relative Policy Optimization with group size four, in which trajectories sampled with different mode strategies for the same query receive relative advantage signals based on their differing reward outcomes. This is genuine reinforcement learning rather than supervised imitation disguised as reinforcement learning: an RL-literate reviewer will recognize the absence of any per-step mode supervision as the methodological commitment that distinguishes our approach.
+
+A natural follow-up question concerns reward hacking. Because all verifiers are deterministic and rule-based, with no learned reward model component, the reward function is not differentiable through and cannot be exploited by policy updates. The only mechanism by which the policy can increase reward is by selecting modes that genuinely produce correct tool calls at appropriate cost.
+
+\subsection{C3: Vietnamese as Stress Test and Cross-Lingual Generalization}
+
+The third contribution concerns evaluation methodology. We construct a Vietnamese tool-use benchmark of approximately two thousand trajectories drawn from translations of Berkeley Function-Calling Leaderboard tasks, the Vietnamese subset of MASSIVE-Agents, and native Vietnamese task design across five practical domains. Vietnamese serves as a stress test benchmark because non-English tool-use exhibits a documented five-to-ten-percent performance cliff~\cite{massive_agents, arabic_tool}, which magnifies the compute allocation problem and provides higher-signal training data than English. We additionally evaluate transfer to English (BFCL-v3), Thai, and Indonesian (MASSIVE-Agents subsets).
+
+We frame Vietnamese explicitly as a stress test rather than the central object of study. The mechanistic reason we expect cross-lingual transfer is that mode routing depends on step-complexity features (number of tools to compose, schema depth, trajectory history length, parameter ambiguity) that are language-agnostic. The lexical content of a step in Vietnamese versus English may differ; the structural complexity that determines whether the step needs deliberation or retrieval does not. If our hypothesis is correct, a policy trained on Vietnamese trajectories should transfer to other languages with minimal degradation. If our hypothesis is incorrect, the failure mode itself is informative.
+
+% ======================================================
+\section{Proposed Methodology}
+% ======================================================
+
+\subsection{System Architecture}
+
+The proposed system is built on a frozen 4-bit quantized Qwen2.5-3B-Instruct base model augmented with two low-rank adaptation modules. The first, a tool-use LoRA of rank sixteen contributing approximately thirty-two megabytes of parameters, is trained through cold-start supervised fine-tuning on standard tool-calling data and provides the agent's function-calling competence. The second, a mode-routing LoRA of rank eight contributing approximately sixteen megabytes, is trained through GRPO with the outcome-verifiable reward described in Section 5.2 and produces the per-step mode decisions.
+
+A crucial design choice concerns the interaction between the two adapters during reinforcement learning. During GRPO training, only the mode-routing LoRA receives gradient updates; the tool-use LoRA is explicitly frozen. This selective freezing serves two purposes. First, it preserves the function-calling capability acquired during supervised fine-tuning, preventing the catastrophic forgetting that would arise if both adapters updated simultaneously with the noisy GRPO gradient. Second, it sharpens the methodological interpretation: any improvement attributable to BudgetSwitch comes specifically from the mode-routing policy and not from incidental improvements in tool-calling.
+
+Mode tokens are implemented as regular text tokens (the strings ``M0'', ``M1'', ``M2'', ``M3'') rather than as special vocabulary entries. At each mode-selection position, the model produces logits over the full vocabulary; we apply constrained decoding that masks all positions outside the four mode tokens before sampling. This approach has two advantages: it requires no tokenizer modification and therefore preserves compatibility with the Unsloth training framework, and it avoids embedding-initialization concerns that arise when adding new tokens to a pretrained vocabulary.
+
+At inference time, the agent proceeds step by step through the trajectory. At each step, it first generates a mode token via constrained decoding, then executes the step in the chosen mode. The four modes correspond to four execution paths in the inference code: direct generation, generation with a chain-of-thought prefix, generation with retrieval over precomputed tool embeddings followed by chain-of-thought, or a remote API call to a frontier model. Tool execution proceeds as in standard agentic workflows, and the trajectory continues until completion or budget exhaustion.
+
+\subsection{Synthetic Data Construction: ViTool-2.0K}
+
+We will construct ViTool-2.0K, a Vietnamese tool-use dataset of approximately two thousand trajectories, through five complementary sources summarized in Table~\ref{tab:dataset_sources}. Trajectory annotation will be performed semi-automatically: gold trajectories are first generated by GPT-4o and Claude Sonnet for each task, then manually reviewed by both team members for correctness, format consistency, and Vietnamese naturalness. We will compute Cohen's kappa between reviewers on a stratified sample to confirm annotation reliability and address disagreements through a structured discussion process. The supervisor will be invited to review approximately ten percent of trajectories as an additional quality control measure.
+
+\begin{table}[h]
+\caption{Sources for the ViTool-2.0K benchmark}
+\label{tab:dataset_sources}
+\centering
+\begin{tabular}{lr}
+\toprule
+Source & Approximate count \\
+\midrule
+Translated from BFCL-v3 (English $\to$ Vietnamese) & 600 \\
+Native Vietnamese tasks (5 domains: banking, public services, etc.) & 400 \\
+Vietnamese subset of MASSIVE-Agents (adapted format) & 300 \\
+Cross-lingual seeds (English, Thai, Indonesian for transfer) & 400 \\
+Multi-turn Retail-style trajectories (in spirit of $\tau$-bench) & 300 \\
+\midrule
+Total & 2{,}000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pilot Study (Pre-Training Empirical Motivation)}
+
+Before committing to full GRPO training, we will conduct a pilot study on the first one hundred annotated trajectories to empirically motivate the central thesis of the paper. For each step in this subset, we will simulate execution offline in all four modes and record the success rate, token cost, and latency of each mode-step pair. We will additionally categorize each step into one of three difficulty classes (easy, medium, hard) using a heuristic based on tool composition depth, parameter ambiguity, and trajectory position.
+
+The pilot study produces three artifacts that will appear in the final paper. First, a mode-by-difficulty success heatmap: we hypothesize that fast mode succeeds at high rates on easy steps and at low rates on hard steps, with the gap reversed for higher-cost modes. Second, a Pareto plot comparing fixed-mode policies (always fast, always think, always think-plus-search) against an oracle policy that selects the optimal mode per step. Third, a quantification of the cost gap between uniform-mode policies and the oracle: we hypothesize that the oracle achieves the same task success rate as always-think at roughly half the compute cost.
+
+A critical methodological clarification is in order. The pilot study produces per-step oracle mode labels by exhaustive offline simulation. These oracle labels are used exclusively for two analytical purposes: motivating the gap in the paper's introduction, and serving as an upper-bound baseline (``Oracle Mode'') in our main experimental table. They are \textit{never} used as a training signal in the GRPO reward function. The reward function references only the deterministic outcome verifiers and the cost function defined in Section 5.2.
+
+\subsection{Training Pipeline}
+
+Training proceeds in two stages. The first stage is cold-start supervised fine-tuning, during which the model learns the syntactic structure of mode-token emission. We construct supervised data by sampling mode tokens uniformly at random for each step in the training trajectories and training the model to predict the next-token distribution conditioned on (query, history, sampled mode token, expected step content). This stage takes approximately three hours on a single T4 GPU. After cold-start SFT, the model can correctly emit mode tokens at the right positions, but its distribution over modes is uniform and uninformed.
+
+The second stage is GRPO training proper. We use the Unsloth library for memory-efficient GRPO with group size four (four sampled trajectories per query), per-device batch size two, gradient accumulation over four steps, and a learning rate of $5 \times 10^{-6}$. The expected training duration is ten to twelve GPU-hours on a single T4 for approximately forty-five hundred GRPO steps across three epochs of fifteen hundred trajectories each.
+
+Group-relative advantage is the mechanism by which mode discovery occurs without supervision. For each query, the four sampled trajectories differ in their mode choices, and consequently in their per-step outcomes and total cost. The trajectory with the highest reward in the group provides positive advantage to all mode tokens it selected; trajectories with below-average reward provide negative advantage. Over many groups, mode-token probabilities shift to favor allocations that empirically yield higher reward. No external signal about which mode is correct enters this process.
+
+A known risk in GRPO over discrete action spaces is mode collapse: the policy converging to always-defer (high success, high cost) or always-fast (low cost, low success). We will mitigate this risk through a $\beta$-sensitivity sweep conducted before the main training run. We will execute four short GRPO runs of approximately two hundred steps each at $\beta \in \{0.01, 0.05, 0.10, 0.20\}$ and inspect the resulting mode distributions, selecting the $\beta$ value that produces a balanced distribution (no single mode exceeding seventy percent and no defer mode exceeding thirty percent). During the main training run, we will monitor mode distribution every one hundred steps and trigger early intervention if either threshold is breached.
+
+Total compute requirements are modest: approximately fifty GPU-hours on T4 hardware across all training, pilot simulation, and baseline replication. Commercial API expenses are estimated at one hundred United States dollars total, primarily for trajectory annotation with GPT-4o and for the defer-mode baseline using GPT-4o-mini.
+
+% ======================================================
+\section{Experimental Plan}
+% ======================================================
+
+\subsection{Evaluation Datasets}
+
+We will evaluate BudgetSwitch on four datasets selected to test the main claim, cross-lingual transfer, and multi-turn behavior. The datasets are summarized in Table~\ref{tab:datasets}.
+
+\begin{table}[h]
+\caption{Evaluation datasets and their roles}
+\label{tab:datasets}
+\centering
+\begin{tabular}{lll}
+\toprule
+Dataset & Role & Approximate size \\
+\midrule
+ViTool-2.0K (to be constructed) & Primary evaluation (Vietnamese) & 2{,}000 trajectories \\
+BFCL-v3 (English subset) & Cross-lingual baseline & 2{,}000 trajectories \\
+MASSIVE-Agents (VN/Thai/Indonesian) & Multilingual transfer & $\sim$1{,}800 trajectories \\
+$\tau$-bench Retail subset & Multi-turn challenge & 100 sessions \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Baselines}
+
+We will compare against eight baselines spanning fixed-mode policies, prior cost-aware methods, and bracketing controls. Table~\ref{tab:baselines} summarizes the design. The Oracle Mode baseline functions as an upper bound rather than a competitor: it represents the best achievable performance if a perfect mode selector were available, and the gap between BudgetSwitch and Oracle Mode quantifies the headroom remaining for future work.
+
+\begin{table}[h]
+\caption{Baseline systems and their experimental role}
+\label{tab:baselines}
+\centering
+\begin{tabular}{ll}
+\toprule
+Baseline & Role \\
+\midrule
+SLM-only, fixed M0 (fast) & Speed floor; lower bound on cost \\
+SLM-only, fixed M1 (think) & Current SLM default; uniform-policy reference \\
+LLM-only (GPT-4o-mini) & Quality ceiling; upper bound on cost \\
+ReDAct (perplexity-based defer)~\cite{redact} & Query-level deferral comparator \\
+ATLAS-style adaptive tool loading~\cite{atlas} & Orthogonal-axis comparator \\
+Random Mode Switch & Sanity control \\
+Oracle Mode Switch & Upper bound (not a competitor) \\
+BudgetSwitch (ours) & Proposed system \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Primary Metrics}
+
+The primary metrics span the cost-quality Pareto frontier. Task Success Rate is measured as final task completion verified by deterministic rule-based checks. Cost per query is the sum of token costs (priced at standard rates) and commercial API expenditure for any deferred steps. Latency is reported at the fiftieth and ninety-fifth percentiles per step. We additionally report mode distribution (the proportion of steps assigned to each of M0--M3) as a diagnostic measure that allows readers to interpret what BudgetSwitch has learned. Routing alignment with the pilot-study oracle is reported for analysis purposes only, with explicit clarification that the oracle was never seen during training.
+
+\subsection{Key Ablations}
+
+We propose five ablations as essential to the paper, with additional ablations reserved for the supplementary material. The first ablation varies the number of modes from two to four to assess whether the full action space is needed. The second varies the reward components (outcome only; outcome plus cost; full formulation with final bonus) to isolate the contribution of each term. The third compares training schemes: supervised fine-tuning alone, GRPO from scratch, and the proposed SFT-then-GRPO pipeline. The fourth varies the base model size across Qwen2.5-1.5B, 3B, and 7B to characterize scaling behavior. The fifth and methodologically critical ablation reports the full $\beta$-sensitivity sweep, demonstrating that the chosen $\beta$ is principled rather than ad hoc.
+
+\subsection{Main Result Presentation}
+
+The primary figure of the paper will be a Pareto curve plotting Task Success Rate against cost per query for all eight baselines. We expect this figure to show a clear ordering: LLM-only at the upper-right (highest quality, highest cost), fixed M0 at the lower-left (lowest quality, lowest cost), and uniform-policy baselines along the curve between them. BudgetSwitch is hypothesized to lie on the upper-left segment of the Pareto frontier, approaching the Oracle Mode upper bound while remaining substantially below the cost of always-think policies and far below the cost of LLM-only.
+
+% ======================================================
+\section{Expected Outcomes and Impact}
+% ======================================================
+
+We expect three principal outcomes. First, we aim to demonstrate that an outcome-verifiable GRPO formulation, with no oracle mode supervision and no LLM-teacher annotations, is sufficient to train a per-step compute mode router that Pareto-dominates fixed-mode baselines. Second, we hypothesize that the learned routing policy will transfer to English, Thai, and Indonesian with limited performance degradation, supporting the thesis that mode allocation depends on language-agnostic complexity features. Third, we will release ViTool-2.0K and the BudgetSwitch implementation as open artifacts to enable subsequent research on adaptive compute allocation in tool-using agents.
+
+The primary venue target is RIVF 2026 or SOICT 2026 (Springer Communications in Computer and Information Science, twelve-page format, Scopus-indexed). The work additionally establishes foundations for longer-term research arcs: a vision-language extension applying mode routing to multimodal tool agents would be a natural follow-up at the master's level, and a theoretical analysis of when mode routing dominates uniform compute represents a more ambitious direction for future investigation. We are not in a position to make confident claims about specific numerical improvements at this stage; the abstract and main results sections of the eventual paper will be drafted after experimental work is complete.
+
+% ======================================================
+\section{Project Timeline}
+% ======================================================
+
+The project is organized into six phases over twenty-four weeks. Each phase ends with a concrete milestone that determines readiness to proceed.
+
+\begin{table}[h]
+\caption{Project phases, deliverables, and milestones}
+\label{tab:timeline}
+\centering
+\begin{tabular}{p{0.06\textwidth} p{0.10\textwidth} p{0.40\textwidth} p{0.35\textwidth}}
+\toprule
+Phase & Weeks & Key Deliverables & Milestone \\
+\midrule
+1 & W1--W4 & Repository setup; 4 mode implementations; rule-based verifiers; baseline replication (ATLAS, ReDAct); GRPO pipeline trial & All four modes runnable; baselines within $\pm 2\%$ of published values \\[0.5em]
+2 & W5--W8 & ViTool-2.0K construction; pilot study (100 trajectories $\times$ 4 modes); annotation quality control & Dataset complete; pilot results available for Section 3 of paper \\[0.5em]
+3 & W9--W12 & Cold-start SFT; $\beta$-sensitivity sweep; full GRPO training; convergence verification & BudgetSwitch model trained; mode distribution non-uniform; routing alignment with oracle $\geq 70\%$ on validation \\[0.5em]
+4 & W13--W16 & All eight baselines evaluated; five ablations; cross-lingual transfer; case study analysis & All experimental tables and Pareto figure ready; numerical results frozen \\[0.5em]
+5 & W17--W20 & Paper drafting (all twelve pages); figures and tables polished; abstract completed with experimental numbers & Full submission-ready draft \\[0.5em]
+6 & W21--W24 & Advisor review; revisions; camera-ready preparation; submission & Paper submitted to RIVF 2026 or SOICT 2026 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+We additionally maintain a one-month buffer (potentially overlapping with reviewer rebuttal periods) for unforeseen technical delays or for venue resubmission if needed.
+
+% ======================================================
+\section{Resource Requirements}
+% ======================================================
+
+The project is designed to be executable within modest computational and financial means. Compute requirements consist of approximately fifty GPU-hours total on Kaggle T4 hardware, accessible through four Kaggle accounts shared between the two team members; this is well within Kaggle's weekly quota of approximately thirty hours per account. API expenses are estimated at one hundred United States dollars total: roughly sixty dollars for gold-trajectory annotation using GPT-4o and Claude Sonnet during data construction, and roughly forty dollars for the defer-mode baseline using GPT-4o-mini during evaluation. The team will cover these expenses without external funding.
+
+All software dependencies are open source: the Unsloth library for memory-efficient training, the TRL library for GRPO, the PEFT library for low-rank adaptation, and standard HuggingFace tooling. No funding, no proprietary software, and no specialized hardware is requested from the advisor or the institution.
+
+% ======================================================
+\section{Team and Advisor Role}
+% ======================================================
+
+The research team consists of two third-year undergraduate students in the AI Engineering major. Both members have completed coursework in deep learning, natural language processing, and reinforcement learning fundamentals, and have prior experience with PyTorch, HuggingFace tooling, and Kaggle-scale experimentation through previous coursework projects. The team has thoroughly studied the relevant literature (sixty-six concurrent papers reviewed during topic refinement) and has developed a detailed implementation plan that addresses anticipated risks and pitfalls in advance.
+
+We believe the undergraduate status of the team is, in this particular project, a strength rather than a limitation. Both members are able to dedicate substantial focused time to a single research project during the academic year and the intervening summer, in a way that postgraduate students juggling thesis, coursework, and other commitments often cannot. The scope of the proposed work is calibrated to this profile: methodologically clean, computationally modest, and timeline-realistic.
+
+We respectfully request three forms of contribution from the supervising advisor. First, periodic research direction guidance and methodology review: we anticipate meeting biweekly during active phases and submitting written progress updates weekly. Second, paper writing feedback, particularly during the drafting phase in Phase 5 of the timeline; we welcome substantive editorial input on framing, prose, and presentation. Third, the role of Corresponding Author on the final submission, reflecting the supervisory contribution to the project's intellectual direction.
+
+In return, the team commits to full execution responsibility: all coding, experimentation, data construction, and initial paper drafting will be carried out by the two students, with the advisor's time reserved for high-leverage intellectual contributions. We will credit the advisor appropriately in any presentations and publications arising from this work, and we will conduct ourselves with the professionalism and dedication that the supervisory relationship deserves.
+
+% ======================================================
+\section{Conclusion}
+% ======================================================
+
+The gap between frontier and small language models in adaptive compute allocation is documented, mechanistically understood, and methodologically tractable. The proposed BudgetSwitch system addresses this gap through a careful combination of per-step granularity, a four-mode discrete action space tailored to tool-using agents, and an outcome-verifiable GRPO training procedure that requires no oracle supervision and no teacher-model annotations. Vietnamese tool-use serves as a defensible stress test that magnifies the compute allocation problem and provides high-signal evaluation data. The project is scoped to twenty-four weeks of focused undergraduate work on Kaggle T4 hardware with a one-hundred-dollar API budget, with carefully designed fallback positions if the strongest empirical hypotheses are not borne out.
+
+We would be honored to undertake this work under your supervision. We welcome the opportunity to discuss the proposal in detail, to adjust the scope or emphasis based on your perspective, and to align the project's direction with the priorities of your research group. We are available to meet at your convenience and look forward to your consideration.
+
+% ======================================================
+\section*{References}
+% ======================================================
+
+\begin{thebibliography}{99}
+\itemsep0.2em
+
+\bibitem{nvidia_slm_position}
+P. Belcak, G. Heinrich, S. Diao, et al., ``Small Language Models are the Future of Agentic AI,'' \textit{arXiv preprint} arXiv:2506.02153, 2025.
+
+\bibitem{answer_convergence}
+Y. Liu and Z. Wang, ``Answer Convergence as a Signal for Early Stopping in Reasoning Language Models,'' in \textit{Findings of EMNLP}, 2025.
+
+\bibitem{fission_grpo}
+Authors, ``Robust Tool Use in Multi-Turn Agentic Tasks via Fission-GRPO,'' \textit{arXiv preprint} arXiv:2601.15625, 2026.
+
+\bibitem{bcae}
+Authors, ``Avoiding Overthinking and Underthinking: Curriculum-Aware Budget Scheduling for Reasoning Language Models,'' \textit{arXiv preprint} arXiv:2604.19780, 2026.
+
+\bibitem{bats}
+Authors, ``Budget-Aware Tool-Use Steering for Effective Agent Scaling,'' \textit{arXiv preprint} arXiv:2511.17006, 2025.
+
+\bibitem{anytime_reasoner}
+Authors, ``AnytimeReasoner: Budget-Conditioned Reasoning via BRPO,'' \textit{arXiv preprint} arXiv:2505.13438, 2025.
+
+\bibitem{thinker}
+Authors, ``Thinker: Fast and Slow Thinking Modes for Reasoning Language Models via Reinforcement Learning,'' \textit{arXiv preprint} arXiv:2505.21097, 2025.
+
+\bibitem{atlas}
+Authors, ``ATLAS: Adaptive Tool Loading and Selection for SLM Agents via Reinforcement Learning,'' \textit{arXiv preprint} arXiv:2603.06713, 2026.
+
+\bibitem{agent0}
+Authors, ``Agent0: Self-Evolving Zero-Data Agentic Training,'' \textit{arXiv preprint} arXiv:2511.16043, 2025.
+
+\bibitem{redact}
+Authors, ``ReDAct: Reason, Defer, and Act for Cost-Efficient SLM--LLM Agentic Systems,'' \textit{arXiv preprint} arXiv:2604.07036, 2026.
+
+\bibitem{routellm}
+I. Ong, A. Almahairi, V. Wu, et al., ``RouteLLM: Learning to Route LLMs with Preference Data,'' \textit{arXiv preprint} arXiv:2406.18665, 2024.
+
+\bibitem{massive_agents}
+Authors, ``MASSIVE-Agents: A Multilingual Function-Calling Benchmark for 52 Languages,'' in \textit{Findings of EMNLP}, 2025.
+
+\bibitem{arabic_tool}
+Authors, ``Arabic Prompts with English Tools: A Function-Calling Benchmark for Arabic Agents,'' \textit{arXiv preprint} arXiv:2601.05101, 2026.
+
+\bibitem{vi_s1k}
+Authors, ``Vi-S1K: Bridging the Reasoning Gap in Vietnamese with Small Language Models via Test-Time Scaling,'' \textit{arXiv preprint}, 2026.
+
+\bibitem{functionchat_korean}
+Authors, ``FunctionChat-Bench: A Korean Tool-Calling Benchmark for Large Language Models,'' \textit{arXiv preprint} arXiv:2411.14054, 2024.
+
+\bibitem{bfcl}
+S. G. Patil, T. Zhang, X. Wang, and J. E. Gonzalez, ``Berkeley Function-Calling Leaderboard,'' 2024.
+
+\bibitem{agentprm}
+S. Choudhury, ``Process Reward Models for LLM Agents: Practical Framework and Directions,'' \textit{arXiv preprint} arXiv:2502.10325, 2025.
+
+\bibitem{toolrm}
+Authors, ``ToolRM: Reward Modeling for Tool-Use Agents at the 3B--8B Scale,'' \textit{arXiv preprint} arXiv:2510.26167, 2025.
+
+\bibitem{toolprmbench}
+Authors, ``ToolPRMBench: A Benchmark for Process Reward Models in Tool-Use Settings,'' \textit{arXiv preprint} arXiv:2601.12294, 2026.
+
+\bibitem{deepseek_r1}
+DeepSeek-AI, ``DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning,'' \textit{arXiv preprint} arXiv:2501.12948, 2025.
+
+\end{thebibliography}
+
+\end{document}
