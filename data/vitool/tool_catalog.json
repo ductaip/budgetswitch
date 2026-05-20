@@ -1,0 +1,109 @@
+{
+  "_description": "Starter tool catalog for BudgetSwitch. 5 sample tools across VN domains. Will expand to 100 tools in W5.",
+  "_version": "0.1.0-w1",
+  "_last_updated": "W1 Day 4",
+  
+  "search_flight": {
+    "description": "Search for domestic Vietnamese flights between cities",
+    "description_vi": "Tìm chuyến bay nội địa Việt Nam giữa các thành phố",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string",
+          "description": "Departure city or airport code (e.g. 'Hà Nội', 'HN', 'HAN')"
+        },
+        "destination": {
+          "type": "string",
+          "description": "Arrival city or airport code (e.g. 'TP.HCM', 'HCM', 'SGN')"
+        },
+        "date": {
+          "type": "string",
+          "description": "Date in DD/MM/YYYY format (Vietnamese standard)"
+        },
+        "passengers": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        }
+      },
+      "required": ["origin", "destination", "date"]
+    }
+  },
+  
+  "check_balance": {
+    "description": "Check bank account balance",
+    "description_vi": "Tra cứu số dư tài khoản ngân hàng",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "account_number": {
+          "type": "string",
+          "pattern": "^[0-9]{8,16}$",
+          "description": "Account number, 8-16 digits"
+        }
+      },
+      "required": ["account_number"]
+    }
+  },
+  
+  "lookup_bhxh": {
+    "description": "Look up Vietnamese social insurance (BHXH) information",
+    "description_vi": "Tra cứu thông tin Bảo hiểm xã hội (BHXH)",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "bhxh_number": {
+          "type": "string",
+          "description": "10-digit BHXH number"
+        },
+        "full_name": {
+          "type": "string"
+        }
+      },
+      "required": ["bhxh_number"]
+    }
+  },
+  
+  "search_product": {
+    "description": "Search for products on Vietnamese e-commerce platforms",
+    "description_vi": "Tìm kiếm sản phẩm trên sàn TMĐT Việt Nam",
+    "domain": "ecommerce",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string"
+        },
+        "max_price": {
+          "type": "number",
+          "description": "Maximum price in VND"
+        },
+        "platform": {
+          "type": "string",
+          "enum": ["shopee", "lazada", "tiki", "sendo"]
+        }
+      },
+      "required": ["keyword"]
+    }
+  },
+  
+  "get_weather": {
+    "description": "Get current weather for a Vietnamese city",
+    "description_vi": "Lấy thông tin thời tiết hiện tại của thành phố Việt Nam",
+    "domain": "info_retrieval",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string",
+          "description": "City name (Vietnamese, with or without diacritics)"
+        }
+      },
+      "required": ["city"]
+    }
+  }
+}

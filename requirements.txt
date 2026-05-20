@@ -1,0 +1,66 @@
+# BudgetSwitch — Python dependencies
+#
+# Two sets of requirements:
+# (A) Local development on laptop (no GPU needed) — for prompt building, verifiers, data prep
+# (B) Kaggle T4 environment — for actual model training/inference (installed in notebook cells)
+#
+# Use requirements-local.txt for laptop dev.
+# Use the install cell in each Kaggle notebook for training environment.
+
+# ============================================================
+# Local dev dependencies (CPU-only OK)
+# ============================================================
+
+# Core
+numpy>=1.24
+pandas>=2.0
+
+# JSON schema validation (verifiers)
+jsonschema>=4.20
+
+# Data processing
+datasets>=2.16
+huggingface_hub>=0.20
+
+# Text processing
+underthesea>=6.8  # Vietnamese tokenizer
+pyvi>=0.1.1        # Vietnamese tokenizer (alternative)
+
+# Embeddings (for tool retrieval — M2 mode)
+# Use CPU mode locally; GPU on Kaggle
+sentence-transformers>=2.5
+
+# API clients (for data generation)
+openai>=1.40
+anthropic>=0.30
+
+# Testing
+pytest>=8.0
+pytest-cov>=4.1
+
+# Notebooks
+jupyter>=1.0
+ipykernel>=6.28
+
+# Utilities
+tqdm>=4.66
+python-dotenv>=1.0
+pyyaml>=6.0
+
+# Plotting (for Pareto curves, mode distribution)
+matplotlib>=3.7
+seaborn>=0.13
+
+# ============================================================
+# GPU dependencies — Kaggle-only, do NOT install locally
+# ============================================================
+# (Listed for reference; actually installed in notebook cells)
+#
+# torch>=2.4
+# transformers>=4.45
+# unsloth>=2024.10
+# trl>=0.11
+# peft>=0.12
+# accelerate>=0.30
+# bitsandbytes>=0.43
+# vllm>=0.6 (for fast GRPO rollouts)
