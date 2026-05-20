@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Model checkpoints (TOO LARGE for git; use HuggingFace Hub or external storage)
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.gguf
+checkpoints/
+saved_models/
+
+# LoRA adapters (small enough — track if < 100MB, otherwise external)
+# Uncomment if adapters get large:
+# *.adapter
+# adapters/
+
+# Pre-computed embeddings (compress and store on HF Hub)
+embeddings/*.npy
+embeddings/*.pkl
+embeddings/*.bin
+
+# Data (track schema and samples, not full datasets)
+data/vitool/full_2k.jsonl
+data/bfcl_vi/translated_full.jsonl
+data/cross_lingual/full.jsonl
+data/*/raw_dumps/
+
+# Training outputs
+training/runs/
+training/checkpoints/
+training/logs/
+wandb/
+mlruns/
+
+# Experiment results (track summary, not raw)
+eval/raw_outputs/
+eval/runs/
+
+# Secrets — never commit
+.env
+.env.local
+secrets.json
+*api_key*
+credentials.json
+service_account.json
+
+# LaTeX
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.bbl
+paper/*.blg
+paper/*.synctex.gz
+paper/_minted-*/
+
+# OS
+Thumbs.db
+
+# Kaggle
+kaggle.json
