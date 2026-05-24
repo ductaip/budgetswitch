@@ -1,76 +1,389 @@
 {
-  "_description": "Starter tool catalog for BudgetSwitch. 5 sample tools across VN domains. Will expand to 100 tools in W5.",
-  "_version": "0.1.0-w1",
-  "_last_updated": "W1 Day 4",
-  
-  "search_flight": {
-    "description": "Search for domestic Vietnamese flights between cities",
-    "description_vi": "Tìm chuyến bay nội địa Việt Nam giữa các thành phố",
-    "domain": "travel",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "origin": {
-          "type": "string",
-          "description": "Departure city or airport code (e.g. 'Hà Nội', 'HN', 'HAN')"
-        },
-        "destination": {
-          "type": "string",
-          "description": "Arrival city or airport code (e.g. 'TP.HCM', 'HCM', 'SGN')"
-        },
-        "date": {
-          "type": "string",
-          "description": "Date in DD/MM/YYYY format (Vietnamese standard)"
-        },
-        "passengers": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 9
-        }
-      },
-      "required": ["origin", "destination", "date"]
-    }
-  },
-  
+  "_description": "BudgetSwitch tool catalog. 38 tools across 5 VN domains. W2 Day 1 expansion.",
+  "_version": "0.2.0-w2",
+  "_last_updated": "W2 Day 1",
+  "_domains": [
+    "banking",
+    "public_services",
+    "ecommerce",
+    "travel",
+    "info_retrieval"
+  ],
   "check_balance": {
     "description": "Check bank account balance",
-    "description_vi": "Tra cứu số dư tài khoản ngân hàng",
+    "description_vi": "Tra cứu số dư tài khoản",
     "domain": "banking",
     "parameters": {
       "type": "object",
       "properties": {
         "account_number": {
           "type": "string",
-          "pattern": "^[0-9]{8,16}$",
-          "description": "Account number, 8-16 digits"
+          "pattern": "^[0-9]{8,16}$"
         }
       },
-      "required": ["account_number"]
+      "required": [
+        "account_number"
+      ]
     }
   },
-  
+  "transfer_money": {
+    "description": "Transfer money between accounts",
+    "description_vi": "Chuyển khoản",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "from_account": {
+          "type": "string"
+        },
+        "to_account": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "description": "VND"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "from_account",
+        "to_account",
+        "amount"
+      ]
+    }
+  },
+  "transaction_history": {
+    "description": "Get recent transaction history",
+    "description_vi": "Lịch sử giao dịch",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "account_number": {
+          "type": "string"
+        },
+        "from_date": {
+          "type": "string",
+          "description": "DD/MM/YYYY"
+        },
+        "to_date": {
+          "type": "string",
+          "description": "DD/MM/YYYY"
+        }
+      },
+      "required": [
+        "account_number"
+      ]
+    }
+  },
+  "open_savings_account": {
+    "description": "Open savings account",
+    "description_vi": "Mở tài khoản tiết kiệm",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "customer_id": {
+          "type": "string"
+        },
+        "initial_deposit": {
+          "type": "number"
+        },
+        "term_months": {
+          "type": "integer",
+          "enum": [
+            3,
+            6,
+            12,
+            24,
+            36
+          ]
+        }
+      },
+      "required": [
+        "customer_id",
+        "initial_deposit"
+      ]
+    }
+  },
+  "block_card": {
+    "description": "Block lost/stolen card",
+    "description_vi": "Khóa thẻ",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "card_number": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string",
+          "enum": [
+            "lost",
+            "stolen",
+            "damaged",
+            "fraud"
+          ]
+        }
+      },
+      "required": [
+        "card_number",
+        "reason"
+      ]
+    }
+  },
+  "loan_inquiry": {
+    "description": "Inquire loan eligibility",
+    "description_vi": "Tư vấn khoản vay",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "loan_type": {
+          "type": "string",
+          "enum": [
+            "home",
+            "car",
+            "personal",
+            "business"
+          ]
+        },
+        "amount": {
+          "type": "number"
+        },
+        "term_months": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "loan_type",
+        "amount"
+      ]
+    }
+  },
+  "get_interest_rates": {
+    "description": "Get current interest rates",
+    "description_vi": "Xem lãi suất",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "product_type": {
+          "type": "string",
+          "enum": [
+            "savings",
+            "loan",
+            "credit_card"
+          ]
+        },
+        "term_months": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "product_type"
+      ]
+    }
+  },
+  "find_branch": {
+    "description": "Find nearest branch/ATM",
+    "description_vi": "Tìm chi nhánh/ATM",
+    "domain": "banking",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "district": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "branch",
+            "atm"
+          ]
+        }
+      },
+      "required": [
+        "city"
+      ]
+    }
+  },
   "lookup_bhxh": {
-    "description": "Look up Vietnamese social insurance (BHXH) information",
-    "description_vi": "Tra cứu thông tin Bảo hiểm xã hội (BHXH)",
+    "description": "Look up social insurance BHXH",
+    "description_vi": "Tra cứu BHXH",
     "domain": "public_services",
     "parameters": {
       "type": "object",
       "properties": {
         "bhxh_number": {
           "type": "string",
-          "description": "10-digit BHXH number"
+          "description": "10-digit"
         },
         "full_name": {
           "type": "string"
         }
       },
-      "required": ["bhxh_number"]
+      "required": [
+        "bhxh_number"
+      ]
     }
   },
-  
+  "tax_inquiry": {
+    "description": "Inquire personal income tax",
+    "description_vi": "Tra cứu thuế TNCN",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tax_code": {
+          "type": "string",
+          "description": "10/13-digit MST"
+        },
+        "year": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tax_code"
+      ]
+    }
+  },
+  "civil_status_lookup": {
+    "description": "Look up civil registration",
+    "description_vi": "Tra cứu hộ tịch",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "citizen_id": {
+          "type": "string",
+          "description": "12-digit CCCD"
+        },
+        "document_type": {
+          "type": "string",
+          "enum": [
+            "birth",
+            "marriage",
+            "death",
+            "residence"
+          ]
+        }
+      },
+      "required": [
+        "citizen_id",
+        "document_type"
+      ]
+    }
+  },
+  "vehicle_registration": {
+    "description": "Check vehicle registration",
+    "description_vi": "Tra cứu đăng ký xe",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "plate_number": {
+          "type": "string",
+          "description": "e.g. 30A-12345"
+        }
+      },
+      "required": [
+        "plate_number"
+      ]
+    }
+  },
+  "utility_bill_inquiry": {
+    "description": "Check utility bill",
+    "description_vi": "Tra cứu hóa đơn điện/nước",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "customer_code": {
+          "type": "string"
+        },
+        "utility_type": {
+          "type": "string",
+          "enum": [
+            "electricity",
+            "water"
+          ]
+        }
+      },
+      "required": [
+        "customer_code",
+        "utility_type"
+      ]
+    }
+  },
+  "book_public_appointment": {
+    "description": "Book government office appointment",
+    "description_vi": "Đặt lịch hẹn hành chính",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "office": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "description": "DD/MM/YYYY"
+        },
+        "citizen_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "office",
+        "service",
+        "date"
+      ]
+    }
+  },
+  "document_status": {
+    "description": "Check submitted document status",
+    "description_vi": "Tra cứu tình trạng hồ sơ",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "receipt_number": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "receipt_number"
+      ]
+    }
+  },
+  "fee_lookup": {
+    "description": "Look up administrative fees",
+    "description_vi": "Tra cứu lệ phí",
+    "domain": "public_services",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "service_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "service_name"
+      ]
+    }
+  },
   "search_product": {
-    "description": "Search for products on Vietnamese e-commerce platforms",
-    "description_vi": "Tìm kiếm sản phẩm trên sàn TMĐT Việt Nam",
+    "description": "Search products on VN e-commerce",
+    "description_vi": "Tìm sản phẩm TMĐT",
     "domain": "ecommerce",
     "parameters": {
       "type": "object",
@@ -80,30 +393,454 @@
         },
         "max_price": {
           "type": "number",
-          "description": "Maximum price in VND"
+          "description": "VND"
         },
         "platform": {
           "type": "string",
-          "enum": ["shopee", "lazada", "tiki", "sendo"]
+          "enum": [
+            "shopee",
+            "lazada",
+            "tiki",
+            "sendo"
+          ]
         }
       },
-      "required": ["keyword"]
+      "required": [
+        "keyword"
+      ]
     }
   },
-  
+  "add_to_cart": {
+    "description": "Add product to cart",
+    "description_vi": "Thêm vào giỏ hàng",
+    "domain": "ecommerce",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "product_id": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "product_id",
+        "quantity"
+      ]
+    }
+  },
+  "checkout": {
+    "description": "Check out and place order",
+    "description_vi": "Thanh toán đặt hàng",
+    "domain": "ecommerce",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "cart_id": {
+          "type": "string"
+        },
+        "payment_method": {
+          "type": "string",
+          "enum": [
+            "cod",
+            "momo",
+            "vnpay",
+            "bank_transfer"
+          ]
+        },
+        "shipping_address": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cart_id",
+        "payment_method"
+      ]
+    }
+  },
+  "track_order": {
+    "description": "Track order shipping status",
+    "description_vi": "Theo dõi đơn hàng",
+    "domain": "ecommerce",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "order_id"
+      ]
+    }
+  },
+  "return_request": {
+    "description": "Request return/refund",
+    "description_vi": "Yêu cầu trả hàng",
+    "domain": "ecommerce",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "refund_method": {
+          "type": "string",
+          "enum": [
+            "original",
+            "wallet",
+            "bank"
+          ]
+        }
+      },
+      "required": [
+        "order_id",
+        "reason"
+      ]
+    }
+  },
+  "compare_prices": {
+    "description": "Compare prices across platforms",
+    "description_vi": "So sánh giá",
+    "domain": "ecommerce",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "product_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_name"
+      ]
+    }
+  },
+  "apply_voucher": {
+    "description": "Apply discount voucher",
+    "description_vi": "Áp mã giảm giá",
+    "domain": "ecommerce",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "cart_id": {
+          "type": "string"
+        },
+        "voucher_code": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cart_id",
+        "voucher_code"
+      ]
+    }
+  },
+  "search_flight": {
+    "description": "Search domestic VN flights",
+    "description_vi": "Tìm chuyến bay nội địa",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "description": "DD/MM/YYYY"
+        },
+        "passengers": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9
+        }
+      },
+      "required": [
+        "origin",
+        "destination",
+        "date"
+      ]
+    }
+  },
+  "book_flight": {
+    "description": "Book specific flight",
+    "description_vi": "Đặt vé chuyến bay",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "flight_id": {
+          "type": "string"
+        },
+        "passenger_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "seat_class": {
+          "type": "string",
+          "enum": [
+            "economy",
+            "business",
+            "first"
+          ]
+        }
+      },
+      "required": [
+        "flight_id",
+        "passenger_names"
+      ]
+    }
+  },
+  "search_hotel": {
+    "description": "Search hotels",
+    "description_vi": "Tìm khách sạn",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "checkin": {
+          "type": "string",
+          "description": "DD/MM/YYYY"
+        },
+        "checkout": {
+          "type": "string",
+          "description": "DD/MM/YYYY"
+        },
+        "guests": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "city",
+        "checkin",
+        "checkout"
+      ]
+    }
+  },
+  "book_hotel": {
+    "description": "Book hotel room",
+    "description_vi": "Đặt phòng khách sạn",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "hotel_id": {
+          "type": "string"
+        },
+        "room_type": {
+          "type": "string"
+        },
+        "checkin": {
+          "type": "string"
+        },
+        "checkout": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "hotel_id",
+        "checkin",
+        "checkout"
+      ]
+    }
+  },
+  "search_train": {
+    "description": "Search train tickets",
+    "description_vi": "Tìm vé tàu",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "description": "DD/MM/YYYY"
+        }
+      },
+      "required": [
+        "origin",
+        "destination",
+        "date"
+      ]
+    }
+  },
+  "cancel_booking": {
+    "description": "Cancel existing booking",
+    "description_vi": "Hủy đặt chỗ",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "booking_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "booking_id"
+      ]
+    }
+  },
+  "baggage_info": {
+    "description": "Get baggage allowance",
+    "description_vi": "Xem thông tin hành lý",
+    "domain": "travel",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "flight_id": {
+          "type": "string"
+        },
+        "seat_class": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "flight_id"
+      ]
+    }
+  },
   "get_weather": {
-    "description": "Get current weather for a Vietnamese city",
-    "description_vi": "Lấy thông tin thời tiết hiện tại của thành phố Việt Nam",
+    "description": "Get current weather for VN city",
+    "description_vi": "Lấy thời tiết",
     "domain": "info_retrieval",
     "parameters": {
       "type": "object",
       "properties": {
         "city": {
           "type": "string",
-          "description": "City name (Vietnamese, with or without diacritics)"
+          "description": "with/without diacritics"
         }
       },
-      "required": ["city"]
+      "required": [
+        "city"
+      ]
+    }
+  },
+  "news_search": {
+    "description": "Search recent VN news",
+    "description_vi": "Tìm tin tức",
+    "domain": "info_retrieval",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "politics",
+            "economy",
+            "sports",
+            "tech",
+            "entertainment"
+          ]
+        }
+      },
+      "required": [
+        "keyword"
+      ]
+    }
+  },
+  "translate_text": {
+    "description": "Translate text",
+    "description_vi": "Dịch văn bản",
+    "domain": "info_retrieval",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "source_lang": {
+          "type": "string"
+        },
+        "target_lang": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "target_lang"
+      ]
+    }
+  },
+  "currency_convert": {
+    "description": "Convert currencies",
+    "description_vi": "Chuyển đổi tiền tệ",
+    "domain": "info_retrieval",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "from_currency": {
+          "type": "string"
+        },
+        "to_currency": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount",
+        "from_currency",
+        "to_currency"
+      ]
+    }
+  },
+  "calculate": {
+    "description": "Perform numerical calculation",
+    "description_vi": "Tính toán",
+    "domain": "info_retrieval",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "expression": {
+          "type": "string",
+          "description": "e.g. '15% of 1500000'"
+        }
+      },
+      "required": [
+        "expression"
+      ]
+    }
+  },
+  "wiki_lookup": {
+    "description": "Look up factual info",
+    "description_vi": "Tra cứu bách khoa",
+    "domain": "info_retrieval",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ]
     }
   }
 }
