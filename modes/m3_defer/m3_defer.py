@@ -19,6 +19,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+# Lưu ý: Đảm bảo m0_fast_generate sử dụng chung logic parse chuẩn OpenAI format
 from modes.m0_fast.m0_fast import _parse_tool_call
 
 
@@ -27,18 +28,11 @@ def m3_defer_generate(
     history: list,
     tool_schemas: dict,
     llm_client=None,
-    model_name: str = "gpt-4o-mini",
+    model_name: str = "llama-3.3-70b-versatile",
 ) -> dict[str, Any]:
     """
-    Defer the step to a frontier LLM (default GPT-4o-mini).
-    
+    Defer the step to a frontier LLM (default llama-3.3-70b-versatile).
     Returns the same dict shape as other modes, plus 'api_cost_usd'.
-    
-    Args:
-        llm_client: An OpenAI-compatible client. If None, attempts to
-                    construct one from OPENAI_API_KEY env var.
-        model_name: Frontier model to defer to. GPT-4o-mini for cost;
-                    DeepSeek-V3 as cheaper backup.
     """
     if llm_client is None:
         llm_client = _default_client()
@@ -55,6 +49,10 @@ def m3_defer_generate(
     raw_output = response.choices[0].message.content
     result = _parse_tool_call(raw_output, tool_schemas)
 
+    # Đảm bảo kết quả trả về luôn bọc đúng cấu trúc dict kể cả khi parse fail
+    if result is None or not isinstance(result, dict):
+        result = {"name": None, "parameters": {}}
+
     # Track cost (approximate; update rates as pricing changes)
     usage = response.usage
     result["api_cost_usd"] = _estimate_cost(
@@ -65,19 +63,20 @@ def m3_defer_generate(
 
 
 def _default_client():
-    """Construct an OpenAI client from env. Override for DeepSeek/other."""
+    """Construct an OpenAI-compatible client pointing to Groq Endpoint from env."""
     from openai import OpenAI
-    api_key = os.environ.get("OPENAI_API_KEY")
+    api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise RuntimeError(
-            "OPENAI_API_KEY not set. For M3 defer, set the env var or pass "
+            "GROQ_API_KEY not set. For M3 defer, set the env var or pass "
             "llm_client explicitly. On Kaggle, use Secrets to store the key."
         )
-    return OpenAI(api_key=api_key)
+    # Ép trỏ base_url sang Groq API endpoint
+    return OpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
 
 
 def _build_m3_messages(query, history, tool_schemas):
-    """Build chat messages for the frontier LLM."""
+    """Build chat messages for the frontier LLM aligned with project schema."""
     tools_desc = "\n".join(
         f"- {name}: {schema.get('description', '')} "
         f"(params: {list(schema.get('parameters', {}).get('properties', {}).keys())})"
@@ -88,12 +87,14 @@ def _build_m3_messages(query, history, tool_schemas):
     if history:
         history_text = "\n\nPrior steps in this trajectory:\n"
         for step, obs in history:
-            history_text += f"- {step.get('tool_name')}({step.get('params')}) -> {obs}\n"
+            # Sửa đổi đồng bộ format gọi tool lịch sử: name và parameters
+            history_text += f"- {step.get('name')}({step.get('parameters')}) -> {obs}\n"
 
+    # FIX BUG 1: Sửa chỉ dẫn output khớp hoàn toàn với định dạng {"name": "...", "parameters": {...}}
     system = (
         "You are an expert tool-using agent. Given the user request and the "
         "available tools, output exactly ONE tool call as JSON: "
-        "{\"tool_name\": \"...\", \"params\": {...}}. Output ONLY the JSON, "
+        "{\"name\": \"...\", \"parameters\": {...}}. Output ONLY the JSON, "
         "no explanation.\n\n"
         f"Available tools:\n{tools_desc}{history_text}"
     )
@@ -106,14 +107,14 @@ def _build_m3_messages(query, history, tool_schemas):
 
 # Pricing per 1M tokens (USD). Update as needed.
 _PRICING = {
+    "llama-3.3-70b-versatile": {"input": 0.59, "output": 0.79},
+    "deepseek-r1-distill-llama-70b": {"input": 0.59, "output": 0.79},
     "gpt-4o-mini": {"input": 0.15, "output": 0.60},
-    "gpt-4o": {"input": 2.50, "output": 10.00},
-    "deepseek-chat": {"input": 0.14, "output": 0.28},
 }
 
 
 def _estimate_cost(model_name: str, prompt_tokens: int, completion_tokens: int) -> float:
-    rates = _PRICING.get(model_name, _PRICING["gpt-4o-mini"])
+    rates = _PRICING.get(model_name, _PRICING["llama-3.3-70b-versatile"])
     return (
         prompt_tokens / 1e6 * rates["input"]
         + completion_tokens / 1e6 * rates["output"]
@@ -132,11 +133,12 @@ if __name__ == "__main__":
     assert len(msgs) == 2
     assert msgs[0]["role"] == "system"
     assert "search_flight" in msgs[0]["content"]
-    print("✅ M3 message building works")
+    assert '"name"' in msgs[0]["content"]  # Đảm bảo prompt chứa từ khóa chuẩn
+    print("✅ M3 message building works (Aligned with global JSON Schema)")
 
     # Test cost estimation
-    cost = _estimate_cost("gpt-4o-mini", 500, 100)
-    print(f"✅ Cost estimate for 500 in + 100 out (gpt-4o-mini): ${cost:.6f}")
+    cost = _estimate_cost("llama-3.3-70b-versatile", 500, 100)
+    print(f"✅ Cost estimate for 500 in + 100 out (llama-3.3-70b-versatile): ${cost:.6f}")
     assert cost > 0
 
-    print("\nNote: Actual M3 defer requires OPENAI_API_KEY and runs in W2 Day 4-5.")
+    print("\nNote: Actual M3 defer requires GROQ_API_KEY and runs in W2 Day 4-5.")
