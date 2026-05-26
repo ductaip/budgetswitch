@@ -87,10 +87,14 @@ def _build_m3_messages(query, history, tool_schemas):
     if history:
         history_text = "\n\nPrior steps in this trajectory:\n"
         for step, obs in history:
-            # Sửa đổi đồng bộ format gọi tool lịch sử: name và parameters
-            history_text += f"- {step.get('name')}({step.get('parameters')}) -> {obs}\n"
+            # Phòng hờ trường hợp step là object hoặc dict có key khác nhau
+            t_name = step.get('name') or step.get('tool_name') or getattr(step, 'name', '')
+            t_params = step.get('parameters') or step.get('params') or getattr(step, 'parameters', {})
+            
+            # Chuyển params sang chuỗi JSON gọn để LLM dễ đọc hơn là chuỗi thô của Python
+            params_str = json.dumps(t_params, ensure_ascii=False)
+            history_text += f"- {t_name}({params_str}) -> {obs}\n"
 
-    # FIX BUG 1: Sửa chỉ dẫn output khớp hoàn toàn với định dạng {"name": "...", "parameters": {...}}
     system = (
         "You are an expert tool-using agent. Given the user request and the "
         "available tools, output exactly ONE tool call as JSON: "
