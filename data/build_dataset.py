@@ -294,6 +294,15 @@ def build(client, model: str, catalog: dict, plan: dict, out_path: str,
                 counters[(domain, difficulty)] += 1
                 print(f"  ✅ {tid} ({len(patched)} steps)")
     save_trajectories(kept, out_path)
+    # dedup ngữ nghĩa sau khi gom (LLM hay lặp ý)
+    try:
+        from data.dedup import dedup_trajectories
+        deduped = dedup_trajectories(kept, threshold=0.90)
+        if len(deduped) < len(kept):
+            save_trajectories(deduped, out_path)
+            kept = deduped
+    except Exception as e:
+        print(f"  [build] bỏ qua dedup ({type(e).__name__}); chạy `python data/dedup.py` riêng sau.")
     rep = stratify_report(kept, min_per_bin)
     print(f"\n✅ Saved {len(kept)} trajectories → {out_path}")
     print(f"   Stratify: {rep}")
