@@ -202,9 +202,9 @@ def _chat_with_backoff(client, *, max_retries: int = 6, base_pause: float = 3.0,
 def draft_trajectories(client, model: str, domain: str, difficulty: str, n: int, catalog: dict,
                        inter_batch_pause: float = 3.5) -> list:
     """Gọi LLM draft n task (chống-429). Trả list raw {query, steps}."""
-    tools_for_domain = {k: v for k, v in catalog.items() if v.get("domain") == domain}
-    tools_desc = "\n".join(f"- {k}: {v.get('description_vi', v.get('description', ''))}"
-                           for k in tools_for_domain)
+    tools_for_domain = {k: val for k, val in catalog.items() if val.get("domain") == domain}
+    tools_desc = "\n".join(f"- {k}: {val.get('description_vi', val.get('description', ''))}"
+                           for k, val in tools_for_domain.items())
     resp = _chat_with_backoff(
         client,
         model=model,
