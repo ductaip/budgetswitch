@@ -163,60 +163,97 @@ def _parse_json_array(text: str) -> list:
 
 
 def _retry_seconds_from_error(msg: str) -> float | None:
-    """Bóc 'try again in 2.435s' từ message lỗi 429 của Groq."""
+    """Bóc thời gian chờ từ message 429. Trả số giây, hoặc None."""
+    m = re.search(r"try again in (\d+)m([\d.]+)s", msg)  # '36m2.3s' — kiểm tra TRƯỚC
+    if m:
+        return int(m.group(1)) * 60 + float(m.group(2))
     m = re.search(r"try again in ([\d.]+)\s*s", msg)
     if m:
         return float(m.group(1))
-    m = re.search(r"in (\d+)m([\d.]+)s", msg)  # dạng '1m2.3s'
-    if m:
-        return int(m.group(1)) * 60 + float(m.group(2))
     return None
 
 
-def _chat_with_backoff(client, *, max_retries: int = 6, base_pause: float = 3.0, **kwargs):
+def _is_daily_limit(msg: str) -> bool:
+    """429 do cạn quota NGÀY (TPD/RPD) — chờ vô ích, phải dừng."""
+    m = msg.lower()
+    return ("per day" in m or "tpd" in m or "rpd" in m
+            or "requests per day" in m or "tokens per day" in m)
+
+
+def _chat_with_backoff(client, *, max_retries: int = 6, base_pause: float = 3.0,
+                       max_wait: float = 90.0, **kwargs):
     """
-    Gọi chat.completions.create với chống-429:
-    - 429: chờ đúng số giây server bảo (nếu có), else exponential backoff + jitter.
-    - lỗi mạng tạm: cũng backoff.
-    Trả response, hoặc raise nếu hết retry.
+    Gọi chat.completions.create với chống-429 THÔNG MINH:
+    - 429 do TPM (phút): chờ đúng số giây server bảo (cap ở max_wait), retry.
+    - 429 do TPD/RPD (ngày): DỪNG NGAY — chờ không giải quyết được (reset theo ngày).
+    - Nếu server bảo chờ > max_wait: coi như cạn quota → dừng, báo rõ.
     """
     last_err = None
     for attempt in range(max_retries):
         try:
             return client.chat.completions.create(**kwargs)
-        except Exception as e:  # openai.RateLimitError, APIError, ... (bắt rộng cho an toàn)
+        except Exception as e:
             last_err = e
             msg = str(e)
             is_429 = "429" in msg or "rate_limit" in msg.lower() or "rate limit" in msg.lower()
+
+            if is_429 and _is_daily_limit(msg):
+                raise RuntimeError(
+                    "❌ CẠN QUOTA NGÀY của Groq free tier (TPD/RPD). Chờ không giải quyết được.\n"
+                    "   → Sang ngày mai (reset), HOẶC nâng Dev tier: https://console.groq.com/settings/billing\n"
+                    "   → Hoặc đổi sang key/tổ chức khác.\n"
+                    f"   Lỗi gốc: {msg[:200]}")
+
             wait = _retry_seconds_from_error(msg)
             if wait is None:
                 wait = base_pause * (2 ** attempt) + random.uniform(0, 1.0)
             else:
-                wait += 0.3  # đệm nhỏ
-            tag = "429 rate-limit" if is_429 else "lỗi tạm"
+                wait += 0.3
+
+            if wait > max_wait:
+                raise RuntimeError(
+                    f"❌ Groq yêu cầu chờ {wait:.0f}s (>{max_wait:.0f}s) — gần như chắc đã cạn quota.\n"
+                    "   → Sang ngày mai hoặc nâng Dev tier. Không chờ {wait:.0f}s.\n"
+                    f"   Lỗi gốc: {msg[:200]}")
+
+            tag = "429 rate-limit (phút)" if is_429 else "lỗi tạm"
             print(f"    ⏳ {tag}, chờ {wait:.1f}s rồi thử lại (lần {attempt + 1}/{max_retries})…")
             time.sleep(wait)
     raise RuntimeError(f"Hết retry sau {max_retries} lần. Lỗi cuối: {last_err}")
+
+
+def _tool_signature(name: str, spec: dict) -> str:
+    """Mô tả tool kèm required params để LLM không gen thiếu."""
+    params = spec.get("parameters", {}) or {}
+    req = params.get("required", []) if isinstance(params, dict) else []
+    props = list(params.get("properties", {}).keys()) if isinstance(params, dict) else []
+    desc = spec.get("description_vi", spec.get("description", ""))
+    req_str = ", ".join(req) if req else "(không bắt buộc param)"
+    opt = [p for p in props if p not in req]
+    opt_str = f" | tuỳ chọn: {', '.join(opt)}" if opt else ""
+    return f"- {name}: {desc}\n    BẮT BUỘC params: {req_str}{opt_str}"
 
 
 def draft_trajectories(client, model: str, domain: str, difficulty: str, n: int, catalog: dict,
                        inter_batch_pause: float = 3.5) -> list:
     """Gọi LLM draft n task (chống-429). Trả list raw {query, steps}."""
     tools_for_domain = {k: val for k, val in catalog.items() if val.get("domain") == domain}
-    tools_desc = "\n".join(f"- {k}: {val.get('description_vi', val.get('description', ''))}"
-                           for k, val in tools_for_domain.items())
+    tools_desc = "\n".join(_tool_signature(k, val) for k, val in tools_for_domain.items())
     resp = _chat_with_backoff(
         client,
         model=model,
         messages=[
             {"role": "system", "content": _HARD_SYS.format(difficulty=difficulty)},
             {"role": "user", "content": (
-                f"Tạo {n} task '{difficulty}' cho domain '{domain}' với tools:\n{tools_desc}\n\n"
-                f"Trả JSON array, mỗi item: {{\"query\":..., \"steps\":[...]}}."
+                f"Tạo {n} task '{difficulty}' cho domain '{domain}'.\n"
+                f"TOOLS (PHẢI điền ĐỦ mọi param BẮT BUỘC, nếu thiếu task bị loại):\n{tools_desc}\n\n"
+                f"Mỗi item: {{\"query\":..., \"steps\":[{{\"expected_tool\":..., "
+                f"\"expected_params\":{{...đủ required...}}, \"difficulty\":\"{difficulty}\"}}]}}.\n"
+                f"Trả JSON array thuần, KHÔNG markdown."
             )},
         ],
         temperature=0.8,
-        max_tokens=2200,  # giảm để batch=5 nằm dưới 12k TPM free-tier Groq
+        max_tokens=2200,
     )
     # nghỉ chủ động giữa các batch để không dồn TPM
     time.sleep(inter_batch_pause)
