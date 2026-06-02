@@ -30,8 +30,10 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import random
 import re
 import sys
+import time
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -160,12 +162,51 @@ def _parse_json_array(text: str) -> list:
         return []
 
 
-def draft_trajectories(client, model: str, domain: str, difficulty: str, n: int, catalog: dict) -> list:
-    """Gọi LLM draft n task. Trả list raw {query, steps}. (Cần openai-compatible client.)"""
+def _retry_seconds_from_error(msg: str) -> float | None:
+    """Bóc 'try again in 2.435s' từ message lỗi 429 của Groq."""
+    m = re.search(r"try again in ([\d.]+)\s*s", msg)
+    if m:
+        return float(m.group(1))
+    m = re.search(r"in (\d+)m([\d.]+)s", msg)  # dạng '1m2.3s'
+    if m:
+        return int(m.group(1)) * 60 + float(m.group(2))
+    return None
+
+
+def _chat_with_backoff(client, *, max_retries: int = 6, base_pause: float = 3.0, **kwargs):
+    """
+    Gọi chat.completions.create với chống-429:
+    - 429: chờ đúng số giây server bảo (nếu có), else exponential backoff + jitter.
+    - lỗi mạng tạm: cũng backoff.
+    Trả response, hoặc raise nếu hết retry.
+    """
+    last_err = None
+    for attempt in range(max_retries):
+        try:
+            return client.chat.completions.create(**kwargs)
+        except Exception as e:  # openai.RateLimitError, APIError, ... (bắt rộng cho an toàn)
+            last_err = e
+            msg = str(e)
+            is_429 = "429" in msg or "rate_limit" in msg.lower() or "rate limit" in msg.lower()
+            wait = _retry_seconds_from_error(msg)
+            if wait is None:
+                wait = base_pause * (2 ** attempt) + random.uniform(0, 1.0)
+            else:
+                wait += 0.3  # đệm nhỏ
+            tag = "429 rate-limit" if is_429 else "lỗi tạm"
+            print(f"    ⏳ {tag}, chờ {wait:.1f}s rồi thử lại (lần {attempt + 1}/{max_retries})…")
+            time.sleep(wait)
+    raise RuntimeError(f"Hết retry sau {max_retries} lần. Lỗi cuối: {last_err}")
+
+
+def draft_trajectories(client, model: str, domain: str, difficulty: str, n: int, catalog: dict,
+                       inter_batch_pause: float = 3.5) -> list:
+    """Gọi LLM draft n task (chống-429). Trả list raw {query, steps}."""
     tools_for_domain = {k: v for k, v in catalog.items() if v.get("domain") == domain}
     tools_desc = "\n".join(f"- {k}: {v.get('description_vi', v.get('description', ''))}"
                            for k in tools_for_domain)
-    resp = client.chat.completions.create(
+    resp = _chat_with_backoff(
+        client,
         model=model,
         messages=[
             {"role": "system", "content": _HARD_SYS.format(difficulty=difficulty)},
@@ -175,8 +216,10 @@ def draft_trajectories(client, model: str, domain: str, difficulty: str, n: int,
             )},
         ],
         temperature=0.8,
-        max_tokens=3500,
+        max_tokens=2200,  # giảm để batch=5 nằm dưới 12k TPM free-tier Groq
     )
+    # nghỉ chủ động giữa các batch để không dồn TPM
+    time.sleep(inter_batch_pause)
     return _parse_json_array(resp.choices[0].message.content)
 
 
@@ -233,7 +276,7 @@ def build(client, model: str, catalog: dict, plan: dict, out_path: str,
         while counters[(domain, difficulty)] < target and attempts < target * max_attempts_factor:
             attempts += 1
             batch = draft_trajectories(client, model, domain, difficulty,
-                                       n=min(10, target), catalog=catalog)
+                                       n=min(5, target), catalog=catalog)
             for raw in batch:
                 q = (raw.get("query") or "").strip()
                 if not q or q in seen_queries:
@@ -257,8 +300,41 @@ def build(client, model: str, catalog: dict, plan: dict, out_path: str,
 
 
 # ============================================================
-# Self-test (KHÔNG cần API) — chứng minh resolve_ids + gate + stratify
+# Revalidate pool (chạy data CŨ qua pipeline → giữ cái pass; KHÔNG xóa tay)
 # ============================================================
+def revalidate_pool(in_path: str, out_path: str, catalog: dict) -> None:
+    """
+    Đọc trajectory cũ, chạy qua accept_trajectory (resolve_ids + 2 cổng),
+    GIỮ cái pass (đã patch id thật + có expected_final_state), BỎ cái fail.
+    Bạn không cần biết/xoá cái nào — pipeline tự lọc.
+    """
+    trajs = load_trajectories(in_path)
+    order = {"easy": 0, "medium": 1, "hard": 2}
+    kept: list[Trajectory] = []
+    rej = 0
+    for t in trajs:
+        steps = [(s.expected_tool, s.expected_params) for s in t.steps]
+        ok, patched, final, reason = accept_trajectory(steps, catalog)
+        if not ok:
+            rej += 1
+            continue
+        lvl = max((s.difficulty.value for s in t.steps), key=lambda d: order[d])
+        kept.append(Trajectory(
+            traj_id=t.traj_id,
+            query=t.query,
+            language=t.language,
+            steps=[Step(expected_tool=tt, expected_params=pp, difficulty=Difficulty(lvl))
+                   for tt, pp in patched],
+            source=(t.source or "") + "+revalidated",
+            domain=t.domain,
+            expected_final_state=final,
+        ))
+    save_trajectories(kept, out_path)
+    print(f"✅ Revalidate: giữ {len(kept)}/{len(trajs)} (bỏ {rej} cái fail gate) → {out_path}")
+    print(f"   Stratify: {stratify_report(kept, 50)}")
+
+
+
 def _selftest():
     catalog = {k: v for k, v in json.load(open(Path(__file__).resolve().parent.parent /
                "data/vitool/tool_catalog.json")).items() if not k.startswith("_")}
@@ -325,6 +401,10 @@ def _make_client():
 def main():
     ap = argparse.ArgumentParser(description="ViTool dataset builder (v10.0)")
     ap.add_argument("--selftest", action="store_true", help="chạy self-test logic, không cần API")
+    ap.add_argument("--revalidate", action="store_true",
+                    help="chạy data CŨ qua pipeline, giữ cái pass (không cần API, không xóa tay)")
+    ap.add_argument("--in", dest="in_path", default="data/vitool/vitool_all.jsonl",
+                    help="file nguồn cho --revalidate")
     ap.add_argument("--domain", help="banking|public_services|ecommerce|travel|info_retrieval")
     ap.add_argument("--difficulty", default="hard", choices=["easy", "medium", "hard"])
     ap.add_argument("--n", type=int, default=20)
@@ -334,6 +414,13 @@ def main():
 
     if args.selftest:
         _selftest()
+        return
+
+    if args.revalidate:
+        catalog = {k: v for k, v in json.load(open(
+            Path(__file__).resolve().parent.parent / "data/vitool/tool_catalog.json")).items()
+            if not k.startswith("_")}
+        revalidate_pool(args.in_path, args.out, catalog)
         return
 
     if not args.domain:
