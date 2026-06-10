@@ -36,12 +36,12 @@ def m3_defer_generate(
 ) -> dict[str, Any]:
     """
     Defer the step to a frontier LLM.
-    model_name: None → tự chọn theo M3_BACKEND (openai→gpt-4o-mini, groq→deepseek-r1-distill-llama-70b).
+    model_name: None → tự chọn theo M3_BACKEND (openai→gpt-4o-mini, groq→openai/gpt-oss-120b).
     R1: model PHẢI khác model gen gold (Llama-70B). Tự cảnh báo nếu trùng.
     """
     if model_name is None:
         backend = os.environ.get("M3_BACKEND", "openai").lower()
-        default_model = "deepseek-r1-distill-llama-70b" if backend == "groq" else "gpt-4o-mini"
+        default_model = "openai/gpt-oss-120b" if backend == "groq" else "gpt-4o-mini"
         model_name = os.environ.get("M3_MODEL", default_model)
     _warn_if_contaminated(model_name)
     if llm_client is None:
@@ -88,7 +88,7 @@ def _default_client():
     """
     Client cho M3 defer. Chọn backend qua env M3_BACKEND:
       - "openai" (default): GPT-4o-mini, độc lập hệ sinh thái, sạch contamination nhất.
-      - "groq": FREE, nhưng PHẢI dùng model KHÁC generator (vd deepseek-r1-distill-llama-70b).
+      - "groq": FREE, nhưng PHẢI dùng model KHÁC generator (vd openai/gpt-oss-120b).
     Trả (client, default_model).
     """
     from openai import OpenAI
@@ -103,7 +103,7 @@ def _default_client():
     if not api_key:
         raise RuntimeError(
             "OPENAI_API_KEY not set. M3 mặc định GPT-4o-mini (OpenAI).\n"
-            "  → Muốn FREE: đặt M3_BACKEND=groq + M3_MODEL=deepseek-r1-distill-llama-70b "
+            "  → Muốn FREE: đặt M3_BACKEND=groq + M3_MODEL=openai/gpt-oss-120b "
             "(model KHÁC generator để giữ R1). Trên Kaggle dùng Secrets."
         )
     return OpenAI(api_key=api_key)
@@ -155,7 +155,8 @@ def _build_m3_messages(query, history, tool_schemas):
 # Pricing per 1M tokens (USD). Update as needed.
 _PRICING = {
     "llama-3.3-70b-versatile": {"input": 0.59, "output": 0.79},
-    "deepseek-r1-distill-llama-70b": {"input": 0.59, "output": 0.79},
+    "deepseek-r1-distill-llama-70b": {"input": 0.59, "output": 0.79},  # decommissioned 2025-09
+    "openai/gpt-oss-120b": {"input": 0.15, "output": 0.75},  # Groq list price (xấp xỉ; free-tier $ thật = 0)
     "gpt-4o-mini": {"input": 0.15, "output": 0.60},
 }
 

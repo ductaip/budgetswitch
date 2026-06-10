@@ -81,7 +81,7 @@ def make_m3_client():
         key = os.environ.get("GROQ_API_KEY")
         if not key:
             raise SystemExit("M3_BACKEND=groq cần GROQ_API_KEY.")
-        print("M3 = DeepSeek-70B trên Groq (free, khác generator Llama → R1 OK)")
+        print("M3 = gpt-oss-120b trên Groq (free, khác họ Llama → R1 OK)")
         return OpenAI(api_key=key, base_url="https://api.groq.com/openai/v1")
     key = os.environ.get("OPENAI_API_KEY")
     if not key:
