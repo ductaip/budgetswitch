@@ -49,14 +49,24 @@ def m3_defer_generate(
 
     prompt_messages = _build_m3_messages(query, history, tool_schemas)
 
+    extra = {}
+    if "gpt-oss" in model_name:
+        # gpt-oss là REASONING model: token suy nghĩ tính vào max_tokens.
+        # effort=low đủ cho tool-call ngắn, tránh đốt token vào reasoning dài.
+        extra["reasoning_effort"] = "low"
     response = llm_client.chat.completions.create(
         model=model_name,
         messages=prompt_messages,
         temperature=0.0,
-        max_tokens=300,
+        max_tokens=1500,  # đủ chỗ cho reasoning + JSON (300 cũ bị reasoning ngốn sạch)
+        **extra,
     )
 
-    raw_output = response.choices[0].message.content
+    msg = response.choices[0].message
+    raw_output = msg.content or ""
+    if not raw_output.strip():
+        # Một số provider trả final ở field reasoning khi content rỗng
+        raw_output = getattr(msg, "reasoning", None) or ""
     result = _parse_tool_call(raw_output, tool_schemas)
 
     # Đảm bảo kết quả trả về luôn bọc đúng cấu trúc dict kể cả khi parse fail
