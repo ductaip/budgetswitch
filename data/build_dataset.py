@@ -113,17 +113,88 @@ def gate_schema(steps: list[tuple[str, dict]], catalog: dict) -> tuple[bool, str
     return True, "ok"
 
 
-def accept_trajectory(steps: list[tuple[str, dict]], catalog: dict):
+def _has_real_dependency(steps: list[tuple[str, dict]]) -> bool:
+    """True nếu có ít nhất 1 dependent step (book/checkout/cancel/...) sau 1 search/add."""
+    dependent = set(DEP_FIELDS.keys())
+    producers_seen = False
+    for tool, _ in steps:
+        if tool in ("search_flight", "search_hotel", "search_train", "search_product", "add_to_cart"):
+            producers_seen = True
+        if tool in dependent and producers_seen:
+            return True
+    return False
+
+
+def _difficulty_structure_ok(steps: list[tuple[str, dict]], difficulty: str) -> tuple[bool, str]:
+    """Ép cấu trúc khớp nhãn độ khó (chống Llama gán 'hard' cho task tầm thường)."""
+    n = len(steps)
+    if difficulty == "hard":
+        if n < 3:
+            return False, f"hard cần ≥3 step, chỉ có {n}"
+        if not _has_real_dependency(steps):
+            return False, "hard cần data-dependency thật (vd search→book), không phải các step rời"
+    elif difficulty == "medium":
+        if n < 2:
+            return False, f"medium cần ≥2 step, chỉ có {n}"
+    return True, "ok"
+
+
+import re as _re
+
+_PLACEHOLDER_CHECKS = [
+    (r'\b(tên|họ tên|người|passenger)\s*\d+\b', True),    # 'Tên 1'
+    (r'[A-ZÀ-Ỹ]{2,}_[A-ZÀ-Ỹ_]{2,}', False),              # ĐỊA_CHỈ_GIAO_HÀNG (KHÔNG ignorecase)
+    (r'(placeholder|id_sản|không xác định|chưa xác định|cần điền|\bn/a\b)', True),
+    (r'^x{4,}$', True),                                    # xxxxxxxxxxxx
+    (r'^(khach_hang|customer|user|client)_?\d+$', True),  # id giả generic
+]
+
+
+def _is_placeholder(v) -> str | None:
+    """Phát hiện placeholder trong free-text param (cổng executable KHÔNG bắt được)."""
+    if isinstance(v, list):
+        for x in v:
+            r = _is_placeholder(x)
+            if r:
+                return r
+        return None
+    if not isinstance(v, str):
+        return None
+    s = v.strip()
+    for pat, ic in _PLACEHOLDER_CHECKS:
+        if _re.search(pat, s, _re.I if ic else 0):
+            return s
+    return None
+
+
+def gate_placeholder(steps: list[tuple[str, dict]]) -> tuple[bool, str]:
+    """Cổng 1.5: loại trajectory có placeholder free-text (Tên 1, ĐỊA_CHỈ..., không xác định)."""
+    for tool, params in steps:
+        for k, v in params.items():
+            r = _is_placeholder(v)
+            if r is not None:
+                return False, f"placeholder '{r}' ở {tool}.{k}"
+    return True, "ok"
+
+
+def accept_trajectory(steps: list[tuple[str, dict]], catalog: dict, difficulty: str | None = None):
     """
-    Áp dụng resolve_ids → cổng 1 → cổng 2.
+    Áp dụng: cấu trúc độ khó → resolve_ids → cổng 1 (schema) → cổng 1.5 (placeholder) → cổng 2 (executable).
     Trả (ok, patched_steps, final_state, reason).
     """
+    if difficulty is not None:
+        ok_s, r_s = _difficulty_structure_ok(steps, difficulty)
+        if not ok_s:
+            return False, steps, None, f"[độ khó] {r_s}"
     patched, err = resolve_ids(steps)
     if err is not None:
         return False, patched, None, f"[resolve] {err}"
     ok1, r1 = gate_schema(patched, catalog)
     if not ok1:
         return False, patched, None, f"[cổng1] {r1}"
+    okp, rp = gate_placeholder(patched)
+    if not okp:
+        return False, patched, None, f"[placeholder] {rp}"
     ok2, r2 = is_executable([{"tool_name": t, "params": p} for t, p in patched])
     if not ok2:
         return False, patched, None, f"[cổng2] {r2}"
@@ -135,17 +206,36 @@ def accept_trajectory(steps: list[tuple[str, dict]], catalog: dict):
 # LLM drafting (generator = Groq Llama-70B — R1: KHÔNG dùng cho M3/baseline)
 # ============================================================
 _HARD_SYS = """Bạn là chuyên gia tạo dữ liệu tool-using agent tiếng Việt.
-Tạo task {difficulty}. Quy tắc:
-- Query tự nhiên như người Việt gõ, KHÔNG nhắc tên tool.
-- Mỗi step: {{expected_tool, expected_params, difficulty:"{difficulty}"}}.
-- Với task HARD: 3+ tool call có data-dependency (step sau dùng kết quả step trước).
-  Với param phụ thuộc (flight_id, hotel_id, cart_id, order_id, booking_id) cứ để
-  giá trị bất kỳ — pipeline sẽ tự điền id thật. KHÔNG để chuỗi placeholder kiểu
-  "id_sản_phẩm".
-- Dùng format Việt: ngày dd/mm/yyyy, tiền VNĐ, SĐT 0xxx.
-- Tools hỗ trợ sequential: search_flight→book_flight, search_hotel→book_hotel,
-  search_product→add_to_cart→checkout(→apply_voucher), book_*→cancel_booking.
-Trả về JSON array, KHÔNG markdown, KHÔNG giải thích."""
+Tạo task độ khó "{difficulty}". QUY TẮC BẮT BUỘC:
+
+[TOOL] CHỈ dùng tool có trong DANH SÁCH được cung cấp. TUYỆT ĐỐI KHÔNG bịa tool mới.
+  Điền ĐỦ MỌI param BẮT BUỘC (xem "BẮT BUỘC params"). Thiếu/sai kiểu → loại.
+  amount/tiền PHẢI > 0. Enum phải đúng giá trị cho phép.
+
+[ĐỘ KHÓ] Hiểu đúng:
+  - easy  = 1 tool call đơn giản.
+  - medium= 2 tool call (có thể độc lập hoặc nối tiếp).
+  - hard  = 3+ tool call CÓ DATA-DEPENDENCY THẬT: step sau DÙNG output step trước
+    (search_flight→book_flight→...). KHÔNG phải 2 việc rời nhau. Task hard mà chỉ
+    2 step độc lập sẽ bị LOẠI.
+
+[ĐA DẠNG — RẤT QUAN TRỌNG] Mỗi task PHẢI khác hẳn nhau về kịch bản, KHÔNG lặp ý:
+  - Đổi tool, đổi tình huống, đổi số liệu, đổi địa danh, đổi ý định.
+  - VÍ DỤ tình huống đa dạng (đừng chỉ làm 1 kiểu):
+    travel: đặt vé+khách sạn cho chuyến công tác / hủy vé cũ rồi đặt vé mới /
+            so sánh rồi đặt / đặt nhiều chặng / đặt vé+hỏi hành lý.
+    ecommerce: tìm+thêm giỏ+áp voucher+thanh toán / mua nhiều món / mua rồi
+            theo dõi đơn / mua rồi trả hàng / so giá nhiều sàn rồi mua.
+    banking: mở tiết kiệm sau khi xem lãi suất+kiểm tra số dư / chuyển tiền nhiều
+            bước / khóa thẻ khẩn cấp+mở thẻ / vay+tính lãi.
+  - KHÔNG lặp lại cùng một cặp tool cho nhiều task.
+
+[FORMAT VIỆT] ngày dd/mm/yyyy, tiền VNĐ, SĐT 0xxx, địa danh VN thật, query tự
+  nhiên như người Việt gõ, KHÔNG nhắc tên tool, KHÔNG để placeholder "id_sản_phẩm".
+  Với param phụ thuộc (flight_id/hotel_id/cart_id/order_id/booking_id) điền giá trị
+  hợp lệ bất kỳ — pipeline tự thay id thật; nhưng step TẠO id phải đứng TRƯỚC.
+
+Trả về JSON array thuần, KHÔNG markdown, KHÔNG giải thích."""
 
 
 def _parse_json_array(text: str) -> list:
@@ -223,22 +313,59 @@ def _chat_with_backoff(client, *, max_retries: int = 6, base_pause: float = 3.0,
 
 
 def _tool_signature(name: str, spec: dict) -> str:
-    """Mô tả tool kèm required params để LLM không gen thiếu."""
+    """Mô tả tool kèm required params + ENUM + kiểu để LLM không gen sai schema."""
     params = spec.get("parameters", {}) or {}
     req = params.get("required", []) if isinstance(params, dict) else []
-    props = list(params.get("properties", {}).keys()) if isinstance(params, dict) else []
+    props = params.get("properties", {}) if isinstance(params, dict) else {}
     desc = spec.get("description_vi", spec.get("description", ""))
-    req_str = ", ".join(req) if req else "(không bắt buộc param)"
+
+    def fmt(p):
+        info = props.get(p, {})
+        t = info.get("type", "")
+        bits = [t] if t else []
+        if "enum" in info:
+            bits.append("CHỈ ∈ {" + ", ".join(map(str, info["enum"])) + "}")
+        if "minimum" in info:
+            bits.append(f"≥{info['minimum']}")
+        if "pattern" in info:
+            bits.append(f"khớp /{info['pattern']}/")
+        return f"{p}({'; '.join(bits)})" if bits else p
+
+    req_str = ", ".join(fmt(p) for p in req) if req else "(không bắt buộc param)"
     opt = [p for p in props if p not in req]
-    opt_str = f" | tuỳ chọn: {', '.join(opt)}" if opt else ""
+    opt_str = f" | tuỳ chọn: {', '.join(fmt(p) for p in opt)}" if opt else ""
     return f"- {name}: {desc}\n    BẮT BUỘC params: {req_str}{opt_str}"
 
 
 def draft_trajectories(client, model: str, domain: str, difficulty: str, n: int, catalog: dict,
-                       inter_batch_pause: float = 3.5) -> list:
+                       inter_batch_pause: float = 3.5, batch_seed: int = 0) -> list:
     """Gọi LLM draft n task (chống-429). Trả list raw {query, steps}."""
     tools_for_domain = {k: val for k, val in catalog.items() if val.get("domain") == domain}
+    if not tools_for_domain:
+        valid = sorted({v.get("domain") for v in catalog.values()})
+        raise SystemExit(
+            f"❌ Domain '{domain}' KHÔNG khớp domain nào trong catalog.\n"
+            f"   Domain hợp lệ: {valid}\n"
+            f"   (Nếu thấy nhiều domain dính làm 1 chuỗi → lỗi expand $DOMAINS trong bash; "
+            f"chạy loop `for d in banking ecommerce ...` cho đúng.)")
+    valid_names = list(tools_for_domain.keys())
     tools_desc = "\n".join(_tool_signature(k, val) for k, val in tools_for_domain.items())
+    # xoay "góc" kịch bản mỗi batch để LLM không lặp cùng một ý
+    angles = ["tình huống công việc/khẩn cấp", "người dùng cá nhân đời thường",
+              "kết hợp nhiều tool theo chuỗi dài", "có hủy/đổi/trả rồi làm lại",
+              "so sánh/tra cứu trước rồi mới hành động", "tình huống gia đình/nhóm nhiều người"]
+    angle = angles[batch_seed % len(angles)]
+    # gợi ý tham số đa dạng theo domain để giảm lặp địa danh/ý
+    diversity_hint = {
+        "travel": "Dùng NHIỀU cặp địa danh VN khác nhau (HN, HCM, Đà Nẵng, Nha Trang, Phú Quốc, "
+                  "Đà Lạt, Huế, Cần Thơ, Hải Phòng, Sa Pa) và nhiều loại chuỗi (đặt vé+khách sạn / "
+                  "hủy rồi đặt lại / đặt vé+hỏi hành lý / đặt nhiều chặng / đổi vé).",
+        "ecommerce": "Dùng NHIỀU loại sản phẩm khác nhau (điện tử, thời trang, gia dụng, mỹ phẩm, sách, "
+                     "thực phẩm) và nhiều chuỗi (mua+voucher / mua+theo dõi / mua+trả hàng / so giá+mua).",
+        "banking": "Dùng nhiều loại giao dịch (chuyển tiền, mở tiết kiệm, vay, khóa thẻ, tra cứu lãi).",
+        "public_services": "Dùng nhiều dịch vụ (BHXH, thuế, hộ tịch, đăng ký xe, hóa đơn điện nước, đặt lịch).",
+        "info_retrieval": "Dùng nhiều loại truy vấn (thời tiết, tin tức, dịch, đổi tiền, tính toán, tra cứu).",
+    }.get(domain, "Đa dạng tình huống và tham số.")
     resp = _chat_with_backoff(
         client,
         model=model,
@@ -246,14 +373,19 @@ def draft_trajectories(client, model: str, domain: str, difficulty: str, n: int,
             {"role": "system", "content": _HARD_SYS.format(difficulty=difficulty)},
             {"role": "user", "content": (
                 f"Tạo {n} task '{difficulty}' cho domain '{domain}'.\n"
-                f"TOOLS (PHẢI điền ĐỦ mọi param BẮT BUỘC, nếu thiếu task bị loại):\n{tools_desc}\n\n"
+                f"LẦN NÀY nghiêng về: {angle}.\n"
+                f"ĐA DẠNG: {diversity_hint}\n"
+                f"Mỗi task PHẢI khác nhau rõ rệt về tham số/tình huống.\n\n"
+                f"DANH SÁCH TOOL HỢP LỆ (CHỈ dùng đúng tên này, KHÔNG bịa thêm):\n"
+                f"{', '.join(valid_names)}\n\n"
+                f"CHI TIẾT (PHẢI điền ĐỦ param BẮT BUỘC, thiếu/sai → loại):\n{tools_desc}\n\n"
                 f"Mỗi item: {{\"query\":..., \"steps\":[{{\"expected_tool\":..., "
                 f"\"expected_params\":{{...đủ required...}}, \"difficulty\":\"{difficulty}\"}}]}}.\n"
                 f"Trả JSON array thuần, KHÔNG markdown."
             )},
         ],
-        temperature=0.8,
-        max_tokens=2200,
+        temperature=1.0,
+        max_tokens=2500,
     )
     # nghỉ chủ động giữa các batch để không dồn TPM
     time.sleep(inter_batch_pause)
@@ -309,11 +441,12 @@ def build(client, model: str, catalog: dict, plan: dict, out_path: str,
     seen_queries = set()
     counters = defaultdict(int)
     for (domain, difficulty), target in plan.items():
+        print(f"\n>>> Gen {domain}/{difficulty} (target {target})")
         attempts = 0
         while counters[(domain, difficulty)] < target and attempts < target * max_attempts_factor:
             attempts += 1
             batch = draft_trajectories(client, model, domain, difficulty,
-                                       n=min(5, target), catalog=catalog)
+                                       n=min(5, target), catalog=catalog, batch_seed=attempts)
             for raw in batch:
                 q = (raw.get("query") or "").strip()
                 if not q or q in seen_queries:
@@ -321,7 +454,7 @@ def build(client, model: str, catalog: dict, plan: dict, out_path: str,
                 steps = _raw_to_steps(raw)
                 if not steps:
                     continue
-                ok, patched, final, reason = accept_trajectory(steps, catalog)
+                ok, patched, final, reason = accept_trajectory(steps, catalog, difficulty=difficulty)
                 if not ok:
                     print(f"  [reject] {domain}/{difficulty}: {reason}")
                     continue
@@ -329,12 +462,13 @@ def build(client, model: str, catalog: dict, plan: dict, out_path: str,
                 kept.append(_to_trajectory(raw, patched, final, tid, domain, difficulty))
                 seen_queries.add(q)
                 counters[(domain, difficulty)] += 1
+                print(f"  ✅ {tid} ({len(patched)} steps)  [{counters[(domain, difficulty)]}/{target}]")
                 print(f"  ✅ {tid} ({len(patched)} steps)")
     save_trajectories(kept, out_path)
     # dedup ngữ nghĩa sau khi gom (LLM hay lặp ý)
     try:
         from data.dedup import dedup_trajectories
-        deduped = dedup_trajectories(kept, threshold=0.90)
+        deduped = dedup_trajectories(kept, threshold=0.93)
         if len(deduped) < len(kept):
             save_trajectories(deduped, out_path)
             kept = deduped
