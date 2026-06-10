@@ -1,0 +1,51 @@
+{"traj_id":"ecommerce_hard_0047","annotation":"accept","note":"Luồng TMĐT đầy đủ, hợp lệ"}
+{"traj_id":"public_services_0033","annotation":"accept","note":"Workflow hộ tịch và đặt lịch hẹn nhất quán"}
+{"traj_id":"ecommerce_hard_0114","annotation":"accept","note":"So sánh giá, mua hàng và trả hàng hợp lệ"}
+{"traj_id":"ecommerce_hard_0018","annotation":"accept","note":"Mua nhiều sản phẩm cùng loại và theo dõi đơn hàng"}
+{"traj_id":"travel_medium_0000","annotation":"accept","note":"Tìm chuyến bay và khách sạn hợp lệ"}
+{"traj_id":"travel_0018","annotation":"accept","note":"Tìm tàu và tra cứu hành lý"}
+{"traj_id":"banking_0001","annotation":"accept","note":"Tool transfer_money được gọi với đầy đủ tham số"}
+{"traj_id":"info_retrieval_0006","annotation":"accept","note":"Tra cứu tin tức"}
+{"traj_id":"travel_hard_0008","annotation":"accept","note":"Chuỗi tìm kiếm, đặt vé, tra cứu hành lý và đặt khách sạn hợp lệ"}
+{"traj_id":"public_services_medium_0008","annotation":"edit","note":"Query không cung cấp biển số xe hoặc mã khách hàng nhưng expected params lại hard-code giá trị cụ thể"}
+{"traj_id":"public_services_medium_0014","annotation":"accept","note":"Tra cứu hóa đơn điện và nước"}
+{"traj_id":"travel_hard_0106","annotation":"accept","note":"Tìm tàu và khách sạn"}
+{"traj_id":"info_retrieval_0031","annotation":"accept","note":"Tra cứu tin tức thể thao"}
+{"traj_id":"travel_0009","annotation":"edit","note":"Query yêu cầu đặt vé nếu tìm thấy nhưng steps chỉ có search_train, thiếu bước booking"}
+{"traj_id":"banking_medium_0024","annotation":"accept","note":"Tìm chi nhánh và mở sổ tiết kiệm đúng luồng nghiệp vụ"}
+{"traj_id":"ecommerce_medium_0032","annotation":"accept","note":"Luồng mua hàng và trả hàng hợp lệ"}
+{"traj_id":"info_retrieval_medium_0002","annotation":"accept","note":"Tính toán và tra cứu thông tin"}
+{"traj_id":"banking_medium_0023","annotation":"accept","note":"Khóa thẻ và chuyển tiền là chuỗi tool call hợp lệ trong benchmark"}
+{"traj_id":"ecommerce_medium_0016","annotation":"accept","note":"Luồng TMĐT chuẩn"}
+{"traj_id":"public_services_0035","annotation":"accept","note":"Tra cứu hóa đơn điện"}
+{"traj_id":"travel_hard_0031","annotation":"edit","note":"Query nói hủy đặt chỗ hiện có rồi đặt lại, nhưng workflow lại tạo booking mới trước rồi mới hủy"}
+{"traj_id":"public_services_medium_0003","annotation":"accept","note":"Workflow tra cứu hộ tịch và đăng ký xe nhất quán"}
+{"traj_id":"info_retrieval_medium_0040","annotation":"accept","note":"Tính toán và dịch thuật"}
+{"traj_id":"ecommerce_0007","annotation":"accept","note":"So sánh giá sản phẩm"}
+{"traj_id":"travel_0022","annotation":"accept","note":"Tìm khách sạn"}
+{"traj_id":"public_services_0015","annotation":"accept","note":"Tra cứu lệ phí công khai"}
+{"traj_id":"public_services_0026","annotation":"accept","note":"Tra cứu tình trạng hồ sơ theo số biên nhận"}
+{"traj_id":"ecommerce_hard_0033","annotation":"accept","note":"So sánh giá và mua sách"}
+{"traj_id":"banking_medium_0012","annotation":"accept","note":"Tra cứu khoản vay và kiểm tra số dư là workflow hợp lệ"}
+{"traj_id":"ecommerce_hard_0046","annotation":"accept","note":"Mua hàng, áp voucher và trả hàng"}
+{"traj_id":"travel_medium_0002","annotation":"accept","note":"Tìm chuyến bay nhiều chặng"}
+{"traj_id":"public_services_0016","annotation":"accept","note":"Tra cứu tình trạng hồ sơ"}
+{"traj_id":"info_retrieval_0002","annotation":"accept","note":"Dịch thuật đơn giản"}
+{"traj_id":"ecommerce_medium_0041","annotation":"accept","note":"Mua sách và trả hàng"}
+{"traj_id":"banking_medium_0039","annotation":"accept","note":"So sánh lãi suất rồi mở tài khoản tiết kiệm"}
+{"traj_id":"banking_medium_0016","annotation":"accept","note":"Kiểm tra số dư rồi chuyển tiền là workflow hợp lệ"}
+{"traj_id":"travel_hard_0012","annotation":"accept","note":"Đặt, hủy và đặt lại khách sạn"}
+{"traj_id":"ecommerce_hard_0044","annotation":"accept","note":"Mua sách, áp voucher và trả hàng"}
+{"traj_id":"info_retrieval_medium_0016","annotation":"accept","note":"Tra cứu tin tức chính trị và kinh tế"}
+{"traj_id":"public_services_0036","annotation":"accept","note":"Tra cứu lệ phí hộ chiếu"}
+{"traj_id":"ecommerce_hard_0026","annotation":"edit","note":"Query yêu cầu thay đổi địa chỉ giao hàng nhưng workflow không có bước update shipping address riêng"}
+{"traj_id":"info_retrieval_medium_0011","annotation":"accept","note":"Tin tức và dịch thuật"}
+{"traj_id":"info_retrieval_medium_0010","annotation":"accept","note":"Thời tiết và chuyển đổi tiền tệ"}
+{"traj_id":"travel_0007","annotation":"accept","note":"Tra cứu thông tin hành lý"}
+{"traj_id":"ecommerce_hard_0111","annotation":"accept","note":"Mua hàng, áp voucher và theo dõi đơn"}
+{"traj_id":"ecommerce_hard_0078","annotation":"edit","note":"Query yêu cầu mua gạo, mỳ, thịt bò và gà nhưng workflow chỉ xử lý gạo và mỳ"}
+{"traj_id":"travel_0031","annotation":"accept","note":"Tìm khách sạn"}
+{"traj_id":"info_retrieval_0000","annotation":"accept","note":"Tra cứu thời tiết"}
+{"traj_id":"travel_0002","annotation":"accept","note":"Tìm khách sạn"}
+{"traj_id":"info_retrieval_0028","annotation":"accept","note":"Dịch thuật"}
+{"traj_id":"ecommerce_hard_0057","annotation":"accept","note":"So sánh giá và mua mỹ phẩm"}

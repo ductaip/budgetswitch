@@ -1,0 +1,51 @@
+{"traj_id": "ecommerce_hard_0047", "annotation": "accept", "note": "Flow mua + track chuẩn"}
+{"traj_id": "public_services_0033", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_hard_0114", "annotation": "accept", "note": "Multi-step so sánh-mua-trả hàng tốt"}
+{"traj_id": "ecommerce_hard_0018", "annotation": "accept", "note": ""}
+{"traj_id": "travel_medium_0000", "annotation": "accept", "note": ""}
+{"traj_id": "travel_0018", "annotation": "accept", "note": ""}
+{"traj_id": "banking_0001", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_0006", "annotation": "accept", "note": ""}
+{"traj_id": "travel_hard_0008", "annotation": "accept", "note": "Chuỗi flight + baggage + hotel tốt"}
+{"traj_id": "public_services_medium_0008", "annotation": "accept", "note": ""}
+{"traj_id": "public_services_medium_0014", "annotation": "accept", "note": ""}
+{"traj_id": "travel_hard_0106", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_0031", "annotation": "accept", "note": ""}
+{"traj_id": "travel_0009", "annotation": "accept", "note": ""}
+{"traj_id": "banking_medium_0024", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_medium_0032", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_medium_0002", "annotation": "accept", "note": ""}
+{"traj_id": "banking_medium_0023", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_medium_0016", "annotation": "accept", "note": ""}
+{"traj_id": "public_services_0035", "annotation": "accept", "note": ""}
+{"traj_id": "travel_hard_0031", "annotation": "edit", "note": "Hủy rồi book lại cùng flight_id hơi lạ, nhưng chấp nhận được"}
+{"traj_id": "public_services_medium_0003", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_medium_0040", "annotation": "edit", "note": "Query hơi gượng (tính toán rồi hủy kết quả để dịch)"}
+{"traj_id": "ecommerce_0007", "annotation": "accept", "note": ""}
+{"traj_id": "travel_0022", "annotation": "accept", "note": ""}
+{"traj_id": "public_services_0015", "annotation": "accept", "note": ""}
+{"traj_id": "public_services_0026", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_hard_0033", "annotation": "accept", "note": ""}
+{"traj_id": "banking_medium_0012", "annotation": "edit", "note": "Query 'trả lại khoản vay' nhưng step chỉ loan_inquiry + check_balance, hơi lệch"}
+{"traj_id": "ecommerce_hard_0046", "annotation": "accept", "note": ""}
+{"traj_id": "travel_medium_0002", "annotation": "accept", "note": "Multi-chặng flight tốt"}
+{"traj_id": "public_services_0016", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_0002", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_medium_0041", "annotation": "accept", "note": ""}
+{"traj_id": "banking_medium_0039", "annotation": "accept", "note": ""}
+{"traj_id": "banking_medium_0016", "annotation": "accept", "note": ""}
+{"traj_id": "travel_hard_0012", "annotation": "accept", "note": "Hủy rồi book lại tốt"}
+{"traj_id": "ecommerce_hard_0044", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_medium_0016", "annotation": "accept", "note": ""}
+{"traj_id": "public_services_0036", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_hard_0026", "annotation": "edit", "note": "Thay đổi địa chỉ sau checkout nhưng step không có update_address"}
+{"traj_id": "info_retrieval_medium_0011", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_medium_0010", "annotation": "accept", "note": ""}
+{"traj_id": "travel_0007", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_hard_0111", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_hard_0078", "annotation": "edit", "note": "Multi-item cart hơi phức tạp nhưng ổn"}
+{"traj_id": "travel_0031", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_0000", "annotation": "accept", "note": ""}
+{"traj_id": "travel_0002", "annotation": "accept", "note": ""}
+{"traj_id": "info_retrieval_0028", "annotation": "accept", "note": ""}
+{"traj_id": "ecommerce_hard_0057", "annotation": "accept", "note": ""}
