@@ -14,7 +14,7 @@ nhưng đủ để pipeline/test chạy offline). Production NÊN dùng e5.
 
 Dùng:
     from data.dedup import dedup_trajectories
-    kept = dedup_trajectories(trajs, threshold=0.90)
+    kept = dedup_trajectories(trajs, threshold=0.93)
 Self-test (offline): python data/dedup.py --selftest
 """
 
@@ -85,7 +85,7 @@ def _cosine_matrix(embs):
     return np.asarray(embs) @ np.asarray(embs).T  # đã normalize → dot = cosine
 
 
-def dedup_trajectories(trajs: list, threshold: float = 0.90,
+def dedup_trajectories(trajs: list, threshold: float = 0.93,
                        cross_group_threshold: float | None = None) -> list:
     """
     Greedy dedup. Giữ thứ tự gốc; loại cái sim > threshold với cái ĐÃ giữ.
@@ -168,7 +168,7 @@ def main():
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--in", dest="in_path")
     ap.add_argument("--out", dest="out_path")
-    ap.add_argument("--threshold", type=float, default=0.90)
+    ap.add_argument("--threshold", type=float, default=0.93)
     args = ap.parse_args()
 
     if args.selftest:
