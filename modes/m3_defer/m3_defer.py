@@ -130,11 +130,27 @@ def _groq_client():
 
 def _build_m3_messages(query, history, tool_schemas):
     """Build chat messages for the frontier LLM aligned with project schema."""
-    tools_desc = "\n".join(
-        f"- {name}: {schema.get('description', '')} "
-        f"(params: {list(schema.get('parameters', {}).get('properties', {}).keys())})"
-        for name, schema in tool_schemas.items()
-    )
+    def _sig(name, schema):
+        params = schema.get("parameters", {}) or {}
+        props = params.get("properties", {}) if isinstance(params, dict) else {}
+        req = set(params.get("required", []) if isinstance(params, dict) else [])
+
+        def fmt(pn):
+            info = props.get(pn, {})
+            bits = []
+            if info.get("type"):
+                bits.append(info["type"])
+            if "enum" in info:
+                bits.append("one of {" + ", ".join(map(str, info["enum"])) + "}")
+            if "pattern" in info:
+                bits.append(f"match /{info['pattern']}/")
+            tag = "required" if pn in req else "optional"
+            return f"{pn} ({tag}{'; ' + '; '.join(bits) if bits else ''})"
+
+        plist = ", ".join(fmt(pn) for pn in props)
+        return f"- {name}: {schema.get('description', '')} | params: {plist}"
+
+    tools_desc = "\n".join(_sig(name, schema) for name, schema in tool_schemas.items())
 
     history_text = ""
     if history:
@@ -192,7 +208,7 @@ if __name__ == "__main__":
     assert len(msgs) == 2
     assert msgs[0]["role"] == "system"
     assert "search_flight" in msgs[0]["content"]
-    assert '"name"' in msgs[0]["content"]
+    assert '"tool_name"' in msgs[0]["content"] and '"params"' in msgs[0]["content"]
     print("✅ M3 message building works")
 
     # Test cost estimation — default giờ là gpt-4o-mini (rẻ hơn ~10x Llama)
