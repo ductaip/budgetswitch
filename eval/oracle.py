@@ -69,9 +69,16 @@ def _usd(step: dict, mode: str) -> float:
 # Oracle policy
 # ============================================================
 def oracle_mode_for_step(step: dict) -> str:
-    """Mode RẺ NHẤT mà success. Không mode nào success → M3 (đắt nhất, last resort)."""
+    """Mode RẺ NHẤT mà success. Không mode nào success → M0 (fail RẺ).
+    Cost-rational: oracle biết step vô vọng thì không đốt 15× để vẫn fail.
+    (Fallback M3 cũ thổi cost oracle lên giả tạo trên các step unanswerable.)"""
     ok = [(m, MODE_COST[m]) for m in MODES if _success(step, m)]
-    return min(ok, key=lambda x: x[1])[0] if ok else "M3"
+    return min(ok, key=lambda x: x[1])[0] if ok else "M0"
+
+
+def is_solvable(step: dict) -> bool:
+    """Step có ÍT NHẤT 1 mode success."""
+    return any(_success(step, m) for m in MODES)
 
 
 # ============================================================
@@ -190,9 +197,13 @@ def pareto_points(steps: list[dict]) -> dict:
 # Full report
 # ============================================================
 def build_report(steps: list[dict]) -> dict:
+    n_unsolv = sum(1 for x in steps if not is_solvable(x))
+    solvable = [x for x in steps if is_solvable(x)]
     return {
         "n_steps": len(steps),
+        "unsolvable_rate": round(n_unsolv / len(steps), 3) if steps else 0.0,
         "overall_savings_vs_m1": savings_vs_m1(steps),
+        "solvable_only_savings_vs_m1": savings_vs_m1(solvable),
         "by_difficulty": by_difficulty(steps),
         "mode_success_heatmap": mode_success_heatmap(steps),
         "pareto_points": pareto_points(steps),
@@ -202,6 +213,8 @@ def build_report(steps: list[dict]) -> dict:
 
 def print_report(rep: dict) -> None:
     print(f"\n{'='*60}\nViTool Oracle-Gap Report ({rep['n_steps']} steps)\n{'='*60}")
+    if "unsolvable_rate" in rep:
+        print(f"  (unsolvable: {rep['unsolvable_rate']*100:.0f}% steps không mode nào success)")
     s = rep["overall_savings_vs_m1"]
     print(f"\n[OVERALL] Oracle tiết kiệm {s.get('savings_pct')}% compute vs always-think (M1)")
     print(f"  oracle: {s.get('oracle_cost_per_step')}×/step, TSR {s.get('oracle_tsr')}")
