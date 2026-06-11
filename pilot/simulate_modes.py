@@ -117,6 +117,24 @@ def run_single_mode(
         raise ValueError(f"Unknown mode: {mode}")
 
 
+def _replay_history(traj, step_idx):
+    """Chạy lại gold prefix qua mock env để history có OBSERVATION THẬT.
+    Không có obs, các dependent step (book_flight cần flight_id từ search) là
+    unanswerable với MỌI mode → heatmap hard thành sàn nhiễu. (Fix bug pilot v1.)
+    """
+    from env.mock_tools import WorldState, run_step as _env_run, ToolError
+    world = WorldState()
+    hist = []
+    for s in traj.steps[:step_idx]:
+        call = {"tool_name": s.expected_tool, "params": s.expected_params}
+        try:
+            obs = _env_run(s.expected_tool, dict(s.expected_params), world)
+        except (ToolError, KeyError):
+            obs = s.expected_observation or {}
+        hist.append((call, obs))
+    return hist
+
+
 def simulate_step(
     traj: Trajectory,
     step_idx: int,
@@ -133,11 +151,7 @@ def simulate_step(
 
     modes_to_run = modes_to_run or MODES
     gt_step = traj.steps[step_idx]
-    history = [
-        ({"tool_name": s.expected_tool, "params": s.expected_params},
-         s.expected_observation or {})
-        for s in traj.steps[:step_idx]
-    ]
+    history = _replay_history(traj, step_idx)
     gt_dict = {
         "expected_tool": gt_step.expected_tool,
         "expected_params": gt_step.expected_params,
