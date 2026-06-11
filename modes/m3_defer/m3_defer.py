@@ -151,8 +151,9 @@ def _build_m3_messages(query, history, tool_schemas):
     system = (
         "You are an expert tool-using agent. Given the user request and the "
         "available tools, output exactly ONE tool call as JSON: "
-        "{\"name\": \"...\", \"parameters\": {...}}. Output ONLY the JSON, "
-        "no explanation.\n\n"
+        "{\"tool_name\": \"...\", \"params\": {...}}. Output ONLY the JSON, "
+        "no explanation. Copy parameter values EXACTLY as they appear in the "
+        "user request (numbers, names, dates verbatim).\n\n"
         f"Available tools:\n{tools_desc}{history_text}"
     )
 
