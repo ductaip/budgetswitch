@@ -54,7 +54,8 @@ def m3_defer_generate(
         # gpt-oss là REASONING model: token suy nghĩ tính vào max_tokens.
         # effort=low đủ cho tool-call ngắn, tránh đốt token vào reasoning dài.
         extra["reasoning_effort"] = "low"
-    response = llm_client.chat.completions.create(
+    response = _create_with_backoff(
+        llm_client,
         model=model_name,
         messages=prompt_messages,
         temperature=0.0,
@@ -80,6 +81,32 @@ def m3_defer_generate(
     )
     result["completion_tokens"] = usage.completion_tokens
     return result
+
+
+def _create_with_backoff(client, *, max_retries: int = 4, max_wait: float = 60.0, **kw):
+    """Retry 429/TPM với thời gian chờ server gợi ý (cap max_wait).
+    Pilot 284 call dễ chạm TPM free-tier; không backoff thì cuối run M3 chết hàng loạt
+    (success giảm đơn điệu theo THỨ TỰ chạy — bug pilot v2). Quota NGÀY thì backoff
+    vô dụng → dùng M3_BACKEND=openai cho run chính thức."""
+    import re as _re
+    import time as _time
+    import random as _rand
+    last = None
+    for attempt in range(max_retries):
+        try:
+            return client.chat.completions.create(**kw)
+        except Exception as e:
+            last = e
+            msg = str(e)
+            if not ("429" in msg or "rate" in msg.lower()):
+                raise
+            m = _re.search(r"try again in (?:(\d+)m)?([\d.]+)s", msg)
+            wait = (int(m.group(1) or 0) * 60 + float(m.group(2))) if m else (3.0 * 2 ** attempt)
+            wait += _rand.uniform(0, 0.5)
+            if wait > max_wait:
+                raise RuntimeError(f"M3 rate-limit yêu cầu chờ {wait:.0f}s (>cap) — gần như cạn quota ngày: {msg[:160]}")
+            _time.sleep(wait)
+    raise last
 
 
 def _warn_if_contaminated(model_name: str) -> None:
