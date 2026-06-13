@@ -1,0 +1,120 @@
+{
+  "n_steps": 284,
+  "unsolvable_rate": 0.366,
+  "overall_savings_vs_m1": {
+    "savings_pct": 57.7,
+    "oracle_cost_per_step": 1.268,
+    "m1_cost_per_step": 3.0,
+    "oracle_tsr": 0.634,
+    "m1_tsr": 0.57,
+    "tsr_delta": 0.063
+  },
+  "solvable_only_savings_vs_m1": {
+    "savings_pct": 52.6,
+    "oracle_cost_per_step": 1.422,
+    "m1_cost_per_step": 3.0,
+    "oracle_tsr": 1.0,
+    "m1_tsr": 0.9,
+    "tsr_delta": 0.1
+  },
+  "by_difficulty": {
+    "easy": {
+      "n": 43,
+      "savings": {
+        "savings_pct": 66.7,
+        "oracle_cost_per_step": 1.0,
+        "m1_cost_per_step": 3.0,
+        "oracle_tsr": 0.93,
+        "m1_tsr": 0.837,
+        "tsr_delta": 0.093
+      },
+      "oracle_mode_dist": {
+        "M0": 1.0,
+        "M1": 0.0,
+        "M2": 0.0,
+        "M3": 0.0
+      }
+    },
+    "medium": {
+      "n": 53,
+      "savings": {
+        "savings_pct": 52.8,
+        "oracle_cost_per_step": 1.415,
+        "m1_cost_per_step": 3.0,
+        "oracle_tsr": 0.604,
+        "m1_tsr": 0.528,
+        "tsr_delta": 0.075
+      },
+      "oracle_mode_dist": {
+        "M0": 0.925,
+        "M1": 0.038,
+        "M2": 0.019,
+        "M3": 0.019
+      }
+    },
+    "hard": {
+      "n": 188,
+      "savings": {
+        "savings_pct": 57.1,
+        "oracle_cost_per_step": 1.287,
+        "m1_cost_per_step": 3.0,
+        "oracle_tsr": 0.574,
+        "m1_tsr": 0.521,
+        "tsr_delta": 0.053
+      },
+      "oracle_mode_dist": {
+        "M0": 0.952,
+        "M1": 0.032,
+        "M2": 0.0,
+        "M3": 0.016
+      }
+    }
+  },
+  "mode_success_heatmap": {
+    "easy": {
+      "M0": 0.93,
+      "M1": 0.837,
+      "M2": 0.814,
+      "M3": 0.837
+    },
+    "medium": {
+      "M0": 0.528,
+      "M1": 0.528,
+      "M2": 0.547,
+      "M3": 0.396
+    },
+    "hard": {
+      "M0": 0.527,
+      "M1": 0.521,
+      "M2": 0.468,
+      "M3": 0.431
+    }
+  },
+  "pareto_points": {
+    "fixed_M0": {
+      "cost_per_step": 1.0,
+      "tsr": 0.588
+    },
+    "fixed_M1": {
+      "cost_per_step": 3.0,
+      "tsr": 0.57
+    },
+    "fixed_M2": {
+      "cost_per_step": 5.0,
+      "tsr": 0.535
+    },
+    "fixed_M3": {
+      "cost_per_step": 15.0,
+      "tsr": 0.486
+    },
+    "oracle": {
+      "cost_per_step": 1.268,
+      "tsr": 0.634
+    },
+    "random": {
+      "cost_per_step": 6.0,
+      "tsr": 0.545
+    }
+  },
+  "_note": "Oracle = offline upper bound (mode rẻ nhất mà success). KHÔNG phải learned policy (R4)."
+}
