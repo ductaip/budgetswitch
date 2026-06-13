@@ -211,6 +211,8 @@ _PRICING = {
     "llama-3.3-70b-versatile": {"input": 0.59, "output": 0.79},
     "deepseek-r1-distill-llama-70b": {"input": 0.59, "output": 0.79},  # decommissioned 2025-09
     "openai/gpt-oss-120b": {"input": 0.15, "output": 0.75},  # Groq list price (xấp xỉ; free-tier $ thật = 0)
+    "gemini-2.5-flash-lite": {"input": 0.10, "output": 0.40},  # list price; free-tier $ thật = 0
+    "gemini-2.5-flash": {"input": 0.30, "output": 2.50},
     "gpt-4o-mini": {"input": 0.15, "output": 0.60},
 }
 
