@@ -1,0 +1,72 @@
+{
+  "n_steps": 284,
+  "length_thresholds_chars": [
+    65,
+    85
+  ],
+  "routers": [
+    {
+      "name": "Fixed M0",
+      "group": "A-fixed",
+      "cost_per_step": 1.0,
+      "tsr": 0.588,
+      "pct_of_oracle_tsr": 0.928
+    },
+    {
+      "name": "Fixed M1",
+      "group": "A-fixed",
+      "cost_per_step": 3.0,
+      "tsr": 0.57,
+      "pct_of_oracle_tsr": 0.9
+    },
+    {
+      "name": "Fixed M2",
+      "group": "A-fixed",
+      "cost_per_step": 5.0,
+      "tsr": 0.535,
+      "pct_of_oracle_tsr": 0.844
+    },
+    {
+      "name": "Fixed M3",
+      "group": "A-fixed",
+      "cost_per_step": 15.0,
+      "tsr": 0.486,
+      "pct_of_oracle_tsr": 0.767
+    },
+    {
+      "name": "Random",
+      "group": "B-heuristic",
+      "cost_per_step": 6.0,
+      "tsr": 0.545,
+      "pct_of_oracle_tsr": 0.86
+    },
+    {
+      "name": "Length-router (≤65/≤85 chars)",
+      "group": "B-heuristic",
+      "cost_per_step": 3.134,
+      "tsr": 0.567,
+      "pct_of_oracle_tsr": 0.894
+    },
+    {
+      "name": "Difficulty-escalation (gold tier)",
+      "group": "C-semi-oracle",
+      "cost_per_step": 10.641,
+      "tsr": 0.525,
+      "pct_of_oracle_tsr": 0.828
+    },
+    {
+      "name": "Oracle (full, upper bound)",
+      "group": "D-oracle",
+      "cost_per_step": 1.268,
+      "tsr": 0.634,
+      "pct_of_oracle_tsr": 1.0
+    }
+  ],
+  "oracle_gap_vs_best_realistic_router": {
+    "best_router": "Length-router (≤65/≤85 chars)",
+    "router_tsr": 0.567,
+    "oracle_tsr": 0.634,
+    "tsr_gap": 0.067
+  },
+  "_note": "Nhóm A=fixed, B=heuristic (không peek nhãn), C=semi-oracle (biết tier), D=full oracle."
+}
