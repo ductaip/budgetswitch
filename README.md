@@ -1,107 +1,200 @@
-# BudgetSwitch
+"""
+eval/figures.py — Sinh 2 hình chủ lực của paper từ oracle_report.json (v10.0).
 
-> Learned Adaptive Compute Allocation for Tool-Using SLM Agents via Outcome-Verifiable GRPO
+  Fig 1: heatmap per-mode success × difficulty  → minh hoạ overthink/underthink (F1)
+  Fig 2: Pareto cost-quality (fixed M0–M3 + oracle + random) → oracle-gap (F2)
 
-**Project status:** Week 1 of 24, Foundation phase.
-**Team:** 2 third-year AI Engineering undergraduates + 1 PhD advisor (TBD)
-**Target:** RIVF 2026 or SOICT 2026 submission
-**Resource:** Kaggle T4×2, 4 accounts, ~50 GPU-hours total
+INPUT: eval/oracle_report.json (output của eval/oracle.py).
+OUTPUT: PDF + PNG (paper dùng PDF vector cho IEEE).
 
----
+Dùng:
+  python eval/figures.py --in eval/oracle_report.json --outdir eval/figs
+  python eval/figures.py --selftest   # tạo report giả → vẽ thử, kiểm file ra
+"""
 
-## Quick Start for New Contributors / New Chat Tabs
+from __future__ import annotations
 
-If you're joining this project (or this is a new Claude/LLM tab), read these documents IN ORDER:
+import argparse
+import json
+from pathlib import Path
 
-1. **[`docs/README_BudgetSwitch_v9.2_FINAL.md`](docs/README_BudgetSwitch_v9.2_FINAL.md)** — Full proposal (19 sections, ~18,000 words). Single source of truth for the project.
+MODES = ["M0", "M1", "M2", "M3"]
+DIFFS = ["easy", "medium", "hard"]
+MODE_LABEL = {"M0": "M0\nfast", "M1": "M1\nthink", "M2": "M2\nsearch", "M3": "M3\ndefer"}
 
-2. **[`CRITICAL_RULES.md`](CRITICAL_RULES.md)** — 3 non-negotiable implementation rules. Read before writing any reward function code.
 
-3. **[`docs/IMPLEMENTATION_PITFALLS.md`](docs/IMPLEMENTATION_PITFALLS.md)** — 2 technical pitfalls to verify at W3-W4 and W9.
+def _setup_mpl():
+    import matplotlib
+    matplotlib.use("Agg")  # không cần display
+    import matplotlib.pyplot as plt
+    plt.rcParams.update({
+        "font.size": 9, "font.family": "serif",
+        "axes.spines.top": False, "axes.spines.right": False,
+        "figure.dpi": 150,
+    })
+    return plt
 
-4. **[`docs/BudgetSwitch_Proposal.pdf`](docs/BudgetSwitch_Proposal.pdf)** — Formal proposal sent to advisor.
 
----
+# ============================================================
+# Fig 1: heatmap mode × difficulty
+# ============================================================
+def plot_heatmap(report: dict, outdir: Path) -> Path:
+    import numpy as np
+    plt = _setup_mpl()
+    hm = report.get("mode_success_heatmap", {})
+    diffs = [d for d in DIFFS if d in hm]
+    if not diffs:
+        raise SystemExit("Không có mode_success_heatmap trong report.")
+    mat = np.array([[hm[d].get(m, 0.0) for m in MODES] for d in diffs])
 
-## Folder Structure
+    fig, ax = plt.subplots(figsize=(4.2, 2.6))
+    im = ax.imshow(mat, cmap="RdYlGn", vmin=0, vmax=1, aspect="auto")
+    ax.set_xticks(range(len(MODES)))
+    ax.set_xticklabels([MODE_LABEL[m] for m in MODES])
+    ax.set_yticks(range(len(diffs)))
+    ax.set_yticklabels(diffs)
+    ax.set_xlabel("Compute mode")
+    ax.set_ylabel("Difficulty")
+    # annotate giá trị
+    for i in range(len(diffs)):
+        for j in range(len(MODES)):
+            v = mat[i, j]
+            ax.text(j, i, f"{v:.2f}", ha="center", va="center",
+                    color="black" if 0.3 < v < 0.8 else "white", fontsize=8)
+    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+    cbar.set_label("Success rate", fontsize=8)
+    ax.set_title("Per-mode success rate by difficulty", fontsize=9)
+    fig.tight_layout()
+    pdf = outdir / "fig1_heatmap.pdf"
+    fig.savefig(pdf, bbox_inches="tight")
+    fig.savefig(outdir / "fig1_heatmap.png", bbox_inches="tight")
+    plt.close(fig)
+    return pdf
 
-```
-budgetswitch/
-├── CRITICAL_RULES.md          ← Read this FIRST
-├── README.md                  ← This file
-│
-├── modes/                     ← 4 compute mode implementations
-│   ├── m0_fast/              ← Direct generation
-│   ├── m1_think/             ← Internal CoT
-│   ├── m2_think_search/      ← CoT + retrieval
-│   └── m3_defer/             ← LLM API defer
-│
-├── verifiers/                 ← Rule-based outcome verifiers (NO oracle)
-│   └── universal/            ← Schema, tool, param, outcome checks
-│
-├── data/                      ← Dataset construction
-│   ├── vitool/               ← ViTool-2.0K (to build, ~2000 trajectories)
-│   ├── bfcl_vi/              ← BFCL-v3 → VN translations
-│   ├── massive_vn/           ← MASSIVE-Agents VN subset
-│   ├── cross_lingual/        ← EN/Thai/Indonesian transfer eval
-│   └── tau_bench/            ← τ-bench Retail subset
-│
-├── pilot/                     ← §6 Pilot study scripts
-│
-├── training/                  ← SFT + GRPO pipelines
-│   └── verification/         ← Sanity check scripts (run before training)
-│
-├── baselines/                 ← ReDAct, ATLAS, fixed-mode replicates
-│
-├── eval/                      ← Metrics, Pareto plots
-│
-├── embeddings/                ← Pre-computed tool embeddings (W3)
-│
-├── notebooks/                 ← Kaggle notebooks (one per task)
-│
-├── docs/                      ← All planning documents
-│
-├── tests/                     ← Unit tests
-│
-├── scripts/                   ← Bash utilities
-│
-└── paper/                     ← LaTeX source (W17+)
-```
 
----
+# ============================================================
+# Fig 2: Pareto cost-quality
+# ============================================================
+def plot_pareto(report: dict, outdir: Path, baselines: dict | None = None) -> Path:
+    plt = _setup_mpl()
+    pts = report.get("pareto_points", {})
+    if not pts:
+        raise SystemExit("Không có pareto_points trong report.")
 
-## Current Week: W1 (Foundation)
+    fig, ax = plt.subplots(figsize=(4.6, 3.3))
+    style = {
+        "fixed_M0": ("o", "#888888", "Fixed M0"),
+        "fixed_M1": ("o", "#5B8FF9", "Fixed M1 (always-think)"),
+        "fixed_M2": ("o", "#9B59B6", "Fixed M2"),
+        "fixed_M3": ("o", "#E67E22", "Fixed M3 (defer)"),
+        "random":   ("X", "#777777", "Random"),
+        "oracle":   ("*", "#2ECC71", "Oracle (upper bound)"),
+    }
+    for key, (marker, color, label) in style.items():
+        if key in pts:
+            x, y = pts[key]["cost_per_step"], pts[key]["tsr"]
+            size = 260 if key == "oracle" else 75
+            ax.scatter(x, y, marker=marker, c=color, s=size, label=label, zorder=3,
+                       edgecolors="black" if key == "oracle" else "none", linewidths=0.6)
 
-Daily tasks: see [`docs/W1_DAILY_PLAN.md`](docs/W1_DAILY_PLAN.md).
+    # overlay router thật (length, difficulty-escalation) nếu có baselines.json
+    if baselines:
+        for r in baselines.get("routers", []):
+            nm = r["name"]
+            if nm.startswith("Length"):
+                ax.scatter(r["cost_per_step"], r["tsr"], marker="D", c="#16A085",
+                           s=70, zorder=4, label="Length-router")
+            elif nm.startswith("Difficulty"):
+                ax.scatter(r["cost_per_step"], r["tsr"], marker="P", c="#C0392B",
+                           s=80, zorder=4, label="Difficulty-escalation")
 
-**Both members read this week:**
-1. NVIDIA SLM Position (arXiv 2506.02153)
-2. BCAE (arXiv 2604.19780)
-3. ATLAS (arXiv 2603.06713)
-4. Fission-GRPO (arXiv 2601.15625)
-5. ReDAct (arXiv 2604.07036)
-6. Vi-S1K (Vietnamese SLM Test-Time Scaling, Jan 2026)
+    # mũi tên oracle-gap: M1 -> oracle
+    if "fixed_M1" in pts and "oracle" in pts:
+        m1, orc = pts["fixed_M1"], pts["oracle"]
+        ax.annotate("", xy=(orc["cost_per_step"], orc["tsr"]),
+                    xytext=(m1["cost_per_step"], m1["tsr"]),
+                    arrowprops=dict(arrowstyle="->", color="#2ECC71", lw=1.3, ls="--"))
+        savings = report.get("overall_savings_vs_m1", {}).get("savings_pct")
+        if savings is not None:
+            ax.annotate(f"oracle gap:\n-{savings}% cost", xy=(2.1, 0.605),
+                        fontsize=7.5, color="#1e8449", ha="center",
+                        annotation_clip=False)
 
-Member A reads papers 1, 3, 5; Member B reads papers 2, 4, 6. Then swap weekly notes.
+    ax.set_xlabel("Avg. compute cost per step (x, M0=1)")
+    ax.set_ylabel("Task Success Rate")
+    ax.set_title("Cost-quality Pareto (ViTool)", fontsize=9)
+    ax.legend(fontsize=6.3, loc="upper right", framealpha=0.92, ncol=1)
+    ax.grid(True, alpha=0.25, zorder=0)
+    ax.margins(x=0.08, y=0.10)
+    fig.tight_layout()
+    pdf = outdir / "fig2_pareto.pdf"
+    fig.savefig(pdf, bbox_inches="tight")
+    fig.savefig(outdir / "fig2_pareto.png", bbox_inches="tight")
+    plt.close(fig)
+    return pdf
 
----
 
-## Critical Rules (Summary)
+def generate_all(report: dict, outdir: str, baselines: dict | None = None) -> None:
+    out = Path(outdir)
+    out.mkdir(parents=True, exist_ok=True)
+    f1 = plot_heatmap(report, out)
+    f2 = plot_pareto(report, out, baselines=baselines)
+    print(f"✅ Fig 1 (heatmap): {f1}")
+    print(f"✅ Fig 2 (Pareto):  {f2}")
+    print(f"   (PNG kèm theo trong {out})")
 
-See [`CRITICAL_RULES.md`](CRITICAL_RULES.md) for full details.
 
-1. **Reward function MUST NOT reference oracle_mode** in any form
-2. **Only mode-routing LoRA trains** during GRPO; tool-use LoRA frozen
-3. **Mode tokens = regular text + constrained decoding** (no tokenizer modification)
+# ============================================================
+# Self-test: report giả → vẽ → kiểm file ra
+# ============================================================
+def _selftest():
+    report = {
+        "n_steps": 200,
+        "overall_savings_vs_m1": {"savings_pct": 42.0, "oracle_tsr": 0.95, "m1_tsr": 0.78},
+        "mode_success_heatmap": {
+            "easy": {"M0": 0.88, "M1": 0.92, "M2": 0.92, "M3": 0.95},
+            "medium": {"M0": 0.55, "M1": 0.78, "M2": 0.85, "M3": 0.90},
+            "hard": {"M0": 0.20, "M1": 0.45, "M2": 0.72, "M3": 0.88},
+        },
+        "pareto_points": {
+            "fixed_M0": {"cost_per_step": 1.0, "tsr": 0.55},
+            "fixed_M1": {"cost_per_step": 3.0, "tsr": 0.78},
+            "fixed_M2": {"cost_per_step": 5.0, "tsr": 0.83},
+            "fixed_M3": {"cost_per_step": 15.0, "tsr": 0.91},
+            "oracle": {"cost_per_step": 1.74, "tsr": 0.95},
+            "random": {"cost_per_step": 6.0, "tsr": 0.72},
+        },
+    }
+    outdir = Path("/tmp/vitool_figs_test")
+    generate_all(report, str(outdir))
+    # kiểm file tồn tại + > 0 byte
+    for f in ["fig1_heatmap.pdf", "fig1_heatmap.png", "fig2_pareto.pdf", "fig2_pareto.png"]:
+        p = outdir / f
+        assert p.exists() and p.stat().st_size > 0, f"thiếu/rỗng: {f}"
+    print(f"\n✅ figures self-test PASS — 4 file sinh ra OK trong {outdir}")
 
----
 
-## Contact
+def main():
+    ap = argparse.ArgumentParser(description="ViTool paper figures")
+    ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--in", dest="in_path")
+    ap.add_argument("--outdir", default="eval/figs")
+    ap.add_argument("--baselines", default=None, help="eval/baselines.json (overlay router lên Pareto)")
+    args = ap.parse_args()
 
-- **Member A:** [Name, email]
-- **Member B:** [Name, email]
-- **Advisor:** [TBD — email sent W1 Day 5]
+    if args.selftest:
+        _selftest()
+        return
+    if not args.in_path:
+        raise SystemExit("Cần --in (oracle_report.json) hoặc --selftest.")
+    with open(args.in_path) as f:
+        report = json.load(f)
+    baselines = None
+    if args.baselines:
+        with open(args.baselines) as f:
+            baselines = json.load(f)
+    generate_all(report, args.outdir, baselines=baselines)
 
----
 
-*Last updated: W1 Day 1.*
+if __name__ == "__main__":
+    main()
