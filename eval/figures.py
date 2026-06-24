@@ -54,7 +54,7 @@ def plot_heatmap(report: dict, outdir: Path) -> Path:
     ax.set_yticks(range(len(diffs)))
     ax.set_yticklabels(diffs)
     ax.set_xlabel("Compute mode")
-    ax.set_ylabel("Độ khó")
+    ax.set_ylabel("Difficulty")
     # annotate giá trị
     for i in range(len(diffs)):
         for j in range(len(MODES)):
@@ -63,7 +63,7 @@ def plot_heatmap(report: dict, outdir: Path) -> Path:
                     color="black" if 0.3 < v < 0.8 else "white", fontsize=8)
     cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
     cbar.set_label("Success rate", fontsize=8)
-    ax.set_title("Per-mode success theo độ khó", fontsize=9)
+    ax.set_title("Per-mode success rate by difficulty", fontsize=9)
     fig.tight_layout()
     pdf = outdir / "fig1_heatmap.pdf"
     fig.savefig(pdf, bbox_inches="tight")
@@ -75,45 +75,57 @@ def plot_heatmap(report: dict, outdir: Path) -> Path:
 # ============================================================
 # Fig 2: Pareto cost-quality
 # ============================================================
-def plot_pareto(report: dict, outdir: Path) -> Path:
+def plot_pareto(report: dict, outdir: Path, baselines: dict | None = None) -> Path:
     plt = _setup_mpl()
     pts = report.get("pareto_points", {})
     if not pts:
         raise SystemExit("Không có pareto_points trong report.")
 
-    fig, ax = plt.subplots(figsize=(4.4, 3.2))
+    fig, ax = plt.subplots(figsize=(4.6, 3.3))
     style = {
-        "fixed_M0": ("o", "#888", "Fixed M0"), "fixed_M1": ("o", "#5B8FF9", "Fixed M1 (always-think)"),
-        "fixed_M2": ("o", "#9B59B6", "Fixed M2"), "fixed_M3": ("o", "#E67E22", "Fixed M3"),
-        "random": ("x", "#aaa", "Random"), "oracle": ("*", "#2ECC71", "Oracle (upper bound)"),
+        "fixed_M0": ("o", "#888888", "Fixed M0"),
+        "fixed_M1": ("o", "#5B8FF9", "Fixed M1 (always-think)"),
+        "fixed_M2": ("o", "#9B59B6", "Fixed M2"),
+        "fixed_M3": ("o", "#E67E22", "Fixed M3 (defer)"),
+        "random":   ("X", "#777777", "Random"),
+        "oracle":   ("*", "#2ECC71", "Oracle (upper bound)"),
     }
     for key, (marker, color, label) in style.items():
         if key in pts:
-            x = pts[key]["cost_per_step"]
-            y = pts[key]["tsr"]
-            size = 220 if key == "oracle" else 70
-            ax.scatter(x, y, marker=marker, c=color, s=size, label=label,
-                       zorder=3, edgecolors="black" if key == "oracle" else "none",
-                       linewidths=0.6)
+            x, y = pts[key]["cost_per_step"], pts[key]["tsr"]
+            size = 260 if key == "oracle" else 75
+            ax.scatter(x, y, marker=marker, c=color, s=size, label=label, zorder=3,
+                       edgecolors="black" if key == "oracle" else "none", linewidths=0.6)
 
-    # mũi tên oracle-gap: từ fixed_M1 tới oracle
+    # overlay router thật (length, difficulty-escalation) nếu có baselines.json
+    if baselines:
+        for r in baselines.get("routers", []):
+            nm = r["name"]
+            if nm.startswith("Length"):
+                ax.scatter(r["cost_per_step"], r["tsr"], marker="D", c="#16A085",
+                           s=70, zorder=4, label="Length-router")
+            elif nm.startswith("Difficulty"):
+                ax.scatter(r["cost_per_step"], r["tsr"], marker="P", c="#C0392B",
+                           s=80, zorder=4, label="Difficulty-escalation")
+
+    # mũi tên oracle-gap: M1 -> oracle
     if "fixed_M1" in pts and "oracle" in pts:
         m1, orc = pts["fixed_M1"], pts["oracle"]
         ax.annotate("", xy=(orc["cost_per_step"], orc["tsr"]),
                     xytext=(m1["cost_per_step"], m1["tsr"]),
-                    arrowprops=dict(arrowstyle="->", color="#2ECC71", lw=1.2, ls="--"))
+                    arrowprops=dict(arrowstyle="->", color="#2ECC71", lw=1.3, ls="--"))
         savings = report.get("overall_savings_vs_m1", {}).get("savings_pct")
         if savings is not None:
-            midx = (orc["cost_per_step"] + m1["cost_per_step"]) / 2
-            midy = (orc["tsr"] + m1["tsr"]) / 2 + 0.03
-            ax.text(midx, midy, f"oracle-gap\n−{savings}% cost", fontsize=7.5,
-                    color="#1e8449", ha="center")
+            ax.annotate(f"oracle gap:\n-{savings}% cost", xy=(2.1, 0.605),
+                        fontsize=7.5, color="#1e8449", ha="center",
+                        annotation_clip=False)
 
-    ax.set_xlabel("Cost trung bình / step (×, M0=1)")
+    ax.set_xlabel("Avg. compute cost per step (x, M0=1)")
     ax.set_ylabel("Task Success Rate")
-    ax.set_title("Pareto cost–quality (ViTool)", fontsize=9)
-    ax.legend(fontsize=6.5, loc="lower right", framealpha=0.9)
+    ax.set_title("Cost-quality Pareto (ViTool)", fontsize=9)
+    ax.legend(fontsize=6.3, loc="upper right", framealpha=0.92, ncol=1)
     ax.grid(True, alpha=0.25, zorder=0)
+    ax.margins(x=0.08, y=0.10)
     fig.tight_layout()
     pdf = outdir / "fig2_pareto.pdf"
     fig.savefig(pdf, bbox_inches="tight")
@@ -122,11 +134,11 @@ def plot_pareto(report: dict, outdir: Path) -> Path:
     return pdf
 
 
-def generate_all(report: dict, outdir: str) -> None:
+def generate_all(report: dict, outdir: str, baselines: dict | None = None) -> None:
     out = Path(outdir)
     out.mkdir(parents=True, exist_ok=True)
     f1 = plot_heatmap(report, out)
-    f2 = plot_pareto(report, out)
+    f2 = plot_pareto(report, out, baselines=baselines)
     print(f"✅ Fig 1 (heatmap): {f1}")
     print(f"✅ Fig 2 (Pareto):  {f2}")
     print(f"   (PNG kèm theo trong {out})")
@@ -167,6 +179,7 @@ def main():
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--in", dest="in_path")
     ap.add_argument("--outdir", default="eval/figs")
+    ap.add_argument("--baselines", default=None, help="eval/baselines.json (overlay router lên Pareto)")
     args = ap.parse_args()
 
     if args.selftest:
@@ -176,7 +189,11 @@ def main():
         raise SystemExit("Cần --in (oracle_report.json) hoặc --selftest.")
     with open(args.in_path) as f:
         report = json.load(f)
-    generate_all(report, args.outdir)
+    baselines = None
+    if args.baselines:
+        with open(args.baselines) as f:
+            baselines = json.load(f)
+    generate_all(report, args.outdir, baselines=baselines)
 
 
 if __name__ == "__main__":
