@@ -1,0 +1,125 @@
+{
+  "domain_success": {
+    "ecommerce": {
+      "n": 169,
+      "M0": 0.509,
+      "M1": 0.503,
+      "M2": 0.462,
+      "M3": 0.402
+    },
+    "travel": {
+      "n": 45,
+      "M0": 0.711,
+      "M1": 0.644,
+      "M2": 0.556,
+      "M3": 0.667
+    },
+    "info_retrieval": {
+      "n": 25,
+      "M0": 0.8,
+      "M1": 0.8,
+      "M2": 0.72,
+      "M3": 0.64
+    },
+    "banking": {
+      "n": 23,
+      "M0": 0.652,
+      "M1": 0.696,
+      "M2": 0.696,
+      "M3": 0.565
+    },
+    "public_services": {
+      "n": 22,
+      "M0": 0.636,
+      "M1": 0.545,
+      "M2": 0.682,
+      "M3": 0.5
+    }
+  },
+  "n_m0ok_m3fail": 37,
+  "examples_m0ok_m3fail": [
+    {
+      "traj_id": "banking_0022",
+      "step_idx": 0,
+      "difficulty": "easy",
+      "query": "Tôi muốn mở một tài khoản tiết kiệm với số tiền ban đầu là 10 triệu đồng và kỳ hạn 12 tháng cho khách hàng có ID là KH001",
+      "M3_pred": [
+        null,
+        null
+      ]
+    },
+    {
+      "traj_id": "info_retrieval_0007",
+      "step_idx": 0,
+      "difficulty": "easy",
+      "query": "Dịch 'Hello, how are you?' từ tiếng Anh sang tiếng Việt",
+      "M3_pred": [
+        null,
+        null
+      ]
+    },
+    {
+      "traj_id": "public_services_0025",
+      "step_idx": 0,
+      "difficulty": "easy",
+      "query": "Tôi muốn biết số tiền thuế thu nhập cá nhân tôi phải nộp năm 2022",
+      "M3_pred": [
+        null,
+        null
+      ]
+    },
+    {
+      "traj_id": "public_services_0012",
+      "step_idx": 0,
+      "difficulty": "easy",
+      "query": "Tôi muốn biết lệ phí để làm thẻ căn cước công dân",
+      "M3_pred": [
+        null,
+        null
+      ]
+    },
+    {
+      "traj_id": "ecommerce_medium_0031",
+      "step_idx": 1,
+      "difficulty": "hard",
+      "query": "So sánh giá máy lạnh Panasonic và mua trên Tiki với áp dụng voucher giảm 10%",
+      "M3_pred": [
+        null,
+        null
+      ]
+    }
+  ],
+  "n_all_fail": 104,
+  "examples_all_fail": [
+    {
+      "traj_id": "banking_0012",
+      "step_idx": 0,
+      "difficulty": "easy",
+      "query": "Lịch sử giao dịch của tôi từ 01/01/2024 đến 31/12/2024"
+    },
+    {
+      "traj_id": "banking_0027",
+      "step_idx": 0,
+      "difficulty": "easy",
+      "query": "Lịch sử giao dịch của tôi từ ngày 01/01/2024 đến 31/12/2024 là gì?"
+    },
+    {
+      "traj_id": "ecommerce_0031",
+      "step_idx": 0,
+      "difficulty": "easy",
+      "query": "Yêu cầu trả lại sản phẩm điện thoại vừa mua vì lỗi kỹ thuật và nhận lại tiền qua ngân hàng"
+    },
+    {
+      "traj_id": "ecommerce_hard_0052",
+      "step_idx": 0,
+      "difficulty": "hard",
+      "query": "Mua laptop Dell Inspiron 15 5000 và theo dõi đơn hàng"
+    },
+    {
+      "traj_id": "ecommerce_hard_0052",
+      "step_idx": 2,
+      "difficulty": "hard",
+      "query": "Mua laptop Dell Inspiron 15 5000 và theo dõi đơn hàng"
+    }
+  ]
+}
