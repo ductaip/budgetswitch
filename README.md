@@ -6,8 +6,9 @@ string/AST-matching benchmarks, every gold trajectory is verified by **running
 it against a deterministic, stateful environment** and checking the resulting
 final state.
 
-- **375 trajectories** across 5 domains (banking, e-commerce, information
-  retrieval, public services, travel) and **36 deterministic mock tools**.
+- **375 trajectories** across 5 domains and **36 deterministic mock tools**.
+  Domain distribution: e-commerce (146), travel (65), banking (55),
+  information retrieval (56), public services (53).
 - Stratified by structural difficulty: easy (142), medium (90), hard (143).
 - Four-gate validation (schema → placeholder → structure → executable).
 - Inter-annotator reliability on a stratified 51-sample subset:
@@ -134,8 +135,8 @@ trajectories. A minimal adapter example is in `pilot/run_pilot.py`.
 
 ## License
 
-- Data: [TODO — proposed CC BY 4.0]
-- Code: [TODO — proposed MIT]
+- Data: CC BY 4.0
+- Code: MIT
 
 ## Citation
 
