@@ -1,0 +1,8 @@
+The ViTool dataset files in this directory (*.jsonl, tool_catalog.json) are
+licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0): https://creativecommons.org/licenses/by/4.0/
+
+Copyright (c) 2026 Duc Tai Phan, Trung Duc Trinh Tran.
+Please cite the ViTool paper (see README.md) when you use the data.
+The source code of this repository is licensed separately under the MIT
+License (../../LICENSE).

@@ -174,7 +174,8 @@ Implement a function that, given a query and history, returns
 
 - **Code**: MIT — see [`LICENSE`](LICENSE).
 - **Data** (`data/vitool/*.jsonl`, `data/vitool/tool_catalog.json`):
-  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). You may share and
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — see
+  [`data/vitool/LICENSE`](data/vitool/LICENSE). You may share and
   adapt the data with attribution (cite the paper below).
 
 ## Citation
