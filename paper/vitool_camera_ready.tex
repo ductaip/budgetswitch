@@ -1,13 +1,12 @@
 % ============================================================
 % ViTool — RIVF 2026 CAMERA-READY (EDAS #1571323910)
 % Compile with XeLaTeX. Put in the same folder:
-%   fig1_heatmap_v6_v12.pdf, fig2_pareto_v6_v12.pdf   (eval/v6/paper_pack/)
+%   fig1_heatmap_v6_v12.pdf, fig2_pareto_v6_v12_col.pdf   (eval/v6/paper_pack/)
 % All numbers come from eval/v6/REPORT_v6.md (2026-11-13), v1.2 = main data.
 %
 % BEFORE UPLOAD:
 %  [ ] \repourl: make the GitHub repo public and check the URL below.
-%  [ ] \QwenVtwo: fill in when "m3_qwen27b_0shot_v12" finishes (TSR, 3 decimals);
-%      until then the cell prints "pending" — do not upload with "pending".
+%  [x] All numbers final (paper_number_check.md, section D, 2026-11-15).
 %  [ ] EDAS author names must be First = "Duc Tai", Last = "Phan" and
 %      First = "Trung Duc", Last = "Trinh Tran" (same as the PDF).
 %  [ ] Run IEEE PDF eXpress, upload the certified PDF, sign the eCF.
@@ -23,13 +22,14 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{booktabs}
+\usepackage{array}
 \usepackage{url}
 \usepackage{fontspec}
 \setmainfont{TeX Gyre Termes}
 \setmonofont{Latin Modern Mono}
 
 \newcommand{\repourl}{\url{https://github.com/ductaip/budgetswitch}} % TODO check
-\newcommand{\QwenVtwo}{pending} % TODO: Qwen3.8-27B 0-shot TSR on v1.2
+\newcommand{\QwenVtwo}{0.723} % final, Qwen3.8-27B 0-shot TSR on v1.2
 
 \begin{document}
 \special{pdf:minorversion 6}
@@ -56,8 +56,9 @@ the gold calls used argument values that the user never stated. We add a
 grounding gate, repair the queries, and validate the repair with two
 annotators. On the repaired benchmark, a LoRA-tuned 3B model that calls tools
 directly reaches a task success rate of 0.688 and significantly outperforms
-thinking (0.607), retrieval (0.527) and zero-shot deferral to gpt-oss-120b
-(0.571). A per-step oracle reaches 0.804, but no deployable router we test
+thinking (0.607) and retrieval (0.527); zero-shot deferral to gpt-oss-120b
+reaches 0.598, and a dense 27B model reaches 0.723, a gain over the 3B model
+that is not significant, at about 22 times its FLOPs. A per-step oracle reaches 0.804, but no deployable router we test
 exceeds 0.705. Repairing the data alone raised task success by 0.14--0.25 for
 every mode and more than doubled the routing headroom. We also document two
 measurement pitfalls: assumed cost multipliers overstate the oracle's savings
@@ -99,8 +100,9 @@ deterministic tools and five validation gates, including a new
 user, produced by an earlier tool call, or a schema default. The repair is
 validated by two annotators.
 \item \textbf{A controlled study of four compute modes} with measured cost
-(tokens, FLOPs, latency). Direct calling is the best fixed mode; thinking,
-retrieval and zero-shot deferral are significantly worse. A per-step oracle
+(tokens, FLOPs, latency). Direct calling is the best fixed mode: thinking and
+retrieval are significantly worse, and deferral to larger models gives at most a
+non-significant gain at 4--22$\times$ the FLOPs. A per-step oracle
 shows +0.116 headroom that the routers we test do not capture.
 \item \textbf{Three measurement findings}: ungrounded gold data lowered task
 success by up to 0.25 and hid half of the routing headroom; assumed cost
@@ -184,15 +186,41 @@ argument values (40 flagged, 20 not; stratified). Agreement was 86.7\%
 (Cohen's $\kappa=0.76$); after adjudicating 8 items, G3 matched all 60 labels.
 
 \textbf{Extent.} Under G3, 203 of the 375 v1 trajectories (54\%) contain at
-least one ungrounded value, including 63 of the 112 evaluation trajectories and at
-least 39 of the 43 hard ones. The most frequent are quantities, price caps, passenger
+least one ungrounded value, including 63 of the 112 evaluation trajectories and 40
+of the 43 hard ones. The most frequent are quantities, price caps, passenger
 names, voucher codes, payment methods and platforms. Many are recurring
 ``conventional'' values (e.g., \texttt{1234567890}) that also occur in the
 training split.
 
+\begin{table}[t]
+\caption{Two evaluation trajectories that fail G3 on v1. Bold text was added
+by the repair (v1.2); every added value is required by a gold call.}
+\label{tab:examples}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.07\columnwidth} >{\raggedright\arraybackslash}p{0.50\columnwidth} >{\raggedright\arraybackslash}p{0.36\columnwidth}}
+\toprule
+Tier & Request (v1.2; additions in bold) & Gold calls (ungrounded on v1) \\
+\midrule
+easy & Lịch sử giao dịch của tôi từ 01/01/2024 đến 31/12/2024\textbf{, mã tài
+khoản 1234567890} & \texttt{transaction\_history} (\texttt{account\_number}) \\
+\addlinespace
+hard & So sánh giá \textbf{sách giáo khoa lớp 1} trên Tiki và Lazada\textbf{,
+mua 2 chiếc, áp mã giảm giá TIKI10, chuyển khoản}\newline
+{\scriptsize v1: ``So sánh giá và mua sách giáo khoa cho bé trên Tiki và
+Lazada''} & \texttt{compare\_prices} (\texttt{product\_name}) $\rightarrow$
+\texttt{search\_product} $\rightarrow$ \texttt{add\_to\_cart}
+(\texttt{quantity}) $\rightarrow$ \texttt{apply\_voucher}
+(\texttt{voucher\_code}) $\rightarrow$ \texttt{checkout}
+(\texttt{payment\_method}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \textbf{Repair.} We rewrote only the \emph{request} of each failing trajectory
 so that it states the missing values, leaving gold calls, tier, domain and split
-unchanged. The rewriter (gpt-oss-20b, temperature 0) received the missing values
+unchanged (Table~\ref{tab:examples}). The rewriter (gpt-oss-20b, temperature 0) received the missing values
 and a Vietnamese wording hint for enumerated codes; a rewrite was accepted only
 if all gates passed and at least 70\% of the original words were kept. Repair
 ran in two rounds (v1.1: non-enumerated values; v1.2: enumerated choices). Two
@@ -268,7 +296,7 @@ Mode & TSR & SSR$_\text{tf}$ & SSR$_\text{ro}$ & easy & med. & hard & FLOPs \\
 M0 fast   & \textbf{0.688} {\scriptsize[.60,.77]} & \textbf{0.873} & \textbf{0.722} & \textbf{1.00} & \textbf{0.62} & \textbf{0.42} & 1.00$\times$ \\
 M1 think  & 0.607 {\scriptsize[.51,.69]} & 0.824 & 0.665 & 0.91 & 0.46 & 0.40 & 1.09$\times$ \\
 M2 search & 0.527 {\scriptsize[.43,.62]} & 0.768 & 0.532 & 0.86 & 0.46 & 0.23 & 0.66$\times$ \\
-M3 defer  & 0.571 {\scriptsize[.48,.66]} & 0.757 & -- & 0.88 & 0.54 & 0.28 & 4.28$\times$ \\
+M3 defer  & 0.598 {\scriptsize[.51,.68]} & 0.771 & -- & 0.95 & 0.54 & 0.28 & 4.35$\times$ \\
 \midrule
 Oracle    & 0.804 {\scriptsize[.72,.87]} & 0.944 & -- & 1.00 & 0.81 & 0.60 & -- \\
 \bottomrule
@@ -289,9 +317,9 @@ Table~\ref{tab:main} and Fig.~\ref{fig:heatmap} show that M0 is the best fixed
 mode on TSR in every tier, and best or tied best in four of five domains (in
 public services M3 scores 0.875 vs.\ 0.812). On trajectory
 success it is significantly better than thinking ($-0.080$, $p=0.019$),
-retrieval ($-0.161$, $p<0.001$) and deferral ($-0.116$, $p=0.016$); the step
-level agrees (McNemar: M0 wins 19 vs.\ 5 steps against M1, 50 vs.\ 17 against
-M3). On easy requests M0 solves all 43, while think and search lose 4--6:
+and retrieval ($-0.161$, $p<0.001$). Against deferral the TSR gap ($-0.089$)
+narrowly misses significance ($p=0.051$), but M0 wins clearly at the step
+level (McNemar: 46 vs.\ 17 steps, $p<0.001$; against M1, 19 vs.\ 5). On easy requests M0 solves all 43, while think and search lose 4--6:
 extra reasoning before a one-call request mostly adds opportunities to change a
 correct call. Retrieval is the weakest local mode: with 36 tools the full
 catalog fits in context, and filtering it removes the right tool more often
@@ -300,13 +328,17 @@ hardest domain (M0 TSR 0.48 vs.\ 0.74--0.94 elsewhere).
 
 \subsection{Deferral to larger models}
 \label{sec:defer}
-Zero-shot gpt-oss-120b (M3) reaches 0.571 on v1.2 at $4.3\times$ M0's FLOPs.
-Table~\ref{tab:defer} adds variants run on v1.1 (before the enumerated-value
-repair). Three demonstrations raise gpt-oss to 0.571, and a dense 27B model
-(Qwen3.8-27B, zero-shot) reaches 0.625, above the 3B model's 0.598 on the same
-data, but at about $22\times$ its FLOPs and $4.5\times$ gpt-oss's API price.
-Larger models therefore can help, at a cost far above that of the routing
-gains below. Three repeated M3 runs varied by $\pm0.016$ TSR.
+Zero-shot gpt-oss-120b (M3) reaches 0.598 on v1.2 at $4.4\times$ M0's FLOPs
+(Table~\ref{tab:defer}). A dense 27B model (Qwen3.8-27B, zero-shot) reaches
+\QwenVtwo, above the fine-tuned 3B model's 0.688 but not significantly
+($+0.036$, $p=0.45$; 23 vs.\ 20 steps, McNemar $p=0.76$), at about $22\times$ its FLOPs
+and $4.5\times$ gpt-oss's API price. On v1.1, before the enumerated-value
+repair, the same 27B model scored 0.625 vs.\ 0.598 for the 3B model, and three
+demonstrations raised gpt-oss from 0.521 to 0.589. Deferral is therefore not
+useless: a much larger model may add a few points, but our evaluation set
+cannot distinguish that gain from noise, and it costs over an order of
+magnitude more compute than the routing gains below. Three repeated gpt-oss
+runs varied by $\pm0.019$ TSR.
 
 \begin{table}[t]
 \caption{Deferral variants (TSR). FLOPs per step relative to M0 on the same
@@ -320,13 +352,13 @@ data. v1.1 = ViTool before the enumerated-value repair.}
 Data & Model & TSR & FLOPs & USD/284 steps \\
 \midrule
 v1.1 & 3B LoRA, M0 (reference) & 0.598 & 1.0$\times$ & -- \\
-v1.1 & gpt-oss-120b, 0-shot (3 runs) & 0.518$\pm$0.016 & 4.4$\times$ & 0.079 \\
-v1.1 & gpt-oss-120b, 3-shot & 0.571 & 5.5$\times$ & 0.096 \\
+v1.1 & gpt-oss-120b, 0-shot (3 runs) & 0.521$\pm$0.019 & 4.4$\times$ & 0.079 \\
+v1.1 & gpt-oss-120b, 3-shot & 0.589 & 5.6$\times$ & 0.097 \\
 v1.1 & Qwen3.8-27B, 0-shot & 0.625 & 22$\times$ & 0.353 \\
 \midrule
 v1.2 & 3B LoRA, M0 (reference) & 0.688 & 1.0$\times$ & -- \\
-v1.2 & gpt-oss-120b, 0-shot & 0.571 & 4.3$\times$ & 0.078 \\
-v1.2 & Qwen3.8-27B, 0-shot & \QwenVtwo & 22$\times$ & -- \\
+v1.2 & gpt-oss-120b, 0-shot & 0.598 & 4.4$\times$ & 0.079 \\
+v1.2 & Qwen3.8-27B, 0-shot & \QwenVtwo & 22$\times$ & 0.355 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -356,7 +388,7 @@ rounds (v1.1, v1.2); same adapter and decoding.}
 M0 fast   & 0.438 & 0.598 & \textbf{0.688} \\
 M1 think  & 0.420 & 0.554 & 0.607 \\
 M2 search & 0.384 & 0.509 & 0.527 \\
-M3 defer  & 0.393 & 0.527 & 0.571 \\
+M3 defer  & 0.393 & 0.527 & 0.598 \\
 Oracle    & 0.491 & 0.732 & 0.804 \\
 \midrule
 M0, hard tier & 0.046 & 0.233 & 0.419 \\
@@ -377,7 +409,8 @@ need to.
 \section{Routing and Cost}
 
 \begin{table}[t]
-\caption{Policies on ViTool v1.2. Cost per step relative to always-M0.}
+\caption{Policies on ViTool v1.2. Cost per step relative to always-M0 under
+three cost models. The oracle depends on which cost it minimizes.}
 \label{tab:routers}
 \centering
 \footnotesize
@@ -389,25 +422,26 @@ Policy & TSR & Assumed & Tokens & FLOPs \\
 Fixed M0 & 0.688 & 1.00 & 1.00 & 1.00 \\
 Fixed M1 & 0.607 & 3.00 & 1.09 & 1.09 \\
 Fixed M2 & 0.527 & 5.00 & 0.65 & 0.66 \\
-Fixed M3 & 0.571 & 15.00 & 2.59 & 4.28 \\
+Fixed M3 & 0.598 & 15.00 & 2.64 & 4.35 \\
 \midrule
-Random & 0.591 & 6.00 & 1.33 & 1.76 \\
+Random & 0.598 & 6.00 & 1.35 & 1.78 \\
 Length router & 0.562 & 3.77 & 0.84 & 0.84 \\
 Cascade M0$\rightarrow$M1 on error & 0.696 & 1.01 & 1.00 & 1.00 \\
-Learned router (CV, best) & 0.705 & 2.04 & 1.02 & 1.09 \\
-Gold-tier escalation (semi-oracle) & 0.598 & 10.64 & 2.10 & 3.27 \\
+Learned router (CV, best) & 0.705 & 2.23 & 1.04 & 1.13 \\
+Gold-tier escalation (semi-oracle) & 0.598 & 10.64 & 2.12 & 3.30 \\
 \midrule
-Oracle (cheapest correct) & 0.804 & 1.60 & 0.79 & 0.86 \\
+Oracle, cheapest by assumed cost & 0.804 & 1.60 & 1.05 & 1.12 \\
+Oracle, cheapest by tokens/FLOPs & 0.795 & 4.58 & 0.79 & 0.86 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig2_pareto_v6_v12.pdf}
+\includegraphics[width=\columnwidth]{fig2_pareto_v6_v12_col.pdf}
 \caption{TSR vs.\ measured FLOPs per step (relative to always-M0, log scale)
-on ViTool v1.2. Points are numbered; the oracle here selects by FLOPs (TSR
-0.795).}
+on ViTool v1.2. The oracle here minimizes FLOPs (TSR 0.795); the line is the
+cross-validated learned router at different cost penalties.}
 \label{fig:pareto}
 \end{figure}
 
@@ -454,8 +488,9 @@ long reasoning.
 
 \section{Conclusion}
 ViTool shows that, for a fine-tuned 3B tool caller on grounded Vietnamese
-requests, spending more compute per step does not help on average: direct
-calling beats thinking, retrieval and zero-shot deferral. A per-step oracle
+requests, more compute per step helps little: direct calling beats thinking
+and retrieval, and deferral to a 27B model gains a non-significant 0.036 TSR at
+about $22\times$ the FLOPs. A per-step oracle
 still gains 0.116 TSR at lower cost, but the routers we test do not find it,
 and measured costs make the potential saving about half as large as assumed
 multipliers suggest. The largest effect in our study came from the data:
