@@ -65,3 +65,13 @@ already-tracked `docs/ADVISOR_EMAIL_TEMPLATES.md`, `docs/W*_RETROSPECTIVE.md`,
 - `pytest tests/test_grounding_gate.py`: 26 passed; `build_dataset.py --selftest`: pass.
 - `build_dataset.py --gate-report` on v1.2: 373/373 pass every gate.
 - Publishable tree ≈ 23 MB.
+
+## 6. Status 2026-11-15
+
+- Key revoked by the authors.
+- Working tree: key removed from the notebook (commit "ViTool v1.2 …").
+- History: `git filter-repo --replace-text` (gsk_… → REDACTED_GROQ_KEY) over all
+  refs; rescan of all commits: 0 `gsk_` strings; gitleaks with `.gitleaks.toml`
+  (default rules + `groq-api-key`): no leaks. Backup bundle of the old history
+  kept outside the repo.
+- Force push to origin/main: pending authors' review.
