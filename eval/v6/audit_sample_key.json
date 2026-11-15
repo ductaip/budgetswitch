@@ -1,0 +1,610 @@
+{
+  "note": "DO NOT SHOW TO ANNOTATORS",
+  "seed": 42,
+  "population": {
+    "flagged_values": 502,
+    "unflagged_values": 1648
+  },
+  "allocation_flagged_tier|domain": {
+    "easy|banking": [
+      1,
+      3
+    ],
+    "easy|ecommerce": [
+      1,
+      4
+    ],
+    "easy|info_retrieval": [
+      1,
+      9
+    ],
+    "easy|public_services": [
+      1,
+      2
+    ],
+    "hard|ecommerce": [
+      23,
+      297
+    ],
+    "hard|travel": [
+      5,
+      69
+    ],
+    "medium|banking": [
+      2,
+      30
+    ],
+    "medium|ecommerce": [
+      1,
+      10
+    ],
+    "medium|info_retrieval": [
+      1,
+      24
+    ],
+    "medium|public_services": [
+      3,
+      42
+    ],
+    "medium|travel": [
+      1,
+      12
+    ]
+  },
+  "allocation_unflagged_tier": {
+    "easy": [
+      4,
+      312
+    ],
+    "hard": [
+      13,
+      1089
+    ],
+    "medium": [
+      3,
+      247
+    ]
+  },
+  "items": [
+    {
+      "item_id": "A01",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "order ID"
+    },
+    {
+      "item_id": "A02",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A03",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "money amount"
+    },
+    {
+      "item_id": "A04",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:implicit_one",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A05",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "account number"
+    },
+    {
+      "item_id": "A06",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "date"
+    },
+    {
+      "item_id": "A07",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "person name"
+    },
+    {
+      "item_id": "A08",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "person name"
+    },
+    {
+      "item_id": "A09",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "citizen/ID number"
+    },
+    {
+      "item_id": "A10",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "categorical option"
+    },
+    {
+      "item_id": "A11",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "date"
+    },
+    {
+      "item_id": "A12",
+      "audit_strict": "prev_obs",
+      "audit_lenient": "prev_obs",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "system ID from earlier step"
+    },
+    {
+      "item_id": "A13",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "account number"
+    },
+    {
+      "item_id": "A14",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:implicit_one",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A15",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:implicit_one",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A16",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "person name"
+    },
+    {
+      "item_id": "A17",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "money amount"
+    },
+    {
+      "item_id": "A18",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "voucher code"
+    },
+    {
+      "item_id": "A19",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "free text (product/query)"
+    },
+    {
+      "item_id": "A20",
+      "audit_strict": "prev_obs",
+      "audit_lenient": "prev_obs",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "order ID"
+    },
+    {
+      "item_id": "A21",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "person name"
+    },
+    {
+      "item_id": "A22",
+      "audit_strict": "prev_obs",
+      "audit_lenient": "prev_obs",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "system ID from earlier step"
+    },
+    {
+      "item_id": "A23",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "money amount"
+    },
+    {
+      "item_id": "A24",
+      "audit_strict": "enum",
+      "audit_lenient": "enum",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "categorical option"
+    },
+    {
+      "item_id": "A25",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "money amount"
+    },
+    {
+      "item_id": "A26",
+      "audit_strict": "enum",
+      "audit_lenient": "enum",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "categorical option"
+    },
+    {
+      "item_id": "A27",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "place"
+    },
+    {
+      "item_id": "A28",
+      "audit_strict": "prev_obs",
+      "audit_lenient": "prev_obs",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "system ID from earlier step"
+    },
+    {
+      "item_id": "A29",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:implicit_one",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A30",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "address"
+    },
+    {
+      "item_id": "A31",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "place"
+    },
+    {
+      "item_id": "A32",
+      "audit_strict": "enum",
+      "audit_lenient": "enum",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "categorical option"
+    },
+    {
+      "item_id": "A33",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:implicit_one",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A34",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "citizen/ID number"
+    },
+    {
+      "item_id": "A35",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:lexicon",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "currency/language code"
+    },
+    {
+      "item_id": "A36",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "free text (product/query)"
+    },
+    {
+      "item_id": "A37",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "tax code"
+    },
+    {
+      "item_id": "A38",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "categorical option"
+    },
+    {
+      "item_id": "A39",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "free text (product/query)"
+    },
+    {
+      "item_id": "A40",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "money amount"
+    },
+    {
+      "item_id": "A41",
+      "audit_strict": "enum",
+      "audit_lenient": "enum",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "categorical option"
+    },
+    {
+      "item_id": "A42",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "money amount"
+    },
+    {
+      "item_id": "A43",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "person name"
+    },
+    {
+      "item_id": "A44",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "place"
+    },
+    {
+      "item_id": "A45",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:implicit_one",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A46",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "order ID"
+    },
+    {
+      "item_id": "A47",
+      "audit_strict": "prev_obs",
+      "audit_lenient": "prev_obs",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "system ID from earlier step"
+    },
+    {
+      "item_id": "A48",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "account number"
+    },
+    {
+      "item_id": "A49",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "receipt/plate/customer code"
+    },
+    {
+      "item_id": "A50",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "free text (product/query)"
+    },
+    {
+      "item_id": "A51",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "citizen/ID number"
+    },
+    {
+      "item_id": "A52",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A53",
+      "audit_strict": "prev_obs",
+      "audit_lenient": "prev_obs",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "system ID from earlier step"
+    },
+    {
+      "item_id": "A54",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A55",
+      "audit_strict": "query",
+      "audit_lenient": "query",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "date"
+    },
+    {
+      "item_id": "A56",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "money amount"
+    },
+    {
+      "item_id": "A57",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "lenient:implicit_one",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": false,
+      "stratum": "flagged",
+      "param_type": "count"
+    },
+    {
+      "item_id": "A58",
+      "audit_strict": "enum",
+      "audit_lenient": "enum",
+      "audit_flag_strict": false,
+      "audit_flag_lenient": false,
+      "stratum": "unflagged",
+      "param_type": "categorical option"
+    },
+    {
+      "item_id": "A59",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "voucher code"
+    },
+    {
+      "item_id": "A60",
+      "audit_strict": "UNGROUNDED",
+      "audit_lenient": "UNGROUNDED",
+      "audit_flag_strict": true,
+      "audit_flag_lenient": true,
+      "stratum": "flagged",
+      "param_type": "count"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# gitleaks config: default rules + an explicit Groq API key rule
+# (gitleaks 8.24 default rules did not flag a real "gsk_" key in this repo's history).
+[extend]
+useDefault = true
+
+[[rules]]
+id = "groq-api-key"
+description = "Groq API key"
+regex = '''gsk_[A-Za-z0-9]{20,}'''
+keywords = ["gsk_"]

@@ -2,7 +2,8 @@
 data/build_dataset.py — ViTool dataset builder (v10.0).
 
 PIPELINE:
-  LLM draft  →  resolve_ids  →  Cổng 1 (schema)  →  Cổng 2 (executable)  →  stratify  →  save
+  LLM draft  →  resolve_ids  →  Cổng 1 (schema)  →  Cổng 1.5 (placeholder)  →  Cổng 2 (executable)
+            →  Cổng G3 (grounding, data/grounding_gate.py)  →  stratify  →  save
                                                                                           (+ expected_final_state)
   Cổng 3 (human verify) là THỦ CÔNG sau bước này — không tự động hoá được.
 
@@ -44,6 +45,7 @@ from data.vitool.schema import (  # noqa: E402
 )
 from verifiers.universal.schema_verifier import verify_schema  # noqa: E402
 from env.mock_tools import run_step, is_executable, compute_final_state, WorldState, ToolError  # noqa: E402
+from data.grounding_gate import gate_grounding, grounding_report  # noqa: E402
 
 
 # ============================================================
@@ -147,6 +149,7 @@ _PLACEHOLDER_CHECKS = [
     (r'(placeholder|id_sản|không xác định|chưa xác định|cần điền|\bn/a\b)', True),
     (r'^x{4,}$', True),                                    # xxxxxxxxxxxx
     (r'^(khach_hang|customer|user|client)_?\d+$', True),  # id giả generic
+    (r'^id_\w+$', True),                                  # 'id_đơn_hàng' (v1.1)
 ]
 
 
@@ -161,6 +164,8 @@ def _is_placeholder(v) -> str | None:
     if not isinstance(v, str):
         return None
     s = v.strip()
+    if not s:
+        return "<empty string>"  # gold value '' (v1.1)
     for pat, ic in _PLACEHOLDER_CHECKS:
         if _re.search(pat, s, _re.I if ic else 0):
             return s
@@ -177,9 +182,12 @@ def gate_placeholder(steps: list[tuple[str, dict]]) -> tuple[bool, str]:
     return True, "ok"
 
 
-def accept_trajectory(steps: list[tuple[str, dict]], catalog: dict, difficulty: str | None = None):
+def accept_trajectory(steps: list[tuple[str, dict]], catalog: dict, difficulty: str | None = None,
+                      query: str | None = None, enum_rule: str = "v1.2"):
     """
-    Áp dụng: cấu trúc độ khó → resolve_ids → cổng 1 (schema) → cổng 1.5 (placeholder) → cổng 2 (executable).
+    Áp dụng: cấu trúc độ khó → resolve_ids → cổng 1 (schema) → cổng 1.5 (placeholder) → cổng 2 (executable)
+    → cổng G3 (grounding: mọi giá trị gold có trong query / observation trước / enum).
+    G3 chỉ chạy khi có `query` (luôn truyền query khi build/revalidate; v1.1 trở đi).
     Trả (ok, patched_steps, final_state, reason).
     """
     if difficulty is not None:
@@ -198,6 +206,10 @@ def accept_trajectory(steps: list[tuple[str, dict]], catalog: dict, difficulty: 
     ok2, r2 = is_executable([{"tool_name": t, "params": p} for t, p in patched])
     if not ok2:
         return False, patched, None, f"[cổng2] {r2}"
+    if query is not None:
+        ok3, r3 = gate_grounding(query, patched, catalog, enum_rule=enum_rule)
+        if not ok3:
+            return False, patched, None, f"[G3] {r3}"
     final = compute_final_state([{"tool_name": t, "params": p} for t, p in patched])
     return True, patched, final, "ok"
 
@@ -454,7 +466,7 @@ def build(client, model: str, catalog: dict, plan: dict, out_path: str,
                 steps = _raw_to_steps(raw)
                 if not steps:
                     continue
-                ok, patched, final, reason = accept_trajectory(steps, catalog, difficulty=difficulty)
+                ok, patched, final, reason = accept_trajectory(steps, catalog, difficulty=difficulty, query=q)
                 if not ok:
                     print(f"  [reject] {domain}/{difficulty}: {reason}")
                     continue
@@ -494,7 +506,7 @@ def revalidate_pool(in_path: str, out_path: str, catalog: dict) -> None:
     rej = 0
     for t in trajs:
         steps = [(s.expected_tool, s.expected_params) for s in t.steps]
-        ok, patched, final, reason = accept_trajectory(steps, catalog)
+        ok, patched, final, reason = accept_trajectory(steps, catalog, query=t.query)
         if not ok:
             rej += 1
             continue
@@ -513,6 +525,51 @@ def revalidate_pool(in_path: str, out_path: str, catalog: dict) -> None:
     print(f"✅ Revalidate: giữ {len(kept)}/{len(trajs)} (bỏ {rej} cái fail gate) → {out_path}")
     print(f"   Stratify: {stratify_report(kept, 50)}")
 
+
+
+# ============================================================
+# Gate report: chạy MỌI cổng trên file có sẵn, đếm pass/fail (không sửa data)
+# ============================================================
+def gate_report(paths: list[str], catalog: dict, out_path: str | None = None,
+                split_names: list[str] | None = None) -> dict:
+    """Đếm số trajectory fail ở từng cổng (cấu trúc, resolve, 1, 1.5, 2, G3) + chi tiết G3."""
+    order = {"easy": 0, "medium": 1, "hard": 2}
+    rows = []
+    for pi, path in enumerate(paths):
+        split = (split_names or [])[pi] if split_names and pi < len(split_names) else Path(path).stem
+        for t in load_trajectories(path):
+            steps = [(s.expected_tool, s.expected_params) for s in t.steps]
+            tier = max((s.difficulty.value for s in t.steps), key=lambda d: order[d])
+            ok, patched, _, reason = accept_trajectory(steps, catalog, difficulty=tier, query=t.query)
+            first_fail = "pass" if ok else reason.split("]")[0].strip("[")
+            bad = grounding_report(t.query, patched, catalog)
+            rows.append({"traj_id": t.traj_id, "split": split, "domain": t.domain, "difficulty": tier,
+                         "first_failing_gate": first_fail, "g3_pass": not bad,
+                         "ids_changed_by_resolve": patched != steps, "g3_ungrounded": bad})
+    def tab(key):
+        d: dict = defaultdict(lambda: {"trajs": 0, "pass_all": 0, "g3_fail": 0})
+        for r in rows:
+            for k in ("all", key(r)):
+                d[k]["trajs"] += 1
+                d[k]["pass_all"] += r["first_failing_gate"] == "pass"
+                d[k]["g3_fail"] += not r["g3_pass"]
+        return dict(sorted(d.items()))
+    rep = {
+        "n_trajectories": len(rows),
+        "first_failing_gate": dict(Counter(r["first_failing_gate"] for r in rows)),
+        "by_split": tab(lambda r: r["split"]),
+        "by_difficulty": tab(lambda r: r["difficulty"]),
+        "by_domain": tab(lambda r: r["domain"]),
+        "g3_ungrounded_values": sum(len(r["g3_ungrounded"]) for r in rows),
+        "g3_top_params": Counter(f"{b['tool']}.{b['param']}" for r in rows
+                                 for b in r["g3_ungrounded"]).most_common(25),
+        "ids_changed_by_resolve": sum(r["ids_changed_by_resolve"] for r in rows),
+        "trajectories": rows,
+    }
+    if out_path:
+        Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+        Path(out_path).write_text(json.dumps(rep, indent=1, ensure_ascii=False, default=str))
+    return rep
 
 
 def _selftest():
@@ -590,7 +647,18 @@ def main():
     ap.add_argument("--n", type=int, default=20)
     ap.add_argument("--out", default="data/vitool/drafts_new.jsonl")
     ap.add_argument("--min-per-bin", type=int, default=50)
+    ap.add_argument("--gate-report", nargs="+", metavar="JSONL",
+                    help="chạy mọi cổng (gồm G3) trên các file, in số pass/fail; --out = file JSON chi tiết")
     args = ap.parse_args()
+
+    if args.gate_report:
+        catalog = {k: v for k, v in json.load(open(
+            Path(__file__).resolve().parent.parent / "data/vitool/tool_catalog.json")).items()
+            if not k.startswith("_")}
+        out = args.out if args.out.endswith(".json") else None
+        rep = gate_report(args.gate_report, catalog, out)
+        print(json.dumps({k: v for k, v in rep.items() if k != "trajectories"}, indent=1, ensure_ascii=False))
+        return
 
     if args.selftest:
         _selftest()

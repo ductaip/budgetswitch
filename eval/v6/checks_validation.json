@@ -1,0 +1,132 @@
+{
+  "rewrite_check": {
+    "n": 50,
+    "meaning_preserved_rate": [
+      {
+        "k": 50,
+        "rate": 1.0,
+        "ci95": [
+          0.929,
+          1.0
+        ]
+      },
+      {
+        "k": 50,
+        "rate": 1.0,
+        "ci95": [
+          0.929,
+          1.0
+        ]
+      }
+    ],
+    "meaning_agreement": 1.0,
+    "meaning_kappa": 1.0,
+    "natural_mean": [
+      2.48,
+      2.54
+    ],
+    "natural_distribution": [
+      {
+        "3": 24,
+        "2": 26
+      },
+      {
+        "2": 23,
+        "3": 27
+      }
+    ],
+    "natural_exact_agreement": 0.58,
+    "natural_weighted_kappa": 0.163,
+    "both_say_meaning_not_preserved": [],
+    "any_says_meaning_not_preserved": [],
+    "any_natural_1": []
+  },
+  "v11_spotcheck": {
+    "n": 30,
+    "fabricated_rate": [
+      {
+        "k": 3,
+        "rate": 0.1,
+        "ci95": [
+          0.035,
+          0.256
+        ]
+      },
+      {
+        "k": 4,
+        "rate": 0.133,
+        "ci95": [
+          0.053,
+          0.297
+        ]
+      }
+    ],
+    "agreement": 0.967,
+    "kappa": 0.839,
+    "reported_values": {
+      "S02": {
+        "traj_id": "ecommerce_hard_0048",
+        "annotator1": [],
+        "annotator2": [
+          "search_product.platform=\"shopee\""
+        ]
+      },
+      "S11": {
+        "traj_id": "ecommerce_hard_0058",
+        "annotator1": [
+          "checkout.payment_method=cod"
+        ],
+        "annotator2": [
+          "checkout.payment_method=\"cod\"",
+          "return_request.refund_method=\"original\""
+        ]
+      },
+      "S13": {
+        "traj_id": "ecommerce_hard_0029",
+        "annotator1": [
+          "search_product.platform=lazada",
+          "checkout.payment_method=bank_transfer",
+          "return_request.refund_method=original"
+        ],
+        "annotator2": [
+          "search_product.platform=\"lazada\"",
+          "checkout.payment_method=\"bank_transfer\"",
+          "return_request.refund_method=\"original\""
+        ]
+      },
+      "S19": {
+        "traj_id": "ecommerce_hard_0036",
+        "annotator1": [
+          "checkout.payment_method=momo"
+        ],
+        "annotator2": [
+          "checkout.payment_method=\"momo\""
+        ]
+      }
+    }
+  },
+  "v12_spotcheck": {
+    "n": 20,
+    "fabricated_rate": [
+      {
+        "k": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.161
+        ]
+      },
+      {
+        "k": 0,
+        "rate": 0.0,
+        "ci95": [
+          0.0,
+          0.161
+        ]
+      }
+    ],
+    "agreement": 1.0,
+    "kappa": 1.0,
+    "reported": {}
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "definition": "A call is RELAXED-correct if either\n  (a) normalized match: same tool (case-insensitive) and every gold param is\n      present and equal after normalization (whitespace, case, Unicode NFC,\n      dates dd/mm/yyyy | d-m-yyyy | yyyy-mm-dd -> ISO, numeric strings -> numbers,\n      thousands separators, lists compared as sorted multisets). Extra params\n      are allowed (same as strict). The JSON-schema check is NOT applied.\n  (b) execution equivalence: on the world after the gold prefix, the predicted\n      call and the gold call both execute without error, call the same tool,\n      and produce the same observation AND the same mutation-state delta.\n      (Deviation from the brief: delta alone is empty for every read-only tool,\n      so any executable read-only call would pass; observation equality is\n      added to keep the criterion meaningful.)",
+  "modes": {
+    "M0": {
+      "SSR_strict": 0.588,
+      "SSR_relaxed": 0.6549,
+      "TSR_strict": 0.4375,
+      "TSR_relaxed": 0.4821,
+      "strict_fail_relaxed_pass": 19,
+      "via_norm_only": 0,
+      "via_exec_only": 19,
+      "relaxed_fail_but_strict_pass": 0
+    },
+    "M1": {
+      "SSR_strict": 0.5704,
+      "SSR_relaxed": 0.6444,
+      "TSR_strict": 0.4196,
+      "TSR_relaxed": 0.4554,
+      "strict_fail_relaxed_pass": 21,
+      "via_norm_only": 0,
+      "via_exec_only": 21,
+      "relaxed_fail_but_strict_pass": 0
+    },
+    "M2": {
+      "SSR_strict": 0.5352,
+      "SSR_relaxed": 0.6127,
+      "TSR_strict": 0.3929,
+      "TSR_relaxed": 0.4286,
+      "strict_fail_relaxed_pass": 22,
+      "via_norm_only": 0,
+      "via_exec_only": 22,
+      "relaxed_fail_but_strict_pass": 0
+    },
+    "M3": {
+      "SSR_strict": 0.507,
+      "SSR_relaxed": 0.5599,
+      "TSR_strict": 0.3929,
+      "TSR_relaxed": 0.4196,
+      "strict_fail_relaxed_pass": 15,
+      "via_norm_only": 0,
+      "via_exec_only": 13,
+      "relaxed_fail_but_strict_pass": 0
+    }
+  },
+  "unsolvable_strict": 100,
+  "unsolvable_strict_now_solvable_relaxed": 20,
+  "oracle": {
+    "SSR_strict": 0.6479,
+    "SSR_relaxed": 0.7183
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "run": 1,
+  "model": "qwen/qwen3.8-27b",
+  "endpoint": "https://api.groq.com/openai/v1",
+  "temperature": 0.0,
+  "max_tokens": 1500,
+  "reasoning_effort": null,
+  "seed_param": 42,
+  "protocol": "teacher_forced",
+  "prompt_template_hash": "7f2133750953bdc3+fsce0c095d53826ac5",
+  "fewshot_demos": [
+    [
+      "public_services_0027",
+      0
+    ],
+    [
+      "banking_medium_0001",
+      0
+    ],
+    [
+      "ecommerce_medium_0001",
+      2
+    ]
+  ],
+  "grounded_demos": false,
+  "price_known": false,
+  "data_sha256": "23dd3b8de20f845eef83a8bb651e5fa6a26b05063b40aceeddcb6291ddc72096",
+  "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+  "packages": {
+    "python": "3.12.3",
+    "openai": "2.38.0",
+    "jsonschema": "4.26.0"
+  },
+  "key_policy": "single key (GROQ_API_KEY), retry+backoff"
+}

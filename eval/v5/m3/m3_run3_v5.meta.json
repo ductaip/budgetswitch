@@ -1,0 +1,19 @@
+{
+  "run": 3,
+  "model": "openai/gpt-oss-120b",
+  "endpoint": "https://api.groq.com/openai/v1",
+  "temperature": 0.0,
+  "max_tokens": 1500,
+  "reasoning_effort": "low",
+  "seed_param": 42,
+  "protocol": "teacher_forced",
+  "prompt_template_hash": "7f2133750953bdc3",
+  "data_sha256": "2b18d2a2e4738797d05b8418eb4038744db67da5bee1ccf64b4d6d402d8c9f30",
+  "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+  "packages": {
+    "python": "3.12.3",
+    "openai": "2.38.0",
+    "jsonschema": "4.26.0"
+  },
+  "n_keys": 4
+}

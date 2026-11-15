@@ -1,0 +1,1164 @@
+{
+ "definition": "Levenshtein old (v1.1) -> new (v1.2) query",
+ "all": {
+  "n": 104,
+  "char_edit": {
+   "mean": 36.731,
+   "median": 30,
+   "p10": 16,
+   "p90": 63,
+   "max": 149
+  },
+  "rel_edit": {
+   "mean": 0.287,
+   "median": 0.246,
+   "p10": 0.116,
+   "p90": 0.506,
+   "max": 0.861
+  },
+  "words_added": {
+   "mean": 6.894,
+   "median": 6,
+   "p10": 3,
+   "p90": 12,
+   "max": 28
+  },
+  "n_values_added": {
+   "mean": 1.548,
+   "median": 1,
+   "p10": 1,
+   "p90": 2,
+   "max": 4
+  },
+  "kept_old_words": {
+   "mean": 0.996,
+   "median": 1.0,
+   "p10": 1.0,
+   "p90": 1.0,
+   "max": 1.0
+  },
+  "pure_insertion_share": 0.913
+ },
+ "by_split": {
+  "train": {
+   "n": 70,
+   "char_edit": {
+    "mean": 39.143,
+    "median": 32,
+    "p10": 23,
+    "p90": 73,
+    "max": 149
+   },
+   "rel_edit": {
+    "mean": 0.297,
+    "median": 0.256,
+    "p10": 0.137,
+    "p90": 0.525,
+    "max": 0.861
+   },
+   "words_added": {
+    "mean": 7.429,
+    "median": 6,
+    "p10": 4,
+    "p90": 14,
+    "max": 28
+   },
+   "n_values_added": {
+    "mean": 1.557,
+    "median": 1,
+    "p10": 1,
+    "p90": 3,
+    "max": 4
+   },
+   "kept_old_words": {
+    "mean": 0.997,
+    "median": 1.0,
+    "p10": 1.0,
+    "p90": 1.0,
+    "max": 1.0
+   },
+   "pure_insertion_share": 0.914
+  },
+  "eval": {
+   "n": 34,
+   "char_edit": {
+    "mean": 31.765,
+    "median": 30,
+    "p10": 12,
+    "p90": 46,
+    "max": 99
+   },
+   "rel_edit": {
+    "mean": 0.266,
+    "median": 0.246,
+    "p10": 0.069,
+    "p90": 0.42,
+    "max": 0.782
+   },
+   "words_added": {
+    "mean": 5.794,
+    "median": 5,
+    "p10": 2,
+    "p90": 9,
+    "max": 18
+   },
+   "n_values_added": {
+    "mean": 1.529,
+    "median": 1,
+    "p10": 1,
+    "p90": 2,
+    "max": 3
+   },
+   "kept_old_words": {
+    "mean": 0.995,
+    "median": 1.0,
+    "p10": 1.0,
+    "p90": 1.0,
+    "max": 1.0
+   },
+   "pure_insertion_share": 0.912
+  }
+ },
+ "per_trajectory": [
+  {
+   "traj_id": "ecommerce_hard_0000",
+   "split": "train",
+   "char_edit": 25,
+   "rel_edit": 0.3472222222222222,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0001",
+   "split": "train",
+   "char_edit": 40,
+   "rel_edit": 0.291970802919708,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0040",
+   "split": "train",
+   "char_edit": 89,
+   "rel_edit": 0.5056818181818182,
+   "words_added": 17,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_hard_0062",
+   "split": "train",
+   "char_edit": 78,
+   "rel_edit": 0.639344262295082,
+   "words_added": 15,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_hard_0026",
+   "split": "train",
+   "char_edit": 32,
+   "rel_edit": 0.2807017543859649,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0019",
+   "split": "train",
+   "char_edit": 40,
+   "rel_edit": 0.21505376344086022,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0112",
+   "split": "train",
+   "char_edit": 23,
+   "rel_edit": 0.13690476190476192,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0072",
+   "split": "train",
+   "char_edit": 26,
+   "rel_edit": 0.1625,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0111",
+   "split": "train",
+   "char_edit": 25,
+   "rel_edit": 0.17006802721088435,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0110",
+   "split": "train",
+   "char_edit": 43,
+   "rel_edit": 0.23626373626373626,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_hard_0046",
+   "split": "train",
+   "char_edit": 30,
+   "rel_edit": 0.2702702702702703,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0008",
+   "split": "train",
+   "char_edit": 33,
+   "rel_edit": 0.2558139534883721,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0044",
+   "split": "train",
+   "char_edit": 26,
+   "rel_edit": 0.3058823529411765,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0095",
+   "split": "train",
+   "char_edit": 34,
+   "rel_edit": 0.20359281437125748,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0049",
+   "split": "train",
+   "char_edit": 63,
+   "rel_edit": 0.525,
+   "words_added": 12,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0033",
+   "split": "train",
+   "char_edit": 27,
+   "rel_edit": 0.24107142857142858,
+   "words_added": 6,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0002",
+   "split": "train",
+   "char_edit": 42,
+   "rel_edit": 0.4117647058823529,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0000",
+   "split": "train",
+   "char_edit": 39,
+   "rel_edit": 0.4148936170212766,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0021",
+   "split": "train",
+   "char_edit": 22,
+   "rel_edit": 0.18487394957983194,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0007",
+   "split": "train",
+   "char_edit": 30,
+   "rel_edit": 0.38461538461538464,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0074",
+   "split": "train",
+   "char_edit": 149,
+   "rel_edit": 0.8324022346368715,
+   "words_added": 28,
+   "kept_old_words": 0.926829268292683,
+   "pure_insertion": false,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0077",
+   "split": "train",
+   "char_edit": 42,
+   "rel_edit": 0.3181818181818182,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0034",
+   "split": "train",
+   "char_edit": 23,
+   "rel_edit": 0.22772277227722773,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0035",
+   "split": "train",
+   "char_edit": 55,
+   "rel_edit": 0.3741496598639456,
+   "words_added": 9,
+   "kept_old_words": 1.0,
+   "pure_insertion": false,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0113",
+   "split": "train",
+   "char_edit": 30,
+   "rel_edit": 0.20270270270270271,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0012",
+   "split": "train",
+   "char_edit": 37,
+   "rel_edit": 0.24342105263157895,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0004",
+   "split": "train",
+   "char_edit": 30,
+   "rel_edit": 0.3157894736842105,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0106",
+   "split": "train",
+   "char_edit": 52,
+   "rel_edit": 0.24644549763033174,
+   "words_added": 10,
+   "kept_old_words": 1.0,
+   "pure_insertion": false,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_hard_0003",
+   "split": "train",
+   "char_edit": 23,
+   "rel_edit": 0.17829457364341086,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0028",
+   "split": "train",
+   "char_edit": 36,
+   "rel_edit": 0.3829787234042553,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0039",
+   "split": "train",
+   "char_edit": 124,
+   "rel_edit": 0.8611111111111112,
+   "words_added": 24,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0047",
+   "split": "train",
+   "char_edit": 51,
+   "rel_edit": 0.36428571428571427,
+   "words_added": 11,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0028",
+   "split": "train",
+   "char_edit": 37,
+   "rel_edit": 0.38144329896907214,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0073",
+   "split": "train",
+   "char_edit": 23,
+   "rel_edit": 0.21296296296296297,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0041",
+   "split": "train",
+   "char_edit": 73,
+   "rel_edit": 0.4506172839506173,
+   "words_added": 14,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0014",
+   "split": "train",
+   "char_edit": 30,
+   "rel_edit": 0.20408163265306123,
+   "words_added": 6,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0078",
+   "split": "train",
+   "char_edit": 123,
+   "rel_edit": 0.5301724137931034,
+   "words_added": 23,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 4
+  },
+  {
+   "traj_id": "ecommerce_hard_0085",
+   "split": "train",
+   "char_edit": 9,
+   "rel_edit": 0.05625,
+   "words_added": 0,
+   "kept_old_words": 0.9705882352941176,
+   "pure_insertion": false,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0016",
+   "split": "train",
+   "char_edit": 27,
+   "rel_edit": 0.28125,
+   "words_added": 6,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0048",
+   "split": "train",
+   "char_edit": 12,
+   "rel_edit": 0.09302325581395349,
+   "words_added": 2,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0021",
+   "split": "train",
+   "char_edit": 33,
+   "rel_edit": 0.22448979591836735,
+   "words_added": 6,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0102",
+   "split": "train",
+   "char_edit": 7,
+   "rel_edit": 0.03398058252427184,
+   "words_added": 1,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0003",
+   "split": "train",
+   "char_edit": 37,
+   "rel_edit": 0.3557692307692308,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0108",
+   "split": "train",
+   "char_edit": 50,
+   "rel_edit": 0.22727272727272727,
+   "words_added": 10,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_hard_0038",
+   "split": "train",
+   "char_edit": 44,
+   "rel_edit": 0.411214953271028,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0107",
+   "split": "train",
+   "char_edit": 30,
+   "rel_edit": 0.1910828025477707,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0009",
+   "split": "train",
+   "char_edit": 28,
+   "rel_edit": 0.1891891891891892,
+   "words_added": 6,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0006",
+   "split": "train",
+   "char_edit": 64,
+   "rel_edit": 0.5765765765765766,
+   "words_added": 12,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0018",
+   "split": "train",
+   "char_edit": 39,
+   "rel_edit": 0.2689655172413793,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0075",
+   "split": "train",
+   "char_edit": 26,
+   "rel_edit": 0.1897810218978102,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0031",
+   "split": "train",
+   "char_edit": 35,
+   "rel_edit": 0.3888888888888889,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0034",
+   "split": "train",
+   "char_edit": 30,
+   "rel_edit": 0.2459016393442623,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": false,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0041",
+   "split": "train",
+   "char_edit": 43,
+   "rel_edit": 0.6417910447761194,
+   "words_added": 9,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0065",
+   "split": "train",
+   "char_edit": 42,
+   "rel_edit": 0.3925233644859813,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0016",
+   "split": "train",
+   "char_edit": 26,
+   "rel_edit": 0.16352201257861634,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0060",
+   "split": "train",
+   "char_edit": 38,
+   "rel_edit": 0.37254901960784315,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0037",
+   "split": "train",
+   "char_edit": 25,
+   "rel_edit": 0.20833333333333334,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0037",
+   "split": "train",
+   "char_edit": 25,
+   "rel_edit": 0.22727272727272727,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0043",
+   "split": "train",
+   "char_edit": 25,
+   "rel_edit": 0.17857142857142858,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0109",
+   "split": "train",
+   "char_edit": 24,
+   "rel_edit": 0.17518248175182483,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0015",
+   "split": "train",
+   "char_edit": 39,
+   "rel_edit": 0.3939393939393939,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0033",
+   "split": "train",
+   "char_edit": 26,
+   "rel_edit": 0.2857142857142857,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0013",
+   "split": "train",
+   "char_edit": 23,
+   "rel_edit": 0.17037037037037037,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0079",
+   "split": "train",
+   "char_edit": 98,
+   "rel_edit": 0.358974358974359,
+   "words_added": 20,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_medium_0042",
+   "split": "train",
+   "char_edit": 25,
+   "rel_edit": 0.21929824561403508,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0005",
+   "split": "train",
+   "char_edit": 39,
+   "rel_edit": 0.3391304347826087,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0114",
+   "split": "train",
+   "char_edit": 26,
+   "rel_edit": 0.1262135922330097,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "banking_medium_0014",
+   "split": "train",
+   "char_edit": 19,
+   "rel_edit": 0.10160427807486631,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "public_services_medium_0031",
+   "split": "train",
+   "char_edit": 5,
+   "rel_edit": 0.04807692307692308,
+   "words_added": 0,
+   "kept_old_words": 0.9130434782608695,
+   "pure_insertion": false,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "travel_0026",
+   "split": "train",
+   "char_edit": 16,
+   "rel_edit": 0.12307692307692308,
+   "words_added": 3,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0052",
+   "split": "eval",
+   "char_edit": 36,
+   "rel_edit": 0.25,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0031",
+   "split": "eval",
+   "char_edit": 30,
+   "rel_edit": 0.2702702702702703,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0058",
+   "split": "eval",
+   "char_edit": 26,
+   "rel_edit": 0.325,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0090",
+   "split": "eval",
+   "char_edit": 23,
+   "rel_edit": 0.20175438596491227,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0001",
+   "split": "eval",
+   "char_edit": 14,
+   "rel_edit": 0.1590909090909091,
+   "words_added": 2,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0053",
+   "split": "eval",
+   "char_edit": 42,
+   "rel_edit": 0.3,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0002",
+   "split": "eval",
+   "char_edit": 26,
+   "rel_edit": 0.23636363636363636,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0029",
+   "split": "eval",
+   "char_edit": 99,
+   "rel_edit": 0.6971830985915493,
+   "words_added": 18,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_hard_0013",
+   "split": "eval",
+   "char_edit": 19,
+   "rel_edit": 0.19791666666666666,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0051",
+   "split": "eval",
+   "char_edit": 40,
+   "rel_edit": 0.2702702702702703,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0005",
+   "split": "eval",
+   "char_edit": 30,
+   "rel_edit": 0.21739130434782608,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": false,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0007",
+   "split": "eval",
+   "char_edit": 30,
+   "rel_edit": 0.21428571428571427,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0050",
+   "split": "eval",
+   "char_edit": 37,
+   "rel_edit": 0.3162393162393162,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0070",
+   "split": "eval",
+   "char_edit": 22,
+   "rel_edit": 0.11578947368421053,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0036",
+   "split": "eval",
+   "char_edit": 25,
+   "rel_edit": 0.1968503937007874,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0076",
+   "split": "eval",
+   "char_edit": 46,
+   "rel_edit": 0.23,
+   "words_added": 9,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 3
+  },
+  {
+   "traj_id": "ecommerce_medium_0029",
+   "split": "eval",
+   "char_edit": 28,
+   "rel_edit": 0.24561403508771928,
+   "words_added": 6,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0063",
+   "split": "eval",
+   "char_edit": 42,
+   "rel_edit": 0.42,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0023",
+   "split": "eval",
+   "char_edit": 23,
+   "rel_edit": 0.20175438596491227,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0032",
+   "split": "eval",
+   "char_edit": 26,
+   "rel_edit": 0.3333333333333333,
+   "words_added": 5,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0020",
+   "split": "eval",
+   "char_edit": 24,
+   "rel_edit": 0.14906832298136646,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0057",
+   "split": "eval",
+   "char_edit": 40,
+   "rel_edit": 0.3225806451612903,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0027",
+   "split": "eval",
+   "char_edit": 37,
+   "rel_edit": 0.2483221476510067,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0030",
+   "split": "eval",
+   "char_edit": 36,
+   "rel_edit": 0.21428571428571427,
+   "words_added": 6,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0036",
+   "split": "eval",
+   "char_edit": 86,
+   "rel_edit": 0.7818181818181819,
+   "words_added": 16,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0008",
+   "split": "eval",
+   "char_edit": 46,
+   "rel_edit": 0.3006535947712418,
+   "words_added": 9,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_medium_0027",
+   "split": "eval",
+   "char_edit": 23,
+   "rel_edit": 0.25555555555555554,
+   "words_added": 4,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0014",
+   "split": "eval",
+   "char_edit": 37,
+   "rel_edit": 0.3894736842105263,
+   "words_added": 7,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 2
+  },
+  {
+   "traj_id": "ecommerce_hard_0068",
+   "split": "eval",
+   "char_edit": 12,
+   "rel_edit": 0.06936416184971098,
+   "words_added": 2,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_hard_0017",
+   "split": "eval",
+   "char_edit": 12,
+   "rel_edit": 0.10084033613445378,
+   "words_added": 2,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_0039",
+   "split": "eval",
+   "char_edit": 40,
+   "rel_edit": 0.6451612903225806,
+   "words_added": 8,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "ecommerce_medium_0009",
+   "split": "eval",
+   "char_edit": 10,
+   "rel_edit": 0.060240963855421686,
+   "words_added": 2,
+   "kept_old_words": 1.0,
+   "pure_insertion": true,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "public_services_0029",
+   "split": "eval",
+   "char_edit": 8,
+   "rel_edit": 0.06666666666666667,
+   "words_added": -1,
+   "kept_old_words": 0.8888888888888888,
+   "pure_insertion": false,
+   "n_values_added": 1
+  },
+  {
+   "traj_id": "public_services_medium_0003",
+   "split": "eval",
+   "char_edit": 5,
+   "rel_edit": 0.04201680672268908,
+   "words_added": 0,
+   "kept_old_words": 0.9259259259259259,
+   "pure_insertion": false,
+   "n_values_added": 1
+  }
+ ]
+}

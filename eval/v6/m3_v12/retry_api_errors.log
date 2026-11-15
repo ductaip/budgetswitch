@@ -1,0 +1,11 @@
+[M3 run1] 280/284
+DONE M3 run1 → eval/v6/m3_v12/m3_gptoss_0shot_run1_v12.jsonl
+  rate-limited; waiting 1.0 min (retry 1)
+  rate-limited; waiting 8.5 min (retry 1)
+  rate-limited; waiting 1.1 min (retry 2)
+[M3 run1] 280/284
+  rate-limited; waiting 8.9 min (retry 1)
+  rate-limited; waiting 9.9 min (retry 1)
+  rate-limited; waiting 9.4 min (retry 1)
+  rate-limited; waiting 10.3 min (retry 1)
+DONE M3 run1 → eval/v6/m3_v12/m3_qwen27b_0shot_v12.jsonl

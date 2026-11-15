@@ -1,0 +1,725 @@
+{
+  "instructions": "Xem eval/v6/CHECKS_GUIDE.md mục 1.",
+  "fill_fields": [
+    "meaning_preserved",
+    "natural"
+  ],
+  "items": [
+    {
+      "item_id": "R01",
+      "traj_id": "banking_medium_0039",
+      "split": "eval",
+      "old_query": "So sánh lãi suất tiết kiệm 3 tháng và 6 tháng trước khi mở tài khoản mới",
+      "new_query": "So sánh lãi suất tiết kiệm 3 tháng và 6 tháng trước khi mở tài khoản mới với mã khách hàng KH002 và tiền gửi ban đầu 5.000.000đ",
+      "added_values": [
+        "open_savings_account.customer_id=\"KH002\"",
+        "open_savings_account.initial_deposit=5000000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": "hơi liệt kê mã KH + số tiền, nhưng vẫn hiểu được"
+    },
+    {
+      "item_id": "R02",
+      "traj_id": "travel_0014",
+      "split": "train",
+      "old_query": "Tìm thông tin hành lý của chuyến bay VN789 và đặt vé cho 2 người từ Hà Nội đến TP.HCM vào ngày 15/02/2025",
+      "new_query": "Tìm thông tin hành lý của chuyến bay VN789 với lớp ghế economy và đặt vé cho 2 người từ Hà Nội đến TP.HCM vào ngày 15/02/2025",
+      "added_values": [
+        "baggage_info.seat_class=\"economy\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R03",
+      "traj_id": "ecommerce_hard_0015",
+      "split": "train",
+      "old_query": "So sánh giá thực phẩm chức năng và mua với voucher 5% ở sendo",
+      "new_query": "So sánh giá thực phẩm chức năng và mua với voucher 5% ở sendo, thêm 1 chiếc vào giỏ hàng và áp mã giảm giá \"SALE05\"",
+      "added_values": [
+        "add_to_cart.quantity=1",
+        "apply_voucher.voucher_code=\"SALE05\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R04",
+      "traj_id": "ecommerce_hard_0034",
+      "split": "train",
+      "old_query": "Mua mỹ phẩm và theo dõi đơn hàng",
+      "new_query": "Mua 2 chiếc Son MAC giá không quá 500.000đ và giao tới 123 Nguyễn Trãi, Q1. Sau đó theo dõi đơn hàng.",
+      "added_values": [
+        "search_product.keyword=\"Son MAC\"",
+        "search_product.max_price=500000",
+        "add_to_cart.quantity=2",
+        "checkout.shipping_address=\"123 Nguyễn Trãi, Q1\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R05",
+      "traj_id": "ecommerce_hard_0037",
+      "split": "train",
+      "old_query": "Mua điện thoại Samsung mới, sau khi so sánh giá và áp dụng voucher 10% trên Tiki",
+      "new_query": "Mua điện thoại Samsung mới, giá tối đa 15.000.000đ, mua 1 chiếc, sau khi so sánh giá và áp dụng voucher TIKI10 trên Tiki",
+      "added_values": [
+        "search_product.max_price=15000000",
+        "add_to_cart.quantity=1",
+        "apply_voucher.voucher_code=\"TIKI10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R06",
+      "traj_id": "info_retrieval_medium_0036",
+      "split": "train",
+      "old_query": "Tôi muốn biết thời tiết ở Hà Nội vào ngày mai và dịch một đoạn văn bản từ tiếng Anh sang tiếng Việt",
+      "new_query": "Tôi muốn biết thời tiết ở Hà Nội vào ngày mai và dịch đoạn văn bản \"Hello, how are you?\" từ tiếng Anh sang tiếng Việt",
+      "added_values": [
+        "translate_text.text=\"Hello, how are you?\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R07",
+      "traj_id": "ecommerce_hard_0011",
+      "split": "train",
+      "old_query": "Tìm mỹ phẩm dưỡng da trên Shopee, thêm vào giỏ hàng, nhưng sau đó muốn đổi sang sản phẩm khác vì không hài lòng, cuối cùng lại thêm vào giỏ hàng và thanh toán",
+      "new_query": "Tìm mỹ phẩm dưỡng da tự nhiên trên Shopee với giá tối đa 2.000.000đ, thêm 1 chiếc vào giỏ hàng, sau đó muốn đổi sang sản phẩm khác vì không hài lòng, yêu cầu trả hàng cho đơn hàng ORD789, cuối cùng lại thêm 2 chiếc vào giỏ hàng và thanh toán",
+      "added_values": [
+        "search_product.max_price=2000000",
+        "add_to_cart.quantity=1",
+        "return_request.order_id=\"ORD789\"",
+        "search_product.keyword=\"mỹ phẩm dưỡng da tự nhiên\"",
+        "add_to_cart.quantity=2"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": "query dài, nhiều thông tin kỹ thuật nhưng vẫn giữ ý cũ"
+    },
+    {
+      "item_id": "R08",
+      "traj_id": "ecommerce_0013",
+      "split": "train",
+      "old_query": "Yêu cầu trả hàng vì sản phẩm không đúng như mô tả, sử dụng phương thức hoàn tiền về ví",
+      "new_query": "Yêu cầu trả hàng vì sản phẩm không đúng như mô tả, mã đơn hàng DH12345, sử dụng phương thức hoàn tiền về ví",
+      "added_values": [
+        "return_request.order_id=\"DH12345\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R09",
+      "traj_id": "ecommerce_hard_0107",
+      "split": "train",
+      "old_query": "So sánh giá và mua 3 bộ Vest thời trang cho nam giới, gồm 2 bộ từ Shopee và 1 bộ từ Lazada, theo dõi đơn hàng",
+      "new_query": "So sánh giá Bộ Vest nam thời trang, mua 3 bộ Vest thời trang cho nam giới, gồm 2 bộ từ Shopee và 1 bộ từ Lazada, với giá tối đa 1.000.000đ, theo dõi đơn hàng",
+      "added_values": [
+        "compare_prices.product_name=\"Bộ Vest nam thời trang\"",
+        "search_product.max_price=1000000",
+        "search_product.max_price=1000000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R10",
+      "traj_id": "ecommerce_hard_0040",
+      "split": "train",
+      "old_query": "Mua mỹ phẩm trên Tiki, nhưng sau đó muốn hủy đơn hàng vì không cần nữa",
+      "new_query": "Mua mỹ phẩm trên Tiki với giá tối đa 500.000đ, số lượng 2 chiếc, địa chỉ giao hàng Hà Nội. Sau đó muốn hủy đơn hàng vì không cần nữa, áp mã giảm giá TIKI10 và số lượng 1 chiếc.",
+      "added_values": [
+        "search_product.max_price=500000",
+        "add_to_cart.quantity=2",
+        "checkout.shipping_address=\"Hà Nội\"",
+        "search_product.max_price=500000",
+        "add_to_cart.quantity=1",
+        "apply_voucher.voucher_code=\"TIKI10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": "câu hơi dài, trộn nhiều bước"
+    },
+    {
+      "item_id": "R11",
+      "traj_id": "travel_hard_0097",
+      "split": "train",
+      "old_query": "Tìm chuyến bay từ Hải Phòng đến Sa Pa ngày 15/05/2024, đặt vé cho 1 người, sau đó tìm chuyến bay từ Sa Pa đến Hà Nội ngày 18/05/2024 và đặt vé, cuối cùng hỏi thông tin hành lý",
+      "new_query": "Tìm chuyến bay từ Hải Phòng đến Sa Pa ngày 15/05/2024, đặt vé cho 1 người, tên hành khách là Nguyễn Văn I, sau đó tìm chuyến bay từ Sa Pa đến Hà Nội ngày 18/05/2024 và đặt vé, tên hành khách là Nguyễn Văn I, cuối cùng hỏi thông tin hành lý",
+      "added_values": [
+        "book_flight.passenger_names=\"Nguyễn Văn I\"",
+        "book_flight.passenger_names=\"Nguyễn Văn I\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R12",
+      "traj_id": "ecommerce_hard_0106",
+      "split": "train",
+      "old_query": "Mua điện thoại và máy tính bảng cho gia đình, gồm 2 điện thoại Samsung và 1 máy tính bảng iPad, dùng mã giảm giá gia đình",
+      "new_query": "Mua điện thoại và máy tính bảng cho gia đình, gồm 2 điện thoại Samsung và 1 máy tính bảng iPad, dùng mã giảm giá gia đình, giá tối đa 15 triệu cho điện thoại và 20 triệu cho máy tính bảng, mã giảm giá GIAĐINH10.",
+      "added_values": [
+        "search_product.max_price=15000000",
+        "search_product.max_price=20000000",
+        "apply_voucher.voucher_code=\"GIAĐINH10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R13",
+      "traj_id": "travel_hard_0007",
+      "split": "eval",
+      "old_query": "Tìm chuyến tàu từ Hải Phòng đến Hà Nội ngày 20/10/2024 và đặt vé máy bay từ Hà Nội đến Nha Trang ngày 22/10/2024",
+      "new_query": "Tìm chuyến tàu từ Hải Phòng đến Hà Nội ngày 20/10/2024 và đặt vé máy bay từ Hà Nội đến Nha Trang ngày 22/10/2024 cho hành khách Lê Văn C",
+      "added_values": [
+        "book_flight.passenger_names=\"Lê Văn C\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R14",
+      "traj_id": "travel_hard_0071",
+      "split": "eval",
+      "old_query": "Tìm chuyến bay từ Cần Thơ đến Phú Quốc ngày 10/01/2025 và đặt vé cho 3 người, sau đó đặt phòng khách sạn tại Phú Quốc từ 12/01/2025 đến 14/01/2025",
+      "new_query": "Tìm chuyến bay từ Cần Thơ đến Phú Quốc ngày 10/01/2025 và đặt vé cho 3 người: Lê Văn F, Nguyễn Văn G, Trần Thị H, sau đó đặt phòng khách sạn tại Phú Quốc từ 12/01/2025 đến 14/01/2025",
+      "added_values": [
+        "book_flight.passenger_names=\"Lê Văn F\"",
+        "book_flight.passenger_names=\"Nguyễn Văn G\"",
+        "book_flight.passenger_names=\"Trần Thị H\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R15",
+      "traj_id": "ecommerce_hard_0009",
+      "split": "train",
+      "old_query": "Mua điện tử gia dụng Panasonic trên Shopee, kiểm tra giá trước khi mua và yêu cầu trả hàng nếu sản phẩm không đúng mô tả",
+      "new_query": "Mua điện tử gia dụng Panasonic trên Shopee, kiểm tra giá trước khi mua và yêu cầu trả hàng nếu sản phẩm không đúng mô tả, thêm vào giỏ hàng 1 chiếc.",
+      "added_values": [
+        "add_to_cart.quantity=1"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R16",
+      "traj_id": "travel_medium_0027",
+      "split": "eval",
+      "old_query": "Đặt vé máy bay từ Đà Nẵng đến Nha Trang vào ngày 25/06/2024, sau đó tìm khách sạn tại Nha Trang từ ngày 26/06/2024 đến 28/06/2024 cho 2 người",
+      "new_query": "Đặt vé máy bay từ Đà Nẵng đến Nha Trang vào ngày 25/06/2024 cho hành khách Trần Văn E và Lê Thị F, sau đó tìm khách sạn tại Nha Trang từ ngày 26/06/2024 đến 28/06/2024 cho 2 người",
+      "added_values": [
+        "book_flight.passenger_names=\"Trần Văn E\"",
+        "book_flight.passenger_names=\"Lê Thị F\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R17",
+      "traj_id": "travel_medium_0000",
+      "split": "eval",
+      "old_query": "Tôi muốn đặt vé máy bay từ Hà Nội đến Đà Nẵng vào ngày 15/02/2024 và đặt khách sạn 2 đêm tại Đà Nẵng",
+      "new_query": "Tôi muốn đặt vé máy bay từ Hà Nội đến Đà Nẵng vào ngày 15/02/2024 và đặt khách sạn 2 đêm tại Đà Nẵng, ngày trả phòng là 17/02/2024",
+      "added_values": [
+        "search_hotel.checkout=\"17/02/2024\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R18",
+      "traj_id": "public_services_medium_0019",
+      "split": "train",
+      "old_query": "Tôi muốn tra cứu tình trạng hồ sơ và lệ phí cho dịch vụ đăng ký doanh nghiệp",
+      "new_query": "Tôi muốn tra cứu tình trạng hồ sơ và lệ phí cho dịch vụ đăng ký doanh nghiệp, mã biên nhận là 0012345678",
+      "added_values": [
+        "document_status.receipt_number=\"0012345678\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R19",
+      "traj_id": "ecommerce_medium_0024",
+      "split": "train",
+      "old_query": "So sánh giá sách 'Tắt đèn' của Ngô Tất Tố trên các sàn thương mại điện tử và mua trên Sendo",
+      "new_query": "So sánh giá sách 'Sách Tắt đèn Ngô Tất Tố' trên các sàn thương mại điện tử và mua trên Sendo",
+      "added_values": [
+        "compare_prices.product_name=\"Sách Tắt đèn Ngô Tất Tố\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R20",
+      "traj_id": "ecommerce_hard_0027",
+      "split": "eval",
+      "old_query": "Mua điện thoại Samsung Galaxy S22 Ultra và theo dõi đơn hàng",
+      "new_query": "Mua điện thoại Samsung Galaxy S22 Ultra với giá tối đa 20.000.000đ, số lượng 1 chiếc, giao hàng tới 123 Nguyễn Trãi, Q1, TP.HCM và theo dõi đơn hàng.",
+      "added_values": [
+        "search_product.max_price=20000000",
+        "add_to_cart.quantity=1",
+        "checkout.shipping_address=\"123 Nguyễn Trãi, Q1, TP.HCM\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R21",
+      "traj_id": "info_retrieval_medium_0035",
+      "split": "train",
+      "old_query": "Dịch văn bản từ tiếng Trung sang tiếng Anh và tìm hiểu về văn hóa Trung Quốc",
+      "new_query": "Dịch văn bản \"中華人民共和國\" từ tiếng Trung sang tiếng Anh và tìm hiểu về văn hóa Trung Quốc",
+      "added_values": [
+        "translate_text.text=\"中華人民共和國\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R22",
+      "traj_id": "ecommerce_hard_0074",
+      "split": "train",
+      "old_query": "Tìm kiếm và mua mỹ phẩm dưỡng da Laneige trên Sendo, sau đó yêu cầu trả hàng và áp dụng mã giảm giá cho đơn hàng mới",
+      "new_query": "Tìm kiếm và mua mỹ phẩm dưỡng da Laneige trên Sendo, thêm 1 chiếc vào giỏ hàng, sau đó yêu cầu trả hàng vì sản phẩm hết hạn sử dụng và áp dụng mã giảm giá SENDO10 cho đơn hàng mới",
+      "added_values": [
+        "add_to_cart.quantity=1",
+        "return_request.reason=\"sản phẩm hết hạn sử dụng\"",
+        "apply_voucher.voucher_code=\"SENDO10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R23",
+      "traj_id": "ecommerce_medium_0015",
+      "split": "train",
+      "old_query": "Tìm sách giáo khoa trên Shopee và mua hàng với voucher giảm giá",
+      "new_query": "Tìm sách giáo khoa trên Shopee với giá tối đa 1.000.000đ, mua 2 chiếc và áp mã giảm giá \"STUDENT10\"",
+      "added_values": [
+        "search_product.max_price=1000000",
+        "add_to_cart.quantity=2",
+        "apply_voucher.voucher_code=\"STUDENT10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R24",
+      "traj_id": "banking_0027",
+      "split": "eval",
+      "old_query": "Lịch sử giao dịch của tôi từ ngày 01/01/2024 đến 31/12/2024 là gì?",
+      "new_query": "Lịch sử giao dịch của tôi từ ngày 01/01/2024 đến 31/12/2024 với số tài khoản 1234567890 là gì?",
+      "added_values": [
+        "transaction_history.account_number=\"1234567890\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R25",
+      "traj_id": "travel_hard_0106",
+      "split": "train",
+      "old_query": "Tìm chuyến tàu từ Hà Nội đến Hải Phòng, sau đó tìm khách sạn tại Hải Phòng cho 3 người",
+      "new_query": "Tìm chuyến tàu từ Hà Nội đến Hải Phòng vào ngày 25/05/2024, sau đó tìm khách sạn tại Hải Phòng cho 3 người, nhận phòng vào ngày 25/05/2024 và trả phòng vào ngày 27/05/2024",
+      "added_values": [
+        "search_train.date=\"25/05/2024\"",
+        "search_hotel.checkout=\"27/05/2024\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R26",
+      "traj_id": "banking_hard_0000",
+      "split": "train",
+      "old_query": "Tôi muốn mở tài khoản tiết kiệm và kiểm tra lãi suất trước khi thực hiện giao dịch",
+      "new_query": "Tôi muốn mở tài khoản tiết kiệm với mã khách hàng 12345 và tiền gửi ban đầu 10.000.000đ, kiểm tra lãi suất trước khi thực hiện giao dịch, sau đó tra cứu số dư tài khoản 1234567890.",
+      "added_values": [
+        "open_savings_account.customer_id=\"12345\"",
+        "open_savings_account.initial_deposit=10000000",
+        "check_balance.account_number=\"1234567890\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": "thêm cả bước check_balance, câu hơi dài"
+    },
+    {
+      "item_id": "R27",
+      "traj_id": "info_retrieval_medium_0012",
+      "split": "eval",
+      "old_query": "Tra cứu thông tin về thủ đô của Pháp và tính toán diện tích của thành phố",
+      "new_query": "Tra cứu thông tin về thủ đô của Pháp và tính toán diện tích của thành phố với biểu thức \"10 * 20\"",
+      "added_values": [
+        "calculate.expression=\"10 * 20\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": "biểu thức '10 * 20' không liên quan diện tích thành phố, hơi gượng"
+    },
+    {
+      "item_id": "R28",
+      "traj_id": "ecommerce_hard_0028",
+      "split": "train",
+      "old_query": "So sánh giá và mua sách giáo khoa lớp 1 với voucher 10%",
+      "new_query": "So sánh giá và mua sách giáo khoa lớp 1 với voucher 10% với giá tối đa 500.000đ và mua 2 chiếc",
+      "added_values": [
+        "search_product.max_price=500000",
+        "add_to_cart.quantity=2"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R29",
+      "traj_id": "travel_hard_0086",
+      "split": "train",
+      "old_query": "Đặt vé bay từ Đà Lạt đến Phú Quốc ngày 10/04/2024 và hỏi thông tin hành lý",
+      "new_query": "Đặt vé bay từ Đà Lạt đến Phú Quốc ngày 10/04/2024 cho hành khách Lê Văn C và hỏi thông tin hành lý",
+      "added_values": [
+        "book_flight.passenger_names=\"Lê Văn C\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R30",
+      "traj_id": "ecommerce_hard_0109",
+      "split": "train",
+      "old_query": "So sánh giá và mua 1 bộ mỹ phẩm chăm sóc da và 1 bộ trang điểm, thanh toán bằng Ví MoMo",
+      "new_query": "So sánh giá và mua 1 bộ mỹ phẩm chăm sóc da với giá tối đa 500.000đ và 1 bộ trang điểm với giá tối đa 1.000.000đ, thanh toán bằng Ví MoMo",
+      "added_values": [
+        "search_product.max_price=500000",
+        "search_product.max_price=1000000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R31",
+      "traj_id": "ecommerce_medium_0031",
+      "split": "eval",
+      "old_query": "So sánh giá máy lạnh Panasonic và mua trên Tiki với áp dụng voucher giảm 10%",
+      "new_query": "So sánh giá máy lạnh Panasonic và mua trên Tiki với áp dụng voucher giảm 10% với 1 chiếc, áp mã giảm giá TIKI10",
+      "added_values": [
+        "add_to_cart.quantity=1",
+        "apply_voucher.voucher_code=\"TIKI10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R32",
+      "traj_id": "ecommerce_hard_0018",
+      "split": "train",
+      "old_query": "Tìm và mua 3 chiếc quần jeans cho các thành viên trong gia đình, sau đó theo dõi đơn hàng",
+      "new_query": "Tìm và mua 3 chiếc quần jeans cho các thành viên trong gia đình, với keyword \"quần jeans nam nữ\" và giá tối đa 500.000đ, sau đó theo dõi đơn hàng",
+      "added_values": [
+        "search_product.keyword=\"quần jeans nam nữ\"",
+        "search_product.max_price=500000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R33",
+      "traj_id": "public_services_medium_0015",
+      "split": "eval",
+      "old_query": "Tôi muốn so sánh các gói bảo hiểm hiện tại và đăng ký một gói mới",
+      "new_query": "Tôi muốn so sánh các gói bảo hiểm hiện tại và đăng ký một gói mới. Tôi cần tra cứu BHXH với mã số 1234567890 và tên Nguyễn Văn A.",
+      "added_values": [
+        "lookup_bhxh.bhxh_number=\"1234567890\"",
+        "lookup_bhxh.full_name=\"Nguyễn Văn A\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": "thêm tra cứu BHXH không liên quan trực tiếp đến so sánh gói bảo hiểm"
+    },
+    {
+      "item_id": "R34",
+      "traj_id": "ecommerce_medium_0000",
+      "split": "train",
+      "old_query": "Mua điện thoại Samsung mới và theo dõi đơn hàng",
+      "new_query": "Mua điện thoại Samsung mới với giá tối đa 10.000.000đ và mua 1 chiếc, sau đó theo dõi đơn hàng",
+      "added_values": [
+        "search_product.max_price=10000000",
+        "add_to_cart.quantity=1"
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R35",
+      "traj_id": "ecommerce_hard_0050",
+      "split": "eval",
+      "old_query": "Mua quà cho người thân, gồm 1 bộ sách và 1 chiếc điện thoại, sau đó theo dõi đơn hàng",
+      "new_query": "Mua quà cho người thân, gồm 1 bộ sách hay và 1 chiếc điện thoại mới, giá tối đa 10.000.000đ, sau đó theo dõi đơn hàng",
+      "added_values": [
+        "search_product.keyword=\"bộ sách hay\"",
+        "search_product.keyword=\"điện thoại mới\"",
+        "search_product.max_price=10000000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R36",
+      "traj_id": "info_retrieval_medium_0014",
+      "split": "eval",
+      "old_query": "Dịch văn bản từ tiếng Việt sang tiếng Anh và tìm thông tin về thời tiết tại thành phố New York",
+      "new_query": "Dịch văn bản \"thời tiết tại New York\" từ tiếng Việt sang tiếng Anh và tìm thông tin về thời tiết tại thành phố New York",
+      "added_values": [
+        "translate_text.text=\"thời tiết tại New York\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R37",
+      "traj_id": "ecommerce_medium_0009",
+      "split": "eval",
+      "old_query": "Mua điện thoại Samsung mới sau khi hủy đơn hàng cũ và áp dụng voucher giảm giá",
+      "new_query": "Mua điện thoại Samsung mới sau khi hủy đơn hàng cũ DH12345 vì sản phẩm không đúng yêu cầu và áp dụng voucher giảm giá, tìm sản phẩm Samsung với giá tối đa 15.000.000đ",
+      "added_values": [
+        "return_request.order_id=\"DH12345\"",
+        "return_request.reason=\"Sản phẩm không đúng yêu cầu\"",
+        "search_product.max_price=15000000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R38",
+      "traj_id": "ecommerce_hard_0038",
+      "split": "train",
+      "old_query": "Đặt hàng quần áo nam trên Lazada, nhưng sau đó muốn trả hàng và đặt lại",
+      "new_query": "Đặt 2 chiếc quần áo nam trên Lazada, sau đó muốn trả hàng vì không hợp size và đặt lại 1 chiếc quần áo nam.",
+      "added_values": [
+        "add_to_cart.quantity=2",
+        "return_request.reason=\"không hợp size\"",
+        "add_to_cart.quantity=1"
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R39",
+      "traj_id": "ecommerce_medium_0001",
+      "split": "train",
+      "old_query": "Mua thời trang và trả hàng",
+      "new_query": "Mua thời trang và trả hàng: tìm quần jeans nữ với giá không quá 500.000đ, thêm 1 chiếc vào giỏ, sau đó yêu cầu trả hàng vì không phù hợp.",
+      "added_values": [
+        "search_product.keyword=\"quần jeans nữ\"",
+        "search_product.max_price=500000",
+        "add_to_cart.quantity=1",
+        "return_request.reason=\"không phù hợp\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R40",
+      "traj_id": "ecommerce_hard_0019",
+      "split": "train",
+      "old_query": "So sánh giá của máy lọc nước và mua 1 chiếc cho gia đình, sau đó yêu cầu trả hàng vì sản phẩm không đúng như mô tả",
+      "new_query": "So sánh giá của máy lọc nước và mua 1 chiếc cho gia đình, sau đó yêu cầu trả hàng vì sản phẩm không đúng như mô tả. Tìm sản phẩm máy lọc nước tốt nhất với giá không vượt quá 10.000.000đ.",
+      "added_values": [
+        "search_product.keyword=\"máy lọc nước tốt nhất\"",
+        "search_product.max_price=10000000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R41",
+      "traj_id": "ecommerce_hard_0039",
+      "split": "train",
+      "old_query": "Mua sách trên Sendo, nhưng sau đó muốn đổi sang mua trên Shopee để được giá rẻ hơn",
+      "new_query": "Mua 1 chiếc sách trên Sendo, sau đó muốn đổi sang mua trên Shopee để được giá rẻ hơn. Để trả hàng, lý do là \"đổi ý\" và áp mã giảm giá \"SHOPEE5\".",
+      "added_values": [
+        "add_to_cart.quantity=1",
+        "return_request.reason=\"đổi ý\"",
+        "apply_voucher.voucher_code=\"SHOPEE5\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R42",
+      "traj_id": "ecommerce_hard_0051",
+      "split": "eval",
+      "old_query": "Mua trang phục cho các thành viên trong gia đình, gồm 2 áo và 1 quần, sau đó áp dụng voucher giảm giá",
+      "new_query": "Mua trang phục cho các thành viên trong gia đình, gồm 2 áo thể thao và 1 quần jeans với giá tối đa 2.000.000đ, sau đó áp dụng voucher giảm giá FAM10",
+      "added_values": [
+        "search_product.keyword=\"áo thể thao\"",
+        "search_product.keyword=\"quần jeans\"",
+        "search_product.max_price=2000000",
+        "apply_voucher.voucher_code=\"FAM10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R43",
+      "traj_id": "travel_hard_0003",
+      "split": "train",
+      "old_query": "Tìm chuyến bay từ Hà Nội đến Đà Lạt ngày 10/08/2024, đặt vé và tìm khách sạn tại Đà Lạt từ 10/08/2024 đến 13/08/2024",
+      "new_query": "Tìm chuyến bay từ Hà Nội đến Đà Lạt ngày 10/08/2024, đặt vé cho hành khách Nguyễn Thị E và tìm khách sạn tại Đà Lạt từ 10/08/2024 đến 13/08/2024",
+      "added_values": [
+        "book_flight.passenger_names=\"Nguyễn Thị E\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R44",
+      "traj_id": "ecommerce_medium_0008",
+      "split": "eval",
+      "old_query": "So sánh giá và mua gian hàng thời trang",
+      "new_query": "So sánh giá quần jeans nam và mua gian hàng thời trang với giá tối đa 1.500.000đ, mua 1 chiếc quần jeans nam, giao hàng tới 456 Lê Thánh Tôn, Q.1, TP.HCM",
+      "added_values": [
+        "compare_prices.product_name=\"quần jeans nam\"",
+        "search_product.max_price=1500000",
+        "add_to_cart.quantity=1",
+        "checkout.shipping_address=\"456 Lê Thánh Tôn, Q.1, TP.HCM\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": ""
+    },
+    {
+      "item_id": "R45",
+      "traj_id": "ecommerce_hard_0017",
+      "split": "eval",
+      "old_query": "Mua 2 chiếc điện thoại Samsung Galaxy S22 Ultra và áp dụng voucher 10% giảm giá cho cả gia đình",
+      "new_query": "Mua 2 chiếc điện thoại Samsung Galaxy S22 Ultra với giá tối đa 20.000.000đ và áp dụng voucher GIAĐINH10 cho cả gia đình",
+      "added_values": [
+        "search_product.max_price=20000000",
+        "apply_voucher.voucher_code=\"GIAĐINH10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R46",
+      "traj_id": "ecommerce_medium_0034",
+      "split": "train",
+      "old_query": "Mua điện thoại Samsung mới trên Tiki sau khi xem giá và áp mã giảm giá 10%",
+      "new_query": "Mua điện thoại Samsung mới trên Tiki với giá tối đa 15.000đ, số lượng 1 chiếc, và áp mã giảm giá \"TIKI10\" sau khi xem giá.",
+      "added_values": [
+        "search_product.max_price=15000",
+        "add_to_cart.quantity=1",
+        "apply_voucher.voucher_code=\"TIKI10\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 2,
+      "note": "max_price=15000 quá thấp cho điện thoại, nhưng vẫn chỉ thêm giá trị được liệt kê"
+    },
+    {
+      "item_id": "R47",
+      "traj_id": "ecommerce_hard_0013",
+      "split": "eval",
+      "old_query": "Tìm sách giáo khoa lớp 1 cho con và theo dõi đơn hàng",
+      "new_query": "Tìm sách giáo khoa lớp 1 cho con, đặt hàng với địa chỉ giao hàng là Hà Nội và theo dõi đơn hàng.",
+      "added_values": [
+        "checkout.shipping_address=\"Hà Nội\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R48",
+      "traj_id": "ecommerce_medium_0002",
+      "split": "train",
+      "old_query": "Mua sách và theo dõi đơn hàng",
+      "new_query": "Mua sách self-help với giá không quá 200.000đ và thêm 1 chiếc vào giỏ hàng. Sau đó, theo dõi đơn hàng.",
+      "added_values": [
+        "search_product.keyword=\"sách self-help\"",
+        "search_product.max_price=200000",
+        "add_to_cart.quantity=1"
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R49",
+      "traj_id": "travel_hard_0084",
+      "split": "train",
+      "old_query": "Tôi muốn đi từ Hà Nội đến Đà Lạt vào ngày 20/09/2024 với 4 người và cần tìm thông tin hành lý cho chuyến bay này, cũng như đặt khách sạn tại Đà Lạt từ ngày 20/09/2024 đến 24/09/2024.",
+      "new_query": "Tôi muốn đi từ Hà Nội đến Đà Lạt vào ngày 20/09/2024 với 4 người, tên hành khách là Nguyễn Văn L, Trần Thị M, Lê Văn N, Phạm Thị O, và cần tìm thông tin hành lý cho chuyến bay này, cũng như đặt khách sạn tại Đà Lạt từ ngày 20/09/2024 đến 24/09/2024.",
+      "added_values": [
+        "book_flight.passenger_names=\"Nguyễn Văn L\"",
+        "book_flight.passenger_names=\"Trần Thị M\"",
+        "book_flight.passenger_names=\"Lê Văn N\"",
+        "book_flight.passenger_names=\"Phạm Thị O\""
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    },
+    {
+      "item_id": "R50",
+      "traj_id": "ecommerce_medium_0021",
+      "split": "train",
+      "old_query": "Mua 1 chiếc máy lọc nước và 1 gói thực phẩm chức năng cho gia đình",
+      "new_query": "Mua 1 chiếc máy lọc nước với giá tối đa 10.000.000đ và 1 gói thực phẩm chức năng với giá tối đa 2.000.000đ cho gia đình",
+      "added_values": [
+        "search_product.max_price=10000000",
+        "search_product.max_price=2000000"
+      ],
+      "meaning_preserved": "y",
+      "natural": 3,
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+[{"stream_name":"stdout","time":1.382855819,"data":"Mon Oct 26 22:24:33 2026       \n"}
+,{"stream_name":"stdout","time":1.38291095,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.382931954,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":1.382936977,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.38294136,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":1.382946623,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":1.382952533,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":1.382958468,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":1.382964134,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":1.382970173,"data":"| N/A   45C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":1.3829744050000001,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":1.38297842,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.3829845,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":1.382990703,"data":"| N/A   48C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":1.38299646,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":1.38300241,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.383008311,"data":"\n"}
+,{"stream_name":"stdout","time":1.383014092,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.3830200320000001,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":1.383026079,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":1.383032174,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":1.383036838,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":1.383041299,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":1.383047014,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.383051378,"data":"\n"}
+,{"stream_name":"stderr","time":56.552400418,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":57.899561252,"data":"[transformers] `torch_dtype` is deprecated! Use `dtype` instead!\n"}
+,{"stream_name":"stderr","time":80.216310299,"data":"\rFetching 2 files:   0%|          | 0/2 [00:00\u003c?, ?it/s]\rFetching 2 files:  50%|█████     | 1/2 [00:12\u003c00:12, 12.83s/it]\rFetching 2 files: 100%|██████████| 2/2 [00:22\u003c00:00, 10.68s/it]\rFetching 2 files: 100%|██████████| 2/2 [00:22\u003c00:00, 11.01s/it]\n"}
+,{"stream_name":"stderr","time":101.629686785,"data":"\rLoading weights:   0%|          | 0/434 [00:00\u003c?, ?it/s]\rLoading weights:   0%|          | 1/434 [00:00\u003c04:04,  1.77it/s]\rLoading weights:   1%|          | 3/434 [00:00\u003c01:40,  4.30it/s]\rLoading weights:   3%|▎         | 13/434 [00:00\u003c00:19, 22.02it/s]\rLoading weights:   4%|▍         | 18/434 [00:01\u003c00:15, 26.51it/s]\rLoading weights:   7%|▋         | 29/434 [00:01\u003c00:09, 41.32it/s]\rLoading weights:   9%|▉         | 40/434 [00:01\u003c00:06, 56.69it/s]\rLoading weights:  12%|█▏        | 52/434 [00:01\u003c00:05, 65.70it/s]\rLoading weights:  15%|█▍        | 63/434 [00:01\u003c00:04, 76.26it/s]\rLoading weights:  17%|█▋        | 75/434 [00:01\u003c00:04, 79.51it/s]\rLoading weights:  20%|██        | 87/434 [00:01\u003c00:04, 77.98it/s]\rLoading weights:  22%|██▏       | 97/434 [00:01\u003c00:04, 83.03it/s]\rLoading weights:  24%|██▍       | 106/434 [00:02\u003c00:04, 78.10it/s]\rLoading weights:  26%|██▋       | 115/434 [00:02\u003c00:04, 74.98it/s]\rLoading weights:  29%|██▊       | 124/434 [00:02\u003c00:03, 77.70it/s]\rLoading weights:  31%|███▏      | 136/434 [00:02\u003c00:03, 80.36it/s]\rLoading weights:  34%|███▍      | 147/434 [00:02\u003c00:03, 87.26it/s]\rLoading weights:  37%|███▋      | 159/434 [00:02\u003c00:03, 86.97it/s]\rLoading weights:  39%|███▊      | 168/434 [00:02\u003c00:03, 87.14it/s]\rLoading weights:  41%|████      | 177/434 [00:02\u003c00:03, 80.58it/s]\rLoading weights:  43%|████▎     | 186/434 [00:03\u003c00:03, 76.70it/s]\rLoading weights:  45%|████▌     | 197/434 [00:03\u003c00:03, 77.31it/s]\rLoading weights:  48%|████▊     | 209/434 [00:03\u003c00:02, 79.70it/s]\rLoading weights:  51%|█████     | 221/434 [00:03\u003c00:02, 81.55it/s]\rLoading weights:  53%|█████▎    | 232/434 [00:03\u003c00:02, 88.33it/s]\rLoading weights:  56%|█████▌    | 244/434 [00:03\u003c00:02, 87.60it/s]\rLoading weights:  59%|█████▉    | 256/434 [00:03\u003c00:02, 86.90it/s]\rLoading weights:  62%|██████▏   | 268/434 [00:03\u003c00:01, 86.27it/s]\rLoading weights:  64%|██████▍   | 279/434 [00:04\u003c00:01, 90.60it/s]\rLoading weights:  67%|██████▋   | 291/434 [00:04\u003c00:01, 88.88it/s]\rLoading weights:  70%|██████▉   | 303/434 [00:04\u003c00:01, 87.82it/s]\rLoading weights:  73%|███████▎  | 315/434 [00:04\u003c00:01, 86.63it/s]\rLoading weights:  75%|███████▍  | 325/434 [00:04\u003c00:01, 89.64it/s]\rLoading weights:  77%|███████▋  | 335/434 [00:04\u003c00:01, 84.15it/s]\rLoading weights:  79%|███████▉  | 344/434 [00:04\u003c00:01, 79.95it/s]\rLoading weights:  81%|████████▏ | 353/434 [00:05\u003c00:01, 74.55it/s]\rLoading weights:  84%|████████▍ | 365/434 [00:05\u003c00:00, 77.87it/s]\rLoading weights:  87%|████████▋ | 376/434 [00:05\u003c00:00, 84.79it/s]\rLoading weights:  89%|████████▉ | 387/434 [00:05\u003c00:00, 87.34it/s]\rLoading weights:  92%|█████████▏| 399/434 [00:05\u003c00:00, 86.62it/s]\rLoading weights:  95%|█████████▍| 411/434 [00:05\u003c00:00, 86.32it/s]\rLoading weights:  97%|█████████▋| 423/434 [00:05\u003c00:00, 86.19it/s]\rLoading weights: 100%|██████████| 434/434 [00:05\u003c00:00, 73.70it/s]\n"}
+,{"stream_name":"stderr","time":115.858214485,"data":"\rLoading weights:   0%|          | 0/199 [00:00\u003c?, ?it/s]\rLoading weights: 100%|██████████| 199/199 [00:00\u003c00:00, 2558.58it/s]\n"}
+,{"stream_name":"stdout","time":124.641402813,"data":"{\n"}
+,{"stream_name":"stdout","time":124.641436052,"data":"  \"task\": \"tf\",\n"}
+,{"stream_name":"stdout","time":124.641439744,"data":"  \"base_model\": \"Qwen/Qwen2.5-3B-Instruct\",\n"}
+,{"stream_name":"stdout","time":124.641442628,"data":"  \"adapter_path\": \"/kaggle/input/datasets/ductaiphan/budgetswitch-v5-bundle/tool_use_lora_v2\",\n"}
+,{"stream_name":"stdout","time":124.641445285,"data":"  \"adapter_sha256\": \"c704f9d562b6337741ab1b76de9be257ccb3c37edfad67c02524a3e51674d1d6\",\n"}
+,{"stream_name":"stdout","time":124.641448034,"data":"  \"data_sha256\": \"2b18d2a2e4738797d05b8418eb4038744db67da5bee1ccf64b4d6d402d8c9f30\",\n"}
+,{"stream_name":"stdout","time":124.641451027,"data":"  \"hardware\": \"2x Tesla T4 (device_map=auto, 4-bit nf4)\",\n"}
+,{"stream_name":"stdout","time":124.641453517,"data":"  \"decoding\": \"greedy (do_sample=False)\",\n"}
+,{"stream_name":"stdout","time":124.641455914,"data":"  \"seed\": 42,\n"}
+,{"stream_name":"stdout","time":124.64145839,"data":"  \"max_new_tokens\": {\n"}
+,{"stream_name":"stdout","time":124.641460788,"data":"    \"M0\": 150,\n"}
+,{"stream_name":"stdout","time":124.641463107,"data":"    \"M1\": 500,\n"}
+,{"stream_name":"stdout","time":124.641465347,"data":"    \"M2\": 800\n"}
+,{"stream_name":"stdout","time":124.641467717,"data":"  },\n"}
+,{"stream_name":"stdout","time":124.641469952,"data":"  \"prompt_template_hash\": {\n"}
+,{"stream_name":"stdout","time":124.641472354,"data":"    \"M0\": \"f3606b2224829a89\",\n"}
+,{"stream_name":"stdout","time":124.641474697,"data":"    \"M1\": \"47ded9f451ea5eb9\",\n"}
+,{"stream_name":"stdout","time":124.641477783,"data":"    \"M2\": \"9e192b09787040d1\"\n"}
+,{"stream_name":"stdout","time":124.641481245,"data":"  },\n"}
+,{"stream_name":"stdout","time":124.641483437,"data":"  \"retriever\": \"intfloat/multilingual-e5-base, k=10\",\n"}
+,{"stream_name":"stdout","time":124.641485847,"data":"  \"packages\": {\n"}
+,{"stream_name":"stdout","time":124.641488191,"data":"    \"python\": \"3.13.15\",\n"}
+,{"stream_name":"stdout","time":124.641490502,"data":"    \"torch\": \"2.11.0+cu128\",\n"}
+,{"stream_name":"stdout","time":124.641492889,"data":"    \"transformers\": \"5.16.1\",\n"}
+,{"stream_name":"stdout","time":124.641495289,"data":"    \"peft\": \"0.20.0\",\n"}
+,{"stream_name":"stdout","time":124.641497599,"data":"    \"bitsandbytes\": \"0.50.2\",\n"}
+,{"stream_name":"stdout","time":124.641499885,"data":"    \"accelerate\": \"1.14.0\",\n"}
+,{"stream_name":"stdout","time":124.641502262,"data":"    \"sentence-transformers\": \"5.7.0\",\n"}
+,{"stream_name":"stdout","time":124.641504612,"data":"    \"jsonschema\": \"4.26.0\"\n"}
+,{"stream_name":"stdout","time":124.64150702,"data":"  }\n"}
+,{"stream_name":"stdout","time":124.641509374,"data":"}\n"}
+,{"stream_name":"stdout","time":407.853168341,"data":"[tf] 10/284 steps, 4.7 min, eta 129 min\n"}
+,{"stream_name":"stdout","time":628.362443497,"data":"[tf] 20/284 steps, 8.4 min, eta 111 min\n"}
+,{"stream_name":"stdout","time":833.860510664,"data":"[tf] 30/284 steps, 11.8 min, eta 100 min\n"}
+,{"stream_name":"stdout","time":1115.067661308,"data":"[tf] 40/284 steps, 16.5 min, eta 101 min\n"}
+,{"stream_name":"stdout","time":1394.477019917,"data":"[tf] 50/284 steps, 21.2 min, eta 99 min\n"}
+,{"stream_name":"stdout","time":1622.094022471,"data":"[tf] 60/284 steps, 25.0 min, eta 93 min\n"}
+,{"stream_name":"stdout","time":1911.358820896,"data":"[tf] 70/284 steps, 29.8 min, eta 91 min\n"}
+,{"stream_name":"stdout","time":2127.526109571,"data":"[tf] 80/284 steps, 33.4 min, eta 85 min\n"}
+,{"stream_name":"stdout","time":2355.30617315,"data":"[tf] 90/284 steps, 37.2 min, eta 80 min\n"}
+,{"stream_name":"stdout","time":2577.732900557,"data":"[tf] 100/284 steps, 40.9 min, eta 75 min\n"}
+,{"stream_name":"stdout","time":2805.242503165,"data":"[tf] 110/284 steps, 44.7 min, eta 71 min\n"}
+,{"stream_name":"stdout","time":3019.036109682,"data":"[tf] 120/284 steps, 48.2 min, eta 66 min\n"}
+,{"stream_name":"stdout","time":3249.956704294,"data":"[tf] 130/284 steps, 52.1 min, eta 62 min\n"}
+,{"stream_name":"stdout","time":3467.089305666,"data":"[tf] 140/284 steps, 55.7 min, eta 57 min\n"}
+,{"stream_name":"stdout","time":3760.319267181,"data":"[tf] 150/284 steps, 60.6 min, eta 54 min\n"}
+,{"stream_name":"stdout","time":3983.762732667,"data":"[tf] 160/284 steps, 64.3 min, eta 50 min\n"}
+,{"stream_name":"stdout","time":4190.546661188,"data":"[tf] 170/284 steps, 67.8 min, eta 45 min\n"}
+,{"stream_name":"stdout","time":4409.600568705,"data":"[tf] 180/284 steps, 71.4 min, eta 41 min\n"}
+,{"stream_name":"stdout","time":4630.181517558,"data":"[tf] 190/284 steps, 75.1 min, eta 37 min\n"}
+,{"stream_name":"stdout","time":4863.783691599,"data":"[tf] 200/284 steps, 79.0 min, eta 33 min\n"}
+,{"stream_name":"stdout","time":5142.577382592,"data":"[tf] 210/284 steps, 83.6 min, eta 29 min\n"}
+,{"stream_name":"stdout","time":5439.73250589,"data":"[tf] 220/284 steps, 88.6 min, eta 26 min\n"}
+,{"stream_name":"stdout","time":5753.250523472,"data":"[tf] 230/284 steps, 93.8 min, eta 22 min\n"}
+,{"stream_name":"stdout","time":5945.723959454,"data":"[tf] 240/284 steps, 97.0 min, eta 18 min\n"}
+,{"stream_name":"stdout","time":6164.438996507,"data":"[tf] 250/284 steps, 100.7 min, eta 14 min\n"}
+,{"stream_name":"stdout","time":6364.721666644,"data":"[tf] 260/284 steps, 104.0 min, eta 10 min\n"}
+,{"stream_name":"stdout","time":6557.070492962,"data":"[tf] 270/284 steps, 107.2 min, eta 6 min\n"}
+,{"stream_name":"stdout","time":6807.672458195,"data":"[tf] 280/284 steps, 111.4 min, eta 2 min\n"}
+,{"stream_name":"stdout","time":6957.927064288,"data":"DONE tf → /kaggle/working/local_tf_v5.jsonl\n"}
+,{"stream_name":"stderr","time":6965.583161049,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":6965.583187594,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":6965.842155395,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":6965.842200708,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":6966.616267133,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":6967.619034197,"data":"[NbConvertApp] Writing 277857 bytes to __results__.html\n"}
+]

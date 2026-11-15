@@ -1,0 +1,356 @@
+{
+  "definition": "For every gold param value (list elements and nested values checked one by one)\nthe value is GROUNDED if it can be obtained from:\n  query       : appears in the user query after normalization\n                (NFC, lowercase, collapsed whitespace; also diacritic-free and\n                space-free forms; dates dd/mm/yyyy <-> yyyy-mm-dd; numbers incl.\n                \"1.000.000\", \"1,5 triệu\", \"500k\", \"2 tỷ\")\n  prev_obs    : appears in the observation of an earlier step (gold prefix\n                replayed through env/mock_tools.py)\n  enum        : value is in the tool schema's enum list (or equals a default;\n                the catalog currently declares no defaults)\n  boolean     : boolean param (yes/no is inferable from wording)\notherwise UNGROUNDED. A step is ungrounded if any gold param value is\nungrounded; a trajectory is ungrounded if any step is.",
+  "param_value_sources": {
+    "query": 844,
+    "enum": 318,
+    "UNGROUNDED": 502,
+    "UNGROUNDED_lenient": 411,
+    "lenient:lexicon": 18,
+    "prev_obs": 486,
+    "lenient:implicit_one": 73
+  },
+  "overall": {
+    "all": {
+      "steps": 1003,
+      "steps_ungrounded": 420,
+      "steps_ungrounded_lenient": 338,
+      "trajs": 375,
+      "trajs_ungrounded": 209,
+      "trajs_ungrounded_lenient": 191
+    }
+  },
+  "by_split": {
+    "eval": {
+      "steps": 284,
+      "steps_ungrounded": 119,
+      "steps_ungrounded_lenient": 97,
+      "trajs": 112,
+      "trajs_ungrounded": 61,
+      "trajs_ungrounded_lenient": 58
+    },
+    "train": {
+      "steps": 719,
+      "steps_ungrounded": 301,
+      "steps_ungrounded_lenient": 241,
+      "trajs": 263,
+      "trajs_ungrounded": 148,
+      "trajs_ungrounded_lenient": 133
+    }
+  },
+  "by_domain": {
+    "banking": {
+      "steps": 77,
+      "steps_ungrounded": 25,
+      "steps_ungrounded_lenient": 25,
+      "trajs": 55,
+      "trajs_ungrounded": 18,
+      "trajs_ungrounded_lenient": 18
+    },
+    "ecommerce": {
+      "steps": 599,
+      "steps_ungrounded": 290,
+      "steps_ungrounded_lenient": 219,
+      "trajs": 146,
+      "trajs_ungrounded": 115,
+      "trajs_ungrounded_lenient": 107
+    },
+    "info_retrieval": {
+      "steps": 83,
+      "steps_ungrounded": 23,
+      "steps_ungrounded_lenient": 14,
+      "trajs": 56,
+      "trajs_ungrounded": 21,
+      "trajs_ungrounded_lenient": 12
+    },
+    "public_services": {
+      "steps": 74,
+      "steps_ungrounded": 30,
+      "steps_ungrounded_lenient": 30,
+      "trajs": 53,
+      "trajs_ungrounded": 19,
+      "trajs_ungrounded_lenient": 19
+    },
+    "travel": {
+      "steps": 170,
+      "steps_ungrounded": 52,
+      "steps_ungrounded_lenient": 50,
+      "trajs": 65,
+      "trajs_ungrounded": 36,
+      "trajs_ungrounded_lenient": 35
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "steps": 142,
+      "steps_ungrounded": 14,
+      "steps_ungrounded_lenient": 9,
+      "trajs": 142,
+      "trajs_ungrounded": 14,
+      "trajs_ungrounded_lenient": 9
+    },
+    "hard": {
+      "steps": 679,
+      "steps_ungrounded": 320,
+      "steps_ungrounded_lenient": 249,
+      "trajs": 143,
+      "trajs_ungrounded": 133,
+      "trajs_ungrounded_lenient": 125
+    },
+    "medium": {
+      "steps": 182,
+      "steps_ungrounded": 86,
+      "steps_ungrounded_lenient": 80,
+      "trajs": 90,
+      "trajs_ungrounded": 62,
+      "trajs_ungrounded_lenient": 57
+    }
+  },
+  "eval_by_domain": {
+    "_train": {
+      "steps": 719,
+      "steps_ungrounded": 301,
+      "steps_ungrounded_lenient": 241,
+      "trajs": 263,
+      "trajs_ungrounded": 148,
+      "trajs_ungrounded_lenient": 133
+    },
+    "banking": {
+      "steps": 23,
+      "steps_ungrounded": 9,
+      "steps_ungrounded_lenient": 9,
+      "trajs": 16,
+      "trajs_ungrounded": 7,
+      "trajs_ungrounded_lenient": 7
+    },
+    "ecommerce": {
+      "steps": 169,
+      "steps_ungrounded": 86,
+      "steps_ungrounded_lenient": 65,
+      "trajs": 44,
+      "trajs_ungrounded": 33,
+      "trajs_ungrounded_lenient": 31
+    },
+    "info_retrieval": {
+      "steps": 25,
+      "steps_ungrounded": 5,
+      "steps_ungrounded_lenient": 4,
+      "trajs": 17,
+      "trajs_ungrounded": 5,
+      "trajs_ungrounded_lenient": 4
+    },
+    "public_services": {
+      "steps": 22,
+      "steps_ungrounded": 8,
+      "steps_ungrounded_lenient": 8,
+      "trajs": 16,
+      "trajs_ungrounded": 5,
+      "trajs_ungrounded_lenient": 5
+    },
+    "travel": {
+      "steps": 45,
+      "steps_ungrounded": 11,
+      "steps_ungrounded_lenient": 11,
+      "trajs": 19,
+      "trajs_ungrounded": 11,
+      "trajs_ungrounded_lenient": 11
+    }
+  },
+  "eval_by_difficulty": {
+    "_train": {
+      "steps": 719,
+      "steps_ungrounded": 301,
+      "steps_ungrounded_lenient": 241,
+      "trajs": 263,
+      "trajs_ungrounded": 148,
+      "trajs_ungrounded_lenient": 133
+    },
+    "easy": {
+      "steps": 43,
+      "steps_ungrounded": 5,
+      "steps_ungrounded_lenient": 4,
+      "trajs": 43,
+      "trajs_ungrounded": 5,
+      "trajs_ungrounded_lenient": 4
+    },
+    "hard": {
+      "steps": 188,
+      "steps_ungrounded": 91,
+      "steps_ungrounded_lenient": 70,
+      "trajs": 43,
+      "trajs_ungrounded": 39,
+      "trajs_ungrounded_lenient": 37
+    },
+    "medium": {
+      "steps": 53,
+      "steps_ungrounded": 23,
+      "steps_ungrounded_lenient": 23,
+      "trajs": 26,
+      "trajs_ungrounded": 17,
+      "trajs_ungrounded_lenient": 17
+    }
+  },
+  "top_ungrounded_params": [
+    [
+      "add_to_cart.quantity",
+      94
+    ],
+    [
+      "search_product.max_price",
+      69
+    ],
+    [
+      "book_flight.passenger_names",
+      60
+    ],
+    [
+      "apply_voucher.voucher_code",
+      54
+    ],
+    [
+      "search_product.keyword",
+      27
+    ],
+    [
+      "checkout.shipping_address",
+      21
+    ],
+    [
+      "return_request.reason",
+      20
+    ],
+    [
+      "compare_prices.product_name",
+      15
+    ],
+    [
+      "return_request.order_id",
+      10
+    ],
+    [
+      "search_hotel.checkout",
+      9
+    ],
+    [
+      "currency_convert.to_currency",
+      8
+    ],
+    [
+      "open_savings_account.customer_id",
+      6
+    ],
+    [
+      "currency_convert.from_currency",
+      6
+    ],
+    [
+      "translate_text.text",
+      6
+    ],
+    [
+      "book_public_appointment.date",
+      6
+    ],
+    [
+      "lookup_bhxh.bhxh_number",
+      5
+    ],
+    [
+      "lookup_bhxh.full_name",
+      5
+    ],
+    [
+      "book_public_appointment.office",
+      5
+    ],
+    [
+      "tax_inquiry.tax_code",
+      4
+    ],
+    [
+      "search_flight.date",
+      4
+    ]
+  ],
+  "top_ungrounded_values": [
+    [
+      "1",
+      73
+    ],
+    [
+      "2",
+      23
+    ],
+    [
+      "1234567890",
+      18
+    ],
+    [
+      "500000",
+      18
+    ],
+    [
+      "1000000",
+      11
+    ],
+    [
+      "Lê Văn C",
+      11
+    ],
+    [
+      "Nguyễn Văn A",
+      10
+    ],
+    [
+      "VND",
+      8
+    ],
+    [
+      "2000000",
+      8
+    ],
+    [
+      "5000000",
+      8
+    ],
+    [
+      "Hà Nội",
+      7
+    ],
+    [
+      "10000000",
+      7
+    ],
+    [
+      "USD",
+      6
+    ],
+    [
+      "20000000",
+      6
+    ],
+    [
+      "TIKI10",
+      5
+    ],
+    [
+      "15000000",
+      5
+    ],
+    [
+      "Nguyễn Thị D",
+      4
+    ],
+    [
+      "Nguyễn Văn I",
+      4
+    ],
+    [
+      "Trần Văn E",
+      4
+    ],
+    [
+      "KH001",
+      3
+    ]
+  ]
+}

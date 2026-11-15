@@ -1,0 +1,17 @@
+{
+  "id": "ductaiphan/budgetswitch-v6-retrain",
+  "title": "budgetswitch-v6-retrain",
+  "code_file": "run_retrain.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "ductaiphan/budgetswitch-v6-bundle",
+    "ductaiphan/budgetswitch-v5-bundle"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

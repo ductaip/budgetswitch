@@ -1,0 +1,31 @@
+{
+  "task": "rollout",
+  "base_model": "Qwen/Qwen2.5-3B-Instruct",
+  "adapter_path": "/kaggle/working/tool_use_lora_v6",
+  "adapter_sha256": "61b838dbf03832bd9fa420850fc3f5c494d7fd294dce7459f0ae5456be1e36c1",
+  "data_sha256": "23dd3b8de20f845eef83a8bb651e5fa6a26b05063b40aceeddcb6291ddc72096",
+  "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+  "decoding": "greedy (do_sample=False)",
+  "seed": 42,
+  "max_new_tokens": {
+    "M0": 150,
+    "M1": 500,
+    "M2": 800
+  },
+  "prompt_template_hash": {
+    "M0": "f3606b2224829a89",
+    "M1": "47ded9f451ea5eb9",
+    "M2": "9e192b09787040d1"
+  },
+  "retriever": "intfloat/multilingual-e5-base, k=10",
+  "packages": {
+    "python": "3.13.16",
+    "torch": "2.10.0",
+    "transformers": "5.5.0",
+    "peft": "0.21.2",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.15.0",
+    "sentence-transformers": "5.7.0",
+    "jsonschema": "4.26.0"
+  }
+}

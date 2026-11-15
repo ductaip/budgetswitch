@@ -1,0 +1,138 @@
+[M3 run1] 20/284
+[M3 run1] 40/284
+[M3 run1] 60/284
+[M3 run1] 80/284
+[M3 run1] 100/284
+[M3 run1] 120/284
+[M3 run1] 140/284
+[M3 run1] 160/284
+[M3 run1] 180/284
+[M3 run1] 200/284
+[M3 run1] 220/284
+[M3 run1] 240/284
+[M3 run1] 260/284
+[M3 run1] 280/284
+DONE M3 run1 → eval/v6/m3/m3_run1_v6.jsonl
+[M3 run2] 20/284
+[M3 run2] 40/284
+[M3 run2] 60/284
+[M3 run2] 80/284
+  rate-limited; waiting 1.6 min (retry 1)
+  rate-limited; waiting 1.3 min (retry 3)
+  rate-limited; waiting 5.5 min (retry 1)
+  rate-limited; waiting 2.1 min (retry 1)
+  rate-limited; waiting 8.3 min (retry 1)
+  rate-limited; waiting 2.1 min (retry 2)
+  rate-limited; waiting 2.9 min (retry 1)
+  rate-limited; waiting 4.1 min (retry 1)
+  rate-limited; waiting 11.4 min (retry 1)
+[M3 run2] 100/284
+  rate-limited; waiting 9.8 min (retry 1)
+  rate-limited; waiting 10.5 min (retry 1)
+  rate-limited; waiting 11.7 min (retry 1)
+  rate-limited; waiting 11.4 min (retry 1)
+  rate-limited; waiting 12.0 min (retry 1)
+  rate-limited; waiting 12.4 min (retry 1)
+  rate-limited; waiting 10.6 min (retry 1)
+  rate-limited; waiting 2.8 min (retry 1)
+  rate-limited; waiting 11.2 min (retry 1)
+  rate-limited; waiting 11.5 min (retry 1)
+DONE M3 run1 → eval/v6/m3/m3_run1_v6.jsonl
+  rate-limited; waiting 2.5 min (retry 2)
+  rate-limited; waiting 10.5 min (retry 1)
+  rate-limited; waiting 4.6 min (retry 1)
+[M3 run2] 120/284
+  rate-limited; waiting 5.2 min (retry 1)
+  rate-limited; waiting 2.7 min (retry 1)
+  rate-limited; waiting 1.5 min (retry 2)
+  rate-limited; waiting 9.9 min (retry 1)
+  rate-limited; waiting 2.5 min (retry 1)
+  rate-limited; waiting 1.9 min (retry 1)
+  rate-limited; waiting 13.9 min (retry 1)
+  rate-limited; waiting 1.7 min (retry 1)
+  rate-limited; waiting 10.3 min (retry 1)
+  rate-limited; waiting 11.5 min (retry 1)
+[M3 run2] 140/284
+  rate-limited; waiting 10.2 min (retry 1)
+  rate-limited; waiting 10.7 min (retry 1)
+  rate-limited; waiting 11.4 min (retry 1)
+  rate-limited; waiting 1.0 min (retry 1)
+  rate-limited; waiting 2.7 min (retry 2)
+  rate-limited; waiting 11.8 min (retry 1)
+  rate-limited; waiting 11.0 min (retry 1)
+  rate-limited; waiting 4.7 min (retry 1)
+  rate-limited; waiting 8.0 min (retry 1)
+  rate-limited; waiting 2.1 min (retry 2)
+  rate-limited; waiting 10.0 min (retry 1)
+  rate-limited; waiting 4.3 min (retry 1)
+  rate-limited; waiting 11.6 min (retry 1)
+  rate-limited; waiting 5.1 min (retry 1)
+  rate-limited; waiting 11.0 min (retry 1)
+[M3 run2] 160/284
+[M3 run2] 180/284
+[M3 run2] 200/284
+[M3 run2] 220/284
+[M3 run2] 240/284
+[M3 run2] 260/284
+[M3 run2] 280/284
+DONE M3 run2 → eval/v6/m3/m3_run2_v6.jsonl
+[M3 run3] 20/284
+  rate-limited; waiting 1.8 min (retry 1)
+[M3 run3] 40/284
+[M3 run3] 60/284
+[M3 run3] 80/284
+[M3 run3] 100/284
+  rate-limited; waiting 4.5 min (retry 1)
+  rate-limited; waiting 2.5 min (retry 1)
+  rate-limited; waiting 2.6 min (retry 2)
+  rate-limited; waiting 3.3 min (retry 1)
+  rate-limited; waiting 3.5 min (retry 2)
+  rate-limited; waiting 3.6 min (retry 1)
+  rate-limited; waiting 4.2 min (retry 1)
+[M3 run3] 120/284
+[M3 run3] 140/284
+[M3 run3] 160/284
+[M3 run3] 180/284
+[M3 run3] 200/284
+[M3 run3] 220/284
+  rate-limited; waiting 6.2 min (retry 1)
+  rate-limited; waiting 1.8 min (retry 2)
+  rate-limited; waiting 3.4 min (retry 1)
+  rate-limited; waiting 11.6 min (retry 1)
+  rate-limited; waiting 11.6 min (retry 1)
+  rate-limited; waiting 9.4 min (retry 1)
+  rate-limited; waiting 10.0 min (retry 1)
+  rate-limited; waiting 6.6 min (retry 1)
+  rate-limited; waiting 11.2 min (retry 1)
+  rate-limited; waiting 9.8 min (retry 1)
+  rate-limited; waiting 10.2 min (retry 1)
+  rate-limited; waiting 9.5 min (retry 1)
+  rate-limited; waiting 10.0 min (retry 1)
+  rate-limited; waiting 9.7 min (retry 1)
+  rate-limited; waiting 10.7 min (retry 1)
+  rate-limited; waiting 10.4 min (retry 1)
+  rate-limited; waiting 1.5 min (retry 2)
+  rate-limited; waiting 9.9 min (retry 1)
+[M3 run3] 240/284
+  rate-limited; waiting 3.3 min (retry 1)
+  rate-limited; waiting 10.8 min (retry 1)
+DONE M3 run1 → eval/v6/m3/m3_run1_v6.jsonl
+DONE M3 run2 → eval/v6/m3/m3_run2_v6.jsonl
+[M3 run3] 260/284
+[M3 run3] 280/284
+DONE M3 run3 → eval/v6/m3/m3_run3_v6.jsonl
+[M3 run1] 20/284
+[M3 run1] 40/284
+[M3 run1] 60/284
+[M3 run1] 80/284
+[M3 run1] 100/284
+[M3 run1] 120/284
+[M3 run1] 140/284
+[M3 run1] 160/284
+[M3 run1] 180/284
+[M3 run1] 200/284
+[M3 run1] 220/284
+[M3 run1] 240/284
+[M3 run1] 260/284
+[M3 run1] 280/284
+DONE M3 run1 → eval/v6/m3_variants/m3_gptoss_3shot_v6.jsonl

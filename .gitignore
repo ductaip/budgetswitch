@@ -97,3 +97,15 @@ Thumbs.db
 
 # Kaggle
 kaggle.json
+
+# --- release hygiene (v1.2) ---
+# model adapters and kernel outputs (large; published separately if needed)
+**/tool_use_lora*/
+eval/v5/journal/backbones/out_*/
+eval/v6/raw/retrain_try1/
+# caches, backups, local bundles
+eval/v5/cache/
+eval/v6/cache/
+*.bak
+eval/v6/paper_pack/
+*.zip

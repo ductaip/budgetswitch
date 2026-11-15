@@ -1,0 +1,1540 @@
+{
+  "instructions": "Xem eval/v6/CHECKS_GUIDE.md mục 2.",
+  "fill_fields": ["fabricated_value_found", "fabricated_values"],
+  "items": [
+    {
+      "item_id": "S01",
+      "traj_id": "banking_0004",
+      "split": "train",
+      "domain": "banking",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tôi bị mất thẻ ATM và cần khóa thẻ ngay, thẻ của tôi là 9876 5432 1098 7654, lý do là mất",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "block_card",
+            "params": {
+              "card_number": "9876 5432 1098 7654",
+              "reason": "lost"
+            }
+          },
+          "observation_of_this_step": {
+            "card_number": "9876 5432 1098 7654",
+            "status": "blocked",
+            "reason": "lost"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S02",
+      "traj_id": "ecommerce_hard_0048",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "So sánh giá thực phẩm cho bữa tối, mua voucher GA10 và thanh toán bằng chuyển khoản, với sản phẩm thịt gà tươi, số lượng 2 chiếc.",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "thịt gà tươi"
+            }
+          },
+          "observation_of_this_step": {
+            "product_name": "thịt gà tươi",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 7306456
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 5627822
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 18283023
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thịt gà tươi",
+              "platform": "shopee"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "thịt gà tươi",
+            "results": [
+              {
+                "product_id": "PRODF6AC36",
+                "name": "thịt gà tươi",
+                "price_vnd": 5964221
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODF6AC36",
+              "quantity": 2
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART8C06E6",
+            "items": [
+              {
+                "product_id": "PRODF6AC36",
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CART8C06E6",
+              "voucher_code": "GA10"
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART8C06E6",
+            "voucher_code": "GA10",
+            "status": "applied"
+          }
+        },
+        {
+          "step": 4,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART8C06E6",
+              "payment_method": "bank_transfer"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD97FBDA",
+            "status": "placed"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S03",
+      "traj_id": "info_retrieval_medium_0029",
+      "split": "eval",
+      "domain": "info_retrieval",
+      "tier": "medium",
+      "query_was_rewritten": true,
+      "query": "Dịch văn bản \"Bonjour, comment allez-vous?\" từ tiếng Pháp sang tiếng Việt và tìm tin tức về thể thao",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "translate_text",
+            "params": {
+              "text": "Bonjour, comment allez-vous?",
+              "target_lang": "vi",
+              "source_lang": "fr"
+            }
+          },
+          "observation_of_this_step": {
+            "text": "Bonjour, comment allez-vous?",
+            "target_lang": "vi",
+            "translation": "[vi] Bonjour, comment allez-vous?"
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "news_search",
+            "params": {
+              "keyword": "thể thao",
+              "category": "sports"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "thể thao",
+            "articles": [
+              {
+                "title": "Tin về thể thao",
+                "id": "NWDCB277"
+              }
+            ]
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S04",
+      "traj_id": "public_services_0002",
+      "split": "train",
+      "domain": "public_services",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tôi cần tra cứu hóa đơn điện của mình với mã khách hàng KH12345",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "utility_bill_inquiry",
+            "params": {
+              "customer_code": "KH12345",
+              "utility_type": "electricity"
+            }
+          },
+          "observation_of_this_step": {
+            "customer_code": "KH12345",
+            "utility_type": "electricity",
+            "amount_due_vnd": 1740477
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S05",
+      "traj_id": "public_services_medium_0011",
+      "split": "train",
+      "domain": "public_services",
+      "tier": "medium",
+      "query_was_rewritten": true,
+      "query": "Tra cứu thông tin BHXH cho số 1234567890, tên Nguyễn Văn A và số 1234567891, tên Nguyễn Văn B trước khi đăng ký thay đổi thông tin.",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "lookup_bhxh",
+            "params": {
+              "bhxh_number": "1234567890",
+              "full_name": "Nguyễn Văn A"
+            }
+          },
+          "observation_of_this_step": {
+            "bhxh_number": "1234567890",
+            "status": "active",
+            "months_paid": 155
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "lookup_bhxh",
+            "params": {
+              "bhxh_number": "1234567891",
+              "full_name": "Nguyễn Văn B"
+            }
+          },
+          "observation_of_this_step": {
+            "bhxh_number": "1234567891",
+            "status": "active",
+            "months_paid": 190
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S06",
+      "traj_id": "travel_medium_0034",
+      "split": "train",
+      "domain": "travel",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "Đặt vé máy bay và khách sạn cho nhóm 6 người từ Đà Nẵng đến Huế vào ngày 25/11/2024, với tên hành khách: Nguyễn Văn I, Trần Thị J, Lê Văn K, Phạm Thị L, Trần Văn M, Nguyễn Thị N. Đặt phòng khách sạn với ngày trả phòng 28/11/2024 và loại phòng Phòng nhóm.",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Đà Nẵng",
+              "destination": "Huế",
+              "date": "25/11/2024",
+              "passengers": 6
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FL001455",
+                "origin": "Đà Nẵng",
+                "destination": "Huế",
+                "date": "25/11/2024",
+                "price_vnd": 6138943
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FL001455",
+              "passenger_names": [
+                "Nguyễn Văn I",
+                "Trần Thị J",
+                "Lê Văn K",
+                "Phạm Thị L",
+                "Trần Văn M",
+                "Nguyễn Thị N"
+              ]
+            }
+          },
+          "observation_of_this_step": {
+            "booking_id": "BK18361B",
+            "status": "confirmed"
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "search_hotel",
+            "params": {
+              "city": "Huế",
+              "checkin": "25/11/2024",
+              "checkout": "28/11/2024",
+              "guests": 6
+            }
+          },
+          "observation_of_this_step": {
+            "hotels": [
+              {
+                "hotel_id": "HTD277C1",
+                "city": "Huế",
+                "checkin": "25/11/2024",
+                "checkout": "28/11/2024",
+                "price_per_night_vnd": 719426
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "book_hotel",
+            "params": {
+              "hotel_id": "HTD277C1",
+              "checkin": "25/11/2024",
+              "checkout": "28/11/2024",
+              "room_type": "Phòng nhóm"
+            }
+          },
+          "observation_of_this_step": {
+            "booking_id": "BKA4DE40",
+            "status": "confirmed"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S07",
+      "traj_id": "travel_hard_0079",
+      "split": "eval",
+      "domain": "travel",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "Tìm chuyến bay từ Phú Quốc đến Hà Nội vào ngày 10/04/2024, sau đó đặt vé cho 3 hành khách: Lê Văn C, Nguyễn Thị D, Trần Văn E và xem thông tin hành lý cho chuyến bay đó",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Phú Quốc",
+              "destination": "Hà Nội",
+              "date": "10/04/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FL0A7B8D",
+                "origin": "Phú Quốc",
+                "destination": "Hà Nội",
+                "date": "10/04/2024",
+                "price_vnd": 5567369
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FL0A7B8D",
+              "passenger_names": ["Lê Văn C", "Nguyễn Thị D", "Trần Văn E"]
+            }
+          },
+          "observation_of_this_step": {
+            "booking_id": "BK0BB1F9",
+            "status": "confirmed"
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "baggage_info",
+            "params": {
+              "flight_id": "FL0A7B8D"
+            }
+          },
+          "observation_of_this_step": {
+            "flight_id": "FL0A7B8D",
+            "allowance_kg": 20
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S08",
+      "traj_id": "info_retrieval_medium_0010",
+      "split": "eval",
+      "domain": "info_retrieval",
+      "tier": "medium",
+      "query_was_rewritten": false,
+      "query": "Hôm nay tại Hà Nội có mưa không? Nếu mưa thì chuyển đổi 1000 USD sang VND",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "get_weather",
+            "params": {
+              "city": "Hà Nội"
+            }
+          },
+          "observation_of_this_step": {
+            "city": "Hà Nội",
+            "temp_c": 19,
+            "condition": "cloudy"
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "currency_convert",
+            "params": {
+              "amount": 1000,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          },
+          "observation_of_this_step": {
+            "amount": 1000,
+            "from": "USD",
+            "to": "VND",
+            "result": 25000000.0
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S09",
+      "traj_id": "info_retrieval_0014",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tìm tin tức về bóng đá ngày 15/08/2024",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "news_search",
+            "params": {
+              "keyword": "bóng đá",
+              "category": "sports"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "bóng đá",
+            "articles": [
+              {
+                "title": "Tin về bóng đá",
+                "id": "NW5FEEC9"
+              }
+            ]
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S10",
+      "traj_id": "info_retrieval_medium_0022",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "medium",
+      "query_was_rewritten": true,
+      "query": "Tìm hiểu về lịch sử của Việt Nam với truy vấn \"Lịch sử Việt Nam\" và tính toán diện tích của một hình chữ nhật với biểu thức \"10*5\"",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "wiki_lookup",
+            "params": {
+              "query": "Lịch sử Việt Nam"
+            }
+          },
+          "observation_of_this_step": {
+            "query": "Lịch sử Việt Nam",
+            "summary": "Tóm tắt về Lịch sử Việt Nam.",
+            "ref": "WK500F8E"
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "calculate",
+            "params": {
+              "expression": "10*5"
+            }
+          },
+          "observation_of_this_step": {
+            "expression": "10*5",
+            "result": 50
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S11",
+      "traj_id": "ecommerce_hard_0058",
+      "split": "eval",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "Mua và trả hàng thực phẩm chức năng giảm cân, 1 chiếc, vì sản phẩm không phù hợp",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thực phẩm chức năng giảm cân"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "thực phẩm chức năng giảm cân",
+            "results": [
+              {
+                "product_id": "PRODF83DA4",
+                "name": "thực phẩm chức năng giảm cân",
+                "price_vnd": 6819597
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODF83DA4",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART584A92",
+            "items": [
+              {
+                "product_id": "PRODF83DA4",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART584A92",
+              "payment_method": "cod"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD956ABB",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD956ABB"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD956ABB",
+            "status": "in_transit",
+            "eta_days": 4
+          }
+        },
+        {
+          "step": 4,
+          "gold_call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "ORD956ABB",
+              "reason": "Sản phẩm không phù hợp"
+            }
+          },
+          "observation_of_this_step": {
+            "return_id": "RETF7DC3A",
+            "status": "requested",
+            "order_id": "ORD956ABB",
+            "reason": "Sản phẩm không phù hợp",
+            "refund_method": "original"
+          }
+        }
+      ],
+      "fabricated_value_found": "y",
+      "fabricated_values": ["checkout.payment_method=cod"],
+      "note": ""
+    },
+    {
+      "item_id": "S12",
+      "traj_id": "travel_medium_0002",
+      "split": "train",
+      "domain": "travel",
+      "tier": "medium",
+      "query_was_rewritten": false,
+      "query": "Tôi cần đặt vé máy bay nhiều chặng từ Hà Nội đến Huế, sau đó từ Huế đến Cần Thơ vào ngày 25/02/2024 và 26/02/2024",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hà Nội",
+              "destination": "Huế",
+              "date": "25/02/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FL9884B6",
+                "origin": "Hà Nội",
+                "destination": "Huế",
+                "date": "25/02/2024",
+                "price_vnd": 3879392
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Huế",
+              "destination": "Cần Thơ",
+              "date": "26/02/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FL07ABF7",
+                "origin": "Huế",
+                "destination": "Cần Thơ",
+                "date": "26/02/2024",
+                "price_vnd": 1968575
+              }
+            ]
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S13",
+      "traj_id": "ecommerce_hard_0029",
+      "split": "eval",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "Mua thực phẩm chức năng tăng cường sức khỏe, giá không vượt quá 1.000.000đ, mua 1 chiếc, và yêu cầu trả hàng nếu sản phẩm không đạt chất lượng",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Thực phẩm chức năng tăng cường sức khỏe",
+              "max_price": 1000000,
+              "platform": "lazada"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "Thực phẩm chức năng tăng cường sức khỏe",
+            "results": [
+              {
+                "product_id": "PROD2ECCE8",
+                "name": "Thực phẩm chức năng tăng cường sức khỏe",
+                "price_vnd": 6826010
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD2ECCE8",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTA88074",
+            "items": [
+              {
+                "product_id": "PROD2ECCE8",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTA88074",
+              "payment_method": "bank_transfer"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD5000C1",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD5000C1"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD5000C1",
+            "status": "in_transit",
+            "eta_days": 3
+          }
+        },
+        {
+          "step": 4,
+          "gold_call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "ORD5000C1",
+              "reason": "Sản phẩm không đạt chất lượng",
+              "refund_method": "original"
+            }
+          },
+          "observation_of_this_step": {
+            "return_id": "RET29D2A7",
+            "status": "requested",
+            "order_id": "ORD5000C1",
+            "reason": "Sản phẩm không đạt chất lượng",
+            "refund_method": "original"
+          }
+        }
+      ],
+      "fabricated_value_found": "y",
+      "fabricated_values": [
+        "search_product.platform=lazada",
+        "checkout.payment_method=bank_transfer",
+        "return_request.refund_method=original"
+      ],
+      "note": ""
+    },
+    {
+      "item_id": "S14",
+      "traj_id": "banking_0000",
+      "split": "train",
+      "domain": "banking",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Xin chào, tôi muốn kiểm tra số dư tài khoản của mình là 1234567890",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "check_balance",
+            "params": {
+              "account_number": "1234567890"
+            }
+          },
+          "observation_of_this_step": {
+            "account_number": "1234567890",
+            "balance_vnd": 18215002,
+            "currency": "VND"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S15",
+      "traj_id": "banking_0005",
+      "split": "eval",
+      "domain": "banking",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tôi muốn biết số dư tài khoản 1234567890",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "check_balance",
+            "params": {
+              "account_number": "1234567890"
+            }
+          },
+          "observation_of_this_step": {
+            "account_number": "1234567890",
+            "balance_vnd": 18215002,
+            "currency": "VND"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S16",
+      "traj_id": "info_retrieval_medium_0035",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "medium",
+      "query_was_rewritten": true,
+      "query": "Dịch văn bản \"中華人民共和國\" từ tiếng Trung sang tiếng Anh và tìm hiểu về văn hóa Trung Quốc",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "translate_text",
+            "params": {
+              "text": "中華人民共和國",
+              "target_lang": "tiếng Anh",
+              "source_lang": "tiếng Trung"
+            }
+          },
+          "observation_of_this_step": {
+            "text": "中華人民共和國",
+            "target_lang": "tiếng Anh",
+            "translation": "[tiếng Anh] 中華人民共和國"
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "wiki_lookup",
+            "params": {
+              "query": "văn hóa Trung Quốc"
+            }
+          },
+          "observation_of_this_step": {
+            "query": "văn hóa Trung Quốc",
+            "summary": "Tóm tắt về văn hóa Trung Quốc.",
+            "ref": "WKE9D393"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S17",
+      "traj_id": "public_services_0014",
+      "split": "eval",
+      "domain": "public_services",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tôi muốn tra cứu thông tin về hóa đơn điện nước của mình với mã khách hàng 123456789 và loại hóa đơn là điện",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "utility_bill_inquiry",
+            "params": {
+              "customer_code": "123456789",
+              "utility_type": "electricity"
+            }
+          },
+          "observation_of_this_step": {
+            "customer_code": "123456789",
+            "utility_type": "electricity",
+            "amount_due_vnd": 2984461
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S18",
+      "traj_id": "travel_hard_0001",
+      "split": "train",
+      "domain": "travel",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "Tìm chuyến bay từ TP.HCM đến Nha Trang ngày 20/06/2024, đặt vé cho hành khách Trần Thị C và xem thông tin hành lý",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "TP.HCM",
+              "destination": "Nha Trang",
+              "date": "20/06/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FLFC7D08",
+                "origin": "TP.HCM",
+                "destination": "Nha Trang",
+                "date": "20/06/2024",
+                "price_vnd": 5313680
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FLFC7D08",
+              "passenger_names": ["Trần Thị C"]
+            }
+          },
+          "observation_of_this_step": {
+            "booking_id": "BK330141",
+            "status": "confirmed"
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "baggage_info",
+            "params": {
+              "flight_id": "FLFC7D08"
+            }
+          },
+          "observation_of_this_step": {
+            "flight_id": "FLFC7D08",
+            "allowance_kg": 20
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S19",
+      "traj_id": "ecommerce_hard_0036",
+      "split": "eval",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "So sánh giá đồng hồ thông minh và mua điện tử trên Tiki và Sendo với giá tối đa 1.000.000đ, mua 1 chiếc và áp mã giảm giá SALE5",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "Đồng hồ thông minh"
+            }
+          },
+          "observation_of_this_step": {
+            "product_name": "Đồng hồ thông minh",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 18635793
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 19394858
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 24947837
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Đồng hồ thông minh",
+              "max_price": 1000000,
+              "platform": "tiki"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "Đồng hồ thông minh",
+            "results": [
+              {
+                "product_id": "PRODB25F5D",
+                "name": "Đồng hồ thông minh",
+                "price_vnd": 16581161
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Đồng hồ thông minh",
+              "platform": "sendo"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "Đồng hồ thông minh",
+            "results": [
+              {
+                "product_id": "PRODB25F5D",
+                "name": "Đồng hồ thông minh",
+                "price_vnd": 16581161
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODB25F5D",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART0F5186",
+            "items": [
+              {
+                "product_id": "PRODB25F5D",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 4,
+          "gold_call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CART0F5186",
+              "voucher_code": "SALE5"
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART0F5186",
+            "voucher_code": "SALE5",
+            "status": "applied"
+          }
+        },
+        {
+          "step": 5,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART0F5186",
+              "payment_method": "momo"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD924F8F",
+            "status": "placed"
+          }
+        }
+      ],
+      "fabricated_value_found": "y",
+      "fabricated_values": ["checkout.payment_method=momo"],
+      "note": ""
+    },
+    {
+      "item_id": "S20",
+      "traj_id": "info_retrieval_0000",
+      "split": "eval",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Thời tiết ở Hà Nội hôm nay như thế nào?",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "get_weather",
+            "params": {
+              "city": "Hà Nội"
+            }
+          },
+          "observation_of_this_step": {
+            "city": "Hà Nội",
+            "temp_c": 19,
+            "condition": "cloudy"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S21",
+      "traj_id": "info_retrieval_medium_0007",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "medium",
+      "query_was_rewritten": false,
+      "query": "Tôi cần chuyển đổi 1000 USD sang VND và tìm hiểu về USD",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "currency_convert",
+            "params": {
+              "amount": 1000,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          },
+          "observation_of_this_step": {
+            "amount": 1000,
+            "from": "USD",
+            "to": "VND",
+            "result": 25000000.0
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "wiki_lookup",
+            "params": {
+              "query": "USD"
+            }
+          },
+          "observation_of_this_step": {
+            "query": "USD",
+            "summary": "Tóm tắt về USD.",
+            "ref": "WK57814C"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S22",
+      "traj_id": "banking_medium_0016",
+      "split": "train",
+      "domain": "banking",
+      "tier": "medium",
+      "query_was_rewritten": true,
+      "query": "Tôi cần chuyển tiền cho bạn bè sau khi kiểm tra số dư tài khoản 1234567890, chuyển 500.000đ sang tài khoản 9876543210",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "check_balance",
+            "params": {
+              "account_number": "1234567890"
+            }
+          },
+          "observation_of_this_step": {
+            "account_number": "1234567890",
+            "balance_vnd": 18215002,
+            "currency": "VND"
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "transfer_money",
+            "params": {
+              "from_account": "1234567890",
+              "to_account": "9876543210",
+              "amount": 500000
+            }
+          },
+          "observation_of_this_step": {
+            "tx_id": "TX5FD1D4",
+            "status": "success",
+            "from": "1234567890",
+            "to": "9876543210",
+            "amount": 500000,
+            "note": ""
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S23",
+      "traj_id": "travel_0037",
+      "split": "train",
+      "domain": "travel",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tìm thông tin hành lý của chuyến bay số 67890 hạng ghế thương gia",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "baggage_info",
+            "params": {
+              "flight_id": "67890",
+              "seat_class": "thương gia"
+            }
+          },
+          "observation_of_this_step": {
+            "flight_id": "67890",
+            "allowance_kg": 20
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S24",
+      "traj_id": "ecommerce_0026",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "So sánh giá điện thoại iPhone 13 trên các sàn TMĐT",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "điện thoại iPhone 13"
+            }
+          },
+          "observation_of_this_step": {
+            "product_name": "điện thoại iPhone 13",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 14061222
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 2280197
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 1748101
+              }
+            ]
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S25",
+      "traj_id": "info_retrieval_0032",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "1 triệu đô la Mỹ bằng bao nhiêu tiền Việt Nam",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "currency_convert",
+            "params": {
+              "amount": 1000000,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          },
+          "observation_of_this_step": {
+            "amount": 1000000,
+            "from": "USD",
+            "to": "VND",
+            "result": 25000000000.0
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S26",
+      "traj_id": "public_services_0024",
+      "split": "train",
+      "domain": "public_services",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tôi cần tra cứu thông tin bảo hiểm xã hội với số bảo hiểm 0123456789 và họ tên Nguyễn Văn A",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "lookup_bhxh",
+            "params": {
+              "bhxh_number": "0123456789",
+              "full_name": "Nguyễn Văn A"
+            }
+          },
+          "observation_of_this_step": {
+            "bhxh_number": "0123456789",
+            "status": "active",
+            "months_paid": 71
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S27",
+      "traj_id": "travel_hard_0042",
+      "split": "train",
+      "domain": "travel",
+      "tier": "hard",
+      "query_was_rewritten": true,
+      "query": "Tìm chuyến bay từ Hà Nội đến TP HCM vào ngày 20/02/2024 cho 3 người, đặt vé cho hành khách Nguyễn Văn A, Trần Thị B, Lê Văn C và kiểm tra hành lý",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hà Nội",
+              "destination": "TP HCM",
+              "date": "20/02/2024",
+              "passengers": 3
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FLEA891E",
+                "origin": "Hà Nội",
+                "destination": "TP HCM",
+                "date": "20/02/2024",
+                "price_vnd": 4990036
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FLEA891E",
+              "passenger_names": ["Nguyễn Văn A", "Trần Thị B", "Lê Văn C"]
+            }
+          },
+          "observation_of_this_step": {
+            "booking_id": "BK97A467",
+            "status": "confirmed"
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "baggage_info",
+            "params": {
+              "flight_id": "FLEA891E"
+            }
+          },
+          "observation_of_this_step": {
+            "flight_id": "FLEA891E",
+            "allowance_kg": 20
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S28",
+      "traj_id": "public_services_0008",
+      "split": "train",
+      "domain": "public_services",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tôi muốn đặt lịch hẹn tại văn phòng đăng ký kinh doanh vào ngày 20/02/2024 để làm thủ tục đăng ký doanh nghiệp với số CCCD 045678901234",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "book_public_appointment",
+            "params": {
+              "office": "văn phòng đăng ký kinh doanh",
+              "service": "đăng ký doanh nghiệp",
+              "date": "20/02/2024",
+              "citizen_id": "045678901234"
+            }
+          },
+          "observation_of_this_step": {
+            "appointment_id": "APCB34AA",
+            "status": "booked",
+            "office": "văn phòng đăng ký kinh doanh",
+            "service": "đăng ký doanh nghiệp",
+            "date": "20/02/2024"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S29",
+      "traj_id": "public_services_0031",
+      "split": "train",
+      "domain": "public_services",
+      "tier": "easy",
+      "query_was_rewritten": false,
+      "query": "Tôi cần tra cứu thuế TNCN năm 2022 với mã số thuế 0912345678",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "tax_inquiry",
+            "params": {
+              "tax_code": "0912345678",
+              "year": 2022
+            }
+          },
+          "observation_of_this_step": {
+            "tax_code": "0912345678",
+            "year": 2022,
+            "amount_due_vnd": 1146204
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "S30",
+      "traj_id": "banking_0012",
+      "split": "eval",
+      "domain": "banking",
+      "tier": "easy",
+      "query_was_rewritten": true,
+      "query": "Lịch sử giao dịch của tôi từ 01/01/2024 đến 31/12/2024, mã tài khoản 1234567890",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "transaction_history",
+            "params": {
+              "account_number": "1234567890",
+              "from_date": "01/01/2024",
+              "to_date": "31/12/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "account_number": "1234567890",
+            "transactions": [
+              {
+                "tx_id": "TXA0190D",
+                "amount": 1047010
+              },
+              {
+                "tx_id": "TXDD080E",
+                "amount": 2558567
+              },
+              {
+                "tx_id": "TXA8BB66",
+                "amount": 2187647
+              }
+            ]
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    }
+  ]
+}

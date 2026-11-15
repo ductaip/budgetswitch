@@ -1,0 +1,3812 @@
+{
+ "n_trajectories": 373,
+ "first_failing_gate": {
+  "pass": 373
+ },
+ "by_split": {
+  "all": {
+   "trajs": 373,
+   "pass_all": 373,
+   "g3_fail": 0
+  },
+  "pilot_eval_v1.2": {
+   "trajs": 112,
+   "pass_all": 112,
+   "g3_fail": 0
+  },
+  "sft_train_v1.2": {
+   "trajs": 261,
+   "pass_all": 261,
+   "g3_fail": 0
+  }
+ },
+ "by_difficulty": {
+  "all": {
+   "trajs": 373,
+   "pass_all": 373,
+   "g3_fail": 0
+  },
+  "easy": {
+   "trajs": 141,
+   "pass_all": 141,
+   "g3_fail": 0
+  },
+  "hard": {
+   "trajs": 143,
+   "pass_all": 143,
+   "g3_fail": 0
+  },
+  "medium": {
+   "trajs": 89,
+   "pass_all": 89,
+   "g3_fail": 0
+  }
+ },
+ "by_domain": {
+  "all": {
+   "trajs": 373,
+   "pass_all": 373,
+   "g3_fail": 0
+  },
+  "banking": {
+   "trajs": 55,
+   "pass_all": 55,
+   "g3_fail": 0
+  },
+  "ecommerce": {
+   "trajs": 145,
+   "pass_all": 145,
+   "g3_fail": 0
+  },
+  "info_retrieval": {
+   "trajs": 56,
+   "pass_all": 56,
+   "g3_fail": 0
+  },
+  "public_services": {
+   "trajs": 53,
+   "pass_all": 53,
+   "g3_fail": 0
+  },
+  "travel": {
+   "trajs": 64,
+   "pass_all": 64,
+   "g3_fail": 0
+  }
+ },
+ "g3_ungrounded_values": 0,
+ "g3_top_params": [],
+ "ids_changed_by_resolve": 0,
+ "trajectories": [
+  {
+   "traj_id": "banking_0014",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0010",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0011",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0028",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0008",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0019",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0032",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0006",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0025",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0000",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0036",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0013",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0018",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0002",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0035",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0030",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0021",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0003",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0023",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0004",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0037",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0015",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0017",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0001",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0007",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0002",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0035",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0010",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0000",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0026",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0034",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0013",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0023",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0017",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0028",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0018",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0003",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0005",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0037",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0007",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0012",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0015",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0035",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0005",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0012",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0027",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0023",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0019",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0006",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0014",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0018",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0010",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0015",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0003",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0032",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0036",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0011",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0009",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0028",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0001",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0002",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0030",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0005",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0024",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0037",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0022",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0015",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0026",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0016",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0039",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0035",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0021",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0007",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0002",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0009",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0013",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0011",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0032",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0008",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0001",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0036",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0027",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0031",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0023",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0005",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0015",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0025",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0009",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0022",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0016",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0037",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0035",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0024",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0001",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0002",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0027",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0031",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0006",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0000",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0097",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0011",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0001",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0040",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0062",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0026",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0019",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0112",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0072",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0111",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0110",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0046",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0008",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0044",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0095",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0049",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0033",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0002",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0025",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0000",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0021",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0007",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0074",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0077",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0034",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0035",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0042",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0113",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0012",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0004",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0099",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0106",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0006",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0088",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0003",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0028",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0039",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0047",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0028",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0025",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0073",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0041",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0100",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0014",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0078",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0085",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0016",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0048",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0015",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0021",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0102",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0003",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0108",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0038",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0107",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0009",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0006",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0018",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0075",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0031",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0034",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0041",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0001",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0065",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0016",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0060",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0037",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0037",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0043",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0109",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0015",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0033",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0013",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0079",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0042",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0010",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0005",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0114",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0002",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0008",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0010",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0006",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0116",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0054",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0081",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0016",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0019",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0097",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0003",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0084",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0034",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0001",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0106",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0042",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0023",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0030",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0018",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0031",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0086",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0010",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0018",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0037",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0016",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_hard_0025",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0014",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0023",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0001",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0024",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0002",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_hard_0022",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0039",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0029",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_hard_0000",
+   "split": "sft_train_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0032",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0024",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0011",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0023",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0010",
+   "split": "sft_train_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0025",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0040",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0011",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0001",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0035",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0007",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0039",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0004",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0018",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0016",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0023",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0028",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0009",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0036",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0019",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0022",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0000",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0005",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0008",
+   "split": "sft_train_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0011",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0032",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0002",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0000",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0014",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0001",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0010",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0020",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0034",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0005",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0008",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0019",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0013",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0033",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0031",
+   "split": "sft_train_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0009",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0026",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0033",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0029",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0002",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0005",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0015",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0004",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0001",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0014",
+   "split": "sft_train_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0009",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0012",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0005",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0020",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0034",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0022",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0031",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0016",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0027",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0024",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0021",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0030",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0024",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0008",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0027",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0019",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0022",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0031",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0007",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0000",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0022",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0025",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0017",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0034",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0031",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0026",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0038",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0010",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0000",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0030",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0020",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0025",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0019",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0006",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0014",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0003",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0012",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0012",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0000",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0007",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0020",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0010",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0038",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0052",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0031",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0058",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0090",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0001",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0053",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0002",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0029",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0013",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0051",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0005",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0007",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0050",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0070",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0038",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0036",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0076",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0029",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0063",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0023",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0032",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0020",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0057",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0027",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0030",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0036",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0008",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0098",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0103",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0027",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0014",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0068",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0006",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0017",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0027",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0006",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0004",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0000",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0080",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0079",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0071",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0012",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0007",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0000",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_hard_0031",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0039",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0012",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0008",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0003",
+   "split": "pilot_eval_v1.2",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0039",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0009",
+   "split": "pilot_eval_v1.2",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0037",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0029",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0010",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0012",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0003",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0014",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0006",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0002",
+   "split": "pilot_eval_v1.2",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0007",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0018",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0029",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0027",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0003",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0015",
+   "split": "pilot_eval_v1.2",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0000",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0016",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0018",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0034",
+   "split": "pilot_eval_v1.2",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  }
+ ]
+}

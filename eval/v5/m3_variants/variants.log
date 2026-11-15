@@ -1,0 +1,36 @@
+  key#1 limited for 9 min → next key
+  key#2 limited for 11 min → next key
+[M3 run1] 20/284
+[M3 run1] 40/284
+[M3 run1] 60/284
+[M3 run1] 80/284
+[M3 run1] 100/284
+[M3 run1] 120/284
+[M3 run1] 140/284
+[M3 run1] 160/284
+[M3 run1] 180/284
+[M3 run1] 200/284
+[M3 run1] 220/284
+[M3 run1] 240/284
+[M3 run1] 260/284
+  key#3 limited for 2 min → next key
+  key#1 limited for 6 min → next key
+  key#2 limited for 7 min → next key
+[M3 run1] 280/284
+DONE M3 run1 → eval/v5/m3_variants/m3_gptoss_3shot_v5.jsonl
+[M3 run1] 20/284
+[M3 run1] 40/284
+[M3 run1] 60/284
+[M3 run1] 80/284
+[M3 run1] 100/284
+[M3 run1] 120/284
+[M3 run1] 140/284
+  key#1 limited for 6 min → next key
+  rate-limited; waiting 5.4 min (retry 1)
+  rate-limited; waiting 10.2 min (retry 1)
+  rate-limited; waiting 2.6 min (retry 2)
+  rate-limited; waiting 8.2 min (retry 1)
+  rate-limited; waiting 4.1 min (retry 3)
+[M3 run1] 160/284
+  rate-limited; waiting 4.4 min (retry 1)
+  rate-limited; waiting 7.6 min (retry 3)

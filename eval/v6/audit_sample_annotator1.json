@@ -1,0 +1,3345 @@
+{
+  "annotator": 1,
+  "instructions": {
+    "guide_markdown": "# Hướng dẫn gán nhãn — kiểm tra audit grounding (Step 0, v6)\n\n## Mục đích\nBộ dữ liệu ViTool có các giá trị tham số \"gold\" (đáp án) mà model phải sinh ra.\nMột script tự động (audit) đã đánh dấu những giá trị **không thể suy ra** từ\nthông tin model được nhìn thấy. Ta cần biết audit đó đúng đến đâu trước khi sửa\ndữ liệu dựa trên nó. Bạn gán nhãn 60 giá trị; một phần được audit đánh dấu, một\nphần không — **bạn không được biết mục nào thuộc loại nào** (đừng mở\n`audit_sample_key.json`).\n\n## Mỗi mục cho bạn xem\n- `query`: câu yêu cầu của người dùng (model chỉ thấy câu này + các bước trước).\n- `previous_steps`: các lời gọi tool ở bước trước **và observation** (kết quả trả\n  về) của chúng. Đây là thông tin model có tại bước này.\n- `tool`, `tool_description`, `param_schema`: tool đang gọi và mô tả tham số\n  (kiểu, `enum` = danh sách giá trị cho phép, `required`).\n- `gold_call`: toàn bộ lời gọi gold của bước này (để hiểu ngữ cảnh).\n- `param` và `gold_value`: **giá trị cần gán nhãn**. Nếu là phần tử của một danh\n  sách (vd 1 tên hành khách), `gold_value` là phần tử đó.\n\n## Câu hỏi\n\"Một người cẩn thận, chỉ đọc `query` và `previous_steps`, có viết ra **đúng giá\ntrị này** (cho phép khác định dạng) mà không phải đoán không?\"\n\n## Nhãn — chọn đúng 1, xét theo thứ tự ưu tiên từ trên xuống\n1. `inferable_from_query` — giá trị có trong query, nguyên văn **hoặc** sau khi\n   chuẩn hoá/suy luận chắc chắn:\n   - khác định dạng: `25/12/2026` ↔ `2026-12-25`; `1,5 triệu` ↔ `1500000`;\n     `500k` ↔ `500000`; có/không dấu; viết hoa/thường; `HN` ↔ `Hà Nội`;\n   - dịch/chuẩn hoá tên: `tiếng Pháp` → `fr`; `đô la Mỹ` → `USD`;\n   - ngày tương đối khi query có mốc rõ (vd \"ngày mai\" và query có ngày hôm nay);\n   - số lượng 1 khi query nói rõ một món/một người (\"mua **một** chiếc\", \"đặt vé\n     cho tôi\") và không có con số nào khác.\n   Nếu phải chọn giữa nhiều giá trị hợp lý → KHÔNG phải nhãn này.\n2. `from_prior_observation` — giá trị xuất hiện trong observation của một bước\n   trước (vd `flight_id`, `cart_id`, `product_id` do bước search/add trả về).\n   Chỉ tính observation, không tính params của bước trước (nếu param bước trước\n   cũng là giá trị bịa thì vẫn là bịa).\n3. `tool_default_or_enum` — giá trị nằm trong `enum` của tham số (hoặc là\n   `default` khai báo trong `param_schema`). Điền thêm `enum_justified`:\n   `y` nếu ý nghĩa query ủng hộ đúng lựa chọn này (vd \"mất thẻ\" → `lost`),\n   `n` nếu query không nói gì và đây chỉ là một lựa chọn tuỳ ý.\n4. `ungrounded` — không thuộc 3 loại trên: giá trị phải bịa/đoán (số tài khoản,\n   mã khách hàng, mã đơn, mã voucher, địa chỉ, tên người, giá tiền, ngày… không\n   có trong query/observation; số lượng khi query không nói gì).\n\n## Quy tắc thêm\n- Chấm **giá trị**, không chấm việc tham số có nên tồn tại hay không.\n- Không dùng kiến thức bên ngoài để \"đoán đúng\" (vd tự biết mã sân bay) — trừ\n  các ánh xạ chuẩn hoá phổ biến ở mục 1.\n- Phân vân giữa `inferable_from_query` và `ungrounded` → chọn cái bạn tin hơn và\n  ghi lý do vào `note`. Mọi mục đều phải có đúng 1 nhãn.\n- Làm **độc lập**, không trao đổi với người kia cho tới khi cả hai nộp xong.\n\n## Cách điền\n- File JSON riêng của bạn (`audit_sample_annotator1.json` hoặc `..._annotator2.json`):\n  với mỗi mục, sửa `\"label\": null` thành một trong 4 chuỗi trên (giữ dấu ngoặc\n  kép), `\"enum_justified\"` thành `\"y\"`/`\"n\"` khi nhãn là `tool_default_or_enum`,\n  và `\"note\"` nếu cần. Không sửa field khác.\n- Hoặc dùng `audit_sample.csv` (cột `label_annotator_1` / `label_annotator_2`).\n- Gửi lại file; script `eval/v6/score_audit_v6.py` sẽ kiểm tra định dạng và tính\n  precision/recall của audit + Cohen's kappa.\n\n## Ví dụ\n| query (rút gọn) | param = gold_value | nhãn |\n|---|---|---|\n| \"Chuyển 2 triệu cho tài khoản 0123456789\" | amount = 2000000 | inferable_from_query |\n| \"Khoá thẻ vì bị mất\" | reason = lost (enum) | tool_default_or_enum, enum_justified=y |\n| \"Thanh toán giỏ hàng\" (không nói phương thức) | payment_method = cod (enum) | tool_default_or_enum, enum_justified=n |\n| bước trước trả `{\"cart_id\": \"CART25E4F4\"}` | cart_id = CART25E4F4 | from_prior_observation |\n| \"Xem lịch sử giao dịch tháng này\" | account_number = 1234567890 | ungrounded |\n| \"Mua laptop Dell và theo dõi đơn\" | shipping_address = 123 Nguyễn Trãi | ungrounded |\n",
+    "allowed_labels": [
+      "inferable_from_query",
+      "from_prior_observation",
+      "tool_default_or_enum",
+      "ungrounded"
+    ],
+    "fields_to_fill": [
+      "label",
+      "enum_justified (only for tool_default_or_enum: y/n)",
+      "note"
+    ]
+  },
+  "items": [
+    {
+      "item_id": "A01",
+      "query": "Yêu cầu trả hàng vì sản phẩm không đúng như mô tả, sử dụng phương thức hoàn tiền về ví",
+      "previous_steps": [],
+      "tool": "return_request",
+      "tool_description": "Request return/refund / Yêu cầu trả hàng",
+      "param": "order_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "DH12345",
+      "gold_call": {
+        "tool_name": "return_request",
+        "params": {
+          "order_id": "DH12345",
+          "reason": "sản phẩm không đúng như mô tả",
+          "refund_method": "wallet"
+        }
+      },
+      "traj_id": "ecommerce_0013",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "easy",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A02",
+      "query": "Mua mỹ phẩm Laneige và áp dụng voucher giảm giá 5% và theo dõi đơn hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Mỹ phẩm Laneige",
+              "max_price": 1000000,
+              "platform": "lazada"
+            }
+          },
+          "observation": {
+            "keyword": "Mỹ phẩm Laneige",
+            "results": [
+              {
+                "product_id": "PRODE0BB23",
+                "name": "Mỹ phẩm Laneige",
+                "price_vnd": 1950745
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 2,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PRODE0BB23",
+          "quantity": 2
+        }
+      },
+      "traj_id": "ecommerce_hard_0063",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A03",
+      "query": "So sánh giá mỹ phẩm trên Sendo và Lazada, sau đó mua hàng và yêu cầu trả hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "mỹ phẩm dưỡng da"
+            }
+          },
+          "observation": {
+            "product_name": "mỹ phẩm dưỡng da",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 25012149
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 2057732
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 9402557
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "max_price",
+      "param_schema": {
+        "type": "number",
+        "description": "VND",
+        "required": false
+      },
+      "gold_value": 2000000,
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "mỹ phẩm dưỡng da",
+          "max_price": 2000000,
+          "platform": "sendo"
+        }
+      },
+      "traj_id": "ecommerce_medium_0014",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A04",
+      "query": "Mua điện thoại Samsung mới, sau khi so sánh giá và áp dụng voucher 10% trên Tiki",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "điện thoại Samsung",
+              "max_price": 15000000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "điện thoại Samsung",
+            "results": [
+              {
+                "product_id": "PROD727476",
+                "name": "điện thoại Samsung",
+                "price_vnd": 24646343
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "điện thoại Samsung"
+            }
+          },
+          "observation": {
+            "product_name": "điện thoại Samsung",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 13587829
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 26993301
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 26988851
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 1,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PROD727476",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_hard_0037",
+      "step_idx": 2,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A05",
+      "query": "Lịch sử giao dịch của tôi từ ngày 01/01/2024 đến 31/12/2024 là gì?",
+      "previous_steps": [],
+      "tool": "transaction_history",
+      "tool_description": "Get recent transaction history / Lịch sử giao dịch",
+      "param": "account_number",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "1234567890",
+      "gold_call": {
+        "tool_name": "transaction_history",
+        "params": {
+          "account_number": "1234567890",
+          "from_date": "01/01/2024",
+          "to_date": "31/12/2024"
+        }
+      },
+      "traj_id": "banking_0027",
+      "step_idx": 0,
+      "domain": "banking",
+      "tier": "easy",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A06",
+      "query": "Tìm phòng khách sạn tại Huế từ 20/04/2024 đến 22/04/2024 cho 3 người, rồi đặt phòng",
+      "previous_steps": [],
+      "tool": "search_hotel",
+      "tool_description": "Search hotels / Tìm khách sạn",
+      "param": "checkout",
+      "param_schema": {
+        "type": "string",
+        "description": "DD/MM/YYYY",
+        "required": true
+      },
+      "gold_value": "22/04/2024",
+      "gold_call": {
+        "tool_name": "search_hotel",
+        "params": {
+          "city": "Huế",
+          "checkin": "20/04/2024",
+          "checkout": "22/04/2024",
+          "guests": 3
+        }
+      },
+      "traj_id": "travel_medium_0009",
+      "step_idx": 0,
+      "domain": "travel",
+      "tier": "medium",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A07",
+      "query": "Tôi muốn đi từ Hà Nội đến Huế cho chuyến du lịch gia đình vào ngày 15/05/2024 với 4 người, và muốn đặt khách sạn 3 ngày tại Huế. Sau đó, tôi cần tìm thông tin hành lý cho chuyến bay này.",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hà Nội",
+              "destination": "Huế",
+              "date": "15/05/2024",
+              "passengers": 4
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FLB8EFD4",
+                "origin": "Hà Nội",
+                "destination": "Huế",
+                "date": "15/05/2024",
+                "price_vnd": 2234760
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "book_flight",
+      "tool_description": "Book specific flight / Đặt vé chuyến bay",
+      "param": "passenger_names[3]",
+      "param_schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "gold_value": "Phạm Thị D",
+      "gold_call": {
+        "tool_name": "book_flight",
+        "params": {
+          "flight_id": "FLB8EFD4",
+          "passenger_names": [
+            "Nguyễn Văn A",
+            "Trần Thị B",
+            "Lê Văn C",
+            "Phạm Thị D"
+          ]
+        }
+      },
+      "traj_id": "travel_hard_0081",
+      "step_idx": 1,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A08",
+      "query": "Tìm chuyến bay từ Hồ Chí Minh đến Phú Quốc vào ngày 20/07/2024, đặt vé và xem thông tin hành lý",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hồ Chí Minh",
+              "destination": "Phú Quốc",
+              "date": "20/07/2024"
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FL7161DE",
+                "origin": "Hồ Chí Minh",
+                "destination": "Phú Quốc",
+                "date": "20/07/2024",
+                "price_vnd": 4459494
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "book_flight",
+      "tool_description": "Book specific flight / Đặt vé chuyến bay",
+      "param": "passenger_names[0]",
+      "param_schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "gold_value": "Lê Văn C",
+      "gold_call": {
+        "tool_name": "book_flight",
+        "params": {
+          "flight_id": "FL7161DE",
+          "passenger_names": ["Lê Văn C"]
+        }
+      },
+      "traj_id": "travel_medium_0023",
+      "step_idx": 1,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A09",
+      "query": "Tra cứu BHXH và đặt lịch hẹn hành chính cho dịch vụ cấp đổi thẻ BHYT",
+      "previous_steps": [],
+      "tool": "lookup_bhxh",
+      "tool_description": "Look up social insurance BHXH / Tra cứu BHXH",
+      "param": "bhxh_number",
+      "param_schema": {
+        "type": "string",
+        "description": "10-digit",
+        "required": true
+      },
+      "gold_value": "1234567890",
+      "gold_call": {
+        "tool_name": "lookup_bhxh",
+        "params": {
+          "bhxh_number": "1234567890",
+          "full_name": "Nguyễn Văn A"
+        }
+      },
+      "traj_id": "public_services_medium_0005",
+      "step_idx": 0,
+      "domain": "public_services",
+      "tier": "medium",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A10",
+      "query": "So sánh giá mỹ phẩm trên Sendo và Lazada, sau đó mua hàng và yêu cầu trả hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "mỹ phẩm dưỡng da"
+            }
+          },
+          "observation": {
+            "product_name": "mỹ phẩm dưỡng da",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 25012149
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 2057732
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 9402557
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm dưỡng da",
+              "max_price": 2000000,
+              "platform": "sendo"
+            }
+          },
+          "observation": {
+            "keyword": "mỹ phẩm dưỡng da",
+            "results": [
+              {
+                "product_id": "PRODC1044D",
+                "name": "mỹ phẩm dưỡng da",
+                "price_vnd": 1394068
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODC1044D",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CARTCFE87C",
+            "items": [
+              {
+                "product_id": "PRODC1044D",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTCFE87C",
+              "payment_method": "cod"
+            }
+          },
+          "observation": {
+            "order_id": "ORDEA5080",
+            "status": "placed"
+          }
+        }
+      ],
+      "tool": "return_request",
+      "tool_description": "Request return/refund / Yêu cầu trả hàng",
+      "param": "reason",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "sản phẩm không như mô tả",
+      "gold_call": {
+        "tool_name": "return_request",
+        "params": {
+          "order_id": "ORDEA5080",
+          "reason": "sản phẩm không như mô tả"
+        }
+      },
+      "traj_id": "ecommerce_medium_0014",
+      "step_idx": 4,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A11",
+      "query": "Đặt vé máy bay và khách sạn cho nhóm 6 người từ Đà Nẵng đến Huế vào ngày 25/11/2024",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Đà Nẵng",
+              "destination": "Huế",
+              "date": "25/11/2024",
+              "passengers": 6
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FL001455",
+                "origin": "Đà Nẵng",
+                "destination": "Huế",
+                "date": "25/11/2024",
+                "price_vnd": 6138943
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FL001455",
+              "passenger_names": [
+                "Nguyễn Văn I",
+                "Trần Thị J",
+                "Lê Văn K",
+                "Phạm Thị L",
+                "Trần Văn M",
+                "Nguyễn Thị N"
+              ]
+            }
+          },
+          "observation": {
+            "booking_id": "BK18361B",
+            "status": "confirmed"
+          }
+        }
+      ],
+      "tool": "search_hotel",
+      "tool_description": "Search hotels / Tìm khách sạn",
+      "param": "checkout",
+      "param_schema": {
+        "type": "string",
+        "description": "DD/MM/YYYY",
+        "required": true
+      },
+      "gold_value": "28/11/2024",
+      "gold_call": {
+        "tool_name": "search_hotel",
+        "params": {
+          "city": "Huế",
+          "checkin": "25/11/2024",
+          "checkout": "28/11/2024",
+          "guests": 6
+        }
+      },
+      "traj_id": "travel_medium_0034",
+      "step_idx": 2,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A12",
+      "query": "Mua laptop Dell Inspiron 15 5000 và theo dõi đơn hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Laptop Dell Inspiron 15 5000",
+              "max_price": 20000000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "Laptop Dell Inspiron 15 5000",
+            "results": [
+              {
+                "product_id": "PRODD99E73",
+                "name": "Laptop Dell Inspiron 15 5000",
+                "price_vnd": 29222883
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "product_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "PRODD99E73",
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PRODD99E73",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_hard_0052",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "eval",
+      "label": "from_prior_observation",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A13",
+      "query": "Tôi cần kiểm tra lịch sử giao dịch trước khi chuyển tiền cho người lạ",
+      "previous_steps": [],
+      "tool": "transaction_history",
+      "tool_description": "Get recent transaction history / Lịch sử giao dịch",
+      "param": "account_number",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "1234567890",
+      "gold_call": {
+        "tool_name": "transaction_history",
+        "params": {
+          "account_number": "1234567890"
+        }
+      },
+      "traj_id": "banking_medium_0018",
+      "step_idx": 0,
+      "domain": "banking",
+      "tier": "medium",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A14",
+      "query": "So sánh giá sản phẩm điện tử và mua sản phẩm có giá thấp nhất, sau đó áp dụng voucher giảm giá",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "điện tử"
+            }
+          },
+          "observation": {
+            "product_name": "điện tử",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 21028355
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 20641616
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 10998812
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "điện tử",
+              "max_price": 10000000
+            }
+          },
+          "observation": {
+            "keyword": "điện tử",
+            "results": [
+              {
+                "product_id": "PROD734701",
+                "name": "điện tử",
+                "price_vnd": 26644679
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 1,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PROD734701",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_hard_0095",
+      "step_idx": 2,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A15",
+      "query": "Mua mỹ phẩm trên Tiki, nhưng sau đó muốn hủy đơn hàng vì không cần nữa",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm",
+              "max_price": 500000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "mỹ phẩm",
+            "results": [
+              {
+                "product_id": "PRODD08399",
+                "name": "mỹ phẩm",
+                "price_vnd": 28887332
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODD08399",
+              "quantity": 2
+            }
+          },
+          "observation": {
+            "cart_id": "CARTBC8BA0",
+            "items": [
+              {
+                "product_id": "PRODD08399",
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTBC8BA0",
+              "payment_method": "cod",
+              "shipping_address": "Hà Nội"
+            }
+          },
+          "observation": {
+            "order_id": "ORD72847E",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD72847E"
+            }
+          },
+          "observation": {
+            "order_id": "ORD72847E",
+            "status": "in_transit",
+            "eta_days": 4
+          }
+        },
+        {
+          "step": 4,
+          "call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "ORD72847E",
+              "reason": "không cần nữa",
+              "refund_method": "original"
+            }
+          },
+          "observation": {
+            "return_id": "RETC728E5",
+            "status": "requested",
+            "order_id": "ORD72847E",
+            "reason": "không cần nữa",
+            "refund_method": "original"
+          }
+        },
+        {
+          "step": 5,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm",
+              "max_price": 500000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "mỹ phẩm",
+            "results": [
+              {
+                "product_id": "PRODD08399",
+                "name": "mỹ phẩm",
+                "price_vnd": 28887332
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 1,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PRODD08399",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_hard_0040",
+      "step_idx": 6,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A16",
+      "query": "Tìm chuyến bay từ Hà Nội đến Huế, đặt vé và hỏi thông tin hành lý, sau đó hủy vé và đặt lại vé mới từ Huế đến Đà Nẵng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hà Nội",
+              "destination": "Huế",
+              "date": "15/08/2024"
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FL2FC99D",
+                "origin": "Hà Nội",
+                "destination": "Huế",
+                "date": "15/08/2024",
+                "price_vnd": 7598324
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "book_flight",
+      "tool_description": "Book specific flight / Đặt vé chuyến bay",
+      "param": "passenger_names[0]",
+      "param_schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "gold_value": "Nguyễn Văn A",
+      "gold_call": {
+        "tool_name": "book_flight",
+        "params": {
+          "flight_id": "FL2FC99D",
+          "passenger_names": ["Nguyễn Văn A"]
+        }
+      },
+      "traj_id": "travel_hard_0019",
+      "step_idx": 1,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A17",
+      "query": "Mua sách và theo dõi đơn hàng",
+      "previous_steps": [],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "max_price",
+      "param_schema": {
+        "type": "number",
+        "description": "VND",
+        "required": false
+      },
+      "gold_value": 200000,
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "sách self-help",
+          "max_price": 200000,
+          "platform": "tiki"
+        }
+      },
+      "traj_id": "ecommerce_medium_0002",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A18",
+      "query": "Mua sách trên Sendo, nhưng sau đó muốn đổi sang mua trên Shopee để được giá rẻ hơn",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "sách",
+              "platform": "sendo"
+            }
+          },
+          "observation": {
+            "keyword": "sách",
+            "results": [
+              {
+                "product_id": "PROD447E3F",
+                "name": "sách",
+                "price_vnd": 4843129
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD447E3F",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CART56738C",
+            "items": [
+              {
+                "product_id": "PROD447E3F",
+                "quantity": 1
+              },
+              {
+                "product_id": "PROD447E3F",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART56738C",
+              "payment_method": "bank_transfer"
+            }
+          },
+          "observation": {
+            "order_id": "ORD0821D7",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD0821D7"
+            }
+          },
+          "observation": {
+            "order_id": "ORD0821D7",
+            "status": "in_transit",
+            "eta_days": 1
+          }
+        },
+        {
+          "step": 4,
+          "call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "ORD0821D7",
+              "reason": "đổi ý"
+            }
+          },
+          "observation": {
+            "return_id": "RET6F94B7",
+            "status": "requested",
+            "order_id": "ORD0821D7",
+            "reason": "đổi ý",
+            "refund_method": "original"
+          }
+        },
+        {
+          "step": 5,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "sách",
+              "platform": "shopee"
+            }
+          },
+          "observation": {
+            "keyword": "sách",
+            "results": [
+              {
+                "product_id": "PROD447E3F",
+                "name": "sách",
+                "price_vnd": 4843129
+              }
+            ]
+          }
+        },
+        {
+          "step": 6,
+          "call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "sách"
+            }
+          },
+          "observation": {
+            "product_name": "sách",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 27064680
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 13176946
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 26733081
+              }
+            ]
+          }
+        },
+        {
+          "step": 7,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD447E3F",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CART56738C",
+            "items": [
+              {
+                "product_id": "PROD447E3F",
+                "quantity": 1
+              },
+              {
+                "product_id": "PROD447E3F",
+                "quantity": 1
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "apply_voucher",
+      "tool_description": "Apply discount voucher / Áp mã giảm giá",
+      "param": "voucher_code",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "SHOPEE5",
+      "gold_call": {
+        "tool_name": "apply_voucher",
+        "params": {
+          "cart_id": "CART56738C",
+          "voucher_code": "SHOPEE5"
+        }
+      },
+      "traj_id": "ecommerce_hard_0039",
+      "step_idx": 8,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A19",
+      "query": "So sánh giá và mua gian hàng thời trang",
+      "previous_steps": [],
+      "tool": "compare_prices",
+      "tool_description": "Compare prices across platforms / So sánh giá",
+      "param": "product_name",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "quần jeans nam",
+      "gold_call": {
+        "tool_name": "compare_prices",
+        "params": {
+          "product_name": "quần jeans nam"
+        }
+      },
+      "traj_id": "ecommerce_medium_0008",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A20",
+      "query": "Mua 2 cuốn sách giáo khoa và 1 bộ thực phẩm chức năng, dùng mã giảm giá cho sách, theo dõi đơn hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "cuốn sách giáo khoa",
+              "max_price": 200000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "cuốn sách giáo khoa",
+            "results": [
+              {
+                "product_id": "PROD4CFBAC",
+                "name": "cuốn sách giáo khoa",
+                "price_vnd": 13129779
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD4CFBAC",
+              "quantity": 2
+            }
+          },
+          "observation": {
+            "cart_id": "CART7CC2C3",
+            "items": [
+              {
+                "product_id": "PROD4CFBAC",
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CART7CC2C3",
+              "voucher_code": "SACHGIAM10"
+            }
+          },
+          "observation": {
+            "cart_id": "CART7CC2C3",
+            "voucher_code": "SACHGIAM10",
+            "status": "applied"
+          }
+        },
+        {
+          "step": 3,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "bộ thực phẩm chức năng",
+              "max_price": 1000000,
+              "platform": "sendo"
+            }
+          },
+          "observation": {
+            "keyword": "bộ thực phẩm chức năng",
+            "results": [
+              {
+                "product_id": "PROD4C5EFA",
+                "name": "bộ thực phẩm chức năng",
+                "price_vnd": 7040704
+              }
+            ]
+          }
+        },
+        {
+          "step": 4,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD4C5EFA",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CARTB959C7",
+            "items": [
+              {
+                "product_id": "PROD4C5EFA",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 5,
+          "call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTB959C7",
+              "payment_method": "vnpay"
+            }
+          },
+          "observation": {
+            "order_id": "ORD8CFA91",
+            "status": "placed"
+          }
+        }
+      ],
+      "tool": "track_order",
+      "tool_description": "Track order shipping status / Theo dõi đơn hàng",
+      "param": "order_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "ORD8CFA91",
+      "gold_call": {
+        "tool_name": "track_order",
+        "params": {
+          "order_id": "ORD8CFA91"
+        }
+      },
+      "traj_id": "ecommerce_hard_0110",
+      "step_idx": 6,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "from_prior_observation",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A21",
+      "query": "Đặt vé chuyến bay từ Đà Nẵng đến Nha Trang cho 3 người vào ngày 20/10/2024",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Đà Nẵng",
+              "destination": "Nha Trang",
+              "date": "20/10/2024",
+              "passengers": 3
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FL5E2F9F",
+                "origin": "Đà Nẵng",
+                "destination": "Nha Trang",
+                "date": "20/10/2024",
+                "price_vnd": 7335313
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "book_flight",
+      "tool_description": "Book specific flight / Đặt vé chuyến bay",
+      "param": "passenger_names[0]",
+      "param_schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "gold_value": "Nguyễn Văn A",
+      "gold_call": {
+        "tool_name": "book_flight",
+        "params": {
+          "flight_id": "FL5E2F9F",
+          "passenger_names": ["Nguyễn Văn A", "Trần Thị B", "Lê Văn C"],
+          "seat_class": "economy"
+        }
+      },
+      "traj_id": "travel_0026",
+      "step_idx": 1,
+      "domain": "travel",
+      "tier": "medium",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A22",
+      "query": "Mua điện thoại Samsung mới trên Tiki sau khi xem giá và áp mã giảm giá 10%",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "điện thoại Samsung",
+              "max_price": 15000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "điện thoại Samsung",
+            "results": [
+              {
+                "product_id": "PROD727476",
+                "name": "điện thoại Samsung",
+                "price_vnd": 24646343
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "điện thoại Samsung"
+            }
+          },
+          "observation": {
+            "product_name": "điện thoại Samsung",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 13587829
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 26993301
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 26988851
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD727476",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CART1D41FC",
+            "items": [
+              {
+                "product_id": "PROD727476",
+                "quantity": 1
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "apply_voucher",
+      "tool_description": "Apply discount voucher / Áp mã giảm giá",
+      "param": "cart_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "CART1D41FC",
+      "gold_call": {
+        "tool_name": "apply_voucher",
+        "params": {
+          "cart_id": "CART1D41FC",
+          "voucher_code": "TIKI10"
+        }
+      },
+      "traj_id": "ecommerce_medium_0034",
+      "step_idx": 3,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "from_prior_observation",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A23",
+      "query": "Mua mỹ phẩm trên Tiki, nhưng sau đó muốn hủy đơn hàng vì không cần nữa",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm",
+              "max_price": 500000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "mỹ phẩm",
+            "results": [
+              {
+                "product_id": "PRODD08399",
+                "name": "mỹ phẩm",
+                "price_vnd": 28887332
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODD08399",
+              "quantity": 2
+            }
+          },
+          "observation": {
+            "cart_id": "CARTBC8BA0",
+            "items": [
+              {
+                "product_id": "PRODD08399",
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTBC8BA0",
+              "payment_method": "cod",
+              "shipping_address": "Hà Nội"
+            }
+          },
+          "observation": {
+            "order_id": "ORD72847E",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD72847E"
+            }
+          },
+          "observation": {
+            "order_id": "ORD72847E",
+            "status": "in_transit",
+            "eta_days": 4
+          }
+        },
+        {
+          "step": 4,
+          "call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "ORD72847E",
+              "reason": "không cần nữa",
+              "refund_method": "original"
+            }
+          },
+          "observation": {
+            "return_id": "RETC728E5",
+            "status": "requested",
+            "order_id": "ORD72847E",
+            "reason": "không cần nữa",
+            "refund_method": "original"
+          }
+        }
+      ],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "max_price",
+      "param_schema": {
+        "type": "number",
+        "description": "VND",
+        "required": false
+      },
+      "gold_value": 500000,
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "mỹ phẩm",
+          "max_price": 500000,
+          "platform": "tiki"
+        }
+      },
+      "traj_id": "ecommerce_hard_0040",
+      "step_idx": 5,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A24",
+      "query": "Mua thực phẩm và áp mã giảm giá",
+      "previous_steps": [],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "platform",
+      "param_schema": {
+        "type": "string",
+        "enum": ["shopee", "lazada", "tiki", "sendo"],
+        "required": false
+      },
+      "gold_value": "lazada",
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "thực phẩm organic",
+          "max_price": 2000000,
+          "platform": "lazada"
+        }
+      },
+      "traj_id": "ecommerce_medium_0007",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "tool_default_or_enum",
+      "enum_justified": "n",
+      "note": ""
+    },
+    {
+      "item_id": "A25",
+      "query": "Tôi muốn thay đổi hạn mức tiết kiệm và cần kiểm tra số dư tài khoản trước khi thực hiện",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "check_balance",
+            "params": {
+              "account_number": "1234567890"
+            }
+          },
+          "observation": {
+            "account_number": "1234567890",
+            "balance_vnd": 18215002,
+            "currency": "VND"
+          }
+        }
+      ],
+      "tool": "open_savings_account",
+      "tool_description": "Open savings account / Mở tài khoản tiết kiệm",
+      "param": "initial_deposit",
+      "param_schema": {
+        "type": "number",
+        "required": true
+      },
+      "gold_value": 5000000,
+      "gold_call": {
+        "tool_name": "open_savings_account",
+        "params": {
+          "customer_id": "KH001",
+          "initial_deposit": 5000000,
+          "term_months": 12
+        }
+      },
+      "traj_id": "banking_medium_0014",
+      "step_idx": 1,
+      "domain": "banking",
+      "tier": "medium",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A26",
+      "query": "Mua bộ sản phẩm chăm sóc da trên Sendo với voucher 15% giảm giá, sau đó theo dõi đơn hàng và kiểm tra tình trạng hàng",
+      "previous_steps": [],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "platform",
+      "param_schema": {
+        "type": "string",
+        "enum": ["shopee", "lazada", "tiki", "sendo"],
+        "required": false
+      },
+      "gold_value": "sendo",
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "bộ sản phẩm chăm sóc da",
+          "max_price": 500000,
+          "platform": "sendo"
+        }
+      },
+      "traj_id": "ecommerce_hard_0113",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "tool_default_or_enum",
+      "enum_justified": "y",
+      "note": ""
+    },
+    {
+      "item_id": "A27",
+      "query": "Tìm chuyến bay từ Đà Nẵng đến Phú Quốc ngày 25/07/2024, đặt vé, sau đó hủy đặt chỗ và đặt lại",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Đà Nẵng",
+              "destination": "Phú Quốc",
+              "date": "25/07/2024"
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FLB99AE7",
+                "origin": "Đà Nẵng",
+                "destination": "Phú Quốc",
+                "date": "25/07/2024",
+                "price_vnd": 4010776
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FLB99AE7",
+              "passenger_names": ["Lê Văn D"]
+            }
+          },
+          "observation": {
+            "booking_id": "BK3129C8",
+            "status": "confirmed"
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "cancel_booking",
+            "params": {
+              "booking_id": "BK3129C8"
+            }
+          },
+          "observation": {
+            "booking_id": "BK3129C8",
+            "status": "cancelled",
+            "reason": ""
+          }
+        }
+      ],
+      "tool": "search_flight",
+      "tool_description": "Search domestic VN flights / Tìm chuyến bay nội địa",
+      "param": "destination",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "Phú Quốc",
+      "gold_call": {
+        "tool_name": "search_flight",
+        "params": {
+          "origin": "Đà Nẵng",
+          "destination": "Phú Quốc",
+          "date": "25/07/2024"
+        }
+      },
+      "traj_id": "travel_hard_0002",
+      "step_idx": 3,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A28",
+      "query": "Đặt hàng thực phẩm hữu cơ trên Tiki, nhưng sau đó muốn hủy và trả hàng vì không ưng ý, cuối cùng lại mua lại sản phẩm tương tự",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thực phẩm hữu cơ",
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "thực phẩm hữu cơ",
+            "results": [
+              {
+                "product_id": "PROD7100B7",
+                "name": "thực phẩm hữu cơ",
+                "price_vnd": 27013174
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "product_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "PROD7100B7",
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PROD7100B7",
+          "quantity": 2
+        }
+      },
+      "traj_id": "ecommerce_hard_0010",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "from_prior_observation",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A29",
+      "query": "Mua mỹ phẩm dưỡng da trên Sendo, sau đó yêu cầu trả hàng vì sản phẩm không phù hợp",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm dưỡng da",
+              "platform": "sendo"
+            }
+          },
+          "observation": {
+            "keyword": "mỹ phẩm dưỡng da",
+            "results": [
+              {
+                "product_id": "PRODC1044D",
+                "name": "mỹ phẩm dưỡng da",
+                "price_vnd": 1394068
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 1,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PRODC1044D",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_medium_0027",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A30",
+      "query": "Mua mỹ phẩm và theo dõi đơn hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Son MAC",
+              "max_price": 500000
+            }
+          },
+          "observation": {
+            "keyword": "Son MAC",
+            "results": [
+              {
+                "product_id": "PRODF9C2AD",
+                "name": "Son MAC",
+                "price_vnd": 20796514
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODF9C2AD",
+              "quantity": 2
+            }
+          },
+          "observation": {
+            "cart_id": "CART4E2896",
+            "items": [
+              {
+                "product_id": "PRODF9C2AD",
+                "quantity": 2
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "checkout",
+      "tool_description": "Check out and place order / Thanh toán đặt hàng",
+      "param": "shipping_address",
+      "param_schema": {
+        "type": "string",
+        "required": false
+      },
+      "gold_value": "123 Nguyễn Trãi, Q1",
+      "gold_call": {
+        "tool_name": "checkout",
+        "params": {
+          "cart_id": "CART4E2896",
+          "payment_method": "vnpay",
+          "shipping_address": "123 Nguyễn Trãi, Q1"
+        }
+      },
+      "traj_id": "ecommerce_hard_0034",
+      "step_idx": 2,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A31",
+      "query": "Đặt vé máy bay từ TP.HCM đến Phú Quốc ngày 25/11/2024, tìm thông tin hành lý và đặt phòng khách sạn tại Phú Quốc từ 25/11/2024 đến 28/11/2024",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "TP.HCM",
+              "destination": "Phú Quốc",
+              "date": "25/11/2024"
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FL2D5D56",
+                "origin": "TP.HCM",
+                "destination": "Phú Quốc",
+                "date": "25/11/2024",
+                "price_vnd": 3833499
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FL2D5D56",
+              "passenger_names": ["Nguyễn Thị D"]
+            }
+          },
+          "observation": {
+            "booking_id": "BK9B44E4",
+            "status": "confirmed"
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "baggage_info",
+            "params": {
+              "flight_id": "FL2D5D56"
+            }
+          },
+          "observation": {
+            "flight_id": "FL2D5D56",
+            "allowance_kg": 20
+          }
+        }
+      ],
+      "tool": "search_hotel",
+      "tool_description": "Search hotels / Tìm khách sạn",
+      "param": "city",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "Phú Quốc",
+      "gold_call": {
+        "tool_name": "search_hotel",
+        "params": {
+          "city": "Phú Quốc",
+          "checkin": "25/11/2024",
+          "checkout": "28/11/2024"
+        }
+      },
+      "traj_id": "travel_hard_0008",
+      "step_idx": 3,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A32",
+      "query": "So sánh giá mỹ phẩm và mua với voucher",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "mỹ phẩm dưỡng da"
+            }
+          },
+          "observation": {
+            "product_name": "mỹ phẩm dưỡng da",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 25012149
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 2057732
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 9402557
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm dưỡng da",
+              "max_price": 800000,
+              "platform": "shopee"
+            }
+          },
+          "observation": {
+            "keyword": "mỹ phẩm dưỡng da",
+            "results": [
+              {
+                "product_id": "PRODC1044D",
+                "name": "mỹ phẩm dưỡng da",
+                "price_vnd": 1394068
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODC1044D",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CARTCFE87C",
+            "items": [
+              {
+                "product_id": "PRODC1044D",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CARTCFE87C",
+              "voucher_code": "VU567890"
+            }
+          },
+          "observation": {
+            "cart_id": "CARTCFE87C",
+            "voucher_code": "VU567890",
+            "status": "applied"
+          }
+        }
+      ],
+      "tool": "checkout",
+      "tool_description": "Check out and place order / Thanh toán đặt hàng",
+      "param": "payment_method",
+      "param_schema": {
+        "type": "string",
+        "enum": ["cod", "momo", "vnpay", "bank_transfer"],
+        "required": true
+      },
+      "gold_value": "momo",
+      "gold_call": {
+        "tool_name": "checkout",
+        "params": {
+          "cart_id": "CARTCFE87C",
+          "payment_method": "momo"
+        }
+      },
+      "traj_id": "ecommerce_medium_0003",
+      "step_idx": 4,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "tool_default_or_enum",
+      "enum_justified": "n",
+      "note": ""
+    },
+    {
+      "item_id": "A33",
+      "query": "Mua bộ sản phẩm chăm sóc da trên Sendo với voucher 15% giảm giá, sau đó theo dõi đơn hàng và kiểm tra tình trạng hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "bộ sản phẩm chăm sóc da",
+              "max_price": 500000,
+              "platform": "sendo"
+            }
+          },
+          "observation": {
+            "keyword": "bộ sản phẩm chăm sóc da",
+            "results": [
+              {
+                "product_id": "PROD4002BB",
+                "name": "bộ sản phẩm chăm sóc da",
+                "price_vnd": 2627016
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 1,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PROD4002BB",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_hard_0113",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A34",
+      "query": "Tôi cần tra cứu thông tin hộ tịch và đăng ký xe để làm thủ tục sang tên xe",
+      "previous_steps": [],
+      "tool": "civil_status_lookup",
+      "tool_description": "Look up civil registration / Tra cứu hộ tịch",
+      "param": "citizen_id",
+      "param_schema": {
+        "type": "string",
+        "description": "12-digit CCCD",
+        "required": true
+      },
+      "gold_value": "1234567890123",
+      "gold_call": {
+        "tool_name": "civil_status_lookup",
+        "params": {
+          "citizen_id": "1234567890123",
+          "document_type": "residence"
+        }
+      },
+      "traj_id": "public_services_medium_0003",
+      "step_idx": 0,
+      "domain": "public_services",
+      "tier": "medium",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A35",
+      "query": "Tôi có 1000 đô la Mỹ, đổi sang tiền Việt Nam được bao nhiêu?",
+      "previous_steps": [],
+      "tool": "currency_convert",
+      "tool_description": "Convert currencies / Chuyển đổi tiền tệ",
+      "param": "from_currency",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "USD",
+      "gold_call": {
+        "tool_name": "currency_convert",
+        "params": {
+          "amount": 1000,
+          "from_currency": "USD",
+          "to_currency": "VND"
+        }
+      },
+      "traj_id": "info_retrieval_0012",
+      "step_idx": 0,
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A36",
+      "query": "Tìm sách giáo khoa lớp 1 trên Tiki và Lazada, rồi mua trên Lazada với phương thức thanh toán chuyển khoản",
+      "previous_steps": [],
+      "tool": "compare_prices",
+      "tool_description": "Compare prices across platforms / So sánh giá",
+      "param": "product_name",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "sách giáo khoa lớp 1",
+      "gold_call": {
+        "tool_name": "compare_prices",
+        "params": {
+          "product_name": "sách giáo khoa lớp 1"
+        }
+      },
+      "traj_id": "ecommerce_hard_0025",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A37",
+      "query": "Tôi muốn biết số tiền thuế thu nhập cá nhân tôi phải nộp năm 2022",
+      "previous_steps": [],
+      "tool": "tax_inquiry",
+      "tool_description": "Inquire personal income tax / Tra cứu thuế TNCN",
+      "param": "tax_code",
+      "param_schema": {
+        "type": "string",
+        "description": "10/13-digit MST",
+        "required": true
+      },
+      "gold_value": "1234567890",
+      "gold_call": {
+        "tool_name": "tax_inquiry",
+        "params": {
+          "tax_code": "1234567890",
+          "year": 2022
+        }
+      },
+      "traj_id": "public_services_0025",
+      "step_idx": 0,
+      "domain": "public_services",
+      "tier": "easy",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A38",
+      "query": "Mua và trả hàng thực phẩm chức năng cho người giảm cân",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thực phẩm chức năng giảm cân"
+            }
+          },
+          "observation": {
+            "keyword": "thực phẩm chức năng giảm cân",
+            "results": [
+              {
+                "product_id": "PRODF83DA4",
+                "name": "thực phẩm chức năng giảm cân",
+                "price_vnd": 6819597
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODF83DA4",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CART584A92",
+            "items": [
+              {
+                "product_id": "PRODF83DA4",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART584A92",
+              "payment_method": "cod"
+            }
+          },
+          "observation": {
+            "order_id": "ORD956ABB",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD956ABB"
+            }
+          },
+          "observation": {
+            "order_id": "ORD956ABB",
+            "status": "in_transit",
+            "eta_days": 4
+          }
+        }
+      ],
+      "tool": "return_request",
+      "tool_description": "Request return/refund / Yêu cầu trả hàng",
+      "param": "reason",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "Sản phẩm không phù hợp",
+      "gold_call": {
+        "tool_name": "return_request",
+        "params": {
+          "order_id": "ORD956ABB",
+          "reason": "Sản phẩm không phù hợp"
+        }
+      },
+      "traj_id": "ecommerce_hard_0058",
+      "step_idx": 4,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A39",
+      "query": "So sánh giá mỹ phẩm trên Sendo và Lazada, sau đó mua hàng và yêu cầu trả hàng",
+      "previous_steps": [],
+      "tool": "compare_prices",
+      "tool_description": "Compare prices across platforms / So sánh giá",
+      "param": "product_name",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "mỹ phẩm dưỡng da",
+      "gold_call": {
+        "tool_name": "compare_prices",
+        "params": {
+          "product_name": "mỹ phẩm dưỡng da"
+        }
+      },
+      "traj_id": "ecommerce_medium_0014",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A40",
+      "query": "Tra cứu thông tin về chủ đề công nghệ và đổi tiền từ euro sang đô la Mỹ",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "wiki_lookup",
+            "params": {
+              "query": "Công nghệ thông tin"
+            }
+          },
+          "observation": {
+            "query": "Công nghệ thông tin",
+            "summary": "Tóm tắt về Công nghệ thông tin.",
+            "ref": "WK1058B4"
+          }
+        }
+      ],
+      "tool": "currency_convert",
+      "tool_description": "Convert currencies / Chuyển đổi tiền tệ",
+      "param": "amount",
+      "param_schema": {
+        "type": "number",
+        "required": true
+      },
+      "gold_value": 500,
+      "gold_call": {
+        "tool_name": "currency_convert",
+        "params": {
+          "amount": 500,
+          "from_currency": "EUR",
+          "to_currency": "USD"
+        }
+      },
+      "traj_id": "info_retrieval_medium_0023",
+      "step_idx": 1,
+      "domain": "info_retrieval",
+      "tier": "medium",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A41",
+      "query": "Mua 2 cái áo khoác trên Shopee và áp dụng mã giảm giá ABC123",
+      "previous_steps": [],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "platform",
+      "param_schema": {
+        "type": "string",
+        "enum": ["shopee", "lazada", "tiki", "sendo"],
+        "required": false
+      },
+      "gold_value": "shopee",
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "áo khoác",
+          "platform": "shopee"
+        }
+      },
+      "traj_id": "ecommerce_0001",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A42",
+      "query": "Tìm mỹ phẩm dưỡng da trên Shopee, thêm vào giỏ hàng, nhưng sau đó muốn đổi sang sản phẩm khác vì không hài lòng, cuối cùng lại thêm vào giỏ hàng và thanh toán",
+      "previous_steps": [],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "max_price",
+      "param_schema": {
+        "type": "number",
+        "description": "VND",
+        "required": false
+      },
+      "gold_value": 2000000,
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "mỹ phẩm dưỡng da",
+          "max_price": 2000000,
+          "platform": "shopee"
+        }
+      },
+      "traj_id": "ecommerce_hard_0011",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A43",
+      "query": "Tôi muốn đi từ Hà Nội đến Đà Lạt vào ngày 20/09/2024 với 4 người và cần tìm thông tin hành lý cho chuyến bay này, cũng như đặt khách sạn tại Đà Lạt từ ngày 20/09/2024 đến 24/09/2024.",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hà Nội",
+              "destination": "Đà Lạt",
+              "date": "20/09/2024",
+              "passengers": 4
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FL1DC8E0",
+                "origin": "Hà Nội",
+                "destination": "Đà Lạt",
+                "date": "20/09/2024",
+                "price_vnd": 3151236
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "book_flight",
+      "tool_description": "Book specific flight / Đặt vé chuyến bay",
+      "param": "passenger_names[2]",
+      "param_schema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "required": true
+      },
+      "gold_value": "Lê Văn N",
+      "gold_call": {
+        "tool_name": "book_flight",
+        "params": {
+          "flight_id": "FL1DC8E0",
+          "passenger_names": [
+            "Nguyễn Văn L",
+            "Trần Thị M",
+            "Lê Văn N",
+            "Phạm Thị O"
+          ]
+        }
+      },
+      "traj_id": "travel_hard_0084",
+      "step_idx": 1,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A44",
+      "query": "Tìm chuyến bay từ Hồ Chí Minh đến Phú Quốc vào ngày 20/07/2024, đặt vé và xem thông tin hành lý",
+      "previous_steps": [],
+      "tool": "search_flight",
+      "tool_description": "Search domestic VN flights / Tìm chuyến bay nội địa",
+      "param": "destination",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "Phú Quốc",
+      "gold_call": {
+        "tool_name": "search_flight",
+        "params": {
+          "origin": "Hồ Chí Minh",
+          "destination": "Phú Quốc",
+          "date": "20/07/2024"
+        }
+      },
+      "traj_id": "travel_medium_0023",
+      "step_idx": 0,
+      "domain": "travel",
+      "tier": "hard",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A45",
+      "query": "Mua thực phẩm cho gia đình, bao gồm gạo và mỳ, sau đó yêu cầu trả hàng do sản phẩm không đúng yêu cầu",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "gạo Jasmine",
+              "max_price": 200000,
+              "platform": "shopee"
+            }
+          },
+          "observation": {
+            "keyword": "gạo Jasmine",
+            "results": [
+              {
+                "product_id": "PROD40D21F",
+                "name": "gạo Jasmine",
+                "price_vnd": 21901759
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD40D21F",
+              "quantity": 2
+            }
+          },
+          "observation": {
+            "cart_id": "CARTBD07F1",
+            "items": [
+              {
+                "product_id": "PROD40D21F",
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỳ spaghetti",
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "mỳ spaghetti",
+            "results": [
+              {
+                "product_id": "PROD6C27B0",
+                "name": "mỳ spaghetti",
+                "price_vnd": 23688816
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 1,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PROD6C27B0",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_hard_0078",
+      "step_idx": 3,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A46",
+      "query": "Trả lại mỹ phẩm không phù hợp và mua lại sản phẩm khác sau khi so sánh giá",
+      "previous_steps": [],
+      "tool": "return_request",
+      "tool_description": "Request return/refund / Yêu cầu trả hàng",
+      "param": "order_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "DH23456",
+      "gold_call": {
+        "tool_name": "return_request",
+        "params": {
+          "order_id": "DH23456",
+          "reason": "Sản phẩm không phù hợp"
+        }
+      },
+      "traj_id": "ecommerce_medium_0011",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "medium",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A47",
+      "query": "Tôi muốn đặt vé máy bay từ Đà Lạt đến Phú Quốc vào ngày 10/03/2024 và hỏi thông tin hành lý của chuyến bay này",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Đà Lạt",
+              "destination": "Phú Quốc",
+              "date": "10/03/2024"
+            }
+          },
+          "observation": {
+            "flights": [
+              {
+                "flight_id": "FL63E346",
+                "origin": "Đà Lạt",
+                "destination": "Phú Quốc",
+                "date": "10/03/2024",
+                "price_vnd": 7243412
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "baggage_info",
+      "tool_description": "Get baggage allowance / Xem thông tin hành lý",
+      "param": "flight_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "FL63E346",
+      "gold_call": {
+        "tool_name": "baggage_info",
+        "params": {
+          "flight_id": "FL63E346"
+        }
+      },
+      "traj_id": "travel_medium_0001",
+      "step_idx": 1,
+      "domain": "travel",
+      "tier": "medium",
+      "split": "train",
+      "label": "from_prior_observation",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A48",
+      "query": "Tôi muốn chuyển 1 triệu đồng từ tài khoản 12345678 sang tài khoản 98765432 với nội dung 'Mua hàng'",
+      "previous_steps": [],
+      "tool": "transfer_money",
+      "tool_description": "Transfer money between accounts / Chuyển khoản",
+      "param": "from_account",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "12345678",
+      "gold_call": {
+        "tool_name": "transfer_money",
+        "params": {
+          "from_account": "12345678",
+          "to_account": "98765432",
+          "amount": 1000000,
+          "note": "Mua hàng"
+        }
+      },
+      "traj_id": "banking_0031",
+      "step_idx": 0,
+      "domain": "banking",
+      "tier": "easy",
+      "split": "eval",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A49",
+      "query": "Hủy đặt lịch hẹn trước đó và đặt lại lịch hẹn mới để giải quyết thủ tục hộ tịch",
+      "previous_steps": [],
+      "tool": "document_status",
+      "tool_description": "Check submitted document status / Tra cứu tình trạng hồ sơ",
+      "param": "receipt_number",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "HT001",
+      "gold_call": {
+        "tool_name": "document_status",
+        "params": {
+          "receipt_number": "HT001"
+        }
+      },
+      "traj_id": "public_services_medium_0010",
+      "step_idx": 0,
+      "domain": "public_services",
+      "tier": "medium",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A50",
+      "query": "So sánh giá thực phẩm cho bữa tối, mua voucher và thanh toán bằng bank_transfer",
+      "previous_steps": [],
+      "tool": "compare_prices",
+      "tool_description": "Compare prices across platforms / So sánh giá",
+      "param": "product_name",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "thịt gà tươi",
+      "gold_call": {
+        "tool_name": "compare_prices",
+        "params": {
+          "product_name": "thịt gà tươi"
+        }
+      },
+      "traj_id": "ecommerce_hard_0048",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A51",
+      "query": "Tôi muốn tra cứu thông tin BHXH của mình với mã số 0123456789 và họ tên là Nguyễn Văn A",
+      "previous_steps": [],
+      "tool": "lookup_bhxh",
+      "tool_description": "Look up social insurance BHXH / Tra cứu BHXH",
+      "param": "bhxh_number",
+      "param_schema": {
+        "type": "string",
+        "description": "10-digit",
+        "required": true
+      },
+      "gold_value": "0123456789",
+      "gold_call": {
+        "tool_name": "lookup_bhxh",
+        "params": {
+          "bhxh_number": "0123456789",
+          "full_name": "Nguyễn Văn A"
+        }
+      },
+      "traj_id": "public_services_0000",
+      "step_idx": 0,
+      "domain": "public_services",
+      "tier": "easy",
+      "split": "eval",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A52",
+      "query": "Tìm khách sạn tại Đà Nẵng từ ngày 10/04/2025 đến 12/04/2025 cho 3 người",
+      "previous_steps": [],
+      "tool": "search_hotel",
+      "tool_description": "Search hotels / Tìm khách sạn",
+      "param": "guests",
+      "param_schema": {
+        "type": "integer",
+        "required": false
+      },
+      "gold_value": 3,
+      "gold_call": {
+        "tool_name": "search_hotel",
+        "params": {
+          "city": "Đà Nẵng",
+          "checkin": "10/04/2025",
+          "checkout": "12/04/2025",
+          "guests": 3
+        }
+      },
+      "traj_id": "travel_0022",
+      "step_idx": 0,
+      "domain": "travel",
+      "tier": "easy",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A53",
+      "query": "Mua 1 chiếc máy lọc nước và 1 gói thực phẩm chức năng cho gia đình",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "máy lọc nước",
+              "max_price": 10000000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "máy lọc nước",
+            "results": [
+              {
+                "product_id": "PROD25A4F9",
+                "name": "máy lọc nước",
+                "price_vnd": 11674179
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD25A4F9",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CART3C8BD2",
+            "items": [
+              {
+                "product_id": "PROD25A4F9",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thực phẩm chức năng",
+              "max_price": 2000000,
+              "platform": "lazada"
+            }
+          },
+          "observation": {
+            "keyword": "thực phẩm chức năng",
+            "results": [
+              {
+                "product_id": "PRODB9C0C4",
+                "name": "thực phẩm chức năng",
+                "price_vnd": 83341
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "product_id",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "PRODB9C0C4",
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PRODB9C0C4",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_medium_0021",
+      "step_idx": 3,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "from_prior_observation",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A54",
+      "query": "Mua mỹ phẩm trên Tiki, nhưng sau đó muốn hủy đơn hàng vì không cần nữa",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm",
+              "max_price": 500000,
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "mỹ phẩm",
+            "results": [
+              {
+                "product_id": "PRODD08399",
+                "name": "mỹ phẩm",
+                "price_vnd": 28887332
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 2,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PRODD08399",
+          "quantity": 2
+        }
+      },
+      "traj_id": "ecommerce_hard_0040",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A55",
+      "query": "Tôi cần lịch sử giao dịch của tài khoản 1234567890 từ ngày 01/01/2022 đến 31/12/2022",
+      "previous_steps": [],
+      "tool": "transaction_history",
+      "tool_description": "Get recent transaction history / Lịch sử giao dịch",
+      "param": "to_date",
+      "param_schema": {
+        "type": "string",
+        "description": "DD/MM/YYYY",
+        "required": false
+      },
+      "gold_value": "31/12/2022",
+      "gold_call": {
+        "tool_name": "transaction_history",
+        "params": {
+          "account_number": "1234567890",
+          "from_date": "01/01/2022",
+          "to_date": "31/12/2022"
+        }
+      },
+      "traj_id": "banking_0007",
+      "step_idx": 0,
+      "domain": "banking",
+      "tier": "easy",
+      "split": "train",
+      "label": "inferable_from_query",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A56",
+      "query": "Mua mỹ phẩm để tự dùng, nhưng sau đó muốn trả hàng vì không phù hợp",
+      "previous_steps": [],
+      "tool": "search_product",
+      "tool_description": "Search products on VN e-commerce / Tìm sản phẩm TMĐT",
+      "param": "max_price",
+      "param_schema": {
+        "type": "number",
+        "description": "VND",
+        "required": false
+      },
+      "gold_value": 500000,
+      "gold_call": {
+        "tool_name": "search_product",
+        "params": {
+          "keyword": "son dưỡng môi",
+          "max_price": 500000
+        }
+      },
+      "traj_id": "ecommerce_hard_0049",
+      "step_idx": 0,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A57",
+      "query": "Mua thực phẩm chức năng và yêu cầu trả hàng nếu không đạt chất lượng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Thực phẩm chức năng tăng cường sức khỏe",
+              "max_price": 1000000,
+              "platform": "lazada"
+            }
+          },
+          "observation": {
+            "keyword": "Thực phẩm chức năng tăng cường sức khỏe",
+            "results": [
+              {
+                "product_id": "PROD2ECCE8",
+                "name": "Thực phẩm chức năng tăng cường sức khỏe",
+                "price_vnd": 6826010
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 1,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PROD2ECCE8",
+          "quantity": 1
+        }
+      },
+      "traj_id": "ecommerce_hard_0029",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A58",
+      "query": "Tôi cần tra cứu hóa đơn điện nước của gia đình myself với mã khách hàng 123456",
+      "previous_steps": [],
+      "tool": "utility_bill_inquiry",
+      "tool_description": "Check utility bill / Tra cứu hóa đơn điện/nước",
+      "param": "utility_type",
+      "param_schema": {
+        "type": "string",
+        "enum": ["electricity", "water"],
+        "required": true
+      },
+      "gold_value": "electricity",
+      "gold_call": {
+        "tool_name": "utility_bill_inquiry",
+        "params": {
+          "customer_code": "123456",
+          "utility_type": "electricity"
+        }
+      },
+      "traj_id": "public_services_0018",
+      "step_idx": 0,
+      "domain": "public_services",
+      "tier": "medium",
+      "split": "eval",
+      "label": "tool_default_or_enum",
+      "enum_justified": "y",
+      "note": ""
+    },
+    {
+      "item_id": "A59",
+      "query": "Mua điện tử gia dụng trên Tiki, thêm vào giỏ hàng, áp dụng mã giảm giá 20% và yêu cầu theo dõi đơn hàng",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "điện tử gia dụng",
+              "platform": "tiki"
+            }
+          },
+          "observation": {
+            "keyword": "điện tử gia dụng",
+            "results": [
+              {
+                "product_id": "PROD379E9A",
+                "name": "điện tử gia dụng",
+                "price_vnd": 27389234
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD379E9A",
+              "quantity": 1
+            }
+          },
+          "observation": {
+            "cart_id": "CART54E4AC",
+            "items": [
+              {
+                "product_id": "PROD379E9A",
+                "quantity": 1
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "apply_voucher",
+      "tool_description": "Apply discount voucher / Áp mã giảm giá",
+      "param": "voucher_code",
+      "param_schema": {
+        "type": "string",
+        "required": true
+      },
+      "gold_value": "DIGI20",
+      "gold_call": {
+        "tool_name": "apply_voucher",
+        "params": {
+          "cart_id": "CART54E4AC",
+          "voucher_code": "DIGI20"
+        }
+      },
+      "traj_id": "ecommerce_hard_0090",
+      "step_idx": 2,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "eval",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    },
+    {
+      "item_id": "A60",
+      "query": "Đặt hàng quần áo nam trên Lazada, nhưng sau đó muốn trả hàng và đặt lại",
+      "previous_steps": [
+        {
+          "step": 0,
+          "call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "quần áo nam",
+              "platform": "lazada"
+            }
+          },
+          "observation": {
+            "keyword": "quần áo nam",
+            "results": [
+              {
+                "product_id": "PROD50AD0B",
+                "name": "quần áo nam",
+                "price_vnd": 26356676
+              }
+            ]
+          }
+        }
+      ],
+      "tool": "add_to_cart",
+      "tool_description": "Add product to cart / Thêm vào giỏ hàng",
+      "param": "quantity",
+      "param_schema": {
+        "type": "integer",
+        "minimum": 1,
+        "required": true
+      },
+      "gold_value": 2,
+      "gold_call": {
+        "tool_name": "add_to_cart",
+        "params": {
+          "product_id": "PROD50AD0B",
+          "quantity": 2
+        }
+      },
+      "traj_id": "ecommerce_hard_0038",
+      "step_idx": 1,
+      "domain": "ecommerce",
+      "tier": "hard",
+      "split": "train",
+      "label": "ungrounded",
+      "enum_justified": null,
+      "note": ""
+    }
+  ]
+}

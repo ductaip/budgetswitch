@@ -1,0 +1,170 @@
+{
+  "n_items": 60,
+  "agreement_4label": 0.867,
+  "kappa_4label": 0.764,
+  "agreement_binary": 0.883,
+  "kappa_binary_ungrounded": 0.757,
+  "label_distribution": {
+    "annotator1": {
+      "ungrounded": 39,
+      "inferable_from_query": 11,
+      "from_prior_observation": 6,
+      "tool_default_or_enum": 4
+    },
+    "annotator2": {
+      "ungrounded": 34,
+      "inferable_from_query": 18,
+      "from_prior_observation": 5,
+      "tool_default_or_enum": 3
+    }
+  },
+  "items_to_adjudicate_binary": [
+    "A04",
+    "A11",
+    "A14",
+    "A28",
+    "A29",
+    "A33",
+    "A57"
+  ],
+  "items_disagreeing_4label": [
+    "A04",
+    "A11",
+    "A14",
+    "A26",
+    "A28",
+    "A29",
+    "A33",
+    "A57"
+  ],
+  "audit_vs_truth": {
+    "annotator1": {
+      "strict": {
+        "precision": 0.975,
+        "precision_ci95": [
+          0.871,
+          0.996
+        ],
+        "n_flagged_items": 40,
+        "true_ungrounded_among_flagged": 39,
+        "ungrounded_rate_in_unflagged_sample": "0/20",
+        "recall_estimate_weighted": 1.0,
+        "gate_precision_>=_0.9": true
+      },
+      "lenient": {
+        "precision": 1.0,
+        "precision_ci95": [
+          0.893,
+          1.0
+        ],
+        "n_flagged_items": 32,
+        "true_ungrounded_among_flagged": 32,
+        "ungrounded_rate_in_unflagged_sample": "0/20",
+        "recall_estimate_weighted": 0.821,
+        "gate_precision_>=_0.9": true
+      }
+    },
+    "annotator2": {
+      "strict": {
+        "precision": 0.825,
+        "precision_ci95": [
+          0.681,
+          0.913
+        ],
+        "n_flagged_items": 40,
+        "true_ungrounded_among_flagged": 33,
+        "ungrounded_rate_in_unflagged_sample": "1/20",
+        "recall_estimate_weighted": 0.834,
+        "gate_precision_>=_0.9": false
+      },
+      "lenient": {
+        "precision": 0.969,
+        "precision_ci95": [
+          0.843,
+          0.994
+        ],
+        "n_flagged_items": 32,
+        "true_ungrounded_among_flagged": 31,
+        "ungrounded_rate_in_unflagged_sample": "1/20",
+        "recall_estimate_weighted": 0.784,
+        "gate_precision_>=_0.9": true
+      }
+    },
+    "agreed_items_only": {
+      "strict": {
+        "precision": 0.971,
+        "precision_ci95": [
+          0.851,
+          0.995
+        ],
+        "n_flagged_items": 34,
+        "true_ungrounded_among_flagged": 33,
+        "ungrounded_rate_in_unflagged_sample": "0/19",
+        "recall_estimate_weighted": 1.0,
+        "gate_precision_>=_0.9": true
+      },
+      "lenient": {
+        "precision": 1.0,
+        "precision_ci95": [
+          0.89,
+          1.0
+        ],
+        "n_flagged_items": 31,
+        "true_ungrounded_among_flagged": 31,
+        "ungrounded_rate_in_unflagged_sample": "0/19",
+        "recall_estimate_weighted": 0.939,
+        "gate_precision_>=_0.9": true
+      }
+    },
+    "adjudicated": {
+      "strict": {
+        "precision": 0.975,
+        "precision_ci95": [
+          0.871,
+          0.996
+        ],
+        "n_flagged_items": 40,
+        "true_ungrounded_among_flagged": 39,
+        "ungrounded_rate_in_unflagged_sample": "0/20",
+        "recall_estimate_weighted": 1.0,
+        "gate_precision_>=_0.9": true
+      },
+      "lenient": {
+        "precision": 1.0,
+        "precision_ci95": [
+          0.893,
+          1.0
+        ],
+        "n_flagged_items": 32,
+        "true_ungrounded_among_flagged": 32,
+        "ungrounded_rate_in_unflagged_sample": "0/20",
+        "recall_estimate_weighted": 0.821,
+        "gate_precision_>=_0.9": true
+      }
+    }
+  },
+  "truly_ungrounded_by_param_type": {
+    "count": 10,
+    "money amount": 7,
+    "person name": 5,
+    "free text (product/query)": 3,
+    "order ID": 2,
+    "account number": 2,
+    "citizen/ID number": 2,
+    "categorical option": 2,
+    "voucher code": 2,
+    "date": 1,
+    "address": 1,
+    "tax code": 1,
+    "receipt/plate/customer code": 1
+  },
+  "audit_false_positives_by_param_type": {
+    "currency/language code": 1
+  },
+  "enum_justified_counts": {
+    "a1:n": 2,
+    "a1:y": 2,
+    "a2:n": 2,
+    "a2:y": 1
+  }
+}

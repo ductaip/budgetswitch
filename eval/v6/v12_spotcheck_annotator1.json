@@ -1,0 +1,1288 @@
+{
+  "instructions": "Xem eval/v6/CHECKS_GUIDE.md mục 2 (giờ cả lựa chọn enum như phương thức thanh toán, sàn, cách hoàn tiền cũng phải được người dùng nói ra).",
+  "fill_fields": ["fabricated_value_found", "fabricated_values"],
+  "items": [
+    {
+      "item_id": "T01",
+      "traj_id": "ecommerce_hard_0027",
+      "split": "eval",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_changed_in_v1.2": true,
+      "query_v1.1": "Mua điện thoại Samsung Galaxy S22 Ultra với giá tối đa 20.000.000đ, số lượng 1 chiếc, giao hàng tới 123 Nguyễn Trãi, Q1, TP.HCM và theo dõi đơn hàng.",
+      "query": "Mua điện thoại Samsung Galaxy S22 Ultra trên Shopee với giá tối đa 20.000.000đ, số lượng 1 chiếc, thanh toán bằng ví MoMo, giao hàng tới 123 Nguyễn Trãi, Q1, TP.HCM và theo dõi đơn hàng.",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Samsung Galaxy S22 Ultra",
+              "max_price": 20000000,
+              "platform": "shopee"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "Samsung Galaxy S22 Ultra",
+            "results": [
+              {
+                "product_id": "PRODCF5D4C",
+                "name": "Samsung Galaxy S22 Ultra",
+                "price_vnd": 13168011
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODCF5D4C",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTB7003C",
+            "items": [
+              {
+                "product_id": "PRODCF5D4C",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTB7003C",
+              "payment_method": "momo",
+              "shipping_address": "123 Nguyễn Trãi, Q1, TP.HCM"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD0F6CF8",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD0F6CF8"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD0F6CF8",
+            "status": "in_transit",
+            "eta_days": 6
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T02",
+      "traj_id": "info_retrieval_0009",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Thời tiết ở Hà Nội như thế nào?",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "get_weather",
+            "params": {
+              "city": "Hà Nội"
+            }
+          },
+          "observation_of_this_step": {
+            "city": "Hà Nội",
+            "temp_c": 19,
+            "condition": "cloudy"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T03",
+      "traj_id": "banking_0018",
+      "split": "train",
+      "domain": "banking",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Tôi muốn mở một tài khoản tiết kiệm với khách hàng có ID là 12345, số tiền gửi ban đầu là 10 triệu đồng và kỳ hạn 12 tháng",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "open_savings_account",
+            "params": {
+              "customer_id": "12345",
+              "initial_deposit": 10000000,
+              "term_months": 12
+            }
+          },
+          "observation_of_this_step": {
+            "savings_id": "SV0C76B1",
+            "status": "opened",
+            "customer_id": "12345",
+            "initial_deposit": 10000000,
+            "term_months": 12
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T04",
+      "traj_id": "ecommerce_hard_0041",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_changed_in_v1.2": true,
+      "query_v1.1": "Mua thực phẩm trên Shopee, nhưng sau đó muốn đổi sang mua trên Lazada vì giá rẻ hơn. Thêm vào giỏ hàng 1 chiếc. Yêu cầu trả hàng vì đổi ý. Áp mã giảm giá LAZADA5.",
+      "query": "Mua thực phẩm trên Shopee, nhưng sau đó muốn đổi sang mua trên Lazada vì giá rẻ hơn. Thêm vào giỏ hàng 1 chiếc. Yêu cầu trả hàng vì đổi ý. Áp mã giảm giá LAZADA5. Thanh toán đặt hàng bằng ví MoMo. Thanh toán đặt hàng bằng chuyển khoản.",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thực phẩm",
+              "platform": "shopee"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "thực phẩm",
+            "results": [
+              {
+                "product_id": "PROD625D60",
+                "name": "thực phẩm",
+                "price_vnd": 14059921
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "thực phẩm"
+            }
+          },
+          "observation_of_this_step": {
+            "product_name": "thực phẩm",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 22390027
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 14961920
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 2649818
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD625D60",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART115E8F",
+            "items": [
+              {
+                "product_id": "PROD625D60",
+                "quantity": 1
+              },
+              {
+                "product_id": "PROD625D60",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART115E8F",
+              "payment_method": "momo"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD93273D",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 4,
+          "gold_call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD93273D"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD93273D",
+            "status": "in_transit",
+            "eta_days": 3
+          }
+        },
+        {
+          "step": 5,
+          "gold_call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "ORD93273D",
+              "reason": "đổi ý"
+            }
+          },
+          "observation_of_this_step": {
+            "return_id": "RETEBF683",
+            "status": "requested",
+            "order_id": "ORD93273D",
+            "reason": "đổi ý",
+            "refund_method": "original"
+          }
+        },
+        {
+          "step": 6,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thực phẩm",
+              "platform": "lazada"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "thực phẩm",
+            "results": [
+              {
+                "product_id": "PROD625D60",
+                "name": "thực phẩm",
+                "price_vnd": 14059921
+              }
+            ]
+          }
+        },
+        {
+          "step": 7,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD625D60",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART115E8F",
+            "items": [
+              {
+                "product_id": "PROD625D60",
+                "quantity": 1
+              },
+              {
+                "product_id": "PROD625D60",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 8,
+          "gold_call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CART115E8F",
+              "voucher_code": "LAZADA5"
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART115E8F",
+            "voucher_code": "LAZADA5",
+            "status": "applied"
+          }
+        },
+        {
+          "step": 9,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART115E8F",
+              "payment_method": "bank_transfer"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD81438D",
+            "status": "placed"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T05",
+      "traj_id": "ecommerce_hard_0042",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Mua laptop giá rẻ trên Tiki và Shopee với giá tối đa 15.000đ, mua 1 chiếc rồi áp mã giảm giá GIAM10",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "laptop giá rẻ",
+              "platform": "tiki",
+              "max_price": 15000
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "laptop giá rẻ",
+            "results": [
+              {
+                "product_id": "PRODAC2C09",
+                "name": "laptop giá rẻ",
+                "price_vnd": 19217560
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "laptop"
+            }
+          },
+          "observation_of_this_step": {
+            "product_name": "laptop",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 3700247
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 16506143
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 28553599
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODAC2C09",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTE2E11B",
+            "items": [
+              {
+                "product_id": "PRODAC2C09",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CARTE2E11B",
+              "voucher_code": "GIAM10"
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTE2E11B",
+            "voucher_code": "GIAM10",
+            "status": "applied"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T06",
+      "traj_id": "ecommerce_hard_0049",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_changed_in_v1.2": true,
+      "query_v1.1": "Mua mỹ phẩm son dưỡng môi để tự dùng, giá tối đa 500.000đ, số lượng 1 chiếc, nhưng sau đó muốn trả hàng vì không phù hợp",
+      "query": "Mua mỹ phẩm son dưỡng môi để tự dùng, giá tối đa 500.000đ, số lượng 1 chiếc, thanh toán bằng VNPay, nhưng sau đó muốn trả hàng vì không phù hợp, hoàn về phương thức thanh toán ban đầu",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "son dưỡng môi",
+              "max_price": 500000
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "son dưỡng môi",
+            "results": [
+              {
+                "product_id": "PRODFC42C4",
+                "name": "son dưỡng môi",
+                "price_vnd": 7092353
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODFC42C4",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTE1AED5",
+            "items": [
+              {
+                "product_id": "PRODFC42C4",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTE1AED5",
+              "payment_method": "vnpay"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD55FE6D",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "ORD55FE6D",
+              "reason": "không phù hợp",
+              "refund_method": "original"
+            }
+          },
+          "observation_of_this_step": {
+            "return_id": "RETF44784",
+            "status": "requested",
+            "order_id": "ORD55FE6D",
+            "reason": "không phù hợp",
+            "refund_method": "original"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T07",
+      "traj_id": "public_services_0021",
+      "split": "train",
+      "domain": "public_services",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Tôi cần tra cứu thuế thu nhập cá nhân năm 2022 với mã số thuế 0123456789",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "tax_inquiry",
+            "params": {
+              "tax_code": "0123456789",
+              "year": 2022
+            }
+          },
+          "observation_of_this_step": {
+            "tax_code": "0123456789",
+            "year": 2022,
+            "amount_due_vnd": 28758122
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T08",
+      "traj_id": "info_retrieval_0015",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "1 triệu đô la Mỹ bằng bao nhiêu tiền Việt Nam Đồng?",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "currency_convert",
+            "params": {
+              "amount": 1000000,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          },
+          "observation_of_this_step": {
+            "amount": 1000000,
+            "from": "USD",
+            "to": "VND",
+            "result": 25000000000.0
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T09",
+      "traj_id": "travel_hard_0007",
+      "split": "eval",
+      "domain": "travel",
+      "tier": "hard",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Tìm chuyến tàu từ Hải Phòng đến Hà Nội ngày 20/10/2024 và đặt vé máy bay từ Hà Nội đến Nha Trang ngày 22/10/2024 cho hành khách Lê Văn C",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_train",
+            "params": {
+              "origin": "Hải Phòng",
+              "destination": "Hà Nội",
+              "date": "20/10/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "trains": [
+              {
+                "train_id": "TRDBA5F3",
+                "origin": "Hải Phòng",
+                "destination": "Hà Nội",
+                "date": "20/10/2024"
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hà Nội",
+              "destination": "Nha Trang",
+              "date": "22/10/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FL100086",
+                "origin": "Hà Nội",
+                "destination": "Nha Trang",
+                "date": "22/10/2024",
+                "price_vnd": 3835156
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "book_flight",
+            "params": {
+              "flight_id": "FL100086",
+              "passenger_names": ["Lê Văn C"]
+            }
+          },
+          "observation_of_this_step": {
+            "booking_id": "BK7695E6",
+            "status": "confirmed"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T10",
+      "traj_id": "info_retrieval_0007",
+      "split": "eval",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Dịch 'Hello, how are you?' từ tiếng Anh sang tiếng Việt",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "translate_text",
+            "params": {
+              "text": "Hello, how are you?",
+              "source_lang": "en",
+              "target_lang": "vi"
+            }
+          },
+          "observation_of_this_step": {
+            "text": "Hello, how are you?",
+            "target_lang": "vi",
+            "translation": "[vi] Hello, how are you?"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T11",
+      "traj_id": "info_retrieval_0012",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Tôi có 1000 đô la Mỹ, đổi sang tiền Việt Nam được bao nhiêu?",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "currency_convert",
+            "params": {
+              "amount": 1000,
+              "from_currency": "USD",
+              "to_currency": "VND"
+            }
+          },
+          "observation_of_this_step": {
+            "amount": 1000,
+            "from": "USD",
+            "to": "VND",
+            "result": 25000000.0
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T12",
+      "traj_id": "travel_0010",
+      "split": "eval",
+      "domain": "travel",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Tìm chuyến bay từ Hà Nội đến TP.HCM vào ngày 25/12/2024 cho 2 người",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "Hà Nội",
+              "destination": "TP.HCM",
+              "date": "25/12/2024",
+              "passengers": 2
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FL089658",
+                "origin": "Hà Nội",
+                "destination": "TP.HCM",
+                "date": "25/12/2024",
+                "price_vnd": 4048764
+              }
+            ]
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T13",
+      "traj_id": "ecommerce_medium_0010",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "medium",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Đổi sizes giày sneaker sau khi mua và theo dõi đơn hàng DH67890. Lý do: Size không phù hợp",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "DH67890"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "DH67890",
+            "status": "in_transit",
+            "eta_days": 6
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "return_request",
+            "params": {
+              "order_id": "DH67890",
+              "reason": "Size không phù hợp"
+            }
+          },
+          "observation_of_this_step": {
+            "return_id": "RET5C9C24",
+            "status": "requested",
+            "order_id": "DH67890",
+            "reason": "Size không phù hợp",
+            "refund_method": "original"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T14",
+      "traj_id": "banking_0021",
+      "split": "train",
+      "domain": "banking",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Chuyển 1.000.000 đồng từ tài khoản 1234567890 sang tài khoản 0987654321 với nội dung chuyển tiền cho bạn",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "transfer_money",
+            "params": {
+              "from_account": "1234567890",
+              "to_account": "0987654321",
+              "amount": 1000000,
+              "note": "chuyển tiền cho bạn"
+            }
+          },
+          "observation_of_this_step": {
+            "tx_id": "TX47438D",
+            "status": "success",
+            "from": "1234567890",
+            "to": "0987654321",
+            "amount": 1000000,
+            "note": "chuyển tiền cho bạn"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T15",
+      "traj_id": "banking_0030",
+      "split": "train",
+      "domain": "banking",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Số dư tài khoản 12345678 của tôi là bao nhiêu?",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "check_balance",
+            "params": {
+              "account_number": "12345678"
+            }
+          },
+          "observation_of_this_step": {
+            "account_number": "12345678",
+            "balance_vnd": 441418155,
+            "currency": "VND"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T16",
+      "traj_id": "info_retrieval_0019",
+      "split": "train",
+      "domain": "info_retrieval",
+      "tier": "easy",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Dịch 'Xin chào' từ tiếng Việt sang tiếng Anh",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "translate_text",
+            "params": {
+              "text": "Xin chào",
+              "source_lang": "vi",
+              "target_lang": "en"
+            }
+          },
+          "observation_of_this_step": {
+            "text": "Xin chào",
+            "target_lang": "en",
+            "translation": "[en] Xin chào"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T17",
+      "traj_id": "ecommerce_hard_0008",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_changed_in_v1.2": true,
+      "query_v1.1": "So sánh giá và mua mỹ phẩm Innisfree trên Lazada và Tiki, thêm 1 chiếc vào giỏ hàng, áp mã giảm giá LAZADA15 và theo dõi đơn hàng",
+      "query": "So sánh giá và mua mỹ phẩm Innisfree trên Lazada và Tiki, thêm 1 chiếc vào giỏ hàng, áp mã giảm giá LAZADA15 và thanh toán khi nhận hàng, sau đó theo dõi đơn hàng",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "mỹ phẩm Innisfree"
+            }
+          },
+          "observation_of_this_step": {
+            "product_name": "mỹ phẩm Innisfree",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 19106036
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 4046700
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 18454938
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "mỹ phẩm Innisfree",
+              "platform": "lazada"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "mỹ phẩm Innisfree",
+            "results": [
+              {
+                "product_id": "PROD471BA3",
+                "name": "mỹ phẩm Innisfree",
+                "price_vnd": 20644528
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD471BA3",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART428262",
+            "items": [
+              {
+                "product_id": "PROD471BA3",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CART428262",
+              "voucher_code": "LAZADA15"
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART428262",
+            "voucher_code": "LAZADA15",
+            "status": "applied"
+          }
+        },
+        {
+          "step": 4,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CART428262",
+              "payment_method": "cod"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD755E7F",
+            "status": "placed"
+          }
+        },
+        {
+          "step": 5,
+          "gold_call": {
+            "tool_name": "track_order",
+            "params": {
+              "order_id": "ORD755E7F"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORD755E7F",
+            "status": "in_transit",
+            "eta_days": 7
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T18",
+      "traj_id": "ecommerce_medium_0021",
+      "split": "train",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_changed_in_v1.2": true,
+      "query_v1.1": "Mua 1 chiếc máy lọc nước với giá tối đa 10.000.000đ và 1 gói thực phẩm chức năng với giá tối đa 2.000.000đ cho gia đình",
+      "query": "Mua 1 chiếc máy lọc nước trên Tiki với giá tối đa 10.000.000đ và 1 gói thực phẩm chức năng trên Lazada với giá tối đa 2.000.000đ cho gia đình",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "máy lọc nước",
+              "max_price": 10000000,
+              "platform": "tiki"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "máy lọc nước",
+            "results": [
+              {
+                "product_id": "PROD25A4F9",
+                "name": "máy lọc nước",
+                "price_vnd": 11674179
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PROD25A4F9",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CART3C8BD2",
+            "items": [
+              {
+                "product_id": "PROD25A4F9",
+                "quantity": 1
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "thực phẩm chức năng",
+              "max_price": 2000000,
+              "platform": "lazada"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "thực phẩm chức năng",
+            "results": [
+              {
+                "product_id": "PRODB9C0C4",
+                "name": "thực phẩm chức năng",
+                "price_vnd": 83341
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODB9C0C4",
+              "quantity": 1
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTDB08BE",
+            "items": [
+              {
+                "product_id": "PRODB9C0C4",
+                "quantity": 1
+              }
+            ]
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T19",
+      "traj_id": "travel_medium_0004",
+      "split": "train",
+      "domain": "travel",
+      "tier": "medium",
+      "query_changed_in_v1.2": false,
+      "query_v1.1": null,
+      "query": "Tìm chuyến bay từ TP.HCM đến Nha Trang vào 20/11/2024 và hỏi thông tin hành lý",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "search_flight",
+            "params": {
+              "origin": "TP.HCM",
+              "destination": "Nha Trang",
+              "date": "20/11/2024"
+            }
+          },
+          "observation_of_this_step": {
+            "flights": [
+              {
+                "flight_id": "FL4240CF",
+                "origin": "TP.HCM",
+                "destination": "Nha Trang",
+                "date": "20/11/2024",
+                "price_vnd": 1223266
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "baggage_info",
+            "params": {
+              "flight_id": "FL4240CF"
+            }
+          },
+          "observation_of_this_step": {
+            "flight_id": "FL4240CF",
+            "allowance_kg": 20
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    },
+    {
+      "item_id": "T20",
+      "traj_id": "ecommerce_hard_0001",
+      "split": "eval",
+      "domain": "ecommerce",
+      "tier": "hard",
+      "query_changed_in_v1.2": true,
+      "query_v1.1": "So sánh giá sách giáo khoa lớp 1 trên Tiki và Lazada, mua 2 chiếc, áp mã giảm giá TIKI10",
+      "query": "So sánh giá sách giáo khoa lớp 1 trên Tiki và Lazada, mua 2 chiếc, áp mã giảm giá TIKI10, chuyển khoản",
+      "steps": [
+        {
+          "step": 0,
+          "gold_call": {
+            "tool_name": "compare_prices",
+            "params": {
+              "product_name": "Sách giáo khoa lớp 1"
+            }
+          },
+          "observation_of_this_step": {
+            "product_name": "Sách giáo khoa lớp 1",
+            "offers": [
+              {
+                "platform": "Shopee",
+                "price_vnd": 29036737
+              },
+              {
+                "platform": "Lazada",
+                "price_vnd": 4628892
+              },
+              {
+                "platform": "Tiki",
+                "price_vnd": 17906303
+              }
+            ]
+          }
+        },
+        {
+          "step": 1,
+          "gold_call": {
+            "tool_name": "search_product",
+            "params": {
+              "keyword": "Sách giáo khoa lớp 1",
+              "platform": "tiki"
+            }
+          },
+          "observation_of_this_step": {
+            "keyword": "Sách giáo khoa lớp 1",
+            "results": [
+              {
+                "product_id": "PRODB6B903",
+                "name": "Sách giáo khoa lớp 1",
+                "price_vnd": 17152103
+              }
+            ]
+          }
+        },
+        {
+          "step": 2,
+          "gold_call": {
+            "tool_name": "add_to_cart",
+            "params": {
+              "product_id": "PRODB6B903",
+              "quantity": 2
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTD5A914",
+            "items": [
+              {
+                "product_id": "PRODB6B903",
+                "quantity": 2
+              }
+            ]
+          }
+        },
+        {
+          "step": 3,
+          "gold_call": {
+            "tool_name": "apply_voucher",
+            "params": {
+              "cart_id": "CARTD5A914",
+              "voucher_code": "TIKI10"
+            }
+          },
+          "observation_of_this_step": {
+            "cart_id": "CARTD5A914",
+            "voucher_code": "TIKI10",
+            "status": "applied"
+          }
+        },
+        {
+          "step": 4,
+          "gold_call": {
+            "tool_name": "checkout",
+            "params": {
+              "cart_id": "CARTD5A914",
+              "payment_method": "bank_transfer"
+            }
+          },
+          "observation_of_this_step": {
+            "order_id": "ORDD45122",
+            "status": "placed"
+          }
+        }
+      ],
+      "fabricated_value_found": "n",
+      "fabricated_values": [],
+      "note": ""
+    }
+  ]
+}

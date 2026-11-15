@@ -1,0 +1,2382 @@
+{
+  "flagged_values_total": 502,
+  "distinct_flagged_values": 233,
+  "values_occurring_>=2_times": 58,
+  "flagged_occurrences_covered_by_repeated_values": 327,
+  "repeated_values_in_both_splits": 36,
+  "eval_flagged_occurrences_whose_value_also_appears_in_train": 83,
+  "eval_flagged_occurrences": 139,
+  "flagged_by_param_type_(audit,_unvalidated)": {
+    "count": 97,
+    "money amount": 77,
+    "person name": 65,
+    "free text (product/query)": 55,
+    "voucher code": 54,
+    "categorical option": 25,
+    "address": 21,
+    "date": 21,
+    "currency/language code": 20,
+    "account number": 13,
+    "citizen/ID number": 12,
+    "order ID": 11,
+    "receipt/plate/customer code": 9,
+    "customer ID": 6,
+    "office/place": 5,
+    "tax code": 4,
+    "place": 4,
+    "card number": 3
+  },
+  "values": [
+    {
+      "value": "1",
+      "total": 73,
+      "train": 52,
+      "eval": 21,
+      "n_trajectories": 73,
+      "params": {
+        "quantity": 71,
+        "passengers": 2
+      }
+    },
+    {
+      "value": "2",
+      "total": 23,
+      "train": 19,
+      "eval": 4,
+      "n_trajectories": 23,
+      "params": {
+        "quantity": 23
+      }
+    },
+    {
+      "value": "\"1234567890\"",
+      "total": 18,
+      "train": 14,
+      "eval": 4,
+      "n_trajectories": 18,
+      "params": {
+        "tax_code": 4,
+        "from_account": 1,
+        "account_number": 6,
+        "bhxh_number": 4,
+        "customer_code": 1,
+        "citizen_id": 2
+      }
+    },
+    {
+      "value": "500000",
+      "total": 18,
+      "train": 15,
+      "eval": 3,
+      "n_trajectories": 17,
+      "params": {
+        "max_price": 17,
+        "amount": 1
+      }
+    },
+    {
+      "value": "1000000",
+      "total": 11,
+      "train": 8,
+      "eval": 3,
+      "n_trajectories": 10,
+      "params": {
+        "max_price": 10,
+        "amount": 1
+      }
+    },
+    {
+      "value": "\"Lê Văn C\"",
+      "total": 11,
+      "train": 9,
+      "eval": 2,
+      "n_trajectories": 9,
+      "params": {
+        "passenger_names": 11
+      }
+    },
+    {
+      "value": "\"Nguyễn Văn A\"",
+      "total": 10,
+      "train": 8,
+      "eval": 2,
+      "n_trajectories": 9,
+      "params": {
+        "passenger_names": 6,
+        "full_name": 4
+      }
+    },
+    {
+      "value": "\"VND\"",
+      "total": 8,
+      "train": 7,
+      "eval": 1,
+      "n_trajectories": 8,
+      "params": {
+        "to_currency": 7,
+        "from_currency": 1
+      }
+    },
+    {
+      "value": "2000000",
+      "total": 8,
+      "train": 6,
+      "eval": 2,
+      "n_trajectories": 8,
+      "params": {
+        "max_price": 8
+      }
+    },
+    {
+      "value": "5000000",
+      "total": 8,
+      "train": 4,
+      "eval": 4,
+      "n_trajectories": 8,
+      "params": {
+        "max_price": 5,
+        "initial_deposit": 2,
+        "amount": 1
+      }
+    },
+    {
+      "value": "\"Hà Nội\"",
+      "total": 7,
+      "train": 4,
+      "eval": 3,
+      "n_trajectories": 7,
+      "params": {
+        "shipping_address": 3,
+        "city": 4
+      }
+    },
+    {
+      "value": "10000000",
+      "total": 7,
+      "train": 5,
+      "eval": 2,
+      "n_trajectories": 7,
+      "params": {
+        "max_price": 6,
+        "initial_deposit": 1
+      }
+    },
+    {
+      "value": "\"USD\"",
+      "total": 6,
+      "train": 5,
+      "eval": 1,
+      "n_trajectories": 6,
+      "params": {
+        "from_currency": 5,
+        "to_currency": 1
+      }
+    },
+    {
+      "value": "20000000",
+      "total": 6,
+      "train": 2,
+      "eval": 4,
+      "n_trajectories": 6,
+      "params": {
+        "max_price": 6
+      }
+    },
+    {
+      "value": "\"TIKI10\"",
+      "total": 5,
+      "train": 3,
+      "eval": 2,
+      "n_trajectories": 5,
+      "params": {
+        "voucher_code": 5
+      }
+    },
+    {
+      "value": "15000000",
+      "total": 5,
+      "train": 3,
+      "eval": 2,
+      "n_trajectories": 5,
+      "params": {
+        "max_price": 5
+      }
+    },
+    {
+      "value": "\"Nguyễn Thị D\"",
+      "total": 4,
+      "train": 3,
+      "eval": 1,
+      "n_trajectories": 3,
+      "params": {
+        "passenger_names": 4
+      }
+    },
+    {
+      "value": "\"Nguyễn Văn I\"",
+      "total": 4,
+      "train": 4,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "passenger_names": 4
+      }
+    },
+    {
+      "value": "\"Trần Văn E\"",
+      "total": 4,
+      "train": 2,
+      "eval": 2,
+      "n_trajectories": 4,
+      "params": {
+        "passenger_names": 4
+      }
+    },
+    {
+      "value": "\"KH001\"",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "customer_id": 2,
+        "customer_code": 1
+      }
+    },
+    {
+      "value": "\"sản phẩm không như mô tả\"",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "reason": 3
+      }
+    },
+    {
+      "value": "200000",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "max_price": 3
+      }
+    },
+    {
+      "value": "\"123 Nguyễn Trãi, Q1, TP.HCM\"",
+      "total": 3,
+      "train": 1,
+      "eval": 2,
+      "n_trajectories": 3,
+      "params": {
+        "shipping_address": 3
+      }
+    },
+    {
+      "value": "\"123 Nguyễn Trãi, Q.1, TP.HCM\"",
+      "total": 3,
+      "train": 2,
+      "eval": 1,
+      "n_trajectories": 3,
+      "params": {
+        "shipping_address": 3
+      }
+    },
+    {
+      "value": "\"mỹ phẩm dưỡng da\"",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "product_name": 2,
+        "keyword": 1
+      }
+    },
+    {
+      "value": "800000",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "max_price": 3
+      }
+    },
+    {
+      "value": "\"Kem dưỡng da\"",
+      "total": 3,
+      "train": 2,
+      "eval": 1,
+      "n_trajectories": 3,
+      "params": {
+        "product_name": 2,
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"Trần Thị B\"",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "passenger_names": 3
+      }
+    },
+    {
+      "value": "\"Phạm Thị D\"",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "passenger_names": 3
+      }
+    },
+    {
+      "value": "\"9876543210\"",
+      "total": 3,
+      "train": 3,
+      "eval": 0,
+      "n_trajectories": 3,
+      "params": {
+        "to_account": 3
+      }
+    },
+    {
+      "value": "\"fr\"",
+      "total": 3,
+      "train": 2,
+      "eval": 1,
+      "n_trajectories": 3,
+      "params": {
+        "target_lang": 2,
+        "source_lang": 1
+      }
+    },
+    {
+      "value": "\"123456789\"",
+      "total": 3,
+      "train": 1,
+      "eval": 2,
+      "n_trajectories": 3,
+      "params": {
+        "citizen_id": 3
+      }
+    },
+    {
+      "value": "\"DH12345\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "order_id": 2
+      }
+    },
+    {
+      "value": "\"DELL10\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "\"LAZADA15\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "\"SHOPEE20\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "15000",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "max_price": 2
+      }
+    },
+    {
+      "value": "\"GIAM10\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "\"GIAĐINH10\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "\"Thực phẩm chức năng tăng cường sức khỏe\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "keyword": 2
+      }
+    },
+    {
+      "value": "\"đổi ý\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "reason": 2
+      }
+    },
+    {
+      "value": "\"LAZADA5\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "\"Không hài lòng với sản phẩm\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "reason": 2
+      }
+    },
+    {
+      "value": "\"SALE15\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "\"Lê Văn D\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 2
+      }
+    },
+    {
+      "value": "\"Trần Thị J\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "passenger_names": 2
+      }
+    },
+    {
+      "value": "\"15/08/2024\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "date": 2
+      }
+    },
+    {
+      "value": "\"28/11/2024\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "checkout": 2
+      }
+    },
+    {
+      "value": "\"Lê Thị F\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "passenger_names": 2
+      }
+    },
+    {
+      "value": "\"1234567890123456\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "card_number": 2
+      }
+    },
+    {
+      "value": "\"KH002\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "customer_id": 2
+      }
+    },
+    {
+      "value": "\"Sản phẩm không phù hợp\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "reason": 2
+      }
+    },
+    {
+      "value": "500",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "amount": 1,
+        "max_price": 1
+      }
+    },
+    {
+      "value": "\"Nguyễn Văn B\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "full_name": 1,
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"ABC123\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "receipt_number": 2
+      }
+    },
+    {
+      "value": "\"1234567890123\"",
+      "total": 2,
+      "train": 1,
+      "eval": 1,
+      "n_trajectories": 2,
+      "params": {
+        "citizen_id": 2
+      }
+    },
+    {
+      "value": "\"economy\"",
+      "total": 2,
+      "train": 2,
+      "eval": 0,
+      "n_trajectories": 2,
+      "params": {
+        "seat_class": 2
+      }
+    },
+    {
+      "value": "\"SALE5\"",
+      "total": 2,
+      "train": 0,
+      "eval": 2,
+      "n_trajectories": 2,
+      "params": {
+        "voucher_code": 2
+      }
+    },
+    {
+      "value": "\"DH001\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"id_đơn_hàng\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"LAZ10\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"ORD789\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"mỹ phẩm dưỡng da tự nhiên\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"quần jeans nữ\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"không phù hợp\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"Sách Toán học\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"123 Nguyễn Văn Cừ, Hà Nội\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"Không ưng ý\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"VOU002\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"máy lọc nước tốt nhất\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"MAC5\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"sách Toán học cho trẻ em\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"SACHGIAM10\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"GIAM8\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"GIAM5\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"DISCOUNT20\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"son dưỡng môi\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"sách self-help\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"thực phẩm organic\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"sản phẩm hết hạn sử dụng\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"SENDO10\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"laptop HP Envy x360\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"Son MAC\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"123 Nguyễn Trãi, Q1\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"thực phẩm ngon\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"không hài lòng\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"SKIN15\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"Máy lọc nước\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"SEN5\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"MY15\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"LAZADA20\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"SHOPEE5\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"gạo Jasmine\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"mỳ spaghetti\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"456 Lê Văn Sỹ, Q.3, TP.HCM\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"GIAM15\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"thịt gà tươi\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"GA10\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"SALE05\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"sách giáo khoa lớp 1\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"123 Nguyễn Trãi, Quận 1, TPHCM\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"VU567890\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"GIAMGIATET20\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"Không ưng sản phẩm\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"không hợp size\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"Bộ Vest nam thời trang\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"quần jeans nam nữ\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"TIKI8\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"VOUCHER15\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"TP.HCM\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"sách giáo khoa\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"TIKI15\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"STUDENT10\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"123 Nguyễn Văn Cừ, Q.5\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"kem dưỡng da Laneige\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"son bóng MAC\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"789 Nguyễn Văn Cừ, Q.5, TP.HCM\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"MOM15\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"789 Nguyễn Văn Cừ, Q5\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"ORD123\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"thực phẩm hữu cơ tự nhiên\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"S22ULTRA8\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"03/01/2025\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "checkout": 1
+      }
+    },
+    {
+      "value": "\"18/05/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "checkout": 1
+      }
+    },
+    {
+      "value": "\"02/12/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"03/12/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "checkout": 1
+      }
+    },
+    {
+      "value": "\"16/08/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"Nguyễn Thị E\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Nguyễn Văn L\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Trần Thị M\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Lê Văn N\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Phạm Thị O\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Lê Văn K\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Phạm Thị L\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Trần Văn M\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Nguyễn Thị N\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Phòng nhóm\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "room_type": 1
+      }
+    },
+    {
+      "value": "\"Trần Thị C\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"25/05/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"27/05/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "checkout": 1
+      }
+    },
+    {
+      "value": "\"Lê Văn A\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Lê Văn B\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "360",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "term_months": 1
+      }
+    },
+    {
+      "value": "\"TK001\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "from_account": 1
+      }
+    },
+    {
+      "value": "\"TK002\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "to_account": 1
+      }
+    },
+    {
+      "value": "\"12345\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "customer_id": 1
+      }
+    },
+    {
+      "value": "\"Sách Tắt đèn Ngô Tất Tố\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"DH23456\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"LZ12345\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"DH67890\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"Size không phù hợp\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"Hola, cómo estás?\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "text": 1
+      }
+    },
+    {
+      "value": "\"es\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "source_lang": 1
+      }
+    },
+    {
+      "value": "\"politics news\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "text": 1
+      }
+    },
+    {
+      "value": "\"中華人民共和國\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "text": 1
+      }
+    },
+    {
+      "value": "\"100 * 50000\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "expression": 1
+      }
+    },
+    {
+      "value": "\"ja\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "target_lang": 1
+      }
+    },
+    {
+      "value": "\"Công nghệ thông tin\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "query": 1
+      }
+    },
+    {
+      "value": "\"Hello, how are you?\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "text": 1
+      }
+    },
+    {
+      "value": "\"Lịch sử Việt Nam\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "query": 1
+      }
+    },
+    {
+      "value": "\"10*5\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "expression": 1
+      }
+    },
+    {
+      "value": "100",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "amount": 1
+      }
+    },
+    {
+      "value": "\"1234567891\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "bhxh_number": 1
+      }
+    },
+    {
+      "value": "\"BHXH Quận 1\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "office": 1
+      }
+    },
+    {
+      "value": "\"15/05/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "2023",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "year": 1
+      }
+    },
+    {
+      "value": "\"Nộp thuế TNCN\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "service_name": 1
+      }
+    },
+    {
+      "value": "\"HT001\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "receipt_number": 1
+      }
+    },
+    {
+      "value": "\"Uberland Office\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "office": 1
+      }
+    },
+    {
+      "value": "\"15/09/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"Sở Y tế\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "office": 1
+      }
+    },
+    {
+      "value": "\"15/02/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"0012345678\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "receipt_number": 1
+      }
+    },
+    {
+      "value": "\"43A-12345\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "plate_number": 1
+      }
+    },
+    {
+      "value": "\"43B-67890\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "plate_number": 1
+      }
+    },
+    {
+      "value": "\"UBND\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "office": 1
+      }
+    },
+    {
+      "value": "\"10/02/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"12/12/2024\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "checkout": 1
+      }
+    },
+    {
+      "value": "\"\"",
+      "total": 1,
+      "train": 1,
+      "eval": 0,
+      "n_trajectories": 1,
+      "params": {
+        "seat_class": 1
+      }
+    },
+    {
+      "value": "\"DH002\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"thực phẩm chức năng giảm cân\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"DIGI20\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"Sách giáo khoa lớp 1\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"456 Lê Thánh Tôn, Q1, TP.HCM\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"Sản phẩm không đạt chất lượng\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"áo thể thao\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"quần jeans\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"FAM10\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"SHOPEE10\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"bộ sách hay\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"điện thoại mới\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "8000000",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "max_price": 1
+      }
+    },
+    {
+      "value": "\"Đã tìm được giá tốt hơn\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "7000000",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "max_price": 1
+      }
+    },
+    {
+      "value": "\"Đồng hồ thông minh\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"SHOPEE15\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"VOUCHER5\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"VOU001\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"DONHANG5\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"Innisfree dưỡng da\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "\"INNI20\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"Máy lạnh\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"GIAIDT10\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "voucher_code": 1
+      }
+    },
+    {
+      "value": "\"456 Lê Đức Thọ, Q.Gò Vấp, TP.HCM\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"mỹ phẩm tốt\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "keyword": 1
+      }
+    },
+    {
+      "value": "\"quần jeans nam\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "product_name": 1
+      }
+    },
+    {
+      "value": "1500000",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "max_price": 1
+      }
+    },
+    {
+      "value": "\"456 Lê Thánh Tôn, Q.1, TP.HCM\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"OD67890\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "order_id": 1
+      }
+    },
+    {
+      "value": "\"không hài lòng với sản phẩm\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"địa chỉ giao hàng\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "shipping_address": 1
+      }
+    },
+    {
+      "value": "\"09/09/2024\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"Trần Văn F\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Nguyễn Văn F\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Trần Thị G\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Lê Văn F\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Nguyễn Văn G\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"Trần Thị H\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "passenger_names": 1
+      }
+    },
+    {
+      "value": "\"C001\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "customer_id": 1
+      }
+    },
+    {
+      "value": "\"333333333\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "account_number": 1
+      }
+    },
+    {
+      "value": "\"987654321\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "card_number": 1
+      }
+    },
+    {
+      "value": "\"Sản phẩm không đúng yêu cầu\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "reason": 1
+      }
+    },
+    {
+      "value": "\"Bonjour, comment allez-vous?\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "text": 1
+      }
+    },
+    {
+      "value": "\"10 * 20\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "expression": 1
+      }
+    },
+    {
+      "value": "\"thời tiết tại New York\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "text": 1
+      }
+    },
+    {
+      "value": "\"vi\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "source_lang": 1
+      }
+    },
+    {
+      "value": "\"Cấp giấy khai sinh\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "service_name": 1
+      }
+    },
+    {
+      "value": "\"UBND Huyện\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "office": 1
+      }
+    },
+    {
+      "value": "\"20/02/2024\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "date": 1
+      }
+    },
+    {
+      "value": "\"51A-12345\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "plate_number": 1
+      }
+    },
+    {
+      "value": "\"17/02/2024\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "checkout": 1
+      }
+    },
+    {
+      "value": "\"28/05/2024\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "checkout": 1
+      }
+    },
+    {
+      "value": "\"phong_don\"",
+      "total": 1,
+      "train": 0,
+      "eval": 1,
+      "n_trajectories": 1,
+      "params": {
+        "room_type": 1
+      }
+    }
+  ]
+}

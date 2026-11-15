@@ -1,0 +1,14 @@
+{
+  "id": "ductaiphan/budgetswitch-v5-backbone-7b",
+  "title": "budgetswitch-v5-backbone-7b",
+  "code_file": "run_backbone_7b.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": ["ductaiphan/budgetswitch-v5-bundle"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

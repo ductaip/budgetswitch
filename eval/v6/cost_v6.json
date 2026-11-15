@@ -1,0 +1,306 @@
+{
+  "v1": {
+    "N_active": {
+      "M0": 3090000000.0,
+      "M1": 3090000000.0,
+      "M2": 3090000000.0,
+      "M3": 5100000000.0
+    },
+    "N_e5": 278043648,
+    "M2_e5_query_tokens_mean": 25.9,
+    "modes": {
+      "M0": {
+        "prompt_tokens_mean": 501.5,
+        "completion_tokens_mean": 38.6,
+        "total_tokens_mean": 540.2,
+        "flops_mean": 3338000000000.0,
+        "latency_ms_mean": 5850.6,
+        "latency_ms_median": 5542.6,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 1.0,
+          "tokens": 1.0,
+          "flops": 1.0
+        }
+      },
+      "M1": {
+        "prompt_tokens_mean": 526.5,
+        "completion_tokens_mean": 66.2,
+        "total_tokens_mean": 592.7,
+        "flops_mean": 3663000000000.0,
+        "latency_ms_mean": 9816.7,
+        "latency_ms_median": 8874.7,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 3.0,
+          "tokens": 1.097,
+          "flops": 1.097
+        }
+      },
+      "M2": {
+        "prompt_tokens_mean": 287.8,
+        "completion_tokens_mean": 57.1,
+        "total_tokens_mean": 344.9,
+        "flops_mean": 2146000000000.0,
+        "latency_ms_mean": 8370.0,
+        "latency_ms_median": 7874.9,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 5.0,
+          "tokens": 0.638,
+          "flops": 0.643
+        }
+      },
+      "M3": {
+        "prompt_tokens_mean": 1370.9,
+        "completion_tokens_mean": 105.1,
+        "total_tokens_mean": 1476.0,
+        "flops_mean": 15060000000000.0,
+        "latency_ms_mean": 564.5,
+        "latency_ms_median": 479.2,
+        "usd_mean": 0.0002845,
+        "usd_total_284": 0.0808,
+        "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+        "relative_to_M0": {
+          "assumed": 15.0,
+          "tokens": 2.733,
+          "flops": 4.51
+        }
+      }
+    }
+  },
+  "v1.1_v4adapter": {
+    "N_active": {
+      "M0": 3090000000.0,
+      "M1": 3090000000.0,
+      "M2": 3090000000.0,
+      "M3": 5100000000.0
+    },
+    "N_e5": 278043648,
+    "M2_e5_query_tokens_mean": 36.4,
+    "modes": {
+      "M0": {
+        "prompt_tokens_mean": 516.9,
+        "completion_tokens_mean": 39.0,
+        "total_tokens_mean": 555.9,
+        "flops_mean": 3435000000000.0,
+        "latency_ms_mean": 5975.9,
+        "latency_ms_median": 5721.2,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 1.0,
+          "tokens": 1.0,
+          "flops": 1.0
+        }
+      },
+      "M1": {
+        "prompt_tokens_mean": 541.9,
+        "completion_tokens_mean": 68.3,
+        "total_tokens_mean": 610.1,
+        "flops_mean": 3771000000000.0,
+        "latency_ms_mean": 10252.1,
+        "latency_ms_median": 9469.5,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 3.0,
+          "tokens": 1.098,
+          "flops": 1.098
+        }
+      },
+      "M2": {
+        "prompt_tokens_mean": 303.4,
+        "completion_tokens_mean": 57.5,
+        "total_tokens_mean": 360.9,
+        "flops_mean": 2251000000000.0,
+        "latency_ms_mean": 8514.7,
+        "latency_ms_median": 8149.9,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 5.0,
+          "tokens": 0.649,
+          "flops": 0.655
+        }
+      },
+      "M3": {
+        "prompt_tokens_mean": 1383.6,
+        "completion_tokens_mean": 94.2,
+        "total_tokens_mean": 1477.9,
+        "flops_mean": 15070000000000.0,
+        "latency_ms_mean": 757.3,
+        "latency_ms_median": 709.8,
+        "usd_mean": 0.0002782,
+        "usd_total_284": 0.079,
+        "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+        "relative_to_M0": {
+          "assumed": 15.0,
+          "tokens": 2.659,
+          "flops": 4.388
+        }
+      }
+    }
+  },
+  "v1.2": {
+    "N_active": {
+      "M0": 3090000000.0,
+      "M1": 3090000000.0,
+      "M2": 3090000000.0,
+      "M3": 5100000000.0
+    },
+    "N_e5": 278043648,
+    "M2_e5_query_tokens_mean": 40.7,
+    "modes": {
+      "M0": {
+        "prompt_tokens_mean": 521.8,
+        "completion_tokens_mean": 39.7,
+        "total_tokens_mean": 561.5,
+        "flops_mean": 3470000000000.0,
+        "latency_ms_mean": 6356.2,
+        "latency_ms_median": 5976.0,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 1.0,
+          "tokens": 1.0,
+          "flops": 1.0
+        }
+      },
+      "M1": {
+        "prompt_tokens_mean": 546.8,
+        "completion_tokens_mean": 67.7,
+        "total_tokens_mean": 614.5,
+        "flops_mean": 3798000000000.0,
+        "latency_ms_mean": 10648.7,
+        "latency_ms_median": 9890.8,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 3.0,
+          "tokens": 1.094,
+          "flops": 1.094
+        }
+      },
+      "M2": {
+        "prompt_tokens_mean": 308.1,
+        "completion_tokens_mean": 57.0,
+        "total_tokens_mean": 365.1,
+        "flops_mean": 2279000000000.0,
+        "latency_ms_mean": 8898.2,
+        "latency_ms_median": 8301.9,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 5.0,
+          "tokens": 0.65,
+          "flops": 0.657
+        }
+      },
+      "M3": {
+        "prompt_tokens_mean": 1388.0,
+        "completion_tokens_mean": 93.4,
+        "total_tokens_mean": 1481.4,
+        "flops_mean": 15110000000000.0,
+        "latency_ms_mean": 1640.3,
+        "latency_ms_median": 897.6,
+        "usd_mean": 0.0002783,
+        "usd_total_284": 0.079,
+        "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+        "relative_to_M0": {
+          "assumed": 15.0,
+          "tokens": 2.638,
+          "flops": 4.355
+        }
+      }
+    }
+  },
+  "v1.1": {
+    "N_active": {
+      "M0": 3090000000.0,
+      "M1": 3090000000.0,
+      "M2": 3090000000.0,
+      "M3": 5100000000.0
+    },
+    "N_e5": 278043648,
+    "M2_e5_query_tokens_mean": 36.4,
+    "modes": {
+      "M0": {
+        "prompt_tokens_mean": 516.9,
+        "completion_tokens_mean": 38.6,
+        "total_tokens_mean": 555.4,
+        "flops_mean": 3433000000000.0,
+        "latency_ms_mean": 6196.3,
+        "latency_ms_median": 5877.3,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 1.0,
+          "tokens": 1.0,
+          "flops": 1.0
+        }
+      },
+      "M1": {
+        "prompt_tokens_mean": 541.9,
+        "completion_tokens_mean": 50.3,
+        "total_tokens_mean": 592.2,
+        "flops_mean": 3659000000000.0,
+        "latency_ms_mean": 8005.4,
+        "latency_ms_median": 7691.4,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 3.0,
+          "tokens": 1.066,
+          "flops": 1.066
+        }
+      },
+      "M2": {
+        "prompt_tokens_mean": 303.4,
+        "completion_tokens_mean": 57.2,
+        "total_tokens_mean": 360.7,
+        "flops_mean": 2249000000000.0,
+        "latency_ms_mean": 8894.1,
+        "latency_ms_median": 8436.2,
+        "usd_mean": 0.0,
+        "usd_total_284": 0.0,
+        "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+        "relative_to_M0": {
+          "assumed": 5.0,
+          "tokens": 0.649,
+          "flops": 0.655
+        }
+      },
+      "M3": {
+        "prompt_tokens_mean": 1383.6,
+        "completion_tokens_mean": 94.2,
+        "total_tokens_mean": 1477.9,
+        "flops_mean": 15070000000000.0,
+        "latency_ms_mean": 757.3,
+        "latency_ms_median": 709.8,
+        "usd_mean": 0.0002782,
+        "usd_total_284": 0.079,
+        "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+        "relative_to_M0": {
+          "assumed": 15.0,
+          "tokens": 2.661,
+          "flops": 4.391
+        }
+      }
+    }
+  }
+}

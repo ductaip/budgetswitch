@@ -1,0 +1,5 @@
+# reviewed false positives (empty variable names / docstring mentions of GROQ_API_KEY), 2026-11-13
+.env.example:generic-api-key:1
+e32bbca7d76f14123d30e3db91e473237bbf5fe4:.env.example:generic-api-key:1
+e32bbca7d76f14123d30e3db91e473237bbf5fe4:eval/v5/run_m3_v5.py:generic-api-key:5
+eval/v5/run_m3_v5.py:generic-api-key:5

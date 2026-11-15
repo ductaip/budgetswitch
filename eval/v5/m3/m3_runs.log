@@ -1,0 +1,49 @@
+[M3 run1] 20/284
+[M3 run1] 40/284
+[M3 run1] 60/284
+[M3 run1] 80/284
+[M3 run1] 100/284
+[M3 run1] 120/284
+[M3 run1] 140/284
+[M3 run1] 160/284
+[M3 run1] 180/284
+[M3 run1] 200/284
+[M3 run1] 220/284
+[M3 run1] 240/284
+[M3 run1] 260/284
+[M3 run1] 280/284
+DONE M3 run1 → eval/v5/m3/m3_run1_v5.jsonl
+[M3 run2] 20/284
+[M3 run2] 40/284
+[M3 run2] 60/284
+[M3 run2] 80/284
+[M3 run2] 100/284
+  key#1 limited for 10 min → next key
+[M3 run2] 120/284
+[M3 run2] 140/284
+[M3 run2] 160/284
+[M3 run2] 180/284
+[M3 run2] 200/284
+[M3 run2] 220/284
+[M3 run2] 240/284
+[M3 run2] 260/284
+[M3 run2] 280/284
+DONE M3 run2 → eval/v5/m3/m3_run2_v5.jsonl
+  key#1 limited for 2 min → next key
+[M3 run3] 20/284
+[M3 run3] 40/284
+[M3 run3] 60/284
+[M3 run3] 80/284
+[M3 run3] 100/284
+[M3 run3] 120/284
+[M3 run3] 140/284
+[M3 run3] 160/284
+[M3 run3] 180/284
+[M3 run3] 200/284
+  key#2 limited for 2 min → next key
+  key#1 limited for 2 min → next key
+[M3 run3] 220/284
+[M3 run3] 240/284
+[M3 run3] 260/284
+[M3 run3] 280/284
+DONE M3 run3 → eval/v5/m3/m3_run3_v5.jsonl

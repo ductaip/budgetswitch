@@ -47,8 +47,13 @@ tqdm>=4.66
 python-dotenv>=1.0
 pyyaml>=6.0
 
+# Routers / statistics (eval/v5, eval/v6)
+scikit-learn>=1.3
+scipy>=1.10
+
 # Plotting (for Pareto curves, mode distribution)
 matplotlib>=3.7
+adjustText>=1.0  # single-column fig2 labels
 seaborn>=0.13
 
 # ============================================================

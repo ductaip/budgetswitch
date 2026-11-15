@@ -1,0 +1,7039 @@
+{
+ "n_trajectories": 375,
+ "first_failing_gate": {
+  "pass": 175,
+  "G3": 198,
+  "placeholder": 2
+ },
+ "by_split": {
+  "all": {
+   "trajs": 375,
+   "pass_all": 175,
+   "g3_fail": 200
+  },
+  "pilot_eval": {
+   "trajs": 112,
+   "pass_all": 52,
+   "g3_fail": 60
+  },
+  "sft_train": {
+   "trajs": 263,
+   "pass_all": 123,
+   "g3_fail": 140
+  }
+ },
+ "by_difficulty": {
+  "all": {
+   "trajs": 375,
+   "pass_all": 175,
+   "g3_fail": 200
+  },
+  "easy": {
+   "trajs": 142,
+   "pass_all": 133,
+   "g3_fail": 9
+  },
+  "hard": {
+   "trajs": 143,
+   "pass_all": 10,
+   "g3_fail": 133
+  },
+  "medium": {
+   "trajs": 90,
+   "pass_all": 32,
+   "g3_fail": 58
+  }
+ },
+ "by_domain": {
+  "all": {
+   "trajs": 375,
+   "pass_all": 175,
+   "g3_fail": 200
+  },
+  "banking": {
+   "trajs": 55,
+   "pass_all": 37,
+   "g3_fail": 18
+  },
+  "ecommerce": {
+   "trajs": 146,
+   "pass_all": 31,
+   "g3_fail": 115
+  },
+  "info_retrieval": {
+   "trajs": 56,
+   "pass_all": 44,
+   "g3_fail": 12
+  },
+  "public_services": {
+   "trajs": 53,
+   "pass_all": 34,
+   "g3_fail": 19
+  },
+  "travel": {
+   "trajs": 65,
+   "pass_all": 29,
+   "g3_fail": 36
+  }
+ },
+ "g3_ungrounded_values": 484,
+ "g3_top_params": [
+  [
+   "add_to_cart.quantity",
+   94
+  ],
+  [
+   "search_product.max_price",
+   69
+  ],
+  [
+   "book_flight.passenger_names",
+   60
+  ],
+  [
+   "apply_voucher.voucher_code",
+   54
+  ],
+  [
+   "search_product.keyword",
+   27
+  ],
+  [
+   "checkout.shipping_address",
+   21
+  ],
+  [
+   "return_request.reason",
+   20
+  ],
+  [
+   "compare_prices.product_name",
+   15
+  ],
+  [
+   "return_request.order_id",
+   10
+  ],
+  [
+   "search_hotel.checkout",
+   9
+  ],
+  [
+   "open_savings_account.customer_id",
+   6
+  ],
+  [
+   "translate_text.text",
+   6
+  ],
+  [
+   "book_public_appointment.date",
+   6
+  ],
+  [
+   "lookup_bhxh.bhxh_number",
+   5
+  ],
+  [
+   "lookup_bhxh.full_name",
+   5
+  ],
+  [
+   "book_public_appointment.office",
+   5
+  ],
+  [
+   "tax_inquiry.tax_code",
+   4
+  ],
+  [
+   "search_flight.date",
+   4
+  ],
+  [
+   "transfer_money.to_account",
+   4
+  ],
+  [
+   "find_branch.city",
+   4
+  ],
+  [
+   "check_balance.account_number",
+   4
+  ],
+  [
+   "document_status.receipt_number",
+   4
+  ],
+  [
+   "civil_status_lookup.citizen_id",
+   4
+  ],
+  [
+   "transaction_history.account_number",
+   3
+  ],
+  [
+   "transfer_money.amount",
+   3
+  ]
+ ],
+ "ids_changed_by_resolve": 0,
+ "trajectories": [
+  {
+   "traj_id": "banking_0014",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0010",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0011",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0028",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0008",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0019",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0032",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0006",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0025",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0000",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0036",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0013",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "open_savings_account",
+     "param": "customer_id",
+     "value": "KH001"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_0018",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0002",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0035",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0030",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0021",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0003",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0023",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0004",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0037",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0015",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0017",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0001",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0007",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0002",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0035",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0010",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0000",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0026",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0034",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0013",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "DH12345"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0023",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "DH001"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0017",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0028",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0018",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0003",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0005",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0037",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0009",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "placeholder",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "id_đơn_hàng"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0007",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0012",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0015",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0035",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0005",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0012",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0027",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0023",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0019",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0006",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0014",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0018",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0010",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0015",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0003",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0032",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0036",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0011",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0009",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0028",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0001",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0002",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0030",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0005",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "tax_inquiry",
+     "param": "tax_code",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_0024",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0037",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0022",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0015",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0026",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0016",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0039",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0035",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0021",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0007",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0002",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0009",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0013",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0011",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0032",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0008",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0001",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0036",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0027",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0031",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0023",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0005",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0015",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0025",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0009",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0022",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0016",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0037",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0035",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0024",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0001",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0002",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0027",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0031",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0006",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0000",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0097",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "LAZ10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0011",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "ORD789"
+    },
+    {
+     "step": 3,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "mỹ phẩm dưỡng da tự nhiên"
+    },
+    {
+     "step": 4,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0001",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "quần jeans nữ"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "không phù hợp"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0040",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "Hà Nội"
+    },
+    {
+     "step": 5,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 6,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 7,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "TIKI10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0062",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Sách Toán học"
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Văn Cừ, Hà Nội"
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Không ưng ý"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0026",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "VOU002"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0019",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "máy lọc nước tốt nhất"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 10000000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0112",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "MAC5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0072",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "sách Toán học cho trẻ em"
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "sản phẩm không như mô tả"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0111",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 20000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "DELL10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0110",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 200000
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SACHGIAM10"
+    },
+    {
+     "step": 3,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0046",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAM8"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0008",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "LAZADA15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0044",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAM5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0095",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 10000000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "DISCOUNT20"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0049",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "son dưỡng môi"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0033",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SHOPEE20"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0002",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "sách self-help"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 200000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0025",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0000",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 10000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0021",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 10000000
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0007",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "thực phẩm organic"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "LAZADA15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0074",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "sản phẩm hết hạn sử dụng"
+    },
+    {
+     "step": 6,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SENDO10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0077",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "laptop HP Envy x360"
+    },
+    {
+     "step": 3,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "DELL10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0034",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "Son MAC"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Q1"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0035",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "thực phẩm ngon"
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "Hà Nội"
+    },
+    {
+     "step": 3,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "không hài lòng"
+    },
+    {
+     "step": 4,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SHOPEE20"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0042",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 15000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAM10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0113",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SKIN15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0012",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0004",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Máy lọc nước"
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Q1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0099",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SEN5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0106",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 15000000
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 20000000
+    },
+    {
+     "step": 4,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAĐINH10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0006",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0088",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "MY15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0003",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "Thực phẩm chức năng tăng cường sức khỏe"
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "LAZADA20"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0028",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0039",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "đổi ý"
+    },
+    {
+     "step": 8,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SHOPEE5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0047",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 15000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Q.1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0028",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0025",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0073",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "LAZADA5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0041",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 5,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "đổi ý"
+    },
+    {
+     "step": 8,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "LAZADA5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0100",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0014",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "mỹ phẩm dưỡng da"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "sản phẩm không như mô tả"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0078",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "gạo Jasmine"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 200000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "mỳ spaghetti"
+    },
+    {
+     "step": 3,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "456 Lê Văn Sỹ, Q.3, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0085",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAM15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0016",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 5000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0048",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "thịt gà tươi"
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GA10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0015",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SALE05"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0021",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "sách giáo khoa lớp 1"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0102",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Quận 1, TPHCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0003",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "mỹ phẩm dưỡng da"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 800000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "VU567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0108",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    },
+    {
+     "step": 4,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAMGIATET20"
+    },
+    {
+     "step": 6,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Không ưng sản phẩm"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0038",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "không hợp size"
+    },
+    {
+     "step": 6,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0107",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Bộ Vest nam thời trang"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    },
+    {
+     "step": 3,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0009",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0006",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "mỹ phẩm dưỡng da"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "sản phẩm không như mô tả"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0018",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "quần jeans nam nữ"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0075",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "TIKI8"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0031",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Kem dưỡng da"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 800000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0034",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 15000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "TIKI10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0041",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Không hài lòng với sản phẩm"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0001",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0065",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 5000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "VOUCHER15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0016",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SALE15"
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0060",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0037",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 15000000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "TIKI10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0037",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "sách giáo khoa"
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "TIKI15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0043",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0109",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 3,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0015",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "STUDENT10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0033",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0013",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Văn Cừ, Q.5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0079",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "kem dưỡng da Laneige"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 800000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "son bóng MAC"
+    },
+    {
+     "step": 4,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "789 Nguyễn Văn Cừ, Q.5, TP.HCM"
+    },
+    {
+     "step": 6,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "MOM15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0042",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "789 Nguyễn Văn Cừ, Q5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0010",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "ORD123"
+    },
+    {
+     "step": 3,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "thực phẩm hữu cơ tự nhiên"
+    },
+    {
+     "step": 3,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0005",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Q.1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0114",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "S22ULTRA8"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0002",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn D"
+    },
+    {
+     "step": 4,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn D"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0008",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Thị D"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0010",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0006",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Thị D"
+    },
+    {
+     "step": 4,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    },
+    {
+     "step": 4,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Thị D"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0116",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0054",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn I"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị J"
+    },
+    {
+     "step": 2,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "03/01/2025"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0081",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị B"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Phạm Thị D"
+    },
+    {
+     "step": 2,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "18/05/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0016",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_flight",
+     "param": "date",
+     "value": "02/12/2024"
+    },
+    {
+     "step": 2,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Văn E"
+    },
+    {
+     "step": 3,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "03/12/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0019",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_flight",
+     "param": "date",
+     "value": "15/08/2024"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 4,
+     "tool": "search_flight",
+     "param": "date",
+     "value": "16/08/2024"
+    },
+    {
+     "step": 5,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn A"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0097",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn I"
+    },
+    {
+     "step": 3,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn I"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0003",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Thị E"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0084",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn L"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị M"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn N"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Phạm Thị O"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0034",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn I"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị J"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn K"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Phạm Thị L"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Văn M"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Thị N"
+    },
+    {
+     "step": 2,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "28/11/2024"
+    },
+    {
+     "step": 3,
+     "tool": "book_hotel",
+     "param": "room_type",
+     "value": "Phòng nhóm"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0001",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị C"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0106",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_train",
+     "param": "date",
+     "value": "25/05/2024"
+    },
+    {
+     "step": 1,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "27/05/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0042",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị B"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0023",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0030",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Văn E"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Thị F"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0018",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn B"
+    },
+    {
+     "step": 3,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "28/11/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0031",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Phạm Thị D"
+    },
+    {
+     "step": 4,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    },
+    {
+     "step": 4,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Phạm Thị D"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0086",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0010",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "transfer_money",
+     "param": "from_account",
+     "value": "1234567890"
+    },
+    {
+     "step": 0,
+     "tool": "transfer_money",
+     "param": "to_account",
+     "value": "9876543210"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0018",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "transaction_history",
+     "param": "account_number",
+     "value": "1234567890"
+    },
+    {
+     "step": 1,
+     "tool": "transfer_money",
+     "param": "to_account",
+     "value": "9876543210"
+    },
+    {
+     "step": 1,
+     "tool": "transfer_money",
+     "param": "amount",
+     "value": 1000000
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0037",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "find_branch",
+     "param": "city",
+     "value": "Hà Nội"
+    },
+    {
+     "step": 1,
+     "tool": "loan_inquiry",
+     "param": "term_months",
+     "value": 360
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0016",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "check_balance",
+     "param": "account_number",
+     "value": "1234567890"
+    },
+    {
+     "step": 1,
+     "tool": "transfer_money",
+     "param": "to_account",
+     "value": "9876543210"
+    },
+    {
+     "step": 1,
+     "tool": "transfer_money",
+     "param": "amount",
+     "value": 500000
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_hard_0025",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0014",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "check_balance",
+     "param": "account_number",
+     "value": "1234567890"
+    },
+    {
+     "step": 1,
+     "tool": "open_savings_account",
+     "param": "customer_id",
+     "value": "KH001"
+    },
+    {
+     "step": 1,
+     "tool": "open_savings_account",
+     "param": "initial_deposit",
+     "value": 5000000
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0023",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "block_card",
+     "param": "card_number",
+     "value": "1234567890123456"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0001",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0024",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "open_savings_account",
+     "param": "customer_id",
+     "value": "KH002"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0002",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_hard_0022",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "transfer_money",
+     "param": "from_account",
+     "value": "TK001"
+    },
+    {
+     "step": 0,
+     "tool": "transfer_money",
+     "param": "to_account",
+     "value": "TK002"
+    },
+    {
+     "step": 0,
+     "tool": "transfer_money",
+     "param": "amount",
+     "value": 5000000
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_0039",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0029",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "find_branch",
+     "param": "city",
+     "value": "Hà Nội"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_hard_0000",
+   "split": "sft_train",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "open_savings_account",
+     "param": "customer_id",
+     "value": "12345"
+    },
+    {
+     "step": 1,
+     "tool": "open_savings_account",
+     "param": "initial_deposit",
+     "value": 10000000
+    },
+    {
+     "step": 2,
+     "tool": "check_balance",
+     "param": "account_number",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0032",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0024",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Sách Tắt đèn Ngô Tất Tố"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0011",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "DH23456"
+    },
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Sản phẩm không phù hợp"
+    },
+    {
+     "step": 1,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Kem dưỡng da"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0023",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "LZ12345"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0010",
+   "split": "sft_train",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "track_order",
+     "param": "order_id",
+     "value": "DH67890"
+    },
+    {
+     "step": 1,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Size không phù hợp"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0025",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0040",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "translate_text",
+     "param": "text",
+     "value": "Hola, cómo estás?"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0011",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "translate_text",
+     "param": "text",
+     "value": "politics news"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0001",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0035",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "translate_text",
+     "param": "text",
+     "value": "中華人民共和國"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0007",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0039",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "calculate",
+     "param": "expression",
+     "value": "100 * 50000"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0004",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0018",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0016",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0023",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "wiki_lookup",
+     "param": "query",
+     "value": "Công nghệ thông tin"
+    },
+    {
+     "step": 1,
+     "tool": "currency_convert",
+     "param": "amount",
+     "value": 500
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0028",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0009",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0036",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "translate_text",
+     "param": "text",
+     "value": "Hello, how are you?"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0019",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0022",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "wiki_lookup",
+     "param": "query",
+     "value": "Lịch sử Việt Nam"
+    },
+    {
+     "step": 1,
+     "tool": "calculate",
+     "param": "expression",
+     "value": "10*5"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0000",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "currency_convert",
+     "param": "amount",
+     "value": 100
+    },
+    {
+     "step": 1,
+     "tool": "currency_convert",
+     "param": "to_currency",
+     "value": "VND"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0005",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0008",
+   "split": "sft_train",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0011",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "bhxh_number",
+     "value": "1234567890"
+    },
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "full_name",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "lookup_bhxh",
+     "param": "bhxh_number",
+     "value": "1234567891"
+    },
+    {
+     "step": 1,
+     "tool": "lookup_bhxh",
+     "param": "full_name",
+     "value": "Nguyễn Văn B"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0032",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "tax_inquiry",
+     "param": "tax_code",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0002",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "document_status",
+     "param": "receipt_number",
+     "value": "ABC123"
+    },
+    {
+     "step": 1,
+     "tool": "utility_bill_inquiry",
+     "param": "customer_code",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0000",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "bhxh_number",
+     "value": "1234567890"
+    },
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "full_name",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "office",
+     "value": "BHXH Quận 1"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "date",
+     "value": "15/05/2024"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "citizen_id",
+     "value": "1234567890123"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0014",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "utility_bill_inquiry",
+     "param": "customer_code",
+     "value": "KH001"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0001",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "tax_inquiry",
+     "param": "tax_code",
+     "value": "1234567890"
+    },
+    {
+     "step": 0,
+     "tool": "tax_inquiry",
+     "param": "year",
+     "value": 2023
+    },
+    {
+     "step": 1,
+     "tool": "fee_lookup",
+     "param": "service_name",
+     "value": "Nộp thuế TNCN"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0010",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "document_status",
+     "param": "receipt_number",
+     "value": "HT001"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "office",
+     "value": "Uberland Office"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "date",
+     "value": "15/09/2024"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "citizen_id",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0020",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "book_public_appointment",
+     "param": "date",
+     "value": "15/08/2024"
+    },
+    {
+     "step": 0,
+     "tool": "book_public_appointment",
+     "param": "citizen_id",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_0034",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0005",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "bhxh_number",
+     "value": "1234567890"
+    },
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "full_name",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "office",
+     "value": "Sở Y tế"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "date",
+     "value": "15/02/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0008",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0019",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "document_status",
+     "param": "receipt_number",
+     "value": "0012345678"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0013",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "vehicle_registration",
+     "param": "plate_number",
+     "value": "43A-12345"
+    },
+    {
+     "step": 1,
+     "tool": "vehicle_registration",
+     "param": "plate_number",
+     "value": "43B-67890"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_0033",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "office",
+     "value": "UBND"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "date",
+     "value": "10/02/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0031",
+   "split": "sft_train",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "civil_status_lookup",
+     "param": "citizen_id",
+     "value": "123456789"
+    },
+    {
+     "step": 1,
+     "tool": "document_status",
+     "param": "receipt_number",
+     "value": "ABC123"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0009",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0026",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị B"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_0033",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_flight",
+     "param": "passengers",
+     "value": 1
+    },
+    {
+     "step": 1,
+     "tool": "baggage_info",
+     "param": "seat_class",
+     "value": "economy"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_0029",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_flight",
+     "param": "passengers",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0002",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0005",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "12/12/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_0018",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "placeholder",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "baggage_info",
+     "param": "seat_class",
+     "value": ""
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0015",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0004",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_medium_0001",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0014",
+   "split": "sft_train",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "baggage_info",
+     "param": "seat_class",
+     "value": "economy"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_0009",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0012",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "transaction_history",
+     "param": "account_number",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_0005",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0020",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0034",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0022",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0031",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0016",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_0027",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "transaction_history",
+     "param": "account_number",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_0024",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0021",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0030",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0024",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0008",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0027",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0019",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0022",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_0031",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "DH002"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_0007",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0000",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0022",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0025",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0017",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0034",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0031",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0026",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_0038",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0010",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0000",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0030",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0020",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0025",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "tax_inquiry",
+     "param": "tax_code",
+     "value": "1234567890"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_0019",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0006",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0014",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0003",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0012",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0012",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0000",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0007",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0020",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0010",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0038",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "easy",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0052",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 20000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Q1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0031",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "TIKI10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0058",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "thực phẩm chức năng giảm cân"
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Sản phẩm không phù hợp"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0090",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "DIGI20"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0001",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Sách giáo khoa lớp 1"
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "TIKI10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0053",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 10000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAM10"
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "456 Lê Thánh Tôn, Q1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0002",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "Kem dưỡng da"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0029",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "Thực phẩm chức năng tăng cường sức khỏe"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Sản phẩm không đạt chất lượng"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0013",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "Hà Nội"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0051",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "áo thể thao"
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "quần jeans"
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    },
+    {
+     "step": 4,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "FAM10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0005",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 20000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SHOPEE10"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0007",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0050",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "bộ sách hay"
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "điện thoại mới"
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 10000000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0070",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 8000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SALE5"
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Đã tìm được giá tốt hơn"
+    },
+    {
+     "step": 5,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 7000000
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0038",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0036",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Đồng hồ thông minh"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    },
+    {
+     "step": 3,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 4,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SALE5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0076",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 5000000
+    },
+    {
+     "step": 4,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Q.1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0029",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SHOPEE15"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0063",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "VOUCHER5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0023",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "VOU001"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0032",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0020",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 2000000
+    },
+    {
+     "step": 2,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 5000000
+    },
+    {
+     "step": 4,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "DONHANG5"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0057",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "Innisfree dưỡng da"
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    },
+    {
+     "step": 3,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "INNI20"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0027",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 20000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "123 Nguyễn Trãi, Q1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0030",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "Máy lạnh"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 15000000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAIDT10"
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "456 Lê Đức Thọ, Q.Gò Vấp, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0036",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "keyword",
+     "value": "mỹ phẩm tốt"
+    },
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0008",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "compare_prices",
+     "param": "product_name",
+     "value": "quần jeans nam"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 1500000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "456 Lê Thánh Tôn, Q.1, TP.HCM"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0098",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_hard_0103",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 5000000
+    },
+    {
+     "step": 2,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 3,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "OD67890"
+    },
+    {
+     "step": 3,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "không hài lòng với sản phẩm"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_medium_0027",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0014",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0068",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 500000
+    },
+    {
+     "step": 1,
+     "tool": "add_to_cart",
+     "param": "quantity",
+     "value": 1
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "SALE15"
+    },
+    {
+     "step": 4,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Không hài lòng với sản phẩm"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0006",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "checkout",
+     "param": "shipping_address",
+     "value": "địa chỉ giao hàng"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_hard_0017",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 20000000
+    },
+    {
+     "step": 2,
+     "tool": "apply_voucher",
+     "param": "voucher_code",
+     "value": "GIAĐINH10"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0027",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Văn E"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Thị F"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0006",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "search_flight",
+     "param": "date",
+     "value": "09/09/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0004",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Văn F"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0000",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn A"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn B"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0080",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn F"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị G"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0079",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Thị D"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Văn E"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0071",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn F"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Nguyễn Văn G"
+    },
+    {
+     "step": 1,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Trần Thị H"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_hard_0012",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_hard_0007",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "hard",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "book_flight",
+     "param": "passenger_names",
+     "value": "Lê Văn C"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0000",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "open_savings_account",
+     "param": "customer_id",
+     "value": "C001"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_hard_0031",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "find_branch",
+     "param": "city",
+     "value": "Hà Nội"
+    },
+    {
+     "step": 1,
+     "tool": "check_balance",
+     "param": "account_number",
+     "value": "333333333"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0039",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 2,
+     "tool": "open_savings_account",
+     "param": "customer_id",
+     "value": "KH002"
+    },
+    {
+     "step": 2,
+     "tool": "open_savings_account",
+     "param": "initial_deposit",
+     "value": 5000000
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0012",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "banking_medium_0008",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "block_card",
+     "param": "card_number",
+     "value": "987654321"
+    }
+   ]
+  },
+  {
+   "traj_id": "banking_medium_0003",
+   "split": "pilot_eval",
+   "domain": "banking",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "block_card",
+     "param": "card_number",
+     "value": "1234567890123456"
+    },
+    {
+     "step": 1,
+     "tool": "find_branch",
+     "param": "city",
+     "value": "Hà Nội"
+    }
+   ]
+  },
+  {
+   "traj_id": "ecommerce_0039",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "ecommerce_medium_0009",
+   "split": "pilot_eval",
+   "domain": "ecommerce",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "order_id",
+     "value": "DH12345"
+    },
+    {
+     "step": 0,
+     "tool": "return_request",
+     "param": "reason",
+     "value": "Sản phẩm không đúng yêu cầu"
+    },
+    {
+     "step": 1,
+     "tool": "search_product",
+     "param": "max_price",
+     "value": 15000000
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0037",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0029",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "translate_text",
+     "param": "text",
+     "value": "Bonjour, comment allez-vous?"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0010",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0012",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "calculate",
+     "param": "expression",
+     "value": "10 * 20"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0003",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "info_retrieval_medium_0014",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "translate_text",
+     "param": "text",
+     "value": "thời tiết tại New York"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0006",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "translate_text",
+     "param": "source_lang",
+     "value": "vi"
+    }
+   ]
+  },
+  {
+   "traj_id": "info_retrieval_medium_0002",
+   "split": "pilot_eval",
+   "domain": "info_retrieval",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0007",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "civil_status_lookup",
+     "param": "citizen_id",
+     "value": "123456789"
+    },
+    {
+     "step": 1,
+     "tool": "fee_lookup",
+     "param": "service_name",
+     "value": "Cấp giấy khai sinh"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_0018",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_0029",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "public_services_medium_0027",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "civil_status_lookup",
+     "param": "citizen_id",
+     "value": "123456789"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "office",
+     "value": "UBND Huyện"
+    },
+    {
+     "step": 1,
+     "tool": "book_public_appointment",
+     "param": "date",
+     "value": "20/02/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0003",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "civil_status_lookup",
+     "param": "citizen_id",
+     "value": "1234567890123"
+    },
+    {
+     "step": 1,
+     "tool": "vehicle_registration",
+     "param": "plate_number",
+     "value": "51A-12345"
+    }
+   ]
+  },
+  {
+   "traj_id": "public_services_medium_0015",
+   "split": "pilot_eval",
+   "domain": "public_services",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "bhxh_number",
+     "value": "1234567890"
+    },
+    {
+     "step": 0,
+     "tool": "lookup_bhxh",
+     "param": "full_name",
+     "value": "Nguyễn Văn A"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0000",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "17/02/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0016",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "search_hotel",
+     "param": "checkout",
+     "value": "28/05/2024"
+    }
+   ]
+  },
+  {
+   "traj_id": "travel_medium_0018",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "pass",
+   "g3_pass": true,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": []
+  },
+  {
+   "traj_id": "travel_0034",
+   "split": "pilot_eval",
+   "domain": "travel",
+   "difficulty": "medium",
+   "first_failing_gate": "G3",
+   "g3_pass": false,
+   "ids_changed_by_resolve": false,
+   "g3_ungrounded": [
+    {
+     "step": 1,
+     "tool": "book_hotel",
+     "param": "room_type",
+     "value": "phong_don"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,545 @@
+{
+ "description": "Nhãn chuẩn Step 0: nhãn hai người đồng ý + phân xử (duyệt bởi tác giả, 2026-11-07).",
+ "items": [
+  {
+   "item_id": "A01",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A02",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A03",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A04",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "quy tắc chốt: quantity không xuất hiện trong query và schema không có default -> chưa grounded",
+   "annotator1": "ungrounded",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A05",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A06",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A07",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A08",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A09",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A10",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A11",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "query không nêu số đêm/ngày trả phòng",
+   "annotator1": "ungrounded",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A12",
+   "label": "from_prior_observation",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "from_prior_observation",
+   "annotator2": "from_prior_observation"
+  },
+  {
+   "item_id": "A13",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A14",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "quy tắc chốt: quantity không xuất hiện trong query và schema không có default -> chưa grounded",
+   "annotator1": "ungrounded",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A15",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A16",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A17",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A18",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A19",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A20",
+   "label": "from_prior_observation",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "from_prior_observation",
+   "annotator2": "from_prior_observation"
+  },
+  {
+   "item_id": "A21",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A22",
+   "label": "from_prior_observation",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "from_prior_observation",
+   "annotator2": "from_prior_observation"
+  },
+  {
+   "item_id": "A23",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A24",
+   "label": "tool_default_or_enum",
+   "enum_justified": "n",
+   "source": "agreed",
+   "note": "",
+   "annotator1": "tool_default_or_enum",
+   "annotator2": "tool_default_or_enum"
+  },
+  {
+   "item_id": "A25",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A26",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "query nêu 'trên Sendo'",
+   "annotator1": "tool_default_or_enum",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A27",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A28",
+   "label": "from_prior_observation",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "mã sản phẩm có trong kết quả search_product ở bước trước",
+   "annotator1": "from_prior_observation",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A29",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "quy tắc chốt: quantity không xuất hiện trong query và schema không có default -> chưa grounded",
+   "annotator1": "ungrounded",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A30",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A31",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A32",
+   "label": "tool_default_or_enum",
+   "enum_justified": "n",
+   "source": "agreed",
+   "note": "",
+   "annotator1": "tool_default_or_enum",
+   "annotator2": "tool_default_or_enum"
+  },
+  {
+   "item_id": "A33",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "quy tắc chốt: quantity không xuất hiện trong query và schema không có default -> chưa grounded",
+   "annotator1": "ungrounded",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A34",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A35",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A36",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A37",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A38",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A39",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A40",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A41",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A42",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A43",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A44",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A45",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A46",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A47",
+   "label": "from_prior_observation",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "from_prior_observation",
+   "annotator2": "from_prior_observation"
+  },
+  {
+   "item_id": "A48",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A49",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A50",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A51",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A52",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A53",
+   "label": "from_prior_observation",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "from_prior_observation",
+   "annotator2": "from_prior_observation"
+  },
+  {
+   "item_id": "A54",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A55",
+   "label": "inferable_from_query",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "inferable_from_query",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A56",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A57",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "adjudicated",
+   "note": "quy tắc chốt: quantity không xuất hiện trong query và schema không có default -> chưa grounded",
+   "annotator1": "ungrounded",
+   "annotator2": "inferable_from_query"
+  },
+  {
+   "item_id": "A58",
+   "label": "tool_default_or_enum",
+   "enum_justified": "y",
+   "source": "agreed",
+   "note": "",
+   "annotator1": "tool_default_or_enum",
+   "annotator2": "tool_default_or_enum"
+  },
+  {
+   "item_id": "A59",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  },
+  {
+   "item_id": "A60",
+   "label": "ungrounded",
+   "enum_justified": null,
+   "source": "agreed",
+   "note": "",
+   "annotator1": "ungrounded",
+   "annotator2": "ungrounded"
+  }
+ ]
+}

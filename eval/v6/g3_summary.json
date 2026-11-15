@@ -1,0 +1,53 @@
+{
+ "definition": "Gate G3 (data/grounding_gate.py) as adjudicated in Step 0: lenient audit minus implicit quantity=1; agrees with adjudicated labels on 60/60 sample items (eval/v6/g3_vs_adjudicated.json)",
+ "ungrounded_trajectories": {
+  "all": "200/375",
+  "eval": "60/112",
+  "train": "140/263",
+  "eval_by_tier": {
+   "easy": "4/43",
+   "medium": "17/26",
+   "hard": "39/43"
+  }
+ },
+ "quantity_only": {
+  "description": "trajectories whose ONLY ungrounded values are counts (quantity/passengers/guests/rooms)",
+  "all": 11,
+  "eval": 2,
+  "ids": [
+   "ecommerce_hard_0000",
+   "ecommerce_hard_0006",
+   "ecommerce_hard_0007",
+   "ecommerce_hard_0009",
+   "ecommerce_hard_0012",
+   "ecommerce_hard_0033",
+   "ecommerce_hard_0043",
+   "ecommerce_hard_0060",
+   "ecommerce_medium_0027",
+   "ecommerce_medium_0028",
+   "travel_0029"
+  ]
+ },
+ "involving_quantity": {
+  "all": 92,
+  "eval": 25
+ },
+ "ungrounded_values": 484,
+ "vs_v5_strict_audit": {
+  "v5_strict": 209,
+  "g3": 200,
+  "in_v5_not_g3": [
+   "info_retrieval_0012",
+   "info_retrieval_0015",
+   "info_retrieval_0025",
+   "info_retrieval_0032",
+   "info_retrieval_0036",
+   "info_retrieval_medium_0001",
+   "info_retrieval_medium_0004",
+   "info_retrieval_medium_0025",
+   "info_retrieval_medium_0028"
+  ],
+  "in_g3_not_v5": [],
+  "explanation": "All 9 trajectories flagged by the v5 strict audit but not by G3 contain only currency or language codes (USD/VND/EUR, fr/ja) that the query names in words ('đô la Mỹ', 'tiền Việt Nam', 'tiếng Pháp'); G3 maps these through its lexicon, the v5 strict audit did not. G3 flags no trajectory that v5 strict did not. (Earlier '199' was the count of trajectories whose FIRST failing gate is G3; ecommerce_0009 fails Gate 1.5 first and also fails G3, giving 200.)"
+ }
+}

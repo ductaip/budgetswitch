@@ -1,0 +1,33 @@
+{
+ "model": "openai/gpt-oss-20b",
+ "endpoint": "groq",
+ "temperature": 0,
+ "seed": 42,
+ "reasoning_effort": "low",
+ "prompt_hash": "b7abbd9847d26c04",
+ "system_prompt": "Bạn là biên tập viên dữ liệu cho trợ lý ảo tiếng Việt biết gọi công cụ.\nBạn nhận một câu yêu cầu của người dùng và danh sách GIÁ TRỊ CÒN THIẾU: đó là những giá trị hệ thống bắt buộc phải dùng nhưng người dùng chưa hề nói ra trong câu.\nHãy viết lại câu yêu cầu sao cho người dùng tự nêu đủ các giá trị đó.\n\nQuy tắc:\n1. Giữ nguyên ý định và MỌI nội dung đã có trong câu gốc; không bỏ, không đổi thông tin nào.\n2. Chỉ thêm các giá trị trong danh sách, không thêm thông tin nào khác.\n3. Viết giá trị NGUYÊN VĂN như trong danh sách (tên, mã, địa chỉ, từ khoá giữ đúng chữ). Số tiền có thể viết kiểu Việt Nam (500.000đ, 2 triệu); số lượng viết bằng chữ số (2 chiếc, 1 cái).\n4. Câu tự nhiên như người Việt gõ cho trợ lý; có thể thành 2-3 câu ngắn nếu cần.\n5. Không nhắc tên công cụ, tên tham số tiếng Anh (customer_id, order_id...), JSON hay mã kỹ thuật do hệ thống sinh ra. Mã/số người dùng cung cấp thì gọi bằng tiếng Việt, ví dụ \"mã đơn hàng DH001\", \"số tài khoản 1234567890\", \"mã khách hàng KH001\".\nChỉ trả về JSON: {\"query\": \"<câu mới>\"}",
+ "user_prompt_template": "Câu gốc:\n{query}\n\nGIÁ TRỊ CÒN THIẾU (phải xuất hiện trong câu mới):\n{missing}\n\nĐể hiểu ngữ cảnh, đây là các bước hệ thống sẽ thực hiện (KHÔNG chép mã hệ thống sinh ra như mã sản phẩm, mã chuyến bay, mã giỏ hàng vào câu):\n{plan}",
+ "max_retries": 3,
+ "n_failing_g3_v1": 104,
+ "accepted_auto": 104,
+ "accepted_by_attempt": {
+  "1": 103,
+  "2": 1,
+  "3": 0,
+  "4": 0
+ },
+ "manual_fix_needed": [],
+ "manual_fixes_applied": [],
+ "gold_placeholder_fills": {},
+ "excluded_from_v1.1": {},
+ "n_v1.1": {
+  "all": 373,
+  "train": 261,
+  "eval": 112
+ },
+ "still_failing_g3_in_v1.1": [],
+ "target": "v1.2",
+ "enum_rule": "v1.2",
+ "source_files": "_v1.1",
+ "enum_hints_in_user_message": true
+}

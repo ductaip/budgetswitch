@@ -1,0 +1,11 @@
+{
+ "gate": "G3 (data/grounding_gate.py, currency-suffix fix)",
+ "truth": "audit_sample_adjudicated.json",
+ "tp": 39,
+ "fp": 0,
+ "fn": 0,
+ "tn": 21,
+ "precision": 1.0,
+ "recall_in_sample": 1.0,
+ "errors": []
+}

@@ -1,0 +1,35 @@
+{
+  "run": 1,
+  "model": "openai/gpt-oss-120b",
+  "endpoint": "https://api.groq.com/openai/v1",
+  "temperature": 0.0,
+  "max_tokens": 1500,
+  "reasoning_effort": "low",
+  "seed_param": 42,
+  "protocol": "teacher_forced",
+  "prompt_template_hash": "7f2133750953bdc3+fsce0c095d53826ac5",
+  "fewshot_demos": [
+    [
+      "travel_0016",
+      0
+    ],
+    [
+      "banking_0039",
+      0
+    ],
+    [
+      "ecommerce_hard_0112",
+      1
+    ]
+  ],
+  "grounded_demos": true,
+  "price_known": true,
+  "data_sha256": "2b18d2a2e4738797d05b8418eb4038744db67da5bee1ccf64b4d6d402d8c9f30",
+  "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+  "packages": {
+    "python": "3.12.3",
+    "openai": "2.38.0",
+    "jsonschema": "4.26.0"
+  },
+  "key_policy": "single key (GROQ_API_KEY), retry+backoff"
+}

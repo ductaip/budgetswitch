@@ -1,0 +1,76 @@
+{
+  "N_active": {
+    "M0": 3090000000.0,
+    "M1": 3090000000.0,
+    "M2": 3090000000.0,
+    "M3": 5100000000.0
+  },
+  "N_e5": 278043648,
+  "M2_e5_query_tokens_mean": 25.9,
+  "modes": {
+    "M0": {
+      "prompt_tokens_mean": 501.5,
+      "completion_tokens_mean": 38.6,
+      "total_tokens_mean": 540.2,
+      "flops_mean": 3338000000000.0,
+      "latency_ms_mean": 5850.6,
+      "latency_ms_median": 5542.6,
+      "usd_mean": 0.0,
+      "usd_total_284": 0.0,
+      "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+      "relative_to_M0": {
+        "assumed": 1.0,
+        "tokens": 1.0,
+        "flops": 1.0
+      }
+    },
+    "M1": {
+      "prompt_tokens_mean": 526.5,
+      "completion_tokens_mean": 66.2,
+      "total_tokens_mean": 592.7,
+      "flops_mean": 3663000000000.0,
+      "latency_ms_mean": 9816.7,
+      "latency_ms_median": 8874.7,
+      "usd_mean": 0.0,
+      "usd_total_284": 0.0,
+      "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+      "relative_to_M0": {
+        "assumed": 3.0,
+        "tokens": 1.097,
+        "flops": 1.097
+      }
+    },
+    "M2": {
+      "prompt_tokens_mean": 287.8,
+      "completion_tokens_mean": 57.1,
+      "total_tokens_mean": 344.9,
+      "flops_mean": 2146000000000.0,
+      "latency_ms_mean": 8370.0,
+      "latency_ms_median": 7874.9,
+      "usd_mean": 0.0,
+      "usd_total_284": 0.0,
+      "hardware": "2x Tesla T4 (device_map=auto, 4-bit nf4)",
+      "relative_to_M0": {
+        "assumed": 5.0,
+        "tokens": 0.638,
+        "flops": 0.643
+      }
+    },
+    "M3": {
+      "prompt_tokens_mean": 1370.9,
+      "completion_tokens_mean": 105.1,
+      "total_tokens_mean": 1476.0,
+      "flops_mean": 15060000000000.0,
+      "latency_ms_mean": 564.5,
+      "latency_ms_median": 479.2,
+      "usd_mean": 0.0002845,
+      "usd_total_284": 0.0808,
+      "hardware": "Groq cloud API (hardware not disclosed); client-side wall clock",
+      "relative_to_M0": {
+        "assumed": 15.0,
+        "tokens": 2.733,
+        "flops": 4.51
+      }
+    }
+  }
+}
